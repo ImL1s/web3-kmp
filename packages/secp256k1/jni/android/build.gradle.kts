@@ -34,12 +34,13 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 
-    externalNativeBuild {
-        cmake {
-            version = "3.31.5"
-            path("src/main/CMakeLists.txt")
-        }
-    }
+    // CMake disabled - using Pure Kotlin implementation (Secp256k1Pure)
+    // externalNativeBuild {
+    //     cmake {
+    //         version = "3.31.5"
+    //         path("src/main/CMakeLists.txt")
+    //     }
+    // }
 
     ndkVersion = "28.2.13676358"
 
@@ -54,11 +55,12 @@ android {
     }
 }
 
-afterEvaluate {
-    tasks.filter { it.name.startsWith("configureCMake") }.forEach {
-        it.dependsOn(":packages:secp256k1:native:buildSecp256k1Android")
-    }
-}
+// Disabled - not needed when using Pure Kotlin implementation
+// afterEvaluate {
+//     tasks.filter { it.name.startsWith("configureCMake") }.forEach {
+//         it.dependsOn(":packages:secp256k1:native:buildSecp256k1Android")
+//     }
+// }
 
 afterEvaluate {
     publishing {
