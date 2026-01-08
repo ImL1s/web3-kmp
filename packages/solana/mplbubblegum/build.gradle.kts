@@ -3,7 +3,7 @@
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.android.library)
-    kotlin("plugin.serialization") version "1.9.0"
+    alias(libs.plugins.kotlin.serialization)
     // alias(libs.plugins.maven.publish)
     // alias(libs.plugins.kmp.framework.bundler)
 }
