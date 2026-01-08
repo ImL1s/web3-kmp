@@ -65,7 +65,7 @@ kotlin {
             dependencies {
                 implementation("androidx.core:core-ktx:1.13.1")
                 api(project(":packages:secp256k1"))
-                api(project(":packages:secp256k1:jni:android"))
+
                 api("org.bouncycastle:bcprov-jdk18on:1.78.1")
             }
         }
@@ -74,7 +74,7 @@ kotlin {
             dependencies {
                 implementation(kotlin("test-junit"))
                 implementation("junit:junit:4.13.2")
-                implementation(project(":packages:secp256k1:jni:jvm"))
+
             }
         }
 

@@ -95,13 +95,7 @@ kotlin {
         val jvmTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))
-                val target = when {
-                    currentOs.isLinux -> "linux"
-                    currentOs.isMacOsX -> "darwin"
-                    currentOs.isWindows -> "mingw"
-                    else -> error("Unsupported OS $currentOs")
-                }
-                implementation(project(":packages:secp256k1:jni:jvm:$target"))
+
             }
         }
 
