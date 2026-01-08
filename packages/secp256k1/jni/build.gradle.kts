@@ -22,7 +22,7 @@ kotlin {
 }
 
 dependencies {
-    api(rootProject)
+    api(project(":packages:secp256k1"))
 }
 
 val generateHeaders by tasks.registering(JavaCompile::class) { ->

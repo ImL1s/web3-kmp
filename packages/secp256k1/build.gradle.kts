@@ -63,7 +63,7 @@ kotlin {
         compilations["main"].cinterops {
             val libsecp256k1 by creating {
                 includeDirs.headerFilterOnly(project.file("native/secp256k1/include/"))
-                tasks[interopProcessingTaskName].dependsOn(":native:buildSecp256k1${target.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }}")
+                tasks[interopProcessingTaskName].dependsOn(":packages:secp256k1:native:buildSecp256k1${target.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }}")
             }
         }
     }

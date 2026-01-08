@@ -13,8 +13,8 @@ val bash = if (currentOs.isWindows) "bash.exe" else "bash"
 val buildNativeHost by tasks.registering(Exec::class) {
     ->
     group = "build"
-    dependsOn(":jni:generateHeaders")
-    dependsOn(":native:buildSecp256k1Host")
+    dependsOn(":packages:secp256k1:jni:generateHeaders")
+    dependsOn(":packages:secp256k1:native:buildSecp256k1Host")
 
     val target = when {
         currentOs.isLinux -> "linux"
@@ -32,7 +32,7 @@ val buildNativeHost by tasks.registering(Exec::class) {
 }
 
 dependencies {
-    api(project(":jni"))
+    api(project(":packages:secp256k1:jni"))
 }
 
 kotlin {

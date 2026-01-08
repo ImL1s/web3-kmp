@@ -17,7 +17,7 @@ kotlin {
 }
 
 dependencies {
-    api(project(":jni"))
+    api(project(":packages:secp256k1:jni"))
 }
 
 android {
@@ -56,7 +56,7 @@ android {
 
 afterEvaluate {
     tasks.filter { it.name.startsWith("configureCMake") }.forEach {
-        it.dependsOn(":native:buildSecp256k1Android")
+        it.dependsOn(":packages:secp256k1:native:buildSecp256k1Android")
     }
 }
 

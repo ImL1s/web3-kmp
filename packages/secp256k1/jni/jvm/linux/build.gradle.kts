@@ -21,13 +21,13 @@ java {
 }
 
 dependencies {
-    implementation(project(":jni:jvm"))
+    implementation(project(":packages:secp256k1:jni:jvm"))
 }
 
 val copyJni by tasks.registering(Sync::class) {
     ->
     onlyIf { org.gradle.internal.os.OperatingSystem.current().isLinux }
-    dependsOn(":jni:jvm:buildNativeHost")
+    dependsOn(":packages:secp256k1:jni:jvm:buildNativeHost")
     from(rootDir.resolve("jni/jvm/build/linux/libsecp256k1-jni.so"))
     into(layout.buildDirectory.dir("jniResources/fr/acinq/secp256k1/jni/native/linux-x86_64"))
 }

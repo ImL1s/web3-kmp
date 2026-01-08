@@ -7,9 +7,9 @@ plugins {
 }
 
 dependencies {
-    api(project(":jni:jvm:darwin"))
-    api(project(":jni:jvm:linux"))
-    api(project(":jni:jvm:mingw"))
+    api(project(":packages:secp256k1:jni:jvm:darwin"))
+    api(project(":packages:secp256k1:jni:jvm:linux"))
+    api(project(":packages:secp256k1:jni:jvm:mingw"))
 }
 
 publishing {

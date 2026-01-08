@@ -7,13 +7,13 @@ plugins {
 }
 
 dependencies {
-    implementation(project(":jni:jvm"))
+    implementation(project(":packages:secp256k1:jni:jvm"))
 }
 
 val copyJni by tasks.registering(Sync::class) {
     ->
     onlyIf { org.gradle.internal.os.OperatingSystem.current().isWindows }
-    dependsOn(":jni:jvm:buildNativeHost")
+    dependsOn(":packages:secp256k1:jni:jvm:buildNativeHost")
     from(rootDir.resolve("jni/jvm/build/mingw/secp256k1-jni.dll"))
     into(layout.buildDirectory.dir("jniResources/fr/acinq/secp256k1/jni/native/mingw-x86_64"))
 }

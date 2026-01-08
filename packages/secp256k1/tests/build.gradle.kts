@@ -38,7 +38,7 @@ kotlin {
             freeCompilerArgs.add("-Xjdk-release=1.8")
         }
         compilations["main"].dependencies {
-            implementation(project(":jni:jvm:all"))
+            implementation(project(":packages:secp256k1:jni:jvm:all"))
         }
         compilations["test"].dependencies {
             implementation(kotlin("test-junit"))
@@ -50,7 +50,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(rootProject)
+                implementation(project(":packages:secp256k1"))
             }
         }
         val commonTest by getting {
@@ -66,14 +66,15 @@ kotlin {
         if (includeAndroid) {
             val androidMain by getting {
                 dependencies {
-                    implementation(project(":jni:android"))
+                    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
                 }
             }
             val androidInstrumentedTest by getting {
                 dependencies {
                     implementation(kotlin("test-junit"))
-                    implementation("androidx.test.ext:junit:1.3.0")
-                    implementation("androidx.test.espresso:espresso-core:3.7.0")
+                    implementation("junit:junit:4.13.2")
+                    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
+                    implementation(project(":packages:secp256k1"))
                 }
             }
         }

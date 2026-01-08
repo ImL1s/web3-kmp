@@ -18,6 +18,15 @@ dependencyResolutionManagement {
 
 
 include(":packages:secp256k1")
+include(":packages:secp256k1:native")
+include(":packages:secp256k1:jni")
+include(":packages:secp256k1:jni:jvm")
+include(":packages:secp256k1:jni:jvm:darwin")
+include(":packages:secp256k1:jni:jvm:linux")
+include(":packages:secp256k1:jni:jvm:mingw")
+include(":packages:secp256k1:jni:jvm:all")
+include(":packages:secp256k1:jni:android")
+include(":packages:secp256k1:tests")
 include(":packages:bitcoin")
 include(":packages:address")
 include(":packages:utxo")

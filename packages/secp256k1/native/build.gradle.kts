@@ -9,7 +9,7 @@ val skipAndroid = localProperties.getProperty("skip.android")?.toBoolean() ?: fa
 val includeAndroid = !skipAndroid && (System.getProperty("includeAndroid")?.toBoolean() ?: true)
 
 if (includeAndroid) {
-    evaluationDependsOn(":jni:android")
+    evaluationDependsOn(":packages:secp256k1:jni:android")
 }
 
 val currentOs = OperatingSystem.current()
@@ -92,7 +92,7 @@ if (includeAndroid) {
         }
         environment("TOOLCHAIN", toolchain)
         environment("ARCH", arch)
-        environment("ANDROID_NDK", (project(":jni:android").extensions["android"] as LibraryExtension).ndkDirectory)
+        environment("ANDROID_NDK", (project(":packages:secp256k1:jni:android").extensions["android"] as LibraryExtension).ndkDirectory)
         commandLine(bash, "build-android.sh")
     }
 
