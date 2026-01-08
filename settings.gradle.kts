@@ -27,8 +27,12 @@ include(":packages:secure-storage")
 include(":packages:solana")
 include(":packages:caip-standards")
 include(":packages:crypto-pure")
+include(":packages:crypto-pure:crypto-core")
 include(":packages:hardware-wallet")
 include(":packages:miniscript")
 include(":packages:bip21")
 include(":packages:bitkey")
+
+// Examples
+include(":examples:bitcoin-wallet")
 
