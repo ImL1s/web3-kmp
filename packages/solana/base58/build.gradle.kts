@@ -11,7 +11,7 @@ plugins {
 kotlin {
     applyDefaultHierarchyTemplate()
 
-    androidTarget().apply {
+    androidTarget {
         compilerOptions {
             jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11)
         }
@@ -38,7 +38,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(libs.crypto)
+                implementation(project(":packages:crypto-pure:crypto-core"))
             }
         }
         val commonTest by getting {
@@ -52,7 +52,7 @@ kotlin {
 }
 
 android { namespace = "foundation.metaplex.base58"
-    compileSdk = 33
+    compileSdk = 35
     defaultConfig {
         minSdk = 24
     }

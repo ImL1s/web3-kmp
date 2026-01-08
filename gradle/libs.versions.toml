@@ -9,6 +9,11 @@ coroutines = "1.9.0"
 serialization = "1.7.3"
 dokka = "1.9.20"
 kotlinx-io = "0.5.4"
+bignum = "0.3.9"
+buffer = "1.3.1"
+kborsh = "0.1.0"
+web3core = "0.3.0-beta2"
+rpccore = "0.2.5"
 
 
 
@@ -32,6 +37,12 @@ ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "kto
 ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
 ktor-network = { module = "io.ktor:ktor-network", version.ref = "ktor" }
 ktor-network-tls = { module = "io.ktor:ktor-network-tls", version.ref = "ktor" }
+bignum = { module = "com.ionspin.kotlin:bignum", version.ref = "bignum" }
+buffer = { module = "com.ditchoom:buffer", version.ref = "buffer" }
+kborsh = { group = "io.github.funkatronics", name = "kborsh", version.ref = "kborsh" }
+web3solana = { group = "com.solanamobile", name = "web3-solana", version.ref = "web3core" }
+web3core = { group = "com.solanamobile", name = "web3-core", version.ref = "web3core" }
+rpccore = { group = "com.solanamobile", name = "rpc-core", version.ref = "rpccore" }
 
 
 [plugins]

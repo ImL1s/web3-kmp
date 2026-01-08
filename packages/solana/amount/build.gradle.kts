@@ -12,7 +12,7 @@ plugins {
 kotlin {
     applyDefaultHierarchyTemplate()
 
-    androidTarget().apply {
+    androidTarget {
         compilerOptions {
             jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11)
         }

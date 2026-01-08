@@ -11,7 +11,7 @@ plugins {
 kotlin {
     applyDefaultHierarchyTemplate()
 
-    androidTarget().apply {
+    androidTarget {
         compilerOptions {
             jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11)
         }
@@ -40,7 +40,7 @@ kotlin {
             dependencies {
                 implementation(project(":packages:solana:base58"))
                 implementation(libs.buffer)
-                implementation(libs.crypto)
+                implementation(project(":packages:crypto-pure:crypto-core"))
                 api(libs.web3solana)
             }
         }
@@ -57,7 +57,7 @@ kotlin {
 }
 
 android { namespace = "foundation.metaplex.solanapublickeys"
-    compileSdk = 33
+    compileSdk = 35
     defaultConfig {
         minSdk = 24
     }

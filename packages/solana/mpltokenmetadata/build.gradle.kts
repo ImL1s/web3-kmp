@@ -12,7 +12,7 @@ plugins {
 kotlin {
     applyDefaultHierarchyTemplate()
 
-    androidTarget().apply {
+    androidTarget {
         compilations.all {
             kotlinOptions {
                 jvmTarget = "11"
@@ -55,7 +55,7 @@ kotlin {
 }
 
 android { namespace = "foundation.metaplex.mpltokenmetadata"
-    compileSdk = 33
+    compileSdk = 35
     defaultConfig {
         minSdk = 24
     }

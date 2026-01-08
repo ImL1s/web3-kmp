@@ -14,7 +14,7 @@ plugins {
 kotlin {
     applyDefaultHierarchyTemplate()
 
-    androidTarget().apply {
+    androidTarget {
         compilerOptions {
             jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11)
         }
@@ -76,7 +76,7 @@ kotlin {
 }
 
 android { namespace = "foundation.metaplex.solana"
-    compileSdk = 33
+    compileSdk = 35
     defaultConfig {
         minSdk = 24
     }

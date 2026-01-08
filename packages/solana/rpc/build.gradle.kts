@@ -12,7 +12,7 @@ plugins {
 kotlin {
     applyDefaultHierarchyTemplate()
 
-    androidTarget().apply {
+    androidTarget {
         compilations.all {
             kotlinOptions {
                 jvmTarget = "11"
@@ -47,7 +47,7 @@ kotlin {
                 implementation(libs.kotlinx.serialization.json )
                 implementation(libs.kotlinx.coroutines.core)
                 implementation(libs.bignum)
-                implementation(libs.crypto)
+                implementation(project(":packages:crypto-pure:crypto-core"))
                 implementation(libs.kborsh)
                 implementation(libs.ktor.client.core)
                 implementation(libs.ktor.client.cio)
@@ -80,7 +80,7 @@ kotlin {
 }
 
 android { namespace = "com.metaplex.rpc"
-    compileSdk = 33
+    compileSdk = 35
     defaultConfig {
         minSdk = 24
     }
