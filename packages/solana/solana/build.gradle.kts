@@ -39,7 +39,6 @@ kotlin {
             export(project(":packages:solana:amount"))
             export(project(":packages:solana:base58"))
             export(project(":packages:solana:readapi"))
-            export(project(":packages:solana:amount"))
             export(project(":packages:solana:rpc"))
             export(project(":packages:solana:signer"))
             export(project(":packages:solana:solanaeddsa"))

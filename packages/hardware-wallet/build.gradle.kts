@@ -45,7 +45,7 @@ kotlin {
 
 android {
     namespace = "io.github.iml1s.bcur"
-    compileSdk = 34
+    compileSdk = 35
     defaultConfig {
         minSdk = 24
     }
