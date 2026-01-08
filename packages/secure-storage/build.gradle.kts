@@ -33,13 +33,7 @@ group = "io.github.iml1s"
 version = "1.0.0"
 
 kotlin {
-    // Android target temporarily disabled due to dependency resolution issues
-    // androidTarget {
-    //     compilerOptions {
-    //         jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
-    //     }
-    //     publishLibraryVariants("release")
-    // }
+    applyDefaultHierarchyTemplate()
 
     jvm() // Desktop/Server target (File-based encryption placeholder)
 
@@ -52,6 +46,11 @@ kotlin {
             baseName = "securestorage"
         }
     }
+
+    // watchOS targets
+    watchosArm64()
+    watchosSimulatorArm64()
+    watchosX64()
 
     sourceSets {
         val commonMain by getting {
@@ -68,18 +67,6 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
             }
         }
-        // Note: Android secure storage implementation will need to be added by the consuming application
-        // as a runtime dependency to avoid build-time resolution issues
-
-        val iosMain by creating { dependsOn(commonMain) }
-        val iosX64Main by getting { dependsOn(iosMain) }
-        val iosArm64Main by getting { dependsOn(iosMain) }
-        val iosSimulatorArm64Main by getting { dependsOn(iosMain) }
-
-        val iosTest by creating { dependsOn(commonTest) }
-        val iosX64Test by getting { dependsOn(iosTest) }
-        val iosArm64Test by getting { dependsOn(iosTest) }
-        val iosSimulatorArm64Test by getting { dependsOn(iosTest) }
     }
 }
 
