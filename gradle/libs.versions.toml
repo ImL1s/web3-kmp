@@ -1,6 +1,6 @@
 [versions]
 kotlin = "2.1.0"
-androidGradlePlugin = "8.5.2"
+androidGradlePlugin = "8.11.0"
 compose-plugin = "1.7.1"
 androidx-activityCompose = "1.9.3"
 clikt = "5.0.0"
