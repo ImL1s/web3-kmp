@@ -46,8 +46,8 @@ kotlin {
         }
 
         commonMain.dependencies {
-            implementation(project(":crypto-core"))
-            implementation(project(":kotlin-wallet-sdk"))
+            implementation(project(":packages:crypto-pure:crypto-core"))
+            implementation(project(":packages:crypto-pure:kotlin-wallet-sdk"))
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material3)

@@ -39,7 +39,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(project(mapOf("path" to ":solana")))
+                api(project(":packages:solana:solana"))
                 implementation(libs.kotlinx.serialization.json)
                 implementation(libs.kborsh)
                 implementation(libs.buffer)

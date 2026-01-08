@@ -80,7 +80,7 @@ kotlin {
 
         val commonMain by getting {
             dependencies {
-                api("fr.acinq.secp256k1:secp256k1-kmp:$secp256k1KmpVersion")
+                api(project(":packages:secp256k1"))
             }
         }
         val commonTest by getting {
@@ -101,7 +101,7 @@ kotlin {
                     currentOs.isWindows -> "mingw"
                     else -> error("Unsupported OS $currentOs")
                 }
-                implementation("fr.acinq.secp256k1:secp256k1-kmp-jni-jvm-$target:$secp256k1KmpVersion")
+                implementation(project(":packages:secp256k1:jni:jvm:$target"))
             }
         }
 

@@ -32,14 +32,14 @@ kotlin {
         it.binaries.framework {
             baseName = "mplbubblegum"
             // xcf.add(this)
-            export(project(":solana"))
+            export(project(":packages:solana:solana"))
         }
     }
 
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(project(mapOf("path" to ":solana")))
+                api(project(":packages:solana:solana"))
                 implementation(libs.kotlinx.serialization.json)
                 implementation(libs.kborsh)
                 implementation(libs.buffer)

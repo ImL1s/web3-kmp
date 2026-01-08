@@ -42,8 +42,8 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(project(mapOf("path" to ":solanapublickeys")))
-                implementation(project(mapOf("path" to ":amount")))
+                implementation(project(":packages:solana:solanapublickeys"))
+                implementation(project(":packages:solana:amount"))
                 implementation(libs.kotlinx.serialization.json )
                 implementation(libs.kotlinx.coroutines.core)
                 implementation(libs.bignum)

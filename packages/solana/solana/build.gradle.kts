@@ -36,27 +36,27 @@ kotlin {
             baseName = "solana"
             // xcf.add(this)
 
-            export(project(":amount"))
-            export(project(":base58"))
-            export(project(":readapi"))
-            export(project(":amount"))
-            export(project(":rpc"))
-            export(project(":signer"))
-            export(project(":solanaeddsa"))
-            export(project(":solanapublickeys"))
+            export(project(":packages:solana:amount"))
+            export(project(":packages:solana:base58"))
+            export(project(":packages:solana:readapi"))
+            export(project(":packages:solana:amount"))
+            export(project(":packages:solana:rpc"))
+            export(project(":packages:solana:signer"))
+            export(project(":packages:solana:solanaeddsa"))
+            export(project(":packages:solana:solanapublickeys"))
         }
     }
 
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(project(mapOf("path" to ":amount")))
-                api(project(mapOf("path" to ":base58")))
-                api(project(mapOf("path" to ":readapi")))
-                api(project(mapOf("path" to ":rpc")))
-                api(project(mapOf("path" to ":signer")))
-                api(project(mapOf("path" to ":solanaeddsa")))
-                api(project(mapOf("path" to ":solanapublickeys")))
+                api(project(":packages:solana:amount"))
+                api(project(":packages:solana:base58"))
+                api(project(":packages:solana:readapi"))
+                api(project(":packages:solana:rpc"))
+                api(project(":packages:solana:signer"))
+                api(project(":packages:solana:solanaeddsa"))
+                api(project(":packages:solana:solanapublickeys"))
                 implementation(libs.buffer)
                 implementation(libs.kborsh)
                 implementation(libs.kotlinx.serialization.json)

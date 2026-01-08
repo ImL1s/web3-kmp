@@ -38,8 +38,8 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(project(mapOf("path" to ":signer")))
-                implementation(project(mapOf("path" to ":solanapublickeys")))
+                implementation(project(":packages:solana:signer"))
+                implementation(project(":packages:solana:solanapublickeys"))
                 implementation(libs.crypto)
                 implementation(libs.web3core)
             }

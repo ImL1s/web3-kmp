@@ -46,7 +46,7 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(project(":crypto-core"))
+            implementation(project(":packages:crypto-pure:crypto-core"))
             implementation(libs.clikt)
         }
         commonTest.dependencies {

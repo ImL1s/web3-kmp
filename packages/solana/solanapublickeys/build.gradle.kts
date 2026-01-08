@@ -38,7 +38,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(project(mapOf("path" to ":base58")))
+                implementation(project(":packages:solana:base58"))
                 implementation(libs.buffer)
                 implementation(libs.crypto)
                 api(libs.web3solana)

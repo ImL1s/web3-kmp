@@ -10,12 +10,12 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(project(":crypto-core"))
-                implementation("io.github.iml1s:kotlin-blockchain-client:1.3.0")
-                implementation("io.github.iml1s:kotlin-tx-builder:1.3.0")
-                implementation("io.github.iml1s:kotlin-utxo:1.3.0")
-                implementation("io.github.iml1s:kotlin-address:1.3.0")
-                implementation("io.github.iml1s:solana:1.3.0")
+                implementation(project(":packages:crypto-pure:crypto-core"))
+                implementation(project(":packages:blockchain-client"))
+                implementation(project(":packages:tx-builder"))
+                implementation(project(":packages:utxo"))
+                implementation(project(":packages:address"))
+                implementation(project(":packages:solana:solana"))
                 implementation(libs.kotlinx.coroutines.core)
                 implementation(libs.ktor.client.core)
                 implementation(libs.ktor.client.content.negotiation)

@@ -64,8 +64,8 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 implementation("androidx.core:core-ktx:1.13.1")
-                api("fr.acinq.secp256k1:secp256k1-kmp:0.19.0")
-                api("fr.acinq.secp256k1:secp256k1-kmp-jni-android:0.19.0")
+                api(project(":packages:secp256k1"))
+                api(project(":packages:secp256k1:jni:android"))
                 api("org.bouncycastle:bcprov-jdk18on:1.78.1")
             }
         }
@@ -74,7 +74,7 @@ kotlin {
             dependencies {
                 implementation(kotlin("test-junit"))
                 implementation("junit:junit:4.13.2")
-                implementation("fr.acinq.secp256k1:secp256k1-kmp-jni-jvm:0.19.0")
+                implementation(project(":packages:secp256k1:jni:jvm"))
             }
         }
 
@@ -90,7 +90,7 @@ kotlin {
         val iosMain by creating {
             dependsOn(nativeMain)
             dependencies {
-                api("fr.acinq.secp256k1:secp256k1-kmp:0.19.0")
+                api(project(":packages:secp256k1"))
             }
         }
 
