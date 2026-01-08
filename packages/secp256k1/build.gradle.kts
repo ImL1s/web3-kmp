@@ -59,13 +59,10 @@ kotlin {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 
+    // Disable C interop for all native targets to use Pure Kotlin implementation
+    // This enables watchOS support without requiring native C library compilation
     fun KotlinNativeTarget.secp256k1CInterop(target: String) {
-        compilations["main"].cinterops {
-            val libsecp256k1 by creating {
-                includeDirs.headerFilterOnly(project.file("native/secp256k1/include/"))
-                tasks[interopProcessingTaskName].dependsOn(":packages:secp256k1:native:buildSecp256k1${target.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }}")
-            }
-        }
+        // C interop disabled - using Secp256k1Pure instead
     }
 
     val nativeMain by sourceSets.creating
@@ -97,6 +94,11 @@ kotlin {
     iosSimulatorArm64 {
         secp256k1CInterop("ios")
     }
+
+    // watchOS targets (using Pure Kotlin implementation)
+    watchosArm64()
+    watchosSimulatorArm64()
+    watchosX64()
 
     sourceSets.all {
         languageSettings.optIn("kotlin.RequiresOptIn")
