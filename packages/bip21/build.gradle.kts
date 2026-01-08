@@ -69,26 +69,27 @@ publishing {
     }
 }
 
-dokka {
-    moduleName.set("bip21")
-    moduleVersion.set("0.1.0-SNAPSHOT")
-    dokkaSourceSets {
-        named("main") {
-            includes.from("MODULE.md")
-            samples.from("src/test/kotlin/org/kotlinbitcointools/bip21/Samples.kt")
-            sourceLink {
-                localDirectory.set(file("src/main/kotlin"))
-                remoteUrl("https://kotlin-bitcoin-tools.github.io/bip21/")
-                remoteLineSuffix.set("#L")
-            }
-        }
-    }
-    pluginsConfiguration.html {
-        // customStyleSheets.from("styles.css")
-        // customAssets.from("logo.svg")
-        footerMessage.set("(c) Kotlin Bitcoin Tools Developers")
-    }
-}
+// Dokka 2.x configuration commented out for compatibility
+// dokka {
+//     moduleName.set("bip21")
+//     moduleVersion.set("0.1.0-SNAPSHOT")
+//     dokkaSourceSets {
+//         named("main") {
+//             includes.from("MODULE.md")
+//             samples.from("src/test/kotlin/org/kotlinbitcointools/bip21/Samples.kt")
+//             sourceLink {
+//                 localDirectory.set(file("src/main/kotlin"))
+//                 remoteUrl("https://kotlin-bitcoin-tools.github.io/bip21/")
+//                 remoteLineSuffix.set("#L")
+//             }
+//         }
+//     }
+//     pluginsConfiguration.html {
+//         // customStyleSheets.from("styles.css")
+//         // customAssets.from("logo.svg")
+//         footerMessage.set("(c) Kotlin Bitcoin Tools Developers")
+//     }
+// }
 
 ktlint {
     version = "1.5.0"
