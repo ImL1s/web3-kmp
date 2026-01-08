@@ -1,0 +1,11 @@
+
+# Standard Kotlin/Gradle Ignores
+.gradle
+/build
+/.idea
+.DS_Store
+/local.properties
+*.iml
+.cxx
+/captures
+.externalNativeBuild

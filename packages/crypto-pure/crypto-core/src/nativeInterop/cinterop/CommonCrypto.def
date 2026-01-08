@@ -1,0 +1,43 @@
+package = commonCrypto
+headerFilter = CommonCrypto/*
+linkerOpts = -framework CommonCrypto
+---
+#include <CommonCrypto/CommonCrypto.h>
+#include <CommonCrypto/CommonDigest.h>
+#include <CommonCrypto/CommonCryptor.h>
+#include <CommonCrypto/CommonKeyDerivation.h>
+#include <stdint.h>
+#include <stddef.h>
+
+/**
+ * Explicit declaration of CCCryptorGCM.
+ */
+extern int32_t CCCryptorGCM(
+    uint32_t op, uint32_t alg,
+    const void *key, size_t keyLength,
+    const void *iv, size_t ivLen,
+    const void *aad, size_t aadLen,
+    const void *dataIn, size_t dataInLen,
+    void *dataOut, void *tag, size_t *tagLength
+);
+
+/**
+ * Custom wrapper for CC_SHA512.
+ */
+static inline void Custom_CC_SHA512(const void *data, uint32_t len, unsigned char *md) {
+    CC_SHA512(data, len, md);
+}
+
+/**
+ * Custom wrapper for CCCryptorGCM.
+ */
+static inline int32_t Custom_CCCryptorGCM(
+    uint32_t op, uint32_t alg,
+    const void *key, size_t keyLength,
+    const void *iv, size_t ivLen,
+    const void *aad, size_t aadLen,
+    const void *dataIn, size_t dataInLen,
+    void *dataOut, void *tag, size_t *tagLength
+) {
+    return CCCryptorGCM(op, alg, key, keyLength, iv, ivLen, aad, aadLen, dataIn, dataInLen, dataOut, tag, tagLength);
+}

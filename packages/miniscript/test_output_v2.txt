@@ -1,0 +1,43 @@
+Initialized native services in: C:\Users\aa223\.gradle\native
+Initialized jansi services in: C:\Users\aa223\.gradle\native
+The client will now receive all logging from the daemon (pid: 50324). The daemon log file: C:\Users\aa223\.gradle\daemon\8.13\daemon-50324.out.log
+Starting 5th build in daemon [uptime: 1 hrs 53 mins 48.398 secs, performance: 99%, GC rate: 0.00/s, heap usage: 7% of 512 MiB, non-heap usage: 28% of 384 MiB]
+Using 32 worker leases.
+Now considering [D:\OtherProject\mine\crypto\kotlin-miniscript] as hierarchies to watch
+Watching the file system is configured to be enabled if available
+File system watching is active
+Starting Build
+Settings evaluated using settings file 'D:\OtherProject\mine\crypto\kotlin-miniscript\settings.gradle.kts'.
+Projects loaded. Root project using build file 'D:\OtherProject\mine\crypto\kotlin-miniscript\build.gradle.kts'.
+Included projects: [root project 'kotlin-miniscript', project ':kotlin-crypto-pure']
+
+> Configure project :
+Evaluating root project 'kotlin-miniscript' using build file 'D:\OtherProject\mine\crypto\kotlin-miniscript\build.gradle.kts'.
+Caching disabled for Kotlin DSL script compilation (Project/TopLevel/stage1) because:
+  Build cache is disabled
+Resolved plugin [id: 'org.jetbrains.kotlin.multiplatform', version: '2.1.0']
+Resolved plugin [id: 'com.android.library', version: '8.5.2']
+Using Kotlin Gradle Plugin gradle85 variant
+Using default execution profile
+Caching disabled for Kotlin DSL script compilation (Project/TopLevel/stage2) because:
+  Build cache is disabled
+w: file:///D:/OtherProject/mine/crypto/kotlin-miniscript/build.gradle.kts:12:13: 'kotlinOptions(KotlinJvmOptions.() -> Unit): Unit' is deprecated. Please migrate to the compilerOptions DSL. More details are here: https://kotl.in/u1r8ln
+kotlin scripting plugin: created the scripting discovery configuration: kotlinScriptDef
+kotlin scripting plugin: created the scripting discovery configuration: testKotlinScriptDef
+Watched directory hierarchies: [D:\OtherProject\mine\crypto\kotlin-miniscript]
+
+FAILURE: Build failed with an exception.
+
+* Where:
+Build file 'D:\OtherProject\mine\crypto\kotlin-miniscript\build.gradle.kts' line: 33
+
+* What went wrong:
+Project with path ':kotlin-address' could not be found in root project 'kotlin-miniscript'.
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 9s

@@ -1,0 +1,760 @@
+build	Set up job	﻿2026-01-06T19:02:31.9723627Z Current runner version: '2.330.0'
+build	Set up job	2026-01-06T19:02:31.9746985Z ##[group]Runner Image Provisioner
+build	Set up job	2026-01-06T19:02:31.9747814Z Hosted Compute Agent
+build	Set up job	2026-01-06T19:02:31.9748464Z Version: 20251211.462
+build	Set up job	2026-01-06T19:02:31.9749100Z Commit: 6cbad8c2bb55d58165063d031ccabf57e2d2db61
+build	Set up job	2026-01-06T19:02:31.9749861Z Build Date: 2025-12-11T16:28:49Z
+build	Set up job	2026-01-06T19:02:31.9750470Z Worker ID: {933e2b5d-fe29-4da2-b7b0-8e5aa5c8c87e}
+build	Set up job	2026-01-06T19:02:31.9751213Z ##[endgroup]
+build	Set up job	2026-01-06T19:02:31.9751694Z ##[group]Operating System
+build	Set up job	2026-01-06T19:02:31.9752244Z Ubuntu
+build	Set up job	2026-01-06T19:02:31.9752748Z 24.04.3
+build	Set up job	2026-01-06T19:02:31.9753239Z LTS
+build	Set up job	2026-01-06T19:02:31.9753668Z ##[endgroup]
+build	Set up job	2026-01-06T19:02:31.9754173Z ##[group]Runner Image
+build	Set up job	2026-01-06T19:02:31.9754936Z Image: ubuntu-24.04
+build	Set up job	2026-01-06T19:02:31.9755411Z Version: 20251215.174.1
+build	Set up job	2026-01-06T19:02:31.9756501Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20251215.174/images/ubuntu/Ubuntu2404-Readme.md
+build	Set up job	2026-01-06T19:02:31.9757869Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20251215.174
+build	Set up job	2026-01-06T19:02:31.9759060Z ##[endgroup]
+build	Set up job	2026-01-06T19:02:31.9760104Z ##[group]GITHUB_TOKEN Permissions
+build	Set up job	2026-01-06T19:02:31.9761886Z Contents: read
+build	Set up job	2026-01-06T19:02:31.9762510Z Metadata: read
+build	Set up job	2026-01-06T19:02:31.9762977Z Packages: read
+build	Set up job	2026-01-06T19:02:31.9763503Z ##[endgroup]
+build	Set up job	2026-01-06T19:02:31.9765664Z Secret source: Actions
+build	Set up job	2026-01-06T19:02:31.9766331Z Prepare workflow directory
+build	Set up job	2026-01-06T19:02:32.0276313Z Prepare all required actions
+build	Set up job	2026-01-06T19:02:32.0314115Z Getting action download info
+build	Set up job	2026-01-06T19:02:32.4678370Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+build	Set up job	2026-01-06T19:02:32.5557202Z Download action repository 'actions/setup-java@v4' (SHA:c1e323688fd81a25caa38c78aa6df2d33d3e20d9)
+build	Set up job	2026-01-06T19:02:33.1965237Z Download action repository 'gradle/gradle-build-action@v2' (SHA:a8f75513eafdebd8141bd1cd4e30fcd194af8dfa)
+build	Set up job	2026-01-06T19:02:34.4218752Z Complete job name: build
+build	Run actions/checkout@v4	﻿2026-01-06T19:02:34.4863045Z ##[group]Run actions/checkout@v4
+build	Run actions/checkout@v4	2026-01-06T19:02:34.4863949Z with:
+build	Run actions/checkout@v4	2026-01-06T19:02:34.4864382Z   path: kotlin-tx-builder
+build	Run actions/checkout@v4	2026-01-06T19:02:34.4865083Z   repository: ImL1s/kotlin-tx-builder
+build	Run actions/checkout@v4	2026-01-06T19:02:34.4865832Z   token: ***
+build	Run actions/checkout@v4	2026-01-06T19:02:34.4866249Z   ssh-strict: true
+build	Run actions/checkout@v4	2026-01-06T19:02:34.4866687Z   ssh-user: git
+build	Run actions/checkout@v4	2026-01-06T19:02:34.4867128Z   persist-credentials: true
+build	Run actions/checkout@v4	2026-01-06T19:02:34.4867616Z   clean: true
+build	Run actions/checkout@v4	2026-01-06T19:02:34.4868048Z   sparse-checkout-cone-mode: true
+build	Run actions/checkout@v4	2026-01-06T19:02:34.4868582Z   fetch-depth: 1
+build	Run actions/checkout@v4	2026-01-06T19:02:34.4868997Z   fetch-tags: false
+build	Run actions/checkout@v4	2026-01-06T19:02:34.4869431Z   show-progress: true
+build	Run actions/checkout@v4	2026-01-06T19:02:34.4869875Z   lfs: false
+build	Run actions/checkout@v4	2026-01-06T19:02:34.4870297Z   submodules: false
+build	Run actions/checkout@v4	2026-01-06T19:02:34.4870734Z   set-safe-directory: true
+build	Run actions/checkout@v4	2026-01-06T19:02:34.4871446Z env:
+build	Run actions/checkout@v4	2026-01-06T19:02:34.4872040Z   GITHUB_TOKEN: ***
+build	Run actions/checkout@v4	2026-01-06T19:02:34.4872485Z   GITHUB_ACTOR: ImL1s
+build	Run actions/checkout@v4	2026-01-06T19:02:34.4872928Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-06T19:02:34.5953851Z Syncing repository: ImL1s/kotlin-tx-builder
+build	Run actions/checkout@v4	2026-01-06T19:02:34.5956067Z ##[group]Getting Git version info
+build	Run actions/checkout@v4	2026-01-06T19:02:34.5957141Z Working directory is '/home/runner/work/kotlin-tx-builder/kotlin-tx-builder/kotlin-tx-builder'
+build	Run actions/checkout@v4	2026-01-06T19:02:34.5958457Z [command]/usr/bin/git version
+build	Run actions/checkout@v4	2026-01-06T19:02:34.6036621Z git version 2.52.0
+build	Run actions/checkout@v4	2026-01-06T19:02:34.6063005Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-06T19:02:34.6077186Z Temporarily overriding HOME='/home/runner/work/_temp/2ef8f2ef-7183-4eee-ac76-789720d3d1a8' before making global git config changes
+build	Run actions/checkout@v4	2026-01-06T19:02:34.6079579Z Adding repository directory to the temporary git global config as a safe directory
+build	Run actions/checkout@v4	2026-01-06T19:02:34.6089860Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/kotlin-tx-builder/kotlin-tx-builder/kotlin-tx-builder
+build	Run actions/checkout@v4	2026-01-06T19:02:34.6125997Z ##[group]Initializing the repository
+build	Run actions/checkout@v4	2026-01-06T19:02:34.6131125Z [command]/usr/bin/git init /home/runner/work/kotlin-tx-builder/kotlin-tx-builder/kotlin-tx-builder
+build	Run actions/checkout@v4	2026-01-06T19:02:34.6255834Z hint: Using 'master' as the name for the initial branch. This default branch name
+build	Run actions/checkout@v4	2026-01-06T19:02:34.6257815Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+build	Run actions/checkout@v4	2026-01-06T19:02:34.6259627Z hint: to use in all of your new repositories, which will suppress this warning,
+build	Run actions/checkout@v4	2026-01-06T19:02:34.6261012Z hint: call:
+build	Run actions/checkout@v4	2026-01-06T19:02:34.6261660Z hint:
+build	Run actions/checkout@v4	2026-01-06T19:02:34.6262431Z hint: 	git config --global init.defaultBranch <name>
+build	Run actions/checkout@v4	2026-01-06T19:02:34.6263103Z hint:
+build	Run actions/checkout@v4	2026-01-06T19:02:34.6263696Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+build	Run actions/checkout@v4	2026-01-06T19:02:34.6264993Z hint: 'development'. The just-created branch can be renamed via this command:
+build	Run actions/checkout@v4	2026-01-06T19:02:34.6265805Z hint:
+build	Run actions/checkout@v4	2026-01-06T19:02:34.6266230Z hint: 	git branch -m <name>
+build	Run actions/checkout@v4	2026-01-06T19:02:34.6267040Z hint:
+build	Run actions/checkout@v4	2026-01-06T19:02:34.6267841Z hint: Disable this message with "git config set advice.defaultBranchName false"
+build	Run actions/checkout@v4	2026-01-06T19:02:34.6269245Z Initialized empty Git repository in /home/runner/work/kotlin-tx-builder/kotlin-tx-builder/kotlin-tx-builder/.git/
+build	Run actions/checkout@v4	2026-01-06T19:02:34.6271910Z [command]/usr/bin/git remote add origin https://github.com/ImL1s/kotlin-tx-builder
+build	Run actions/checkout@v4	2026-01-06T19:02:34.6305446Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-06T19:02:34.6306239Z ##[group]Disabling automatic garbage collection
+build	Run actions/checkout@v4	2026-01-06T19:02:34.6309731Z [command]/usr/bin/git config --local gc.auto 0
+build	Run actions/checkout@v4	2026-01-06T19:02:34.6338161Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-06T19:02:34.6338893Z ##[group]Setting up auth
+build	Run actions/checkout@v4	2026-01-06T19:02:34.6344334Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+build	Run actions/checkout@v4	2026-01-06T19:02:34.6375479Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build	Run actions/checkout@v4	2026-01-06T19:02:34.6728326Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build	Run actions/checkout@v4	2026-01-06T19:02:34.6760344Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build	Run actions/checkout@v4	2026-01-06T19:02:34.6984025Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+build	Run actions/checkout@v4	2026-01-06T19:02:34.7015631Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+build	Run actions/checkout@v4	2026-01-06T19:02:34.7247642Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+build	Run actions/checkout@v4	2026-01-06T19:02:34.7282322Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-06T19:02:34.7283752Z ##[group]Fetching the repository
+build	Run actions/checkout@v4	2026-01-06T19:02:34.7292666Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +d7598b1c3bc7b54808411106f0fb9ecbf18acba1:refs/remotes/origin/master
+build	Run actions/checkout@v4	2026-01-06T19:02:35.2775230Z From https://github.com/ImL1s/kotlin-tx-builder
+build	Run actions/checkout@v4	2026-01-06T19:02:35.2776383Z  * [new ref]         d7598b1c3bc7b54808411106f0fb9ecbf18acba1 -> origin/master
+build	Run actions/checkout@v4	2026-01-06T19:02:35.2810538Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-06T19:02:35.2811355Z ##[group]Determining the checkout info
+build	Run actions/checkout@v4	2026-01-06T19:02:35.2813101Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-06T19:02:35.2818290Z [command]/usr/bin/git sparse-checkout disable
+build	Run actions/checkout@v4	2026-01-06T19:02:35.2859857Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+build	Run actions/checkout@v4	2026-01-06T19:02:35.2886270Z ##[group]Checking out the ref
+build	Run actions/checkout@v4	2026-01-06T19:02:35.2890098Z [command]/usr/bin/git checkout --progress --force -B master refs/remotes/origin/master
+build	Run actions/checkout@v4	2026-01-06T19:02:35.3052827Z Reset branch 'master'
+build	Run actions/checkout@v4	2026-01-06T19:02:35.3054018Z branch 'master' set up to track 'origin/master'.
+build	Run actions/checkout@v4	2026-01-06T19:02:35.3067848Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-06T19:02:35.3112385Z [command]/usr/bin/git log -1 --format=%H
+build	Run actions/checkout@v4	2026-01-06T19:02:35.3137230Z d7598b1c3bc7b54808411106f0fb9ecbf18acba1
+build	Run actions/checkout@v4	﻿2026-01-06T19:02:35.3413398Z ##[group]Run actions/checkout@v4
+build	Run actions/checkout@v4	2026-01-06T19:02:35.3476923Z with:
+build	Run actions/checkout@v4	2026-01-06T19:02:35.3477954Z   repository: ImL1s/kotlin-crypto-pure
+build	Run actions/checkout@v4	2026-01-06T19:02:35.3479390Z   path: kotlin-crypto-pure
+build	Run actions/checkout@v4	2026-01-06T19:02:35.3481047Z   token: ***
+build	Run actions/checkout@v4	2026-01-06T19:02:35.3481587Z   ssh-strict: true
+build	Run actions/checkout@v4	2026-01-06T19:02:35.3482106Z   ssh-user: git
+build	Run actions/checkout@v4	2026-01-06T19:02:35.3482648Z   persist-credentials: true
+build	Run actions/checkout@v4	2026-01-06T19:02:35.3483281Z   clean: true
+build	Run actions/checkout@v4	2026-01-06T19:02:35.3483814Z   sparse-checkout-cone-mode: true
+build	Run actions/checkout@v4	2026-01-06T19:02:35.3484818Z   fetch-depth: 1
+build	Run actions/checkout@v4	2026-01-06T19:02:35.3485349Z   fetch-tags: false
+build	Run actions/checkout@v4	2026-01-06T19:02:35.3485884Z   show-progress: true
+build	Run actions/checkout@v4	2026-01-06T19:02:35.3486434Z   lfs: false
+build	Run actions/checkout@v4	2026-01-06T19:02:35.3486908Z   submodules: false
+build	Run actions/checkout@v4	2026-01-06T19:02:35.3487460Z   set-safe-directory: true
+build	Run actions/checkout@v4	2026-01-06T19:02:35.3488062Z env:
+build	Run actions/checkout@v4	2026-01-06T19:02:35.3488750Z   GITHUB_TOKEN: ***
+build	Run actions/checkout@v4	2026-01-06T19:02:35.3489270Z   GITHUB_ACTOR: ImL1s
+build	Run actions/checkout@v4	2026-01-06T19:02:35.3489805Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-06T19:02:35.4430259Z Syncing repository: ImL1s/kotlin-crypto-pure
+build	Run actions/checkout@v4	2026-01-06T19:02:35.4437810Z ##[group]Getting Git version info
+build	Run actions/checkout@v4	2026-01-06T19:02:35.4439538Z Working directory is '/home/runner/work/kotlin-tx-builder/kotlin-tx-builder/kotlin-crypto-pure'
+build	Run actions/checkout@v4	2026-01-06T19:02:35.4478927Z [command]/usr/bin/git version
+build	Run actions/checkout@v4	2026-01-06T19:02:35.4516450Z git version 2.52.0
+build	Run actions/checkout@v4	2026-01-06T19:02:35.4542397Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-06T19:02:35.4556555Z Temporarily overriding HOME='/home/runner/work/_temp/52b346b0-b768-47e6-b155-1d1fb1acdef8' before making global git config changes
+build	Run actions/checkout@v4	2026-01-06T19:02:35.4559490Z Adding repository directory to the temporary git global config as a safe directory
+build	Run actions/checkout@v4	2026-01-06T19:02:35.4568626Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/kotlin-tx-builder/kotlin-tx-builder/kotlin-crypto-pure
+build	Run actions/checkout@v4	2026-01-06T19:02:35.4597762Z ##[group]Initializing the repository
+build	Run actions/checkout@v4	2026-01-06T19:02:35.4602743Z [command]/usr/bin/git init /home/runner/work/kotlin-tx-builder/kotlin-tx-builder/kotlin-crypto-pure
+build	Run actions/checkout@v4	2026-01-06T19:02:35.4638205Z hint: Using 'master' as the name for the initial branch. This default branch name
+build	Run actions/checkout@v4	2026-01-06T19:02:35.4640883Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+build	Run actions/checkout@v4	2026-01-06T19:02:35.4642427Z hint: to use in all of your new repositories, which will suppress this warning,
+build	Run actions/checkout@v4	2026-01-06T19:02:35.4643604Z hint: call:
+build	Run actions/checkout@v4	2026-01-06T19:02:35.4644226Z hint:
+build	Run actions/checkout@v4	2026-01-06T19:02:35.4645080Z hint: 	git config --global init.defaultBranch <name>
+build	Run actions/checkout@v4	2026-01-06T19:02:35.4645925Z hint:
+build	Run actions/checkout@v4	2026-01-06T19:02:35.4646684Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+build	Run actions/checkout@v4	2026-01-06T19:02:35.4648132Z hint: 'development'. The just-created branch can be renamed via this command:
+build	Run actions/checkout@v4	2026-01-06T19:02:35.4649561Z hint:
+build	Run actions/checkout@v4	2026-01-06T19:02:35.4650060Z hint: 	git branch -m <name>
+build	Run actions/checkout@v4	2026-01-06T19:02:35.4650620Z hint:
+build	Run actions/checkout@v4	2026-01-06T19:02:35.4651490Z hint: Disable this message with "git config set advice.defaultBranchName false"
+build	Run actions/checkout@v4	2026-01-06T19:02:35.4653573Z Initialized empty Git repository in /home/runner/work/kotlin-tx-builder/kotlin-tx-builder/kotlin-crypto-pure/.git/
+build	Run actions/checkout@v4	2026-01-06T19:02:35.4656715Z [command]/usr/bin/git remote add origin https://github.com/ImL1s/kotlin-crypto-pure
+build	Run actions/checkout@v4	2026-01-06T19:02:35.4680299Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-06T19:02:35.4681290Z ##[group]Disabling automatic garbage collection
+build	Run actions/checkout@v4	2026-01-06T19:02:35.4684774Z [command]/usr/bin/git config --local gc.auto 0
+build	Run actions/checkout@v4	2026-01-06T19:02:35.4712836Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-06T19:02:35.4713730Z ##[group]Setting up auth
+build	Run actions/checkout@v4	2026-01-06T19:02:35.4718939Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+build	Run actions/checkout@v4	2026-01-06T19:02:35.4748314Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build	Run actions/checkout@v4	2026-01-06T19:02:35.4968728Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build	Run actions/checkout@v4	2026-01-06T19:02:35.4997461Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build	Run actions/checkout@v4	2026-01-06T19:02:35.5225549Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+build	Run actions/checkout@v4	2026-01-06T19:02:35.5269971Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+build	Run actions/checkout@v4	2026-01-06T19:02:35.5515979Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+build	Run actions/checkout@v4	2026-01-06T19:02:35.5556136Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-06T19:02:35.5557900Z ##[group]Determining the default branch
+build	Run actions/checkout@v4	2026-01-06T19:02:35.5561520Z Retrieving the default branch name
+build	Run actions/checkout@v4	2026-01-06T19:02:35.8977612Z Default branch 'main'
+build	Run actions/checkout@v4	2026-01-06T19:02:35.8979979Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-06T19:02:35.8981692Z ##[group]Fetching the repository
+build	Run actions/checkout@v4	2026-01-06T19:02:35.8987287Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +refs/heads/main:refs/remotes/origin/main
+build	Run actions/checkout@v4	2026-01-06T19:02:36.5551679Z From https://github.com/ImL1s/kotlin-crypto-pure
+build	Run actions/checkout@v4	2026-01-06T19:02:36.5555098Z  * [new branch]      main       -> origin/main
+build	Run actions/checkout@v4	2026-01-06T19:02:36.5583328Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-06T19:02:36.5585414Z ##[group]Determining the checkout info
+build	Run actions/checkout@v4	2026-01-06T19:02:36.5587535Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-06T19:02:36.5592100Z [command]/usr/bin/git sparse-checkout disable
+build	Run actions/checkout@v4	2026-01-06T19:02:36.5634087Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+build	Run actions/checkout@v4	2026-01-06T19:02:36.5665570Z ##[group]Checking out the ref
+build	Run actions/checkout@v4	2026-01-06T19:02:36.5669261Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+build	Run actions/checkout@v4	2026-01-06T19:02:36.6013835Z Switched to a new branch 'main'
+build	Run actions/checkout@v4	2026-01-06T19:02:36.6016653Z branch 'main' set up to track 'origin/main'.
+build	Run actions/checkout@v4	2026-01-06T19:02:36.6026022Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-06T19:02:36.6065292Z [command]/usr/bin/git log -1 --format=%H
+build	Run actions/checkout@v4	2026-01-06T19:02:36.6090134Z 54e6c885b08416cffc96f9561314e7001cf8cb7f
+build	Run actions/checkout@v4	﻿2026-01-06T19:02:36.6348715Z ##[group]Run actions/checkout@v4
+build	Run actions/checkout@v4	2026-01-06T19:02:36.6349561Z with:
+build	Run actions/checkout@v4	2026-01-06T19:02:36.6350192Z   repository: ImL1s/kotlin-address
+build	Run actions/checkout@v4	2026-01-06T19:02:36.6351000Z   path: kotlin-address
+build	Run actions/checkout@v4	2026-01-06T19:02:36.6351953Z   token: ***
+build	Run actions/checkout@v4	2026-01-06T19:02:36.6352582Z   ssh-strict: true
+build	Run actions/checkout@v4	2026-01-06T19:02:36.6353227Z   ssh-user: git
+build	Run actions/checkout@v4	2026-01-06T19:02:36.6353905Z   persist-credentials: true
+build	Run actions/checkout@v4	2026-01-06T19:02:36.6354777Z   clean: true
+build	Run actions/checkout@v4	2026-01-06T19:02:36.6355452Z   sparse-checkout-cone-mode: true
+build	Run actions/checkout@v4	2026-01-06T19:02:36.6356241Z   fetch-depth: 1
+build	Run actions/checkout@v4	2026-01-06T19:02:36.6356886Z   fetch-tags: false
+build	Run actions/checkout@v4	2026-01-06T19:02:36.6357540Z   show-progress: true
+build	Run actions/checkout@v4	2026-01-06T19:02:36.6358207Z   lfs: false
+build	Run actions/checkout@v4	2026-01-06T19:02:36.6358814Z   submodules: false
+build	Run actions/checkout@v4	2026-01-06T19:02:36.6359505Z   set-safe-directory: true
+build	Run actions/checkout@v4	2026-01-06T19:02:36.6360225Z env:
+build	Run actions/checkout@v4	2026-01-06T19:02:36.6361041Z   GITHUB_TOKEN: ***
+build	Run actions/checkout@v4	2026-01-06T19:02:36.6361708Z   GITHUB_ACTOR: ImL1s
+build	Run actions/checkout@v4	2026-01-06T19:02:36.6362364Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-06T19:02:36.7302387Z Syncing repository: ImL1s/kotlin-address
+build	Run actions/checkout@v4	2026-01-06T19:02:36.7308913Z ##[group]Getting Git version info
+build	Run actions/checkout@v4	2026-01-06T19:02:36.7311105Z Working directory is '/home/runner/work/kotlin-tx-builder/kotlin-tx-builder/kotlin-address'
+build	Run actions/checkout@v4	2026-01-06T19:02:36.7350488Z [command]/usr/bin/git version
+build	Run actions/checkout@v4	2026-01-06T19:02:36.7387346Z git version 2.52.0
+build	Run actions/checkout@v4	2026-01-06T19:02:36.7414137Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-06T19:02:36.7434966Z Temporarily overriding HOME='/home/runner/work/_temp/ce9b6946-9537-417a-afab-83602689ecd8' before making global git config changes
+build	Run actions/checkout@v4	2026-01-06T19:02:36.7437250Z Adding repository directory to the temporary git global config as a safe directory
+build	Run actions/checkout@v4	2026-01-06T19:02:36.7441031Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/kotlin-tx-builder/kotlin-tx-builder/kotlin-address
+build	Run actions/checkout@v4	2026-01-06T19:02:36.7472575Z ##[group]Initializing the repository
+build	Run actions/checkout@v4	2026-01-06T19:02:36.7478867Z [command]/usr/bin/git init /home/runner/work/kotlin-tx-builder/kotlin-tx-builder/kotlin-address
+build	Run actions/checkout@v4	2026-01-06T19:02:36.7515560Z hint: Using 'master' as the name for the initial branch. This default branch name
+build	Run actions/checkout@v4	2026-01-06T19:02:36.7518022Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+build	Run actions/checkout@v4	2026-01-06T19:02:36.7520539Z hint: to use in all of your new repositories, which will suppress this warning,
+build	Run actions/checkout@v4	2026-01-06T19:02:36.7522895Z hint: call:
+build	Run actions/checkout@v4	2026-01-06T19:02:36.7523919Z hint:
+build	Run actions/checkout@v4	2026-01-06T19:02:36.7525359Z hint: 	git config --global init.defaultBranch <name>
+build	Run actions/checkout@v4	2026-01-06T19:02:36.7526925Z hint:
+build	Run actions/checkout@v4	2026-01-06T19:02:36.7528456Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+build	Run actions/checkout@v4	2026-01-06T19:02:36.7530998Z hint: 'development'. The just-created branch can be renamed via this command:
+build	Run actions/checkout@v4	2026-01-06T19:02:36.7532878Z hint:
+build	Run actions/checkout@v4	2026-01-06T19:02:36.7533875Z hint: 	git branch -m <name>
+build	Run actions/checkout@v4	2026-01-06T19:02:36.7535232Z hint:
+build	Run actions/checkout@v4	2026-01-06T19:02:36.7536347Z hint: Disable this message with "git config set advice.defaultBranchName false"
+build	Run actions/checkout@v4	2026-01-06T19:02:36.7538287Z Initialized empty Git repository in /home/runner/work/kotlin-tx-builder/kotlin-tx-builder/kotlin-address/.git/
+build	Run actions/checkout@v4	2026-01-06T19:02:36.7541971Z [command]/usr/bin/git remote add origin https://github.com/ImL1s/kotlin-address
+build	Run actions/checkout@v4	2026-01-06T19:02:36.7561364Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-06T19:02:36.7563280Z ##[group]Disabling automatic garbage collection
+build	Run actions/checkout@v4	2026-01-06T19:02:36.7565838Z [command]/usr/bin/git config --local gc.auto 0
+build	Run actions/checkout@v4	2026-01-06T19:02:36.7595604Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-06T19:02:36.7597464Z ##[group]Setting up auth
+build	Run actions/checkout@v4	2026-01-06T19:02:36.7602620Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+build	Run actions/checkout@v4	2026-01-06T19:02:36.7633820Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build	Run actions/checkout@v4	2026-01-06T19:02:36.7855275Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build	Run actions/checkout@v4	2026-01-06T19:02:36.7886831Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build	Run actions/checkout@v4	2026-01-06T19:02:36.8108213Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+build	Run actions/checkout@v4	2026-01-06T19:02:36.8140294Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+build	Run actions/checkout@v4	2026-01-06T19:02:36.8365362Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+build	Run actions/checkout@v4	2026-01-06T19:02:36.8400282Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-06T19:02:36.8401939Z ##[group]Determining the default branch
+build	Run actions/checkout@v4	2026-01-06T19:02:36.8406146Z Retrieving the default branch name
+build	Run actions/checkout@v4	2026-01-06T19:02:37.1712668Z Default branch 'master'
+build	Run actions/checkout@v4	2026-01-06T19:02:37.1714914Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-06T19:02:37.1716054Z ##[group]Fetching the repository
+build	Run actions/checkout@v4	2026-01-06T19:02:37.1722864Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +refs/heads/master:refs/remotes/origin/master
+build	Run actions/checkout@v4	2026-01-06T19:02:37.7803354Z From https://github.com/ImL1s/kotlin-address
+build	Run actions/checkout@v4	2026-01-06T19:02:37.7804062Z  * [new branch]      master     -> origin/master
+build	Run actions/checkout@v4	2026-01-06T19:02:37.7832084Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-06T19:02:37.7832572Z ##[group]Determining the checkout info
+build	Run actions/checkout@v4	2026-01-06T19:02:37.7835117Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-06T19:02:37.7839939Z [command]/usr/bin/git sparse-checkout disable
+build	Run actions/checkout@v4	2026-01-06T19:02:37.7878170Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+build	Run actions/checkout@v4	2026-01-06T19:02:37.7904991Z ##[group]Checking out the ref
+build	Run actions/checkout@v4	2026-01-06T19:02:37.7909690Z [command]/usr/bin/git checkout --progress --force -B master refs/remotes/origin/master
+build	Run actions/checkout@v4	2026-01-06T19:02:37.8010643Z Reset branch 'master'
+build	Run actions/checkout@v4	2026-01-06T19:02:37.8014305Z branch 'master' set up to track 'origin/master'.
+build	Run actions/checkout@v4	2026-01-06T19:02:37.8021449Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-06T19:02:37.8057927Z [command]/usr/bin/git log -1 --format=%H
+build	Run actions/checkout@v4	2026-01-06T19:02:37.8080588Z 75fa9fe4fa5b72c8e4eb3363953f940f1452bab4
+build	Set up JDK 17	﻿2026-01-06T19:02:37.8239999Z ##[group]Run actions/setup-java@v4
+build	Set up JDK 17	2026-01-06T19:02:37.8240257Z with:
+build	Set up JDK 17	2026-01-06T19:02:37.8240425Z   java-version: 17
+build	Set up JDK 17	2026-01-06T19:02:37.8240608Z   distribution: temurin
+build	Set up JDK 17	2026-01-06T19:02:37.8240804Z   java-package: jdk
+build	Set up JDK 17	2026-01-06T19:02:37.8240993Z   check-latest: false
+build	Set up JDK 17	2026-01-06T19:02:37.8241340Z   server-id: github
+build	Set up JDK 17	2026-01-06T19:02:37.8241527Z   server-username: GITHUB_ACTOR
+build	Set up JDK 17	2026-01-06T19:02:37.8241747Z   server-password: GITHUB_TOKEN
+build	Set up JDK 17	2026-01-06T19:02:37.8241971Z   overwrite-settings: true
+build	Set up JDK 17	2026-01-06T19:02:37.8242168Z   job-status: success
+build	Set up JDK 17	2026-01-06T19:02:37.8242463Z   token: ***
+build	Set up JDK 17	2026-01-06T19:02:37.8242620Z env:
+build	Set up JDK 17	2026-01-06T19:02:37.8242875Z   GITHUB_TOKEN: ***
+build	Set up JDK 17	2026-01-06T19:02:37.8243056Z   GITHUB_ACTOR: ImL1s
+build	Set up JDK 17	2026-01-06T19:02:37.8243229Z ##[endgroup]
+build	Set up JDK 17	2026-01-06T19:02:38.0234728Z ##[group]Installed distributions
+build	Set up JDK 17	2026-01-06T19:02:38.0347814Z Resolved Java 17.0.17+10 from tool-cache
+build	Set up JDK 17	2026-01-06T19:02:38.0348802Z Setting Java 17.0.17+10 as the default
+build	Set up JDK 17	2026-01-06T19:02:38.0361397Z Creating toolchains.xml for JDK version 17 from temurin
+build	Set up JDK 17	2026-01-06T19:02:38.0437546Z Writing to /home/runner/.m2/toolchains.xml
+build	Set up JDK 17	2026-01-06T19:02:38.0437994Z 
+build	Set up JDK 17	2026-01-06T19:02:38.0438223Z Java configuration:
+build	Set up JDK 17	2026-01-06T19:02:38.0439907Z   Distribution: temurin
+build	Set up JDK 17	2026-01-06T19:02:38.0440352Z   Version: 17.0.17+10
+build	Set up JDK 17	2026-01-06T19:02:38.0440923Z   Path: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.17-10/x64
+build	Set up JDK 17	2026-01-06T19:02:38.0441427Z 
+build	Set up JDK 17	2026-01-06T19:02:38.0441874Z ##[endgroup]
+build	Set up JDK 17	2026-01-06T19:02:38.0460673Z Creating settings.xml with server-id: github
+build	Set up JDK 17	2026-01-06T19:02:38.0463141Z Writing to /home/runner/.m2/settings.xml
+build	Setup Gradle	﻿2026-01-06T19:02:38.0619303Z ##[group]Run gradle/gradle-build-action@v2
+build	Setup Gradle	2026-01-06T19:02:38.0619659Z with:
+build	Setup Gradle	2026-01-06T19:02:38.0619830Z   cache-disabled: false
+build	Setup Gradle	2026-01-06T19:02:38.0620037Z   cache-read-only: false
+build	Setup Gradle	2026-01-06T19:02:38.0620235Z   cache-write-only: false
+build	Setup Gradle	2026-01-06T19:02:38.0620456Z   cache-overwrite-existing: false
+build	Setup Gradle	2026-01-06T19:02:38.0620724Z   gradle-home-cache-includes: caches
+build	Setup Gradle	notifications
+build	Setup Gradle	
+build	Setup Gradle	2026-01-06T19:02:38.0621020Z   gradle-home-cache-cleanup: false
+build	Setup Gradle	2026-01-06T19:02:38.0621259Z   generate-job-summary: true
+build	Setup Gradle	2026-01-06T19:02:38.0621473Z   dependency-graph: disabled
+build	Setup Gradle	2026-01-06T19:02:38.0621702Z   gradle-home-cache-strict-match: false
+build	Setup Gradle	2026-01-06T19:02:38.0621962Z   workflow-job-context: null
+build	Setup Gradle	2026-01-06T19:02:38.0622319Z   github-token: ***
+build	Setup Gradle	2026-01-06T19:02:38.0622496Z env:
+build	Setup Gradle	2026-01-06T19:02:38.0622775Z   GITHUB_TOKEN: ***
+build	Setup Gradle	2026-01-06T19:02:38.0622958Z   GITHUB_ACTOR: ImL1s
+build	Setup Gradle	2026-01-06T19:02:38.0623247Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.17-10/x64
+build	Setup Gradle	2026-01-06T19:02:38.0623713Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.17-10/x64
+build	Setup Gradle	2026-01-06T19:02:38.0624084Z ##[endgroup]
+build	Setup Gradle	2026-01-06T19:02:38.3431730Z ##[group]Restore Gradle state from cache
+build	Setup Gradle	2026-01-06T19:02:38.4188437Z ##[warning]Failed to restore v8-gradle|Linux|ci-build[37a6259cc0c1dae299a7866489dff0bd]-d7598b1c3bc7b54808411106f0fb9ecbf18acba1: Error: Cache service responded with 400
+build	Setup Gradle	2026-01-06T19:02:38.4227870Z Gradle User Home cache not found. Will initialize empty.
+build	Setup Gradle	2026-01-06T19:02:38.4228756Z ##[endgroup]
+build	Build with Gradle	﻿2026-01-06T19:02:38.4362950Z ##[group]Run cd kotlin-tx-builder
+build	Build with Gradle	2026-01-06T19:02:38.4363280Z [36;1mcd kotlin-tx-builder[0m
+build	Build with Gradle	2026-01-06T19:02:38.4363529Z [36;1mchmod +x gradlew[0m
+build	Build with Gradle	2026-01-06T19:02:38.4363737Z [36;1m./gradlew build[0m
+build	Build with Gradle	2026-01-06T19:02:38.4400643Z shell: /usr/bin/bash -e {0}
+build	Build with Gradle	2026-01-06T19:02:38.4400877Z env:
+build	Build with Gradle	2026-01-06T19:02:38.4401263Z   GITHUB_TOKEN: ***
+build	Build with Gradle	2026-01-06T19:02:38.4401448Z   GITHUB_ACTOR: ImL1s
+build	Build with Gradle	2026-01-06T19:02:38.4401757Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.17-10/x64
+build	Build with Gradle	2026-01-06T19:02:38.4402198Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.17-10/x64
+build	Build with Gradle	2026-01-06T19:02:38.4402553Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+build	Build with Gradle	2026-01-06T19:02:38.4402824Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+build	Build with Gradle	2026-01-06T19:02:38.4403098Z   GRADLE_OPTS: -Xmx4g -XX:MaxMetaspaceSize=512m
+build	Build with Gradle	2026-01-06T19:02:38.4403364Z ##[endgroup]
+build	Build with Gradle	2026-01-06T19:02:38.5673915Z Downloading https://services.gradle.org/distributions/gradle-8.13-all.zip
+build	Build with Gradle	2026-01-06T19:02:40.5333123Z ......................10%......................20%......................30%......................40%......................50%......................60%......................70%.......................80%......................90%......................100%
+build	Build with Gradle	2026-01-06T19:02:43.8308070Z 
+build	Build with Gradle	2026-01-06T19:02:43.8309394Z Welcome to Gradle 8.13!
+build	Build with Gradle	2026-01-06T19:02:43.8310156Z 
+build	Build with Gradle	2026-01-06T19:02:43.8310692Z Here are the highlights of this release:
+build	Build with Gradle	2026-01-06T19:02:43.8312159Z  - Daemon JVM auto-provisioning
+build	Build with Gradle	2026-01-06T19:02:43.8315656Z  - Enhancements for Scala plugin and JUnit testing
+build	Build with Gradle	2026-01-06T19:02:43.8316660Z  - Improvements for build authors and plugin developers
+build	Build with Gradle	2026-01-06T19:02:43.8317514Z 
+build	Build with Gradle	2026-01-06T19:02:43.8318349Z For more details see https://docs.gradle.org/8.13/release-notes.html
+build	Build with Gradle	2026-01-06T19:02:43.8320241Z 
+build	Build with Gradle	2026-01-06T19:02:43.9298149Z Starting a Gradle Daemon (subsequent builds will be faster)
+build	Build with Gradle	2026-01-06T19:04:37.1298910Z 
+build	Build with Gradle	2026-01-06T19:04:37.1326601Z > Configure project :kotlin-crypto-pure:demo-cli
+build	Build with Gradle	2026-01-06T19:04:37.1346487Z w: file:///home/runner/work/kotlin-tx-builder/kotlin-tx-builder/kotlin-crypto-pure/demo-cli/build.gradle.kts:7:9: Experimental API in the Kotlin Gradle Plugin: No stability guarantees can be provided. The API could get removed in the future without replacement
+build	Build with Gradle	2026-01-06T19:04:37.1360205Z w: file:///home/runner/work/kotlin-tx-builder/kotlin-tx-builder/kotlin-crypto-pure/demo-cli/build.gradle.kts:8:13: Experimental API in the Kotlin Gradle Plugin: No stability guarantees can be provided. The API could get removed in the future without replacement
+build	Build with Gradle	2026-01-06T19:05:18.8295417Z WARNING: We recommend using a newer Android Gradle plugin to use compileSdk = 35
+build	Build with Gradle	2026-01-06T19:05:18.8305043Z 
+build	Build with Gradle	2026-01-06T19:05:18.8305493Z This Android Gradle plugin (8.5.2) was tested up to compileSdk = 34.
+build	Build with Gradle	2026-01-06T19:05:18.8305933Z 
+build	Build with Gradle	2026-01-06T19:05:18.8306206Z You are strongly encouraged to update your project to use a newer
+build	Build with Gradle	2026-01-06T19:05:18.8306856Z Android Gradle plugin that has been tested with compileSdk = 35.
+build	Build with Gradle	2026-01-06T19:05:18.8307273Z 
+build	Build with Gradle	2026-01-06T19:05:18.8307555Z If you are already using the latest version of the Android Gradle plugin,
+build	Build with Gradle	2026-01-06T19:05:18.8308329Z you may need to wait until a newer version with support for compileSdk = 35 is available.
+build	Build with Gradle	2026-01-06T19:05:18.8308840Z 
+build	Build with Gradle	2026-01-06T19:05:18.8309071Z For more information refer to the compatibility table:
+build	Build with Gradle	2026-01-06T19:05:18.8309645Z https://d.android.com/r/tools/api-level-support
+build	Build with Gradle	2026-01-06T19:05:18.8310001Z 
+build	Build with Gradle	2026-01-06T19:05:18.8310160Z To suppress this warning, add/update
+build	Build with Gradle	2026-01-06T19:05:18.8310636Z     android.suppressUnsupportedCompileSdk=35
+build	Build with Gradle	2026-01-06T19:05:18.8311101Z to this project's gradle.properties.
+build	Build with Gradle	2026-01-06T19:05:23.5296571Z WARNING: We recommend using a newer Android Gradle plugin to use compileSdk = 35
+build	Build with Gradle	2026-01-06T19:05:23.5312879Z 
+build	Build with Gradle	2026-01-06T19:05:23.5313279Z This Android Gradle plugin (8.5.2) was tested up to compileSdk = 34.
+build	Build with Gradle	2026-01-06T19:05:23.5313745Z 
+build	Build with Gradle	2026-01-06T19:05:23.5314025Z You are strongly encouraged to update your project to use a newer
+build	Build with Gradle	2026-01-06T19:05:23.5315335Z Android Gradle plugin that has been tested with compileSdk = 35.
+build	Build with Gradle	2026-01-06T19:05:23.5315766Z 
+build	Build with Gradle	2026-01-06T19:05:23.5316056Z If you are already using the latest version of the Android Gradle plugin,
+build	Build with Gradle	2026-01-06T19:05:23.5316829Z you may need to wait until a newer version with support for compileSdk = 35 is available.
+build	Build with Gradle	2026-01-06T19:05:23.5317322Z 
+build	Build with Gradle	2026-01-06T19:05:23.5317534Z For more information refer to the compatibility table:
+build	Build with Gradle	2026-01-06T19:05:23.5318090Z https://d.android.com/r/tools/api-level-support
+build	Build with Gradle	2026-01-06T19:05:23.5318427Z 
+build	Build with Gradle	2026-01-06T19:05:23.5318573Z To suppress this warning, add/update
+build	Build with Gradle	2026-01-06T19:05:23.5319019Z     android.suppressUnsupportedCompileSdk=35
+build	Build with Gradle	2026-01-06T19:05:23.5319470Z to this project's gradle.properties.
+build	Build with Gradle	2026-01-06T19:05:27.9325093Z 
+build	Build with Gradle	2026-01-06T19:05:27.9355632Z > Task :kotlin-address:checkKotlinGradlePluginConfigurationErrors SKIPPED
+build	Build with Gradle	2026-01-06T19:05:27.9356906Z > Task :kotlin-crypto-pure:crypto-core:checkKotlinGradlePluginConfigurationErrors SKIPPED
+build	Build with Gradle	2026-01-06T19:05:27.9381587Z > Task :checkKotlinGradlePluginConfigurationErrors SKIPPED
+build	Build with Gradle	2026-01-06T19:05:28.1340695Z > Task :generateProjectStructureMetadata
+build	Build with Gradle	2026-01-06T19:05:28.1341661Z > Task :kotlin-address:generateProjectStructureMetadata
+build	Build with Gradle	2026-01-06T19:05:28.1342412Z > Task :metadataCommonMainProcessResources NO-SOURCE
+build	Build with Gradle	2026-01-06T19:05:28.1343227Z > Task :kotlin-address:metadataCommonMainProcessResources NO-SOURCE
+build	Build with Gradle	2026-01-06T19:05:28.1343925Z > Task :preBuild UP-TO-DATE
+build	Build with Gradle	2026-01-06T19:05:28.1344418Z > Task :preDebugBuild UP-TO-DATE
+build	Build with Gradle	2026-01-06T19:05:28.1345119Z > Task :kotlin-address:preBuild UP-TO-DATE
+build	Build with Gradle	2026-01-06T19:05:28.1345725Z > Task :kotlin-address:preDebugBuild UP-TO-DATE
+build	Build with Gradle	2026-01-06T19:05:28.1346316Z > Task :kotlin-address:generateDebugResValues
+build	Build with Gradle	2026-01-06T19:05:28.1346880Z > Task :kotlin-address:generateDebugResources
+build	Build with Gradle	2026-01-06T19:05:28.2292378Z > Task :mergeDebugJniLibFolders
+build	Build with Gradle	2026-01-06T19:05:28.2301689Z > Task :kotlin-address:packageDebugResources
+build	Build with Gradle	2026-01-06T19:05:28.2302234Z > Task :mergeDebugNativeLibs NO-SOURCE
+build	Build with Gradle	2026-01-06T19:05:28.2310237Z > Task :stripDebugDebugSymbols NO-SOURCE
+build	Build with Gradle	2026-01-06T19:05:28.2316563Z > Task :generateDebugResValues
+build	Build with Gradle	2026-01-06T19:05:28.2317074Z > Task :copyDebugJniLibsProjectAndLocalJars
+build	Build with Gradle	2026-01-06T19:05:28.2317583Z > Task :generateDebugResources
+build	Build with Gradle	2026-01-06T19:05:28.2318020Z > Task :packageDebugResources
+build	Build with Gradle	2026-01-06T19:05:29.3299871Z > Task :extractDeepLinksForAarDebug
+build	Build with Gradle	2026-01-06T19:05:29.3300537Z > Task :javaPreCompileDebug
+build	Build with Gradle	2026-01-06T19:05:29.3300933Z > Task :mergeDebugShaders
+build	Build with Gradle	2026-01-06T19:05:29.3301341Z > Task :compileDebugShaders NO-SOURCE
+build	Build with Gradle	2026-01-06T19:05:29.3301789Z > Task :debugAssetsCopyForAGP NO-SOURCE
+build	Build with Gradle	2026-01-06T19:05:29.3302258Z > Task :generateDebugAssets UP-TO-DATE
+build	Build with Gradle	2026-01-06T19:05:29.3302689Z > Task :packageDebugAssets
+build	Build with Gradle	2026-01-06T19:05:29.3303056Z > Task :prepareDebugArtProfile
+build	Build with Gradle	2026-01-06T19:05:29.3303479Z > Task :prepareLintJarForPublish
+build	Build with Gradle	2026-01-06T19:05:29.3303917Z > Task :kotlin-address:javaPreCompileDebug
+build	Build with Gradle	2026-01-06T19:05:29.3304418Z > Task :kotlin-address:parseDebugLocalResources
+build	Build with Gradle	2026-01-06T19:05:29.4298525Z > Task :parseDebugLocalResources
+build	Build with Gradle	2026-01-06T19:05:29.4306284Z > Task :kotlin-address:preReleaseBuild UP-TO-DATE
+build	Build with Gradle	2026-01-06T19:05:29.4307064Z > Task :kotlin-address:generateReleaseResValues
+build	Build with Gradle	2026-01-06T19:05:29.4307692Z > Task :kotlin-address:generateReleaseResources
+build	Build with Gradle	2026-01-06T19:05:29.4308261Z > Task :kotlin-address:generateDebugRFile
+build	Build with Gradle	2026-01-06T19:05:29.4308763Z > Task :kotlin-address:packageReleaseResources
+build	Build with Gradle	2026-01-06T19:05:29.4309279Z > Task :generateDebugRFile
+build	Build with Gradle	2026-01-06T19:05:29.4309721Z > Task :preReleaseBuild UP-TO-DATE
+build	Build with Gradle	2026-01-06T19:05:29.4310266Z > Task :mergeReleaseJniLibFolders
+build	Build with Gradle	2026-01-06T19:05:29.5310968Z > Task :mergeReleaseNativeLibs NO-SOURCE
+build	Build with Gradle	2026-01-06T19:05:29.5314378Z > Task :stripReleaseDebugSymbols NO-SOURCE
+build	Build with Gradle	2026-01-06T19:05:29.5315400Z > Task :kotlin-address:parseReleaseLocalResources
+build	Build with Gradle	2026-01-06T19:05:29.5316236Z > Task :copyReleaseJniLibsProjectAndLocalJars
+build	Build with Gradle	2026-01-06T19:05:29.5316931Z > Task :generateReleaseResValues
+build	Build with Gradle	2026-01-06T19:05:29.5317939Z > Task :writeDebugAarMetadata
+build	Build with Gradle	2026-01-06T19:05:29.5318498Z > Task :extractDeepLinksForAarRelease
+build	Build with Gradle	2026-01-06T19:05:29.5320709Z > Task :generateReleaseResources
+build	Build with Gradle	2026-01-06T19:05:29.5321197Z > Task :kotlin-address:generateReleaseRFile
+build	Build with Gradle	2026-01-06T19:05:29.5321670Z > Task :packageReleaseResources
+build	Build with Gradle	2026-01-06T19:05:29.5322095Z > Task :processDebugManifest
+build	Build with Gradle	2026-01-06T19:05:29.5322498Z > Task :javaPreCompileRelease
+build	Build with Gradle	2026-01-06T19:05:29.5322939Z > Task :kotlin-address:javaPreCompileRelease
+build	Build with Gradle	2026-01-06T19:05:29.5323426Z > Task :parseReleaseLocalResources
+build	Build with Gradle	2026-01-06T19:05:29.5323847Z > Task :mergeReleaseShaders
+build	Build with Gradle	2026-01-06T19:05:29.5324258Z > Task :compileReleaseShaders NO-SOURCE
+build	Build with Gradle	2026-01-06T19:05:29.5334319Z > Task :generateReleaseAssets UP-TO-DATE
+build	Build with Gradle	2026-01-06T19:05:29.5335254Z > Task :releaseAssetsCopyForAGP NO-SOURCE
+build	Build with Gradle	2026-01-06T19:05:29.5335702Z > Task :generateReleaseRFile
+build	Build with Gradle	2026-01-06T19:05:29.5336095Z > Task :packageReleaseAssets
+build	Build with Gradle	2026-01-06T19:05:29.5336457Z > Task :prepareReleaseArtProfile
+build	Build with Gradle	2026-01-06T19:05:29.6293307Z > Task :writeReleaseAarMetadata
+build	Build with Gradle	2026-01-06T19:05:29.6297444Z > Task :metadataNativeMainProcessResources NO-SOURCE
+build	Build with Gradle	2026-01-06T19:05:29.6298498Z > Task :processReleaseManifest
+build	Build with Gradle	2026-01-06T19:05:29.6303924Z > Task :metadataAppleMainProcessResources NO-SOURCE
+build	Build with Gradle	2026-01-06T19:05:29.6308663Z > Task :compileKotlinIosArm64 SKIPPED
+build	Build with Gradle	2026-01-06T19:05:29.6309167Z > Task :compileKotlinIosSimulatorArm64 SKIPPED
+build	Build with Gradle	2026-01-06T19:05:29.6309645Z > Task :compileKotlinIosX64 SKIPPED
+build	Build with Gradle	2026-01-06T19:05:29.6311672Z > Task :compileKotlinWatchosArm64 SKIPPED
+build	Build with Gradle	2026-01-06T19:05:29.6319813Z > Task :compileKotlinWatchosSimulatorArm64 SKIPPED
+build	Build with Gradle	2026-01-06T19:05:29.6320675Z > Task :compileKotlinWatchosX64 SKIPPED
+build	Build with Gradle	2026-01-06T19:05:29.6322218Z > Task :iosArm64ProcessResources NO-SOURCE
+build	Build with Gradle	2026-01-06T19:05:29.6322731Z > Task :iosArm64MainKlibrary UP-TO-DATE
+build	Build with Gradle	2026-01-06T19:05:29.6352709Z > Task :compileTestKotlinIosArm64 SKIPPED
+build	Build with Gradle	2026-01-06T19:05:29.6353464Z > Task :iosSimulatorArm64ProcessResources NO-SOURCE
+build	Build with Gradle	2026-01-06T19:05:29.6354194Z > Task :iosSimulatorArm64MainKlibrary UP-TO-DATE
+build	Build with Gradle	2026-01-06T19:05:29.6355050Z > Task :compileTestKotlinIosSimulatorArm64 SKIPPED
+build	Build with Gradle	2026-01-06T19:05:29.6355711Z > Task :iosX64ProcessResources NO-SOURCE
+build	Build with Gradle	2026-01-06T19:05:29.6356290Z > Task :iosX64MainKlibrary UP-TO-DATE
+build	Build with Gradle	2026-01-06T19:05:29.6358125Z > Task :compileTestKotlinIosX64 SKIPPED
+build	Build with Gradle	2026-01-06T19:05:29.6358609Z > Task :watchosArm64ProcessResources NO-SOURCE
+build	Build with Gradle	2026-01-06T19:05:29.6359098Z > Task :watchosArm64MainKlibrary UP-TO-DATE
+build	Build with Gradle	2026-01-06T19:05:29.6359572Z > Task :compileTestKotlinWatchosArm64 SKIPPED
+build	Build with Gradle	2026-01-06T19:05:29.6360101Z > Task :watchosSimulatorArm64ProcessResources NO-SOURCE
+build	Build with Gradle	2026-01-06T19:05:29.6360656Z > Task :watchosSimulatorArm64MainKlibrary UP-TO-DATE
+build	Build with Gradle	2026-01-06T19:05:29.6361262Z > Task :compileTestKotlinWatchosSimulatorArm64 SKIPPED
+build	Build with Gradle	2026-01-06T19:05:29.6361819Z > Task :watchosX64ProcessResources NO-SOURCE
+build	Build with Gradle	2026-01-06T19:05:29.6362264Z > Task :watchosX64MainKlibrary UP-TO-DATE
+build	Build with Gradle	2026-01-06T19:05:29.6362713Z > Task :compileTestKotlinWatchosX64 SKIPPED
+build	Build with Gradle	2026-01-06T19:05:29.6363210Z > Task :metadataIosMainProcessResources NO-SOURCE
+build	Build with Gradle	2026-01-06T19:05:29.6363741Z > Task :metadataWatchosMainProcessResources NO-SOURCE
+build	Build with Gradle	2026-01-06T19:05:29.6364247Z > Task :jvmProcessResources NO-SOURCE
+build	Build with Gradle	2026-01-06T19:05:29.6364860Z > Task :linkDebugFrameworkIosArm64 SKIPPED
+build	Build with Gradle	2026-01-06T19:05:29.6365305Z > Task :linkDebugFrameworkIosX64 SKIPPED
+build	Build with Gradle	2026-01-06T19:05:29.6365730Z > Task :linkDebugFrameworkIosFat SKIPPED
+build	Build with Gradle	2026-01-06T19:05:29.6366206Z > Task :linkDebugFrameworkIosSimulatorArm64 SKIPPED
+build	Build with Gradle	2026-01-06T19:05:29.6366712Z > Task :linkDebugFrameworkWatchosArm64 SKIPPED
+build	Build with Gradle	2026-01-06T19:05:29.6367186Z > Task :linkDebugFrameworkWatchosX64 SKIPPED
+build	Build with Gradle	2026-01-06T19:05:29.6367652Z > Task :linkDebugFrameworkWatchosFat SKIPPED
+build	Build with Gradle	2026-01-06T19:05:29.6368162Z > Task :linkDebugFrameworkWatchosSimulatorArm64 SKIPPED
+build	Build with Gradle	2026-01-06T19:05:29.6368698Z > Task :linkReleaseFrameworkIosArm64 SKIPPED
+build	Build with Gradle	2026-01-06T19:05:29.6369151Z > Task :linkReleaseFrameworkIosX64 SKIPPED
+build	Build with Gradle	2026-01-06T19:05:29.6369602Z > Task :linkReleaseFrameworkIosFat SKIPPED
+build	Build with Gradle	2026-01-06T19:05:29.6370382Z > Task :linkReleaseFrameworkIosSimulatorArm64 SKIPPED
+build	Build with Gradle	2026-01-06T19:05:29.6370923Z > Task :linkReleaseFrameworkWatchosArm64 SKIPPED
+build	Build with Gradle	2026-01-06T19:05:29.6371415Z > Task :linkReleaseFrameworkWatchosX64 SKIPPED
+build	Build with Gradle	2026-01-06T19:05:29.6371887Z > Task :linkReleaseFrameworkWatchosFat SKIPPED
+build	Build with Gradle	2026-01-06T19:05:29.6372430Z > Task :linkReleaseFrameworkWatchosSimulatorArm64 SKIPPED
+build	Build with Gradle	2026-01-06T19:05:29.6372990Z > Task :linkDebugTestIosSimulatorArm64 SKIPPED
+build	Build with Gradle	2026-01-06T19:05:29.6373435Z > Task :iosSimulatorArm64Test SKIPPED
+build	Build with Gradle	2026-01-06T19:05:29.6373837Z > Task :linkDebugTestIosX64 SKIPPED
+build	Build with Gradle	2026-01-06T19:05:29.6374219Z > Task :iosX64Test SKIPPED
+build	Build with Gradle	2026-01-06T19:05:29.6374733Z > Task :jvmTestProcessResources NO-SOURCE
+build	Build with Gradle	2026-01-06T19:05:29.6375193Z > Task :preDebugUnitTestBuild UP-TO-DATE
+build	Build with Gradle	2026-01-06T19:05:29.6375638Z > Task :preReleaseUnitTestBuild UP-TO-DATE
+build	Build with Gradle	2026-01-06T19:05:29.6376072Z > Task :javaPreCompileDebugUnitTest
+build	Build with Gradle	2026-01-06T19:05:29.6376526Z > Task :linkDebugTestWatchosSimulatorArm64 SKIPPED
+build	Build with Gradle	2026-01-06T19:05:29.6377018Z > Task :javaPreCompileReleaseUnitTest
+build	Build with Gradle	2026-01-06T19:05:29.6377656Z > Task :watchosSimulatorArm64Test SKIPPED
+build	Build with Gradle	2026-01-06T19:05:29.6378082Z > Task :linkDebugTestWatchosX64 SKIPPED
+build	Build with Gradle	2026-01-06T19:05:29.6378485Z > Task :watchosX64Test SKIPPED
+build	Build with Gradle	2026-01-06T19:05:29.6378875Z > Task :preDebugAndroidTestBuild UP-TO-DATE
+build	Build with Gradle	2026-01-06T19:05:29.6379329Z > Task :generateDebugAndroidTestResValues
+build	Build with Gradle	2026-01-06T19:05:29.6379769Z > Task :writeDebugLintModelMetadata
+build	Build with Gradle	2026-01-06T19:05:29.6380165Z > Task :extractProguardFiles
+build	Build with Gradle	2026-01-06T19:05:30.1295442Z > Task :kotlin-address:jvmProcessResources NO-SOURCE
+build	Build with Gradle	2026-01-06T19:05:30.1296957Z > Task :kotlin-address:compileReleaseLibraryResources
+build	Build with Gradle	2026-01-06T19:05:30.1306185Z > Task :kotlin-address:mergeDebugJniLibFolders
+build	Build with Gradle	2026-01-06T19:05:30.1306987Z > Task :kotlin-address:mergeDebugNativeLibs NO-SOURCE
+build	Build with Gradle	2026-01-06T19:05:30.1307607Z > Task :kotlin-address:stripDebugDebugSymbols NO-SOURCE
+build	Build with Gradle	2026-01-06T19:05:30.1308195Z > Task :kotlin-address:copyDebugJniLibsProjectAndLocalJars
+build	Build with Gradle	2026-01-06T19:05:30.1308806Z > Task :kotlin-address:extractDeepLinksForAarDebug
+build	Build with Gradle	2026-01-06T19:05:30.1309318Z > Task :kotlin-address:mergeDebugShaders
+build	Build with Gradle	2026-01-06T19:05:30.1309814Z > Task :kotlin-address:compileDebugShaders NO-SOURCE
+build	Build with Gradle	2026-01-06T19:05:30.1310362Z > Task :kotlin-address:debugAssetsCopyForAGP NO-SOURCE
+build	Build with Gradle	2026-01-06T19:05:30.1310894Z > Task :kotlin-address:generateDebugAssets UP-TO-DATE
+build	Build with Gradle	2026-01-06T19:05:30.1311399Z > Task :kotlin-address:packageDebugAssets
+build	Build with Gradle	2026-01-06T19:05:30.1311870Z > Task :kotlin-address:prepareDebugArtProfile
+build	Build with Gradle	2026-01-06T19:05:30.1312359Z > Task :kotlin-address:prepareLintJarForPublish
+build	Build with Gradle	2026-01-06T19:05:30.1312852Z > Task :kotlin-address:writeDebugAarMetadata
+build	Build with Gradle	2026-01-06T19:05:30.1313311Z > Task :kotlin-address:processDebugManifest
+build	Build with Gradle	2026-01-06T19:05:30.1313798Z > Task :kotlin-address:writeDebugLintModelMetadata
+build	Build with Gradle	2026-01-06T19:05:30.1314278Z > Task :kotlin-address:extractProguardFiles
+build	Build with Gradle	2026-01-06T19:05:30.1315021Z > Task :kotlin-address:preDebugAndroidTestBuild UP-TO-DATE
+build	Build with Gradle	2026-01-06T19:05:30.1315671Z > Task :kotlin-address:generateDebugAndroidTestResValues
+build	Build with Gradle	2026-01-06T19:05:30.1316291Z > Task :kotlin-address:preDebugUnitTestBuild UP-TO-DATE
+build	Build with Gradle	2026-01-06T19:05:57.9293499Z > Task :kotlin-crypto-pure:crypto-core:transformCommonMainDependenciesMetadata
+build	Build with Gradle	2026-01-06T19:06:10.1333301Z > Task :kotlin-crypto-pure:crypto-core:generateProjectStructureMetadata
+build	Build with Gradle	2026-01-06T19:06:10.1334829Z > Task :kotlin-crypto-pure:crypto-core:metadataCommonMainProcessResources NO-SOURCE
+build	Build with Gradle	2026-01-06T19:06:10.1358930Z > Task :kotlin-crypto-pure:crypto-core:preBuild UP-TO-DATE
+build	Build with Gradle	2026-01-06T19:06:10.1359562Z > Task :kotlin-crypto-pure:crypto-core:preDebugBuild UP-TO-DATE
+build	Build with Gradle	2026-01-06T19:06:10.1360214Z > Task :kotlin-crypto-pure:crypto-core:generateDebugResValues
+build	Build with Gradle	2026-01-06T19:06:10.1360833Z > Task :kotlin-crypto-pure:crypto-core:generateDebugResources
+build	Build with Gradle	2026-01-06T19:06:10.2295917Z > Task :kotlin-crypto-pure:crypto-core:packageDebugResources
+build	Build with Gradle	2026-01-06T19:06:10.2296945Z > Task :kotlin-crypto-pure:crypto-core:preReleaseBuild UP-TO-DATE
+build	Build with Gradle	2026-01-06T19:06:10.2298241Z > Task :kotlin-crypto-pure:crypto-core:javaPreCompileDebug
+build	Build with Gradle	2026-01-06T19:06:10.2311771Z > Task :kotlin-crypto-pure:crypto-core:generateReleaseResValues
+build	Build with Gradle	2026-01-06T19:06:10.2312436Z > Task :kotlin-crypto-pure:crypto-core:generateReleaseResources
+build	Build with Gradle	2026-01-06T19:06:10.2313060Z > Task :kotlin-crypto-pure:crypto-core:packageReleaseResources
+build	Build with Gradle	2026-01-06T19:06:10.3292633Z > Task :kotlin-crypto-pure:crypto-core:parseReleaseLocalResources
+build	Build with Gradle	2026-01-06T19:06:11.8326971Z > Task :kotlin-crypto-pure:crypto-core:parseDebugLocalResources
+build	Build with Gradle	2026-01-06T19:06:12.5318763Z > Task :kotlin-crypto-pure:crypto-core:generateDebugRFile
+build	Build with Gradle	2026-01-06T19:06:12.5319446Z > Task :kotlin-crypto-pure:crypto-core:generateReleaseRFile
+build	Build with Gradle	2026-01-06T19:06:13.5345532Z > Task :mapReleaseSourceSetPaths
+build	Build with Gradle	2026-01-06T19:06:14.0291763Z > Task :mergeReleaseResources
+build	Build with Gradle	2026-01-06T19:06:14.1291941Z > Task :generateReleaseUnitTestStubRFile
+build	Build with Gradle	2026-01-06T19:06:14.1293143Z > Task :generateDebugUnitTestStubRFile
+build	Build with Gradle	2026-01-06T19:06:19.2302897Z > Task :kotlin-crypto-pure:crypto-core:javaPreCompileRelease
+build	Build with Gradle	2026-01-06T19:06:19.3294079Z > Task :kotlin-crypto-pure:crypto-core:compileReleaseLibraryResources
+build	Build with Gradle	2026-01-06T19:06:26.0293877Z 
+build	Build with Gradle	2026-01-06T19:06:26.0306185Z > Task :kotlin-crypto-pure:crypto-core:compileCommonMainKotlinMetadata
+build	Build with Gradle	2026-01-06T19:06:26.0309112Z w: file:///home/runner/work/kotlin-tx-builder/kotlin-tx-builder/kotlin-crypto-pure/crypto-core/src/commonMain/kotlin/io/github/iml1s/crypto/AesGcm.kt:78:1 'expect'/'actual' classes (including interfaces, objects, annotations, enums, and 'actual' typealiases) are in Beta. You can use -Xexpect-actual-classes flag to suppress this warning. Also see: https://youtrack.jetbrains.com/issue/KT-61573
+build	Build with Gradle	2026-01-06T19:06:26.0314186Z w: file:///home/runner/work/kotlin-tx-builder/kotlin-tx-builder/kotlin-crypto-pure/crypto-core/src/commonMain/kotlin/io/github/iml1s/crypto/Secp256k1Provider.kt:12:1 'expect'/'actual' classes (including interfaces, objects, annotations, enums, and 'actual' typealiases) are in Beta. You can use -Xexpect-actual-classes flag to suppress this warning. Also see: https://youtrack.jetbrains.com/issue/KT-61573
+build	Build with Gradle	2026-01-06T19:06:26.4297942Z 
+build	Build with Gradle	2026-01-06T19:06:26.4299019Z > Task :kotlin-crypto-pure:crypto-core:metadataCommonMainClasses
+build	Build with Gradle	2026-01-06T19:06:26.5327536Z > Task :kotlin-crypto-pure:crypto-core:allMetadataJar
+build	Build with Gradle	2026-01-06T19:06:26.6292175Z > Task :kotlin-crypto-pure:crypto-core:jvmProcessResources NO-SOURCE
+build	Build with Gradle	2026-01-06T19:06:27.7292904Z > Task :kotlin-crypto-pure:crypto-core:mergeDebugJniLibFolders
+build	Build with Gradle	2026-01-06T19:06:27.7294100Z > Task :kotlin-crypto-pure:crypto-core:mergeDebugNativeLibs NO-SOURCE
+build	Build with Gradle	2026-01-06T19:06:27.7295375Z > Task :kotlin-crypto-pure:crypto-core:stripDebugDebugSymbols NO-SOURCE
+build	Build with Gradle	2026-01-06T19:06:27.8306061Z > Task :verifyReleaseResources
+build	Build with Gradle	2026-01-06T19:06:27.9296178Z > Task :kotlin-crypto-pure:crypto-core:copyDebugJniLibsProjectAndLocalJars
+build	Build with Gradle	2026-01-06T19:06:27.9297380Z > Task :kotlin-crypto-pure:crypto-core:extractDeepLinksForAarDebug
+build	Build with Gradle	2026-01-06T19:06:27.9298334Z > Task :kotlin-crypto-pure:crypto-core:mergeDebugShaders
+build	Build with Gradle	2026-01-06T19:06:27.9299071Z > Task :kotlin-crypto-pure:crypto-core:compileDebugShaders NO-SOURCE
+build	Build with Gradle	2026-01-06T19:06:27.9299850Z > Task :kotlin-crypto-pure:crypto-core:debugAssetsCopyForAGP NO-SOURCE
+build	Build with Gradle	2026-01-06T19:06:27.9300614Z > Task :kotlin-crypto-pure:crypto-core:generateDebugAssets UP-TO-DATE
+build	Build with Gradle	2026-01-06T19:06:28.0292985Z > Task :kotlin-crypto-pure:crypto-core:packageDebugAssets
+build	Build with Gradle	2026-01-06T19:06:28.0297893Z > Task :kotlin-crypto-pure:crypto-core:prepareDebugArtProfile
+build	Build with Gradle	2026-01-06T19:06:28.5319996Z > Task :kotlin-address:transformCommonMainDependenciesMetadata
+build	Build with Gradle	2026-01-06T19:06:28.8292057Z > Task :kotlin-crypto-pure:crypto-core:prepareLintJarForPublish
+build	Build with Gradle	2026-01-06T19:06:31.0291860Z > Task :kotlin-address:compileCommonMainKotlinMetadata
+build	Build with Gradle	2026-01-06T19:06:31.0292859Z > Task :kotlin-address:metadataCommonMainClasses
+build	Build with Gradle	2026-01-06T19:06:31.0293556Z > Task :kotlin-address:allMetadataJar
+build	Build with Gradle	2026-01-06T19:06:31.3292218Z > Task :transformCommonMainDependenciesMetadata
+build	Build with Gradle	2026-01-06T19:06:31.4292286Z > Task :kotlin-crypto-pure:crypto-core:processDebugManifest
+build	Build with Gradle	2026-01-06T19:06:36.2292722Z > Task :kotlin-crypto-pure:crypto-core:writeDebugAarMetadata
+build	Build with Gradle	2026-01-06T19:06:36.2293761Z > Task :kotlin-crypto-pure:crypto-core:writeDebugLintModelMetadata
+build	Build with Gradle	2026-01-06T19:06:36.2294733Z > Task :kotlin-crypto-pure:crypto-core:extractProguardFiles
+build	Build with Gradle	2026-01-06T19:06:36.2295601Z > Task :kotlin-crypto-pure:crypto-core:preDebugAndroidTestBuild UP-TO-DATE
+build	Build with Gradle	2026-01-06T19:06:36.2296490Z > Task :kotlin-crypto-pure:crypto-core:generateDebugAndroidTestResValues
+build	Build with Gradle	2026-01-06T19:06:36.2297292Z > Task :kotlin-crypto-pure:crypto-core:preDebugUnitTestBuild UP-TO-DATE
+build	Build with Gradle	2026-01-06T19:06:36.2298004Z > Task :compileCommonMainKotlinMetadata
+build	Build with Gradle	2026-01-06T19:06:36.2298562Z > Task :metadataCommonMainClasses
+build	Build with Gradle	2026-01-06T19:06:36.3297292Z > Task :allMetadataJar
+build	Build with Gradle	2026-01-06T19:06:36.3298033Z > Task :compileNativeMainKotlinMetadata SKIPPED
+build	Build with Gradle	2026-01-06T19:06:36.3298651Z > Task :metadataNativeMainClasses UP-TO-DATE
+build	Build with Gradle	2026-01-06T19:06:36.3303305Z > Task :compileAppleMainKotlinMetadata SKIPPED
+build	Build with Gradle	2026-01-06T19:06:36.3304854Z > Task :metadataAppleMainClasses UP-TO-DATE
+build	Build with Gradle	2026-01-06T19:06:36.3337087Z > Task :compileIosMainKotlinMetadata SKIPPED
+build	Build with Gradle	2026-01-06T19:06:36.3337755Z > Task :compileWatchosMainKotlinMetadata SKIPPED
+build	Build with Gradle	2026-01-06T19:06:36.3338358Z > Task :metadataIosMainClasses UP-TO-DATE
+build	Build with Gradle	2026-01-06T19:06:36.3338923Z > Task :metadataWatchosMainClasses UP-TO-DATE
+build	Build with Gradle	2026-01-06T19:06:36.3339468Z > Task :iosArm64MetadataElements SKIPPED
+build	Build with Gradle	2026-01-06T19:06:36.3340027Z > Task :iosSimulatorArm64MetadataElements SKIPPED
+build	Build with Gradle	2026-01-06T19:06:36.3340585Z > Task :iosX64MetadataElements SKIPPED
+build	Build with Gradle	2026-01-06T19:06:36.3341202Z > Task :watchosArm64MetadataElements SKIPPED
+build	Build with Gradle	2026-01-06T19:06:36.3341842Z > Task :watchosSimulatorArm64MetadataElements SKIPPED
+build	Build with Gradle	2026-01-06T19:06:36.3342461Z > Task :watchosX64MetadataElements SKIPPED
+build	Build with Gradle	2026-01-06T19:06:42.5293810Z > Task :kotlin-crypto-pure:crypto-core:compileDebugKotlinAndroid
+build	Build with Gradle	2026-01-06T19:06:43.0296369Z > Task :kotlin-crypto-pure:crypto-core:compileKotlinJvm
+build	Build with Gradle	2026-01-06T19:06:43.0299447Z > Task :kotlin-crypto-pure:crypto-core:compileReleaseKotlinAndroid
+build	Build with Gradle	2026-01-06T19:06:43.0300108Z > Task :kotlin-crypto-pure:crypto-core:jvmMainClasses
+build	Build with Gradle	2026-01-06T19:06:43.0300776Z > Task :kotlin-crypto-pure:crypto-core:compileReleaseJavaWithJavac NO-SOURCE
+build	Build with Gradle	2026-01-06T19:06:43.1293102Z > Task :kotlin-crypto-pure:crypto-core:compileDebugJavaWithJavac NO-SOURCE
+build	Build with Gradle	2026-01-06T19:06:43.1294725Z > Task :kotlin-crypto-pure:crypto-core:bundleLibCompileToJarRelease
+build	Build with Gradle	2026-01-06T19:06:43.1295862Z > Task :kotlin-crypto-pure:crypto-core:bundleLibCompileToJarDebug
+build	Build with Gradle	2026-01-06T19:06:43.2306835Z > Task :kotlin-crypto-pure:crypto-core:jvmJar
+build	Build with Gradle	2026-01-06T19:06:43.2307976Z > Task :kotlin-crypto-pure:crypto-core:processDebugJavaRes
+build	Build with Gradle	2026-01-06T19:06:43.2308767Z > Task :kotlin-crypto-pure:crypto-core:bundleLibRuntimeToJarDebug
+build	Build with Gradle	2026-01-06T19:06:43.2309539Z > Task :kotlin-crypto-pure:crypto-core:processReleaseJavaRes
+build	Build with Gradle	2026-01-06T19:06:43.2310332Z > Task :kotlin-crypto-pure:crypto-core:bundleLibRuntimeToJarRelease
+build	Build with Gradle	2026-01-06T19:06:50.8293014Z > Task :kotlin-address:compileReleaseKotlinAndroid
+build	Build with Gradle	2026-01-06T19:06:50.8294475Z > Task :kotlin-address:compileReleaseJavaWithJavac NO-SOURCE
+build	Build with Gradle	2026-01-06T19:06:50.8295602Z > Task :kotlin-address:compileDebugKotlinAndroid
+build	Build with Gradle	2026-01-06T19:06:50.8296324Z > Task :kotlin-address:compileDebugJavaWithJavac NO-SOURCE
+build	Build with Gradle	2026-01-06T19:06:50.9292800Z > Task :kotlin-address:compileKotlinJvm
+build	Build with Gradle	2026-01-06T19:06:50.9314235Z > Task :kotlin-address:processDebugJavaRes
+build	Build with Gradle	2026-01-06T19:06:50.9315283Z > Task :kotlin-address:jvmMainClasses
+build	Build with Gradle	2026-01-06T19:06:50.9316096Z > Task :kotlin-address:bundleLibCompileToJarDebug
+build	Build with Gradle	2026-01-06T19:06:50.9316851Z > Task :kotlin-address:bundleLibCompileToJarRelease
+build	Build with Gradle	2026-01-06T19:06:50.9317846Z > Task :kotlin-address:jvmJar
+build	Build with Gradle	2026-01-06T19:06:50.9318476Z > Task :kotlin-address:bundleLibRuntimeToJarDebug
+build	Build with Gradle	2026-01-06T19:06:50.9319175Z > Task :kotlin-address:processReleaseJavaRes
+build	Build with Gradle	2026-01-06T19:06:50.9319864Z > Task :kotlin-address:bundleLibRuntimeToJarRelease
+build	Build with Gradle	2026-01-06T19:06:51.9293481Z > Task :kotlin-address:extractDebugAnnotations
+build	Build with Gradle	2026-01-06T19:06:51.9296678Z > Task :kotlin-crypto-pure:crypto-core:extractDebugAnnotations
+build	Build with Gradle	2026-01-06T19:06:51.9297665Z > Task :kotlin-address:mergeDebugGeneratedProguardFiles
+build	Build with Gradle	2026-01-06T19:06:51.9298604Z > Task :kotlin-crypto-pure:crypto-core:mergeDebugGeneratedProguardFiles
+build	Build with Gradle	2026-01-06T19:06:51.9299493Z > Task :kotlin-address:mergeDebugConsumerProguardFiles
+build	Build with Gradle	2026-01-06T19:06:51.9300355Z > Task :kotlin-crypto-pure:crypto-core:mergeDebugConsumerProguardFiles
+build	Build with Gradle	2026-01-06T19:06:51.9301212Z > Task :kotlin-address:createFullJarDebug
+build	Build with Gradle	2026-01-06T19:06:52.2292269Z > Task :kotlin-address:mergeDebugJavaResource
+build	Build with Gradle	2026-01-06T19:06:52.2293250Z > Task :kotlin-crypto-pure:crypto-core:createFullJarDebug
+build	Build with Gradle	2026-01-06T19:06:53.5291942Z > Task :kotlin-crypto-pure:crypto-core:mergeDebugJavaResource
+build	Build with Gradle	2026-01-06T19:06:53.7291959Z > Task :kotlin-address:syncDebugLibJars
+build	Build with Gradle	2026-01-06T19:06:53.7296266Z > Task :kotlin-address:bundleDebugLocalLintAar
+build	Build with Gradle	2026-01-06T19:06:55.3292436Z > Task :kotlin-crypto-pure:crypto-core:generateDebugLintModel
+build	Build with Gradle	2026-01-06T19:06:55.4292481Z > Task :kotlin-crypto-pure:crypto-core:syncDebugLibJars
+build	Build with Gradle	2026-01-06T19:06:55.4293221Z > Task :kotlin-crypto-pure:crypto-core:bundleDebugLocalLintAar
+build	Build with Gradle	2026-01-06T19:06:55.7291947Z > Task :kotlin-crypto-pure:crypto-core:generateDebugAndroidTestLintModel
+build	Build with Gradle	2026-01-06T19:07:01.5291870Z > Task :compileDebugKotlinAndroid
+build	Build with Gradle	2026-01-06T19:07:01.6292611Z > Task :extractDebugAnnotations
+build	Build with Gradle	2026-01-06T19:07:01.6293174Z > Task :compileDebugJavaWithJavac NO-SOURCE
+build	Build with Gradle	2026-01-06T19:07:01.6293684Z > Task :mergeDebugGeneratedProguardFiles
+build	Build with Gradle	2026-01-06T19:07:01.6294174Z > Task :mergeDebugConsumerProguardFiles
+build	Build with Gradle	2026-01-06T19:07:01.6294822Z > Task :processDebugJavaRes
+build	Build with Gradle	2026-01-06T19:07:01.7291678Z > Task :compileKotlinJvm
+build	Build with Gradle	2026-01-06T19:07:01.7296534Z > Task :jvmMainClasses
+build	Build with Gradle	2026-01-06T19:07:01.8315953Z > Task :jvmJar
+build	Build with Gradle	2026-01-06T19:07:01.9309317Z > Task :compileReleaseKotlinAndroid
+build	Build with Gradle	2026-01-06T19:07:02.1291941Z > Task :mergeDebugJavaResource
+build	Build with Gradle	2026-01-06T19:07:02.2308153Z > Task :kotlin-address:generateDebugLintModel
+build	Build with Gradle	2026-01-06T19:07:02.2309189Z > Task :kotlin-crypto-pure:crypto-core:generateDebugUnitTestLintModel
+build	Build with Gradle	2026-01-06T19:07:02.3292239Z > Task :kotlin-address:generateDebugAndroidTestLintModel FAILED
+build	Build with Gradle	2026-01-06T19:07:04.2291773Z > Task :compileTestKotlinJvm
+build	Build with Gradle	2026-01-06T19:07:11.6335328Z > Task :kotlin-crypto-pure:crypto-core:lintAnalyzeDebugAndroidTest
+build	Build with Gradle	2026-01-06T19:07:11.7294784Z > Task :kotlin-crypto-pure:crypto-core:lintAnalyzeDebugUnitTest
+build	Build with Gradle	2026-01-06T19:07:15.0291555Z > Task :kotlin-crypto-pure:crypto-core:lintAnalyzeDebug
+build	Build with Gradle	2026-01-06T19:07:15.0293166Z 
+build	Build with Gradle	2026-01-06T19:07:15.0295126Z [Incubating] Problems report is available at: file:///home/runner/work/kotlin-tx-builder/kotlin-tx-builder/kotlin-tx-builder/build/reports/problems/problems-report.html
+build	Build with Gradle	2026-01-06T19:07:15.1297721Z 
+build	Build with Gradle	2026-01-06T19:07:15.1299762Z Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+build	Build with Gradle	2026-01-06T19:07:15.1310167Z 
+build	Build with Gradle	2026-01-06T19:07:15.1310192Z 
+build	Build with Gradle	2026-01-06T19:07:15.1310792Z You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+build	Build with Gradle	2026-01-06T19:07:15.1311513Z 
+build	Build with Gradle	2026-01-06T19:07:15.1312224Z For more on this, please refer to https://docs.gradle.org/8.13/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+build	Build with Gradle	2026-01-06T19:07:15.1313112Z 153 actionable tasks: 153 executed
+build	Build with Gradle	2026-01-06T19:07:15.1313497Z FAILURE: Build failed with an exception.
+build	Build with Gradle	2026-01-06T19:07:15.1313750Z 
+build	Build with Gradle	2026-01-06T19:07:15.1313861Z * What went wrong:
+build	Build with Gradle	2026-01-06T19:07:15.1314321Z Execution failed for task ':kotlin-address:generateDebugAndroidTestLintModel'.
+build	Build with Gradle	2026-01-06T19:07:15.1315199Z > unable to find project exploded aar for :kotlin-address: (debug)
+build	Build with Gradle	2026-01-06T19:07:15.1315556Z 
+build	Build with Gradle	2026-01-06T19:07:15.1315656Z * Try:
+build	Build with Gradle	2026-01-06T19:07:15.1315970Z > Run with --stacktrace option to get the stack trace.
+build	Build with Gradle	2026-01-06T19:07:15.1316460Z > Run with --info or --debug option to get more log output.
+build	Build with Gradle	2026-01-06T19:07:15.1317508Z > Run with --scan to get full insights.
+build	Build with Gradle	2026-01-06T19:07:15.1317931Z > Get more help at https://help.gradle.org.
+build	Build with Gradle	2026-01-06T19:07:15.1318206Z 
+build	Build with Gradle	2026-01-06T19:07:15.1318319Z BUILD FAILED in 4m 36s
+build	Build with Gradle	2026-01-06T19:07:15.5286640Z ##[error]Process completed with exit code 1.
+build	Post Setup Gradle	﻿2026-01-06T19:07:15.5343478Z Post job cleanup.
+build	Post Setup Gradle	2026-01-06T19:07:15.6958895Z In final post-action step, saving state and writing summary
+build	Post Setup Gradle	2026-01-06T19:07:15.6967130Z Stopping all Gradle daemons before saving Gradle User Home state
+build	Post Setup Gradle	2026-01-06T19:07:15.6968533Z Stopping Gradle daemons for /home/runner/.gradle/wrapper/dists/gradle-8.13-all/54h0s9kvb6g2sinako7ub77ku/gradle-8.13
+build	Post Setup Gradle	2026-01-06T19:07:15.6988004Z [command]/home/runner/.gradle/wrapper/dists/gradle-8.13-all/54h0s9kvb6g2sinako7ub77ku/gradle-8.13/bin/gradle --stop
+build	Post Setup Gradle	2026-01-06T19:07:16.3157929Z Stopping Daemon(s)
+build	Post Setup Gradle	2026-01-06T19:07:16.3158357Z 1 Daemon stopped
+build	Post Setup Gradle	2026-01-06T19:07:16.3284088Z ##[group]Caching Gradle state
+build	Post Setup Gradle	2026-01-06T19:07:16.3805884Z Caching generated-gradle-jars with path '/home/runner/.gradle/caches/8.13/generated-gradle-jars/gradle-api-8.13.jar' and cache key: generated-gradle-jars-697f81ec8d80712ce7da03f513960371
+build	Post Setup Gradle	2026-01-06T19:07:16.3840258Z Caching wrapper-zips with path '/home/runner/.gradle/wrapper/dists/gradle-8.13-all/54h0s9kvb6g2sinako7ub77ku' and cache key: wrapper-zips-27b0df0fa405636de00fcbfa0ab79410
+build	Post Setup Gradle	2026-01-06T19:07:16.4031234Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/kotlin-tx-builder/kotlin-tx-builder --files-from manifest.txt --use-compress-program zstdmt
+build	Post Setup Gradle	2026-01-06T19:07:16.4068315Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/kotlin-tx-builder/kotlin-tx-builder --files-from manifest.txt --use-compress-program zstdmt
+build	Post Setup Gradle	2026-01-06T19:07:17.0947422Z Caching dependencies with path '/home/runner/.gradle/caches/modules-*/files-*/*/*/*/*' and cache key: dependencies-2b5e9acec2d588688916c80d3c0bd94c
+build	Post Setup Gradle	2026-01-06T19:07:17.1125744Z Caching instrumented-jars with path '/home/runner/.gradle/caches/jars-*/*' and cache key: instrumented-jars-c77d8e7cf8a0e4c1c3d16398ccce2998
+build	Post Setup Gradle	2026-01-06T19:07:17.1574056Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/kotlin-tx-builder/kotlin-tx-builder --files-from manifest.txt --use-compress-program zstdmt
+build	Post Setup Gradle	2026-01-06T19:07:17.1877996Z Caching kotlin-dsl with path '/home/runner/.gradle/caches/*/kotlin-dsl/*/*' and cache key: kotlin-dsl-cf1e4d6240168149cafccee03811827c
+build	Post Setup Gradle	2026-01-06T19:07:17.3140685Z ##[warning]Failed to save cache entry with path '/home/runner/.gradle/caches/jars-*/*,zstd-without-long,1.0' and key: instrumented-jars-c77d8e7cf8a0e4c1c3d16398ccce2998: Error: <h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0ZV1daQAAAAAZajM1ci2hTLPYgzWIu60oUEFPRURHRTA1MTMARWRnZQ==
+build	Post Setup Gradle	2026-01-06T19:07:17.3425458Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/kotlin-tx-builder/kotlin-tx-builder --files-from manifest.txt --use-compress-program zstdmt
+build	Post Setup Gradle	2026-01-06T19:07:17.3933148Z ##[warning]Failed to save cache entry with path '/home/runner/.gradle/caches/8.13/generated-gradle-jars/gradle-api-8.13.jar,zstd-without-long,1.0' and key: generated-gradle-jars-697f81ec8d80712ce7da03f513960371: Error: <h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0ZV1daQAAAABRAtQoJEJ/TKiqUMcsWGU4UEFPRURHRTA1MTMARWRnZQ==
+build	Post Setup Gradle	2026-01-06T19:07:17.5148053Z ##[warning]Failed to save cache entry with path '/home/runner/.gradle/caches/*/kotlin-dsl/*/*,zstd-without-long,1.0' and key: kotlin-dsl-cf1e4d6240168149cafccee03811827c: Error: <h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0ZV1daQAAAABSYamdN6/MRriLhmbDNYkyUEFPRURHRTA1MTMARWRnZQ==
+build	Post Setup Gradle	2026-01-06T19:07:17.9749396Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/kotlin-tx-builder/kotlin-tx-builder --files-from manifest.txt --use-compress-program zstdmt
+build	Post Setup Gradle	2026-01-06T19:07:19.0422931Z ##[warning]Failed to save cache entry with path '/home/runner/.gradle/caches/modules-*/files-*/*/*/*/*,zstd-without-long,1.0' and key: dependencies-2b5e9acec2d588688916c80d3c0bd94c: Error: <h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0Zl1daQAAAAAfcSW1UTwnQp+zTaw20CciUEFPRURHRTA1MTMARWRnZQ==
+build	Post Setup Gradle	2026-01-06T19:07:19.4133059Z ##[warning]Failed to save cache entry with path '/home/runner/.gradle/wrapper/dists/gradle-8.13-all/54h0s9kvb6g2sinako7ub77ku,zstd-without-long,1.0' and key: wrapper-zips-27b0df0fa405636de00fcbfa0ab79410: Error: <h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0Z11daQAAAAAJXf9tCXIzQZBaoqS/t95SUEFPRURHRTA1MTMARWRnZQ==
+build	Post Setup Gradle	2026-01-06T19:07:20.4798170Z Caching Gradle User Home with cache key: v8-gradle|Linux|ci-build[37a6259cc0c1dae299a7866489dff0bd]-d7598b1c3bc7b54808411106f0fb9ecbf18acba1
+build	Post Setup Gradle	2026-01-06T19:07:20.4880718Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/kotlin-tx-builder/kotlin-tx-builder --files-from manifest.txt --use-compress-program zstdmt
+build	Post Setup Gradle	2026-01-06T19:07:21.4710639Z ##[warning]Failed to save cache entry with path '/home/runner/.gradle/caches,/home/runner/.gradle/notifications,/home/runner/.gradle/.gradle-build-action,zstd-without-long,1.0' and key: v8-gradle|Linux|ci-build[37a6259cc0c1dae299a7866489dff0bd]-d7598b1c3bc7b54808411106f0fb9ecbf18acba1: Error: <h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0aV1daQAAAAB6cGa0kebIRLQxtviqoDucUEFPRURHRTA1MTMARWRnZQ==
+build	Post Setup Gradle	2026-01-06T19:07:21.4715887Z ##[endgroup]
+build	Post Setup Gradle	2026-01-06T19:07:21.4716273Z Writing job summary
+build	Post Set up JDK 17	﻿2026-01-06T19:07:21.4910551Z Post job cleanup.
+build	Post Run actions/checkout@v4	﻿2026-01-06T19:07:21.6629288Z Post job cleanup.
+build	Post Run actions/checkout@v4	2026-01-06T19:07:21.7580954Z [command]/usr/bin/git version
+build	Post Run actions/checkout@v4	2026-01-06T19:07:21.7618703Z git version 2.52.0
+build	Post Run actions/checkout@v4	2026-01-06T19:07:21.7662890Z Temporarily overriding HOME='/home/runner/work/_temp/cf43a542-ee9e-4b14-b44f-a07a5adb0c7d' before making global git config changes
+build	Post Run actions/checkout@v4	2026-01-06T19:07:21.7664306Z Adding repository directory to the temporary git global config as a safe directory
+build	Post Run actions/checkout@v4	2026-01-06T19:07:21.7669745Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/kotlin-tx-builder/kotlin-tx-builder/kotlin-address
+build	Post Run actions/checkout@v4	2026-01-06T19:07:21.7736786Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+build	Post Run actions/checkout@v4	2026-01-06T19:07:21.7756976Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build	Post Run actions/checkout@v4	2026-01-06T19:07:21.7983583Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build	Post Run actions/checkout@v4	2026-01-06T19:07:21.8004452Z http.https://github.com/.extraheader
+build	Post Run actions/checkout@v4	2026-01-06T19:07:21.8017117Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+build	Post Run actions/checkout@v4	2026-01-06T19:07:21.8046994Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build	Post Run actions/checkout@v4	2026-01-06T19:07:21.8263555Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+build	Post Run actions/checkout@v4	2026-01-06T19:07:21.8293624Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+build	Post Run actions/checkout@v4	﻿2026-01-06T19:07:21.8623627Z Post job cleanup.
+build	Post Run actions/checkout@v4	2026-01-06T19:07:21.9575715Z [command]/usr/bin/git version
+build	Post Run actions/checkout@v4	2026-01-06T19:07:21.9613447Z git version 2.52.0
+build	Post Run actions/checkout@v4	2026-01-06T19:07:21.9659088Z Temporarily overriding HOME='/home/runner/work/_temp/822d81b8-40a1-4f29-9caf-2c483b8127b3' before making global git config changes
+build	Post Run actions/checkout@v4	2026-01-06T19:07:21.9660294Z Adding repository directory to the temporary git global config as a safe directory
+build	Post Run actions/checkout@v4	2026-01-06T19:07:21.9666155Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/kotlin-tx-builder/kotlin-tx-builder/kotlin-crypto-pure
+build	Post Run actions/checkout@v4	2026-01-06T19:07:21.9707090Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+build	Post Run actions/checkout@v4	2026-01-06T19:07:21.9740018Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build	Post Run actions/checkout@v4	2026-01-06T19:07:21.9992309Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build	Post Run actions/checkout@v4	2026-01-06T19:07:22.0017768Z http.https://github.com/.extraheader
+build	Post Run actions/checkout@v4	2026-01-06T19:07:22.0031688Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+build	Post Run actions/checkout@v4	2026-01-06T19:07:22.0066927Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build	Post Run actions/checkout@v4	2026-01-06T19:07:22.0314909Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+build	Post Run actions/checkout@v4	2026-01-06T19:07:22.0348580Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+build	Post Run actions/checkout@v4	﻿2026-01-06T19:07:22.0689476Z Post job cleanup.
+build	Post Run actions/checkout@v4	2026-01-06T19:07:22.1665996Z [command]/usr/bin/git version
+build	Post Run actions/checkout@v4	2026-01-06T19:07:22.1702907Z git version 2.52.0
+build	Post Run actions/checkout@v4	2026-01-06T19:07:22.1746856Z Temporarily overriding HOME='/home/runner/work/_temp/0fe3b333-97f0-44e1-9c18-08e8a1e5da38' before making global git config changes
+build	Post Run actions/checkout@v4	2026-01-06T19:07:22.1748395Z Adding repository directory to the temporary git global config as a safe directory
+build	Post Run actions/checkout@v4	2026-01-06T19:07:22.1760875Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/kotlin-tx-builder/kotlin-tx-builder/kotlin-tx-builder
+build	Post Run actions/checkout@v4	2026-01-06T19:07:22.1796021Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+build	Post Run actions/checkout@v4	2026-01-06T19:07:22.1829676Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build	Post Run actions/checkout@v4	2026-01-06T19:07:22.2053387Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build	Post Run actions/checkout@v4	2026-01-06T19:07:22.2073606Z http.https://github.com/.extraheader
+build	Post Run actions/checkout@v4	2026-01-06T19:07:22.2086406Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+build	Post Run actions/checkout@v4	2026-01-06T19:07:22.2116008Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build	Post Run actions/checkout@v4	2026-01-06T19:07:22.2337156Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+build	Post Run actions/checkout@v4	2026-01-06T19:07:22.2368869Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+build	Complete job	﻿2026-01-06T19:07:22.2696753Z Cleaning up orphan processes

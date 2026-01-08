@@ -1,0 +1,49 @@
+Initialized native services in: C:\Users\aa223\.gradle\native
+Initialized jansi services in: C:\Users\aa223\.gradle\native
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.13/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Starting process 'Gradle build daemon'. Working directory: C:\Users\aa223\.gradle\daemon\8.13 Command: C:\Program Files\Eclipse Adoptium\jdk-21.0.9.10-hotspot\bin\java.exe --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED --add-opens=java.base/java.nio.charset=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.xml/javax.xml.namespace=ALL-UNNAMED -XX:MaxMetaspaceSize=384m -XX:+HeapDumpOnOutOfMemoryError -Xms256m -Xmx512m -Dfile.encoding=UTF-8 -Duser.country=TW -Duser.language=zh -Duser.variant -cp C:\Users\aa223\.gradle\wrapper\dists\gradle-8.13-all\54h0s9kvb6g2sinako7ub77ku\gradle-8.13\lib\gradle-daemon-main-8.13.jar -javaagent:C:\Users\aa223\.gradle\wrapper\dists\gradle-8.13-all\54h0s9kvb6g2sinako7ub77ku\gradle-8.13\lib\agents\gradle-instrumentation-agent-8.13.jar org.gradle.launcher.daemon.bootstrap.GradleDaemon 8.13
+Successfully started process 'Gradle build daemon'
+An attempt to start the daemon took 1.574 secs.
+The client will now receive all logging from the daemon (pid: 131836). The daemon log file: C:\Users\aa223\.gradle\daemon\8.13\daemon-131836.out.log
+Daemon will be stopped at the end of the build 
+Using 32 worker leases.
+Received JVM installation metadata from 'C:\Program Files\Eclipse Adoptium\jdk-21.0.9.10-hotspot': {JAVA_HOME=C:\Program Files\Eclipse Adoptium\jdk-21.0.9.10-hotspot, JAVA_VERSION=21.0.9, JAVA_VENDOR=Eclipse Adoptium, RUNTIME_NAME=OpenJDK Runtime Environment, RUNTIME_VERSION=21.0.9+10-LTS, VM_NAME=OpenJDK 64-Bit Server VM, VM_VERSION=21.0.9+10-LTS, VM_VENDOR=Eclipse Adoptium, OS_ARCH=amd64}
+Watching the file system is configured to be enabled if available
+Now considering [D:\OtherProject\mine\crypto\kotlin-secure-storage] as hierarchies to watch
+File system watching is active
+Starting Build
+Settings evaluated using settings file 'D:\OtherProject\mine\crypto\kotlin-secure-storage\settings.gradle'.
+Projects loaded. Root project using build file 'D:\OtherProject\mine\crypto\kotlin-secure-storage\build.gradle.kts'.
+Included projects: [root project 'kotlin-secure-storage']
+
+> Configure project :
+Evaluating root project 'kotlin-secure-storage' using build file 'D:\OtherProject\mine\crypto\kotlin-secure-storage\build.gradle.kts'.
+Caching disabled for Kotlin DSL script compilation (Project/TopLevel/stage1) because:
+  Build cache is disabled
+e: file:///D:/OtherProject/mine/crypto/kotlin-secure-storage/build.gradle.kts:2:11: Unresolved reference: libs
+e: file:///D:/OtherProject/mine/crypto/kotlin-secure-storage/build.gradle.kts:3:11: Unresolved reference: libs
+
+FAILURE: Build failed with an exception.
+
+* Where:
+Build file 'D:\OtherProject\mine\crypto\kotlin-secure-storage\build.gradle.kts' line: 2
+
+* What went wrong:
+Script compilation errors:
+
+  Line 2:     alias(libs.plugins.kotlin.multiplatform)
+                    ^ Unresolved reference: libs
+
+  Line 3:     alias(libs.plugins.android.library)
+                    ^ Unresolved reference: libs
+
+2 errors
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 7s
+Watched directory hierarchies: []

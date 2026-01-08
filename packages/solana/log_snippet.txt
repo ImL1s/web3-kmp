@@ -1,0 +1,100 @@
+Demo App Build Check	Build Desktop App	2026-01-07T05:30:07.1289177Z Learn more about hierarchy templates: https://kotl.in/hierarchy-template
+Demo App Build Check	Build Desktop App	2026-01-07T05:30:07.1290388Z 
+Demo App Build Check	Build Desktop App	2026-01-07T05:30:18.0220562Z 
+Demo App Build Check	Build Desktop App	2026-01-07T05:30:18.0224280Z > Configure project :demo-cli
+Demo App Build Check	Build Desktop App	2026-01-07T05:30:18.0229779Z w: file:///home/runner/work/kotlin-crypto-pure/kotlin-crypto-pure/kotlin-crypto-pure/demo-cli/build.gradle.kts:7:9: Experimental API in the Kotlin Gradle Plugin: No stability guarantees can be provided. The API could get removed in the future without replacement
+Demo App Build Check	Build Desktop App	2026-01-07T05:30:18.0236295Z w: file:///home/runner/work/kotlin-crypto-pure/kotlin-crypto-pure/kotlin-crypto-pure/demo-cli/build.gradle.kts:8:13: Experimental API in the Kotlin Gradle Plugin: No stability guarantees can be provided. The API could get removed in the future without replacement
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:24.5220593Z 
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:24.5222346Z > Task :kotlin-solana:base58:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:24.5223563Z > Task :kotlin-address:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:24.5224530Z > Task :crypto-core:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:24.5229386Z > Task :kotlin-blockchain-client:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:24.5233018Z > Task :kotlin-solana:base58:jvmProcessResources NO-SOURCE
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:24.5233720Z > Task :kotlin-blockchain-client:jvmProcessResources NO-SOURCE
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:24.5234370Z > Task :kotlin-address:jvmProcessResources NO-SOURCE
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:24.5235403Z > Task :kotlin-solana:solanapublickeys:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:24.5243708Z > Task :demo-app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:24.5246543Z > Task :kotlin-tx-builder:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:24.5260797Z > Task :kotlin-tx-builder:jvmProcessResources NO-SOURCE
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:24.6246611Z > Task :kotlin-wallet-sdk:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:24.6266102Z > Task :kotlin-solana:solanapublickeys:jvmProcessResources NO-SOURCE
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:24.6267596Z > Task :kotlin-solana:signer:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:24.6268517Z > Task :kotlin-wallet-sdk:jvmProcessResources NO-SOURCE
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:24.6269352Z > Task :kotlin-solana:solanaeddsa:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:24.6270358Z > Task :demo-app:convertXmlValueResourcesForCommonMain NO-SOURCE
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:24.6271193Z > Task :kotlin-solana:solanaeddsa:jvmProcessResources NO-SOURCE
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:24.6272049Z > Task :kotlin-solana:amount:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:24.6273007Z > Task :demo-app:copyNonXmlValueResourcesForCommonMain NO-SOURCE
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:24.6273937Z > Task :demo-app:prepareComposeResourcesTaskForCommonMain NO-SOURCE
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:24.6275122Z > Task :demo-app:generateResourceAccessorsForCommonMain NO-SOURCE
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:24.6276020Z > Task :demo-app:convertXmlValueResourcesForDesktopMain NO-SOURCE
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:24.6279369Z > Task :demo-app:copyNonXmlValueResourcesForDesktopMain NO-SOURCE
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:24.6280596Z > Task :demo-app:prepareComposeResourcesTaskForDesktopMain NO-SOURCE
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:24.6281877Z > Task :demo-app:generateResourceAccessorsForDesktopMain NO-SOURCE
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:24.7223176Z > Task :kotlin-utxo:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:24.8223911Z > Task :demo-app:generateActualResourceCollectorsForDesktopMain
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:24.8224855Z > Task :kotlin-solana:rpc:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:24.8225981Z > Task :kotlin-solana:rpc:jvmProcessResources NO-SOURCE
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:24.8226524Z > Task :demo-app:generateComposeResClass
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:24.8227211Z > Task :kotlin-solana:readapi:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:24.8229182Z > Task :kotlin-solana:readapi:jvmProcessResources NO-SOURCE
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:24.8229992Z > Task :kotlin-solana:solana:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:24.8230868Z > Task :demo-app:generateExpectResourceCollectorsForCommonMain
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:24.8231525Z > Task :kotlin-solana:solana:jvmProcessResources NO-SOURCE
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:24.8232072Z > Task :demo-app:assembleDesktopMainResources
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:24.8232555Z > Task :demo-app:desktopProcessResources
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:31.5230968Z > Task :kotlin-solana:signer:jvmProcessResources NO-SOURCE
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:31.5232219Z > Task :kotlin-solana:amount:jvmProcessResources NO-SOURCE
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:32.0225245Z > Task :kotlin-utxo:jvmProcessResources NO-SOURCE
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:32.0229409Z > Task :crypto-core:jvmProcessResources NO-SOURCE
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:38.3247315Z e: file:///home/runner/work/kotlin-crypto-pure/kotlin-crypto-pure/kotlin-solana/amount/src/commonMain/kotlin/foundation/metaplex/amount/Amount.kt:3:33 Syntax error: imports are only allowed in the beginning of file.
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:38.3248798Z 
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:38.3249025Z > Task :kotlin-solana:amount:compileKotlinJvm FAILED
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:39.4221631Z 
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:39.4222544Z > Task :kotlin-solana:signer:compileKotlinJvm
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:42.3221545Z > Task :kotlin-utxo:compileKotlinJvm
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:42.4221666Z > Task :kotlin-utxo:jvmMainClasses
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:42.4222703Z > Task :kotlin-utxo:jvmJar
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:49.6220737Z > Task :crypto-core:compileKotlinJvm
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.4221695Z Unable to make progress running work. The following items are queued for execution but none of them can be started:
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.4222880Z   - Build ':kotlin-tx-builder':
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.4223742Z       - Waiting for nodes:
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.4227918Z           - :kotlin-tx-builder:jvmJar (state=SHOULD_RUN, dependencies=NOT_COMPLETE, group=task group 0, dependencies=[:kotlin-tx-builder:compileKotlinJvm (SHOULD_RUN), :kotlin-tx-builder:jvmMainClasses (SHOULD_RUN), :kotlin-tx-builder:jvmProcessResources (EXECUTED)], waiting-for=[:kotlin-tx-builder:jvmMainClasses (SHOULD_RUN), :kotlin-tx-builder:compileKotlinJvm (SHOULD_RUN)], has-failed-dependency=false )
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.4231273Z       - Reachable nodes:
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.4232563Z           - other build task :kotlin-address:jvmJar (state=SHOULD_RUN, dependencies=NOT_COMPLETE, group=task group 0, no dependencies, taskState=Scheduled, exportedTaskState=Scheduled )
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.4235582Z           - work action resolve kotlin-address-jvm-1.3.0.jar (project :kotlin-address) (state=SHOULD_RUN, dependencies=NOT_COMPLETE, group=task group 0, dependencies=[other build task :kotlin-address:jvmJar (SHOULD_RUN)], waiting-for=[other build task :kotlin-address:jvmJar (SHOULD_RUN)], has-failed-dependency=false )
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.4238332Z           - other build task :crypto-core:jvmJar (state=SHOULD_RUN, dependencies=NOT_COMPLETE, group=task group 0, no dependencies, taskState=Scheduled, exportedTaskState=Scheduled )
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.4242130Z           - work action resolve crypto-core-jvm-1.3.0.jar (project :crypto-core) (state=SHOULD_RUN, dependencies=NOT_COMPLETE, group=task group 0, dependencies=[other build task :crypto-core:jvmJar (SHOULD_RUN)], waiting-for=[other build task :crypto-core:jvmJar (SHOULD_RUN)], has-failed-dependency=false )
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.4249205Z           - :kotlin-tx-builder:compileKotlinJvm (state=SHOULD_RUN, dependencies=NOT_COMPLETE, group=task group 0, dependencies=[:kotlin-tx-builder:checkKotlinGradlePluginConfigurationErrors (EXECUTED), work action resolve kotlin-address-jvm-1.3.0.jar (project :kotlin-address) (SHOULD_RUN), work action resolve crypto-core-jvm-1.3.0.jar (project :crypto-core) (SHOULD_RUN), other build task :crypto-core:jvmJar (SHOULD_RUN), other build task :kotlin-address:jvmJar (SHOULD_RUN)], waiting-for=[other build task :kotlin-address:jvmJar (SHOULD_RUN), work action resolve crypto-core-jvm-1.3.0.jar (project :crypto-core) (SHOULD_RUN), work action resolve kotlin-address-jvm-1.3.0.jar (project :kotlin-address) (SHOULD_RUN), other build task :crypto-core:jvmJar (SHOULD_RUN)], has-failed-dependency=false )
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.4254753Z           - :kotlin-tx-builder:jvmMainClasses (state=SHOULD_RUN, dependencies=NOT_COMPLETE, group=task group 0, dependencies=[:kotlin-tx-builder:compileKotlinJvm (SHOULD_RUN), :kotlin-tx-builder:jvmProcessResources (EXECUTED)], waiting-for=[:kotlin-tx-builder:compileKotlinJvm (SHOULD_RUN)], has-failed-dependency=false )
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.4256881Z       - Ordinal groups:
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.4257380Z           - group 0 entry nodes: [:kotlin-tx-builder:jvmJar (SHOULD_RUN)]
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.4257920Z   - Build ':kotlin-address':
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.4258297Z       - Waiting for nodes:
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.4260553Z           - :kotlin-address:jvmJar (state=SHOULD_RUN, dependencies=NOT_COMPLETE, group=task group 0, dependencies=[:kotlin-address:compileKotlinJvm (SHOULD_RUN), :kotlin-address:jvmMainClasses (SHOULD_RUN), :kotlin-address:jvmProcessResources (EXECUTED)], waiting-for=[:kotlin-address:jvmMainClasses (SHOULD_RUN), :kotlin-address:compileKotlinJvm (SHOULD_RUN)], has-failed-dependency=false )
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.4262856Z       - Reachable nodes:
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.4263943Z           - other build task :crypto-core:jvmJar (state=SHOULD_RUN, dependencies=NOT_COMPLETE, group=task group 0, no dependencies, taskState=Scheduled, exportedTaskState=Scheduled )
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.4266653Z           - work action resolve crypto-core-jvm-1.3.0.jar (project :crypto-core) (state=SHOULD_RUN, dependencies=NOT_COMPLETE, group=task group 0, dependencies=[other build task :crypto-core:jvmJar (SHOULD_RUN)], waiting-for=[other build task :crypto-core:jvmJar (SHOULD_RUN)], has-failed-dependency=false )
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.4270556Z           - :kotlin-address:compileKotlinJvm (state=SHOULD_RUN, dependencies=NOT_COMPLETE, group=task group 0, dependencies=[:kotlin-address:checkKotlinGradlePluginConfigurationErrors (EXECUTED), work action resolve crypto-core-jvm-1.3.0.jar (project :crypto-core) (SHOULD_RUN), other build task :crypto-core:jvmJar (SHOULD_RUN)], waiting-for=[work action resolve crypto-core-jvm-1.3.0.jar (project :crypto-core) (SHOULD_RUN), other build task :crypto-core:jvmJar (SHOULD_RUN)], has-failed-dependency=false )
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.4275475Z           - :kotlin-address:jvmMainClasses (state=SHOULD_RUN, dependencies=NOT_COMPLETE, group=task group 0, dependencies=[:kotlin-address:compileKotlinJvm (SHOULD_RUN), :kotlin-address:jvmProcessResources (EXECUTED)], waiting-for=[:kotlin-address:compileKotlinJvm (SHOULD_RUN)], has-failed-dependency=false )
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.4277334Z       - Ordinal groups:
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.4277802Z           - group 0 entry nodes: [:kotlin-address:jvmJar (SHOULD_RUN)]
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.4278344Z   - Build ':kotlin-blockchain-client':
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.4278741Z       - Waiting for nodes:
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.4281209Z           - :kotlin-blockchain-client:jvmJar (state=SHOULD_RUN, dependencies=NOT_COMPLETE, group=task group 0, dependencies=[:kotlin-blockchain-client:compileKotlinJvm (SHOULD_RUN), :kotlin-blockchain-client:jvmMainClasses (SHOULD_RUN), :kotlin-blockchain-client:jvmProcessResources (EXECUTED)], waiting-for=[:kotlin-blockchain-client:jvmMainClasses (SHOULD_RUN), :kotlin-blockchain-client:compileKotlinJvm (SHOULD_RUN)], has-failed-dependency=false )
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.4283727Z       - Reachable nodes:
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.4284717Z           - other build task :crypto-core:jvmJar (state=SHOULD_RUN, dependencies=NOT_COMPLETE, group=task group 0, no dependencies, taskState=Scheduled, exportedTaskState=Scheduled )
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.4287204Z           - work action resolve crypto-core-jvm-1.3.0.jar (project :crypto-core) (state=SHOULD_RUN, dependencies=NOT_COMPLETE, group=task group 0, dependencies=[other build task :crypto-core:jvmJar (SHOULD_RUN)], waiting-for=[other build task :crypto-core:jvmJar (SHOULD_RUN)], has-failed-dependency=false )
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.4289726Z           - other build task :kotlin-tx-builder:jvmJar (state=SHOULD_RUN, dependencies=NOT_COMPLETE, group=task group 0, no dependencies, taskState=Scheduled, exportedTaskState=Scheduled )
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.4292380Z           - work action resolve kotlin-tx-builder-jvm-1.3.0.jar (project :kotlin-tx-builder) (state=SHOULD_RUN, dependencies=NOT_COMPLETE, group=task group 0, dependencies=[other build task :kotlin-tx-builder:jvmJar (SHOULD_RUN)], waiting-for=[other build task :kotlin-tx-builder:jvmJar (SHOULD_RUN)], has-failed-dependency=false )
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.4299104Z           - :kotlin-blockchain-client:compileKotlinJvm (state=SHOULD_RUN, dependencies=NOT_COMPLETE, group=task group 0, dependencies=[:kotlin-blockchain-client:checkKotlinGradlePluginConfigurationErrors (EXECUTED), work action null (EXECUTED), work action resolve crypto-core-jvm-1.3.0.jar (project :crypto-core) (SHOULD_RUN), work action resolve kotlin-tx-builder-jvm-1.3.0.jar (project :kotlin-tx-builder) (SHOULD_RUN), other build task :crypto-core:jvmJar (SHOULD_RUN), other build task :kotlin-tx-builder:jvmJar (SHOULD_RUN), other build task :kotlin-utxo:jvmJar (EXECUTED)], waiting-for=[other build task :kotlin-tx-builder:jvmJar (SHOULD_RUN), other build task :crypto-core:jvmJar (SHOULD_RUN), work action resolve kotlin-tx-builder-jvm-1.3.0.jar (project :kotlin-tx-builder) (SHOULD_RUN), work action resolve crypto-core-jvm-1.3.0.jar (project :crypto-core) (SHOULD_RUN)], has-failed-dependency=false )
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.4305934Z           - :kotlin-blockchain-client:jvmMainClasses (state=SHOULD_RUN, dependencies=NOT_COMPLETE, group=task group 0, dependencies=[:kotlin-blockchain-client:compileKotlinJvm (SHOULD_RUN), :kotlin-blockchain-client:jvmProcessResources (EXECUTED)], waiting-for=[:kotlin-blockchain-client:compileKotlinJvm (SHOULD_RUN)], has-failed-dependency=false )
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.4308144Z       - Ordinal groups:
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.4308668Z           - group 0 entry nodes: [:kotlin-blockchain-client:jvmJar (SHOULD_RUN)]
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.4309262Z   - Workers waiting for work: 6
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.4309980Z   - Stopped workers: 3
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.5243813Z 
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.5244305Z FAILURE: Build completed with 2 failures.
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.5244682Z 
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.5245508Z 1: Task failed with an exception.
+Demo App Build Check	Build Desktop App	2026-01-07T05:31:56.5245881Z -----------

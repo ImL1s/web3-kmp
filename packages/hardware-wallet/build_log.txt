@@ -1,0 +1,33 @@
+
+> Configure project :
+w: The following Kotlin/Native targets cannot be built on this machine and are disabled:
+iosArm64, iosSimulatorArm64, iosX64, macosArm64, macosX64, watchosArm64, watchosSimulatorArm64, watchosX64
+To hide this message, add 'kotlin.native.ignoreDisabledTargets=true' to the Gradle properties.
+
+
+> Task :checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :jvmProcessResources NO-SOURCE
+> Task :jvmTestProcessResources NO-SOURCE
+
+> Task :compileKotlinJvm FAILED
+e: file:///D:/OtherProject/mine/crypto/kotlin-hardware-wallet/src/commonMain/kotlin/io/github/iml1s/bcur/fountain/Xoshiro256StarStar.kt:91:16 Return type mismatch: expected 'kotlin.Double', actual 'kotlin.Long'.
+e: file:///D:/OtherProject/mine/crypto/kotlin-hardware-wallet/src/commonMain/kotlin/io/github/iml1s/bcur/fountain/Xoshiro256StarStar.kt:91:42 Syntax error: Unexpected tokens (use ';' to separate expressions on the same line).
+e: file:///D:/OtherProject/mine/crypto/kotlin-hardware-wallet/src/commonMain/kotlin/io/github/iml1s/bcur/fountain/Xoshiro256StarStar.kt:100:45 Value out of range.
+e: file:///D:/OtherProject/mine/crypto/kotlin-hardware-wallet/src/commonMain/kotlin/io/github/iml1s/bcur/fountain/Xoshiro256StarStar.kt:108:38 Value out of range.
+e: file:///D:/OtherProject/mine/crypto/kotlin-hardware-wallet/src/commonMain/kotlin/io/github/iml1s/bcur/fountain/Xoshiro256StarStar.kt:109:38 Value out of range.
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileKotlinJvm'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 3s
+1 actionable task: 1 executed

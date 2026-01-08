@@ -1,0 +1,80 @@
+Initialized native services in: C:\Users\aa223\.gradle\native
+Initialized jansi services in: C:\Users\aa223\.gradle\native
+The client will now receive all logging from the daemon (pid: 50324). The daemon log file: C:\Users\aa223\.gradle\daemon\8.13\daemon-50324.out.log
+Starting 6th build in daemon [uptime: 1 hrs 54 mins 24.743 secs, performance: 99%, GC rate: 0.00/s, heap usage: 7% of 512 MiB, non-heap usage: 44% of 384 MiB]
+Using 32 worker leases.
+Now considering [D:\OtherProject\mine\crypto\kotlin-miniscript] as hierarchies to watch
+Watching the file system is configured to be enabled if available
+File system watching is active
+Starting Build
+Caching disabled for Kotlin DSL script compilation (Settings/TopLevel/stage1) because:
+  Build cache is disabled
+Caching disabled for Kotlin DSL script compilation (Settings/TopLevel/stage2) because:
+  Build cache is disabled
+Settings evaluated using settings file 'D:\OtherProject\mine\crypto\kotlin-miniscript\settings.gradle.kts'.
+Projects loaded. Root project using build file 'D:\OtherProject\mine\crypto\kotlin-miniscript\build.gradle.kts'.
+Included projects: [root project 'kotlin-miniscript', project ':kotlin-address', project ':kotlin-crypto-pure']
+
+> Configure project :
+Evaluating root project 'kotlin-miniscript' using build file 'D:\OtherProject\mine\crypto\kotlin-miniscript\build.gradle.kts'.
+Resolved plugin [id: 'org.jetbrains.kotlin.multiplatform', version: '2.1.0']
+Resolved plugin [id: 'com.android.library', version: '8.5.2']
+Using Kotlin Gradle Plugin gradle85 variant
+Using default execution profile
+kotlin scripting plugin: created the scripting discovery configuration: kotlinScriptDef
+kotlin scripting plugin: created the scripting discovery configuration: testKotlinScriptDef
+w: The following Kotlin/Native targets cannot be built on this machine and are disabled:
+iosArm64, iosSimulatorArm64, iosX64, macosArm64, macosX64, watchosArm64, watchosSimulatorArm64, watchosX64
+To hide this message, add 'kotlin.native.ignoreDisabledTargets=true' to the Gradle properties.
+
+
+> Configure project :kotlin-address
+Evaluating project ':kotlin-address' using build file 'D:\OtherProject\mine\crypto\kotlin-address\build.gradle.kts'.
+Caching disabled for Kotlin DSL script compilation (Project/TopLevel/stage1) because:
+  Build cache is disabled
+Resolved plugin [id: 'org.jetbrains.kotlin.multiplatform', version: '2.1.0']
+Resolved plugin [id: 'com.android.library', version: '8.5.2']
+e: file:///D:/OtherProject/mine/crypto/kotlin-address/build.gradle.kts:43:33: Unresolved reference. None of the following candidates is applicable because of receiver type mismatch: 
+public val Project.kotlin: KotlinMultiplatformExtension defined in org.gradle.kotlin.dsl
+Resolved plugin [id: 'org.gradle.maven-publish']
+Using Kotlin Gradle Plugin gradle85 variant
+Using default execution profile
+Caching disabled for Kotlin DSL script compilation (Project/TopLevel/stage2) because:
+  Build cache is disabled
+w: Missing 'androidTarget()' Kotlin target in multiplatform project 'kotlin-address (:kotlin-address)'.
+The Android Gradle plugin was applied without creating a corresponding 'android()' Kotlin Target:
+
+```
+plugins {
+    id("com.android.library")
+    kotlin("multiplatform")
+}
+
+kotlin {
+    androidTarget() // <-- please register this Android target
+}
+```
+
+
+FAILURE: Build failed with an exception.
+
+* Where:
+Build file 'D:\OtherProject\mine\crypto\kotlin-address\build.gradle.kts' line: 43
+
+* What went wrong:
+Script compilation error:
+
+  Line 43:             implementation(libs.kotlin.crypto.pure)
+                                           ^ Unresolved reference. None of the following candidates is applicable because of receiver type mismatch: 
+                                               public val Project.kotlin: KotlinMultiplatformExtension defined in org.gradle.kotlin.dsl
+
+1 error
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 3s
+Watched directory hierarchies: [D:\OtherProject\mine\crypto\kotlin-miniscript]

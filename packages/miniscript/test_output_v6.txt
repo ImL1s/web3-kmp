@@ -1,0 +1,187 @@
+Initialized native services in: C:\Users\aa223\.gradle\native
+Initialized jansi services in: C:\Users\aa223\.gradle\native
+The client will now receive all logging from the daemon (pid: 50324). The daemon log file: C:\Users\aa223\.gradle\daemon\8.13\daemon-50324.out.log
+Starting 9th build in daemon [uptime: 1 hrs 57 mins 59.987 secs, performance: 99%, GC rate: 0.00/s, heap usage: 7% of 512 MiB, non-heap usage: 45% of 384 MiB]
+Using 32 worker leases.
+Now considering [D:\OtherProject\mine\crypto\kotlin-miniscript] as hierarchies to watch
+Watching the file system is configured to be enabled if available
+File system watching is active
+Starting Build
+Settings evaluated using settings file 'D:\OtherProject\mine\crypto\kotlin-miniscript\settings.gradle.kts'.
+Projects loaded. Root project using build file 'D:\OtherProject\mine\crypto\kotlin-miniscript\build.gradle.kts'.
+Included projects: [root project 'kotlin-miniscript', project ':kotlin-address', project ':kotlin-crypto-pure']
+
+> Configure project :
+Evaluating root project 'kotlin-miniscript' using build file 'D:\OtherProject\mine\crypto\kotlin-miniscript\build.gradle.kts'.
+Resolved plugin [id: 'org.jetbrains.kotlin.multiplatform', version: '2.1.0']
+Resolved plugin [id: 'com.android.library', version: '8.5.2']
+Using Kotlin Gradle Plugin gradle85 variant
+Using default execution profile
+kotlin scripting plugin: created the scripting discovery configuration: kotlinScriptDef
+kotlin scripting plugin: created the scripting discovery configuration: testKotlinScriptDef
+w: The following Kotlin/Native targets cannot be built on this machine and are disabled:
+iosArm64, iosSimulatorArm64, iosX64, macosArm64, macosX64, watchosArm64, watchosSimulatorArm64, watchosX64
+To hide this message, add 'kotlin.native.ignoreDisabledTargets=true' to the Gradle properties.
+
+
+> Configure project :kotlin-address
+Evaluating project ':kotlin-address' using build file 'D:\OtherProject\mine\crypto\kotlin-address\build.gradle.kts'.
+Resolved plugin [id: 'org.jetbrains.kotlin.multiplatform', version: '2.1.0']
+Resolved plugin [id: 'com.android.library', version: '8.5.2']
+Resolved plugin [id: 'org.gradle.maven-publish']
+Using Kotlin Gradle Plugin gradle85 variant
+Using default execution profile
+kotlin scripting plugin: created the scripting discovery configuration: kotlinScriptDef
+kotlin scripting plugin: created the scripting discovery configuration: testKotlinScriptDef
+w: The following Kotlin/Native targets cannot be built on this machine and are disabled:
+iosArm64, iosSimulatorArm64, iosX64, watchosArm64, watchosSimulatorArm64, watchosX64
+To hide this message, add 'kotlin.native.ignoreDisabledTargets=true' to the Gradle properties.
+
+
+> Configure project :kotlin-crypto-pure
+Evaluating project ':kotlin-crypto-pure' using build file 'D:\OtherProject\mine\crypto\kotlin-crypto-pure\build.gradle.kts'.
+Resolved plugin [id: 'org.jetbrains.kotlin.multiplatform', version: '2.1.0']
+Resolved plugin [id: 'com.android.library', version: '8.5.2']
+Resolved plugin [id: 'org.gradle.maven-publish']
+Using Kotlin Gradle Plugin gradle85 variant
+Using default execution profile
+kotlin scripting plugin: created the scripting discovery configuration: kotlinScriptDef
+kotlin scripting plugin: created the scripting discovery configuration: testKotlinScriptDef
+w: The following Kotlin/Native targets cannot be built on this machine and are disabled:
+iosArm64, iosSimulatorArm64, iosX64, watchosArm64, watchosSimulatorArm64, watchosX64
+To hide this message, add 'kotlin.native.ignoreDisabledTargets=true' to the Gradle properties.
+
+w: The Default Kotlin Hierarchy Template was not applied to 'project ':kotlin-crypto-pure'':
+Explicit .dependsOn() edges were configured for the following source sets:
+[iosArm64Main, iosMain, iosSimulatorArm64Main, iosX64Main, watchosArm64Main, watchosMain, watchosSimulatorArm64Main, watchosX64Main]
+
+Consider removing dependsOn-calls or disabling the default template by adding
+    'kotlin.mpp.applyDefaultHierarchyTemplate=false'
+to your gradle.properties
+
+Learn more about hierarchy templates: https://kotl.in/hierarchy-template
+
+All projects evaluated.
+Task path ':jvmTest' matched project ':'
+Task name matched 'jvmTest'
+Selected primary task 'jvmTest' from project :
+Tasks to be executed: [task ':checkKotlinGradlePluginConfigurationErrors', task ':kotlin-address:checkKotlinGradlePluginConfigurationErrors', task ':kotlin-crypto-pure:checkKotlinGradlePluginConfigurationErrors', task ':kotlin-crypto-pure:compileKotlinJvm', task ':kotlin-crypto-pure:jvmProcessResources', task ':kotlin-crypto-pure:jvmMainClasses', task ':kotlin-crypto-pure:jvmJar', task ':kotlin-address:compileKotlinJvm', task ':kotlin-address:jvmProcessResources', task ':kotlin-address:jvmMainClasses', task ':kotlin-address:jvmJar', task ':compileKotlinJvm', task ':jvmProcessResources', task ':jvmMainClasses', task ':jvmJar', task ':compileTestKotlinJvm', task ':jvmTestProcessResources', task ':jvmTestClasses', task ':jvmTest']
+Tasks that were excluded: []
+Resolve mutations for :checkKotlinGradlePluginConfigurationErrors (Thread[#1273,Execution worker,5,main]) started.
+:checkKotlinGradlePluginConfigurationErrors (Thread[#1273,Execution worker,5,main]) started.
+
+> Task :checkKotlinGradlePluginConfigurationErrors SKIPPED
+Skipping task ':checkKotlinGradlePluginConfigurationErrors' as task onlyIf 'errorDiagnostics are present' is false.
+Resolve mutations for :kotlin-address:checkKotlinGradlePluginConfigurationErrors (Thread[#1273,Execution worker,5,main]) started.
+:kotlin-address:checkKotlinGradlePluginConfigurationErrors (Thread[#1282,Execution worker Thread 9,5,main]) started.
+
+> Task :kotlin-address:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Skipping task ':kotlin-address:checkKotlinGradlePluginConfigurationErrors' as task onlyIf 'errorDiagnostics are present' is false.
+Resolve mutations for :kotlin-crypto-pure:checkKotlinGradlePluginConfigurationErrors (Thread[#1282,Execution worker Thread 9,5,main]) started.
+:kotlin-crypto-pure:checkKotlinGradlePluginConfigurationErrors (Thread[#1282,Execution worker Thread 9,5,main]) started.
+
+> Task :kotlin-crypto-pure:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Skipping task ':kotlin-crypto-pure:checkKotlinGradlePluginConfigurationErrors' as task onlyIf 'errorDiagnostics are present' is false.
+Resolve mutations for :kotlin-crypto-pure:compileKotlinJvm (Thread[#1282,Execution worker Thread 9,5,main]) started.
+:kotlin-crypto-pure:compileKotlinJvm (Thread[#1282,Execution worker Thread 9,5,main]) started.
+
+> Task :kotlin-crypto-pure:compileKotlinJvm UP-TO-DATE
+Caching disabled for task ':kotlin-crypto-pure:compileKotlinJvm' because:
+  Build cache is disabled
+Skipping task ':kotlin-crypto-pure:compileKotlinJvm' as it is up-to-date.
+Resolve mutations for :kotlin-crypto-pure:jvmProcessResources (Thread[#1282,Execution worker Thread 9,5,main]) started.
+:kotlin-crypto-pure:jvmProcessResources (Thread[#1282,Execution worker Thread 9,5,main]) started.
+
+> Task :kotlin-crypto-pure:jvmProcessResources NO-SOURCE
+Skipping task ':kotlin-crypto-pure:jvmProcessResources' as it has no source files and no previous output files.
+Resolve mutations for :kotlin-crypto-pure:jvmMainClasses (Thread[#1282,Execution worker Thread 9,5,main]) started.
+:kotlin-crypto-pure:jvmMainClasses (Thread[#1299,Execution worker Thread 26,5,main]) started.
+
+> Task :kotlin-crypto-pure:jvmMainClasses UP-TO-DATE
+Skipping task ':kotlin-crypto-pure:jvmMainClasses' as it has no actions.
+Resolve mutations for :kotlin-crypto-pure:jvmJar (Thread[#1295,Execution worker Thread 22,5,main]) started.
+:kotlin-crypto-pure:jvmJar (Thread[#1295,Execution worker Thread 22,5,main]) started.
+
+> Task :kotlin-crypto-pure:jvmJar UP-TO-DATE
+Caching disabled for task ':kotlin-crypto-pure:jvmJar' because:
+  Build cache is disabled
+  Not worth caching
+Skipping task ':kotlin-crypto-pure:jvmJar' as it is up-to-date.
+work action resolve kotlin-crypto-pure-jvm-1.0.0.jar (project :kotlin-crypto-pure) (Thread[#1295,Execution worker Thread 22,5,main]) started.
+Resolve mutations for :kotlin-address:compileKotlinJvm (Thread[#1303,Execution worker Thread 30,5,main]) started.
+:kotlin-address:compileKotlinJvm (Thread[#1303,Execution worker Thread 30,5,main]) started.
+
+> Task :kotlin-address:compileKotlinJvm UP-TO-DATE
+Caching disabled for task ':kotlin-address:compileKotlinJvm' because:
+  Build cache is disabled
+Skipping task ':kotlin-address:compileKotlinJvm' as it is up-to-date.
+Resolve mutations for :kotlin-address:jvmProcessResources (Thread[#1303,Execution worker Thread 30,5,main]) started.
+:kotlin-address:jvmProcessResources (Thread[#1303,Execution worker Thread 30,5,main]) started.
+
+> Task :kotlin-address:jvmProcessResources NO-SOURCE
+Skipping task ':kotlin-address:jvmProcessResources' as it has no source files and no previous output files.
+Resolve mutations for :kotlin-address:jvmMainClasses (Thread[#1303,Execution worker Thread 30,5,main]) started.
+:kotlin-address:jvmMainClasses (Thread[#1301,Execution worker Thread 28,5,main]) started.
+
+> Task :kotlin-address:jvmMainClasses UP-TO-DATE
+Skipping task ':kotlin-address:jvmMainClasses' as it has no actions.
+Resolve mutations for :kotlin-address:jvmJar (Thread[#1301,Execution worker Thread 28,5,main]) started.
+:kotlin-address:jvmJar (Thread[#1301,Execution worker Thread 28,5,main]) started.
+
+> Task :kotlin-address:jvmJar UP-TO-DATE
+Caching disabled for task ':kotlin-address:jvmJar' because:
+  Build cache is disabled
+  Not worth caching
+Skipping task ':kotlin-address:jvmJar' as it is up-to-date.
+work action resolve kotlin-address-jvm-1.0.0.jar (project :kotlin-address) (Thread[#1301,Execution worker Thread 28,5,main]) started.
+Resolve mutations for :compileKotlinJvm (Thread[#1301,Execution worker Thread 28,5,main]) started.
+:compileKotlinJvm (Thread[#1301,Execution worker Thread 28,5,main]) started.
+Resolve mutations for :jvmProcessResources (Thread[#1296,Execution worker Thread 23,5,main]) started.
+:jvmProcessResources (Thread[#1296,Execution worker Thread 23,5,main]) started.
+
+> Task :jvmProcessResources NO-SOURCE
+Skipping task ':jvmProcessResources' as it has no source files and no previous output files.
+Resolve mutations for :jvmTestProcessResources (Thread[#1296,Execution worker Thread 23,5,main]) started.
+:jvmTestProcessResources (Thread[#1296,Execution worker Thread 23,5,main]) started.
+
+> Task :jvmTestProcessResources NO-SOURCE
+Skipping task ':jvmTestProcessResources' as it has no source files and no previous output files.
+
+> Task :compileKotlinJvm FAILED
+Caching disabled for task ':compileKotlinJvm' because:
+  Build cache is disabled
+Task ':compileKotlinJvm' is not up-to-date because:
+  Task has failed previously.
+The input changes require a full rebuild for incremental task ':compileKotlinJvm'.
+file or directory 'D:\OtherProject\mine\crypto\kotlin-miniscript\src\jvmMain\kotlin', not found
+file or directory 'D:\OtherProject\mine\crypto\kotlin-miniscript\src\jvmMain\kotlin', not found
+file or directory 'D:\OtherProject\mine\crypto\kotlin-miniscript\src\jvmMain\kotlin', not found
+file or directory 'D:\OtherProject\mine\crypto\kotlin-miniscript\src\jvmMain\kotlin', not found
+file or directory 'D:\OtherProject\mine\crypto\kotlin-miniscript\src\jvmMain\kotlin', not found
+file or directory 'D:\OtherProject\mine\crypto\kotlin-miniscript\src\jvmMain\kotlin', not found
+Kotlin source files: D:\OtherProject\mine\crypto\kotlin-miniscript\src\commonMain\kotlin\io\github\iml1s\miniscript\context\ScriptContext.kt, D:\OtherProject\mine\crypto\kotlin-miniscript\src\commonMain\kotlin\io\github\iml1s\miniscript\Descriptor.kt, D:\OtherProject\mine\crypto\kotlin-miniscript\src\commonMain\kotlin\io\github\iml1s\miniscript\LockTime.kt, D:\OtherProject\mine\crypto\kotlin-miniscript\src\commonMain\kotlin\io\github\iml1s\miniscript\Miniscript.kt, D:\OtherProject\mine\crypto\kotlin-miniscript\src\commonMain\kotlin\io\github\iml1s\miniscript\MiniscriptError.kt, D:\OtherProject\mine\crypto\kotlin-miniscript\src\commonMain\kotlin\io\github\iml1s\miniscript\MiniscriptKey.kt, D:\OtherProject\mine\crypto\kotlin-miniscript\src\commonMain\kotlin\io\github\iml1s\miniscript\node\ScriptElt.kt, D:\OtherProject\mine\crypto\kotlin-miniscript\src\commonMain\kotlin\io\github\iml1s\miniscript\node\Terminal.kt, D:\OtherProject\mine\crypto\kotlin-miniscript\src\commonMain\kotlin\io\github\iml1s\miniscript\parser\DescriptorParser.kt, D:\OtherProject\mine\crypto\kotlin-miniscript\src\commonMain\kotlin\io\github\iml1s\miniscript\parser\MiniscriptParser.kt, D:\OtherProject\mine\crypto\kotlin-miniscript\src\commonMain\kotlin\io\github\iml1s\miniscript\policy\Compiler.kt, D:\OtherProject\mine\crypto\kotlin-miniscript\src\commonMain\kotlin\io\github\iml1s\miniscript\policy\Concrete.kt, D:\OtherProject\mine\crypto\kotlin-miniscript\src\commonMain\kotlin\io\github\iml1s\miniscript\policy\Semantic.kt, D:\OtherProject\mine\crypto\kotlin-miniscript\src\commonMain\kotlin\io\github\iml1s\miniscript\TapTree.kt, D:\OtherProject\mine\crypto\kotlin-miniscript\src\commonMain\kotlin\io\github\iml1s\miniscript\Threshold.kt, D:\OtherProject\mine\crypto\kotlin-miniscript\src\commonMain\kotlin\io\github\iml1s\miniscript\types\Correctness.kt, D:\OtherProject\mine\crypto\kotlin-miniscript\src\commonMain\kotlin\io\github\iml1s\miniscript\types\ExtData.kt, D:\OtherProject\mine\crypto\kotlin-miniscript\src\commonMain\kotlin\io\github\iml1s\miniscript\types\Malleability.kt, D:\OtherProject\mine\crypto\kotlin-miniscript\src\commonMain\kotlin\io\github\iml1s\miniscript\types\Type.kt
+Java source files: 
+Script source files: 
+Script file extensions: 
+Using Kotlin/JVM incremental compilation
+[KOTLIN] Kotlin compilation 'jdkHome' argument: C:\Program Files\Eclipse Adoptium\jdk-21.0.9.10-hotspot
+Options for KOTLIN DAEMON: IncrementalCompilationOptions(super=CompilationOptions(compilerMode=INCREMENTAL_COMPILER, targetPlatform=JVM, reportCategories=[0, 3], reportSeverity=2, requestedCompilationResults=[0], kotlinScriptExtensions=[]), areFileChangesKnown=false, modifiedFiles=null, deletedFiles=null, classpathChanges=NotAvailableForNonIncrementalRun, workingDir=D:\OtherProject\mine\crypto\kotlin-miniscript\build\kotlin\compileKotlinJvm\cacheable, multiModuleICSettings=MultiModuleICSettings(buildHistoryFile=D:\OtherProject\mine\crypto\kotlin-miniscript\build\kotlin\compileKotlinJvm\local-state\build-history.bin, useModuleDetection=false), usePreciseJavaTracking=true, icFeatures=IncrementalCompilationFeatures(withAbiSnapshot=false, preciseCompilationResultsBackup=true, keepIncrementalCompilationCachesInMemory=true, enableUnsafeIncrementalCompilationForMultiplatform=false), outputFiles=[D:\OtherProject\mine\crypto\kotlin-miniscript\build\classes\kotlin\jvm\main, D:\OtherProject\mine\crypto\kotlin-miniscript\build\kotlin\compileKotlinJvm\cacheable, D:\OtherProject\mine\crypto\kotlin-miniscript\build\kotlin\compileKotlinJvm\local-state])
+e: file:///D:/OtherProject/mine/crypto/kotlin-miniscript/src/commonMain/kotlin/io/github/iml1s/miniscript/Descriptor.kt:227:42 Unresolved reference 'decodeCheck'.
+Finished executing kotlin compiler using DAEMON strategy
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileKotlinJvm'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 3s
+5 actionable tasks: 1 executed, 4 up-to-date
+Watched directory hierarchies: [D:\OtherProject\mine\crypto\kotlin-miniscript]

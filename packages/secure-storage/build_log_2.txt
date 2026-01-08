@@ -1,0 +1,103 @@
+Initialized native services in: C:\Users\aa223\.gradle\native
+Initialized jansi services in: C:\Users\aa223\.gradle\native
+The client will now receive all logging from the daemon (pid: 75300). The daemon log file: C:\Users\aa223\.gradle\daemon\8.13\daemon-75300.out.log
+Starting 2nd build in daemon [uptime: 34.441 secs, performance: 100%, GC rate: 0.00/s, heap usage: 2% of 512 MiB, non-heap usage: 45% of 384 MiB]
+Using 32 worker leases.
+Now considering [D:\OtherProject\mine\crypto\kotlin-secure-storage] as hierarchies to watch
+Watching the file system is configured to be enabled if available
+File system watching is active
+Starting Build
+Settings evaluated using settings file 'D:\OtherProject\mine\crypto\kotlin-secure-storage\settings.gradle.kts'.
+Projects loaded. Root project using build file 'D:\OtherProject\mine\crypto\kotlin-secure-storage\build.gradle.kts'.
+Included projects: [root project 'kotlin-secure-storage']
+
+> Configure project :
+Evaluating root project 'kotlin-secure-storage' using build file 'D:\OtherProject\mine\crypto\kotlin-secure-storage\build.gradle.kts'.
+Resolved plugin [id: 'org.jetbrains.kotlin.multiplatform', version: '2.1.0']
+Resolved plugin [id: 'com.android.library', version: '8.5.2']
+Resolved plugin [id: 'org.gradle.maven-publish']
+Using Kotlin Gradle Plugin gradle85 variant
+Using default execution profile
+kotlin scripting plugin: created the scripting discovery configuration: kotlinScriptDef
+kotlin scripting plugin: created the scripting discovery configuration: testKotlinScriptDef
+w: The following Kotlin/Native targets cannot be built on this machine and are disabled:
+iosArm64, iosSimulatorArm64, iosX64
+To hide this message, add 'kotlin.native.ignoreDisabledTargets=true' to the Gradle properties.
+
+All projects evaluated.
+Task name matched 'jvmTest'
+Selected primary task 'jvmTest' from project :
+Tasks to be executed: [task ':checkKotlinGradlePluginConfigurationErrors', task ':compileKotlinJvm', task ':jvmProcessResources', task ':jvmMainClasses', task ':jvmJar', task ':compileTestKotlinJvm', task ':jvmTestProcessResources', task ':jvmTestClasses', task ':jvmTest']
+Tasks that were excluded: []
+Resolve mutations for :checkKotlinGradlePluginConfigurationErrors (Thread[#317,Execution worker,5,main]) started.
+:checkKotlinGradlePluginConfigurationErrors (Thread[#317,Execution worker,5,main]) started.
+
+> Task :checkKotlinGradlePluginConfigurationErrors SKIPPED
+Skipping task ':checkKotlinGradlePluginConfigurationErrors' as task onlyIf 'errorDiagnostics are present' is false.
+Resolve mutations for :compileKotlinJvm (Thread[#317,Execution worker,5,main]) started.
+:compileKotlinJvm (Thread[#317,Execution worker,5,main]) started.
+Resolve mutations for :jvmProcessResources (Thread[#323,Execution worker Thread 7,5,main]) started.
+:jvmProcessResources (Thread[#336,Execution worker Thread 19,5,main]) started.
+
+> Task :jvmProcessResources NO-SOURCE
+Skipping task ':jvmProcessResources' as it has no source files and no previous output files.
+Resolve mutations for :jvmTestProcessResources (Thread[#336,Execution worker Thread 19,5,main]) started.
+:jvmTestProcessResources (Thread[#336,Execution worker Thread 19,5,main]) started.
+
+> Task :jvmTestProcessResources NO-SOURCE
+Skipping task ':jvmTestProcessResources' as it has no source files and no previous output files.
+
+> Task :compileKotlinJvm FAILED
+Caching disabled for task ':compileKotlinJvm' because:
+  Build cache is disabled
+Task ':compileKotlinJvm' is not up-to-date because:
+  Task has failed previously.
+The input changes require a full rebuild for incremental task ':compileKotlinJvm'.
+Kotlin source files: D:\OtherProject\mine\crypto\kotlin-secure-storage\src\jvmMain\kotlin\io\github\iml1s\storage\PlatformSecureStorage.kt, D:\OtherProject\mine\crypto\kotlin-secure-storage\src\commonMain\kotlin\io\github\iml1s\storage\SecureStorage.kt
+Java source files: 
+Script source files: 
+Script file extensions: 
+Using Kotlin/JVM incremental compilation
+[KOTLIN] Kotlin compilation 'jdkHome' argument: C:\Program Files\Eclipse Adoptium\jdk-21.0.9.10-hotspot
+Options for KOTLIN DAEMON: IncrementalCompilationOptions(super=CompilationOptions(compilerMode=INCREMENTAL_COMPILER, targetPlatform=JVM, reportCategories=[0, 3], reportSeverity=2, requestedCompilationResults=[0], kotlinScriptExtensions=[]), areFileChangesKnown=false, modifiedFiles=null, deletedFiles=null, classpathChanges=NotAvailableForNonIncrementalRun, workingDir=D:\OtherProject\mine\crypto\kotlin-secure-storage\build\kotlin\compileKotlinJvm\cacheable, multiModuleICSettings=MultiModuleICSettings(buildHistoryFile=D:\OtherProject\mine\crypto\kotlin-secure-storage\build\kotlin\compileKotlinJvm\local-state\build-history.bin, useModuleDetection=false), usePreciseJavaTracking=true, icFeatures=IncrementalCompilationFeatures(withAbiSnapshot=false, preciseCompilationResultsBackup=true, keepIncrementalCompilationCachesInMemory=true, enableUnsafeIncrementalCompilationForMultiplatform=false), outputFiles=[D:\OtherProject\mine\crypto\kotlin-secure-storage\build\classes\kotlin\jvm\main, D:\OtherProject\mine\crypto\kotlin-secure-storage\build\kotlin\compileKotlinJvm\cacheable, D:\OtherProject\mine\crypto\kotlin-secure-storage\build\kotlin\compileKotlinJvm\local-state])
+e: file:///D:/OtherProject/mine/crypto/kotlin-secure-storage/src/jvmMain/kotlin/io/github/iml1s/storage/PlatformSecureStorage.kt:13:14 'actual class PlatformSecureStorage : SecureStorage' has no corresponding members for expected class members:
+
+    expect constructor(platformContext: PlatformContext): PlatformSecureStorage
+
+    The following declaration is incompatible because number of value parameters is different:
+        constructor(): PlatformSecureStorage
+
+e: file:///D:/OtherProject/mine/crypto/kotlin-secure-storage/src/jvmMain/kotlin/io/github/iml1s/storage/PlatformSecureStorage.kt:16:33 'actual suspend fun put(key: String, value: String): Unit' has no corresponding expected declaration
+The following declaration is incompatible:
+    suspend fun put(key: String, value: String): Unit
+
+e: file:///D:/OtherProject/mine/crypto/kotlin-secure-storage/src/jvmMain/kotlin/io/github/iml1s/storage/PlatformSecureStorage.kt:20:33 'actual suspend fun get(key: String): String?' has no corresponding expected declaration
+The following declaration is incompatible:
+    suspend fun get(key: String): String?
+
+e: file:///D:/OtherProject/mine/crypto/kotlin-secure-storage/src/jvmMain/kotlin/io/github/iml1s/storage/PlatformSecureStorage.kt:24:33 'actual suspend fun delete(key: String): Unit' has no corresponding expected declaration
+The following declaration is incompatible:
+    suspend fun delete(key: String): Unit
+
+e: file:///D:/OtherProject/mine/crypto/kotlin-secure-storage/src/jvmMain/kotlin/io/github/iml1s/storage/PlatformSecureStorage.kt:28:33 'actual suspend fun clear(): Unit' has no corresponding expected declaration
+The following declaration is incompatible:
+    suspend fun clear(): Unit
+
+Finished executing kotlin compiler using DAEMON strategy
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileKotlinJvm'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 2s
+1 actionable task: 1 executed
+Watched directory hierarchies: [D:\OtherProject\mine\crypto\kotlin-secure-storage]

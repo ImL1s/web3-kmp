@@ -1,0 +1,49 @@
+[versions]
+kotlin = "2.1.0"
+androidGradlePlugin = "8.5.2"
+compose-plugin = "1.7.1"
+androidx-activityCompose = "1.9.3"
+clikt = "5.0.0"
+ktor = "3.0.0"
+coroutines = "1.9.0"
+serialization = "1.7.3"
+bignum = "0.3.9"
+crypto = "1.3.0"
+buffer = "1.3.1"
+kborsh = "0.1.0"
+web3core = "0.3.0-beta2"
+rpccore = "0.2.5"
+
+[libraries]
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
+clikt = { module = "com.github.ajalt.clikt:clikt", version.ref = "clikt" }
+bignum = { module = "com.ionspin.kotlin:bignum", version.ref = "bignum" }
+crypto = { module = "io.github.iml1s:kotlin-crypto-pure", version = "1.3.0" }
+buffer = { module = "com.ditchoom:buffer", version.ref = "buffer" }
+kborsh = { group = "io.github.funkatronics", name = "kborsh", version.ref = "kborsh" }
+web3solana = { group = "com.solanamobile", name = "web3-solana", version.ref = "web3core" }
+web3core = { group = "com.solanamobile", name = "web3-core", version.ref = "web3core" }
+rpccore = { group = "com.solanamobile", name = "rpc-core", version.ref = "rpccore" }
+
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization" }
+
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-network = { module = "io.ktor:ktor-network", version.ref = "ktor" }
+ktor-network-tls = { module = "io.ktor:ktor-network-tls", version.ref = "ktor" }
+ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
+ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
+ktor-client-mock = { module = "io.ktor:ktor-client-mock", version.ref = "ktor" }
+ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
+ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
+
+[plugins]
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }

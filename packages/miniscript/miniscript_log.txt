@@ -1,0 +1,441 @@
+build	Set up job	﻿2026-01-02T03:46:34.0658384Z Current runner version: '2.330.0'
+build	Set up job	2026-01-02T03:46:34.0687268Z ##[group]Runner Image Provisioner
+build	Set up job	2026-01-02T03:46:34.0688064Z Hosted Compute Agent
+build	Set up job	2026-01-02T03:46:34.0688607Z Version: 20251211.462
+build	Set up job	2026-01-02T03:46:34.0689326Z Commit: 6cbad8c2bb55d58165063d031ccabf57e2d2db61
+build	Set up job	2026-01-02T03:46:34.0689993Z Build Date: 2025-12-11T16:28:49Z
+build	Set up job	2026-01-02T03:46:34.0690665Z Worker ID: {14284089-df43-4579-a294-861ae477dd7f}
+build	Set up job	2026-01-02T03:46:34.0691401Z ##[endgroup]
+build	Set up job	2026-01-02T03:46:34.0691931Z ##[group]Operating System
+build	Set up job	2026-01-02T03:46:34.0692451Z Ubuntu
+build	Set up job	2026-01-02T03:46:34.0692994Z 24.04.3
+build	Set up job	2026-01-02T03:46:34.0693751Z LTS
+build	Set up job	2026-01-02T03:46:34.0694254Z ##[endgroup]
+build	Set up job	2026-01-02T03:46:34.0694858Z ##[group]Runner Image
+build	Set up job	2026-01-02T03:46:34.0695388Z Image: ubuntu-24.04
+build	Set up job	2026-01-02T03:46:34.0695895Z Version: 20251215.174.1
+build	Set up job	2026-01-02T03:46:34.0696927Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20251215.174/images/ubuntu/Ubuntu2404-Readme.md
+build	Set up job	2026-01-02T03:46:34.0698343Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20251215.174
+build	Set up job	2026-01-02T03:46:34.0699767Z ##[endgroup]
+build	Set up job	2026-01-02T03:46:34.0700915Z ##[group]GITHUB_TOKEN Permissions
+build	Set up job	2026-01-02T03:46:34.0703462Z Contents: read
+build	Set up job	2026-01-02T03:46:34.0704069Z Metadata: read
+build	Set up job	2026-01-02T03:46:34.0704820Z Packages: read
+build	Set up job	2026-01-02T03:46:34.0705365Z ##[endgroup]
+build	Set up job	2026-01-02T03:46:34.0707813Z Secret source: Actions
+build	Set up job	2026-01-02T03:46:34.0708841Z Prepare workflow directory
+build	Set up job	2026-01-02T03:46:34.1249450Z Prepare all required actions
+build	Set up job	2026-01-02T03:46:34.1288170Z Getting action download info
+build	Set up job	2026-01-02T03:46:34.4409988Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+build	Set up job	2026-01-02T03:46:34.5658774Z Download action repository 'actions/setup-java@v4' (SHA:c1e323688fd81a25caa38c78aa6df2d33d3e20d9)
+build	Set up job	2026-01-02T03:46:35.1238254Z Download action repository 'gradle/gradle-build-action@v2' (SHA:a8f75513eafdebd8141bd1cd4e30fcd194af8dfa)
+build	Set up job	2026-01-02T03:46:36.1557704Z Complete job name: build
+build	Run actions/checkout@v4	﻿2026-01-02T03:46:36.2322528Z ##[group]Run actions/checkout@v4
+build	Run actions/checkout@v4	2026-01-02T03:46:36.2324108Z with:
+build	Run actions/checkout@v4	2026-01-02T03:46:36.2324872Z   path: kotlin-miniscript
+build	Run actions/checkout@v4	2026-01-02T03:46:36.2325797Z   repository: ImL1s/kotlin-miniscript
+build	Run actions/checkout@v4	2026-01-02T03:46:36.2327124Z   token: ***
+build	Run actions/checkout@v4	2026-01-02T03:46:36.2327853Z   ssh-strict: true
+build	Run actions/checkout@v4	2026-01-02T03:46:36.2328617Z   ssh-user: git
+build	Run actions/checkout@v4	2026-01-02T03:46:36.2329400Z   persist-credentials: true
+build	Run actions/checkout@v4	2026-01-02T03:46:36.2330256Z   clean: true
+build	Run actions/checkout@v4	2026-01-02T03:46:36.2331024Z   sparse-checkout-cone-mode: true
+build	Run actions/checkout@v4	2026-01-02T03:46:36.2331958Z   fetch-depth: 1
+build	Run actions/checkout@v4	2026-01-02T03:46:36.2332715Z   fetch-tags: false
+build	Run actions/checkout@v4	2026-01-02T03:46:36.2333642Z   show-progress: true
+build	Run actions/checkout@v4	2026-01-02T03:46:36.2334491Z   lfs: false
+build	Run actions/checkout@v4	2026-01-02T03:46:36.2335213Z   submodules: false
+build	Run actions/checkout@v4	2026-01-02T03:46:36.2336005Z   set-safe-directory: true
+build	Run actions/checkout@v4	2026-01-02T03:46:36.2337100Z env:
+build	Run actions/checkout@v4	2026-01-02T03:46:36.2338107Z   GITHUB_TOKEN: ***
+build	Run actions/checkout@v4	2026-01-02T03:46:36.2338880Z   GITHUB_ACTOR: ImL1s
+build	Run actions/checkout@v4	2026-01-02T03:46:36.2339653Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-02T03:46:36.3539567Z Syncing repository: ImL1s/kotlin-miniscript
+build	Run actions/checkout@v4	2026-01-02T03:46:36.3542380Z ##[group]Getting Git version info
+build	Run actions/checkout@v4	2026-01-02T03:46:36.3544379Z Working directory is '/home/runner/work/kotlin-miniscript/kotlin-miniscript/kotlin-miniscript'
+build	Run actions/checkout@v4	2026-01-02T03:46:36.3546656Z [command]/usr/bin/git version
+build	Run actions/checkout@v4	2026-01-02T03:46:36.6558461Z git version 2.52.0
+build	Run actions/checkout@v4	2026-01-02T03:46:36.6587117Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-02T03:46:36.6604423Z Temporarily overriding HOME='/home/runner/work/_temp/220da329-cdf9-4024-91c9-7a549dbef5be' before making global git config changes
+build	Run actions/checkout@v4	2026-01-02T03:46:36.6606058Z Adding repository directory to the temporary git global config as a safe directory
+build	Run actions/checkout@v4	2026-01-02T03:46:36.6620111Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/kotlin-miniscript/kotlin-miniscript/kotlin-miniscript
+build	Run actions/checkout@v4	2026-01-02T03:46:36.6664463Z ##[group]Initializing the repository
+build	Run actions/checkout@v4	2026-01-02T03:46:36.6671093Z [command]/usr/bin/git init /home/runner/work/kotlin-miniscript/kotlin-miniscript/kotlin-miniscript
+build	Run actions/checkout@v4	2026-01-02T03:46:36.6787968Z hint: Using 'master' as the name for the initial branch. This default branch name
+build	Run actions/checkout@v4	2026-01-02T03:46:36.6789855Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+build	Run actions/checkout@v4	2026-01-02T03:46:36.6791171Z hint: to use in all of your new repositories, which will suppress this warning,
+build	Run actions/checkout@v4	2026-01-02T03:46:36.6792037Z hint: call:
+build	Run actions/checkout@v4	2026-01-02T03:46:36.6792527Z hint:
+build	Run actions/checkout@v4	2026-01-02T03:46:36.6793373Z hint: 	git config --global init.defaultBranch <name>
+build	Run actions/checkout@v4	2026-01-02T03:46:36.6794236Z hint:
+build	Run actions/checkout@v4	2026-01-02T03:46:36.6795078Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+build	Run actions/checkout@v4	2026-01-02T03:46:36.6796329Z hint: 'development'. The just-created branch can be renamed via this command:
+build	Run actions/checkout@v4	2026-01-02T03:46:36.6797381Z hint:
+build	Run actions/checkout@v4	2026-01-02T03:46:36.6797918Z hint: 	git branch -m <name>
+build	Run actions/checkout@v4	2026-01-02T03:46:36.6798612Z hint:
+build	Run actions/checkout@v4	2026-01-02T03:46:36.6799415Z hint: Disable this message with "git config set advice.defaultBranchName false"
+build	Run actions/checkout@v4	2026-01-02T03:46:36.6801013Z Initialized empty Git repository in /home/runner/work/kotlin-miniscript/kotlin-miniscript/kotlin-miniscript/.git/
+build	Run actions/checkout@v4	2026-01-02T03:46:36.6807515Z [command]/usr/bin/git remote add origin https://github.com/ImL1s/kotlin-miniscript
+build	Run actions/checkout@v4	2026-01-02T03:46:36.6846096Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-02T03:46:36.6847049Z ##[group]Disabling automatic garbage collection
+build	Run actions/checkout@v4	2026-01-02T03:46:36.6851656Z [command]/usr/bin/git config --local gc.auto 0
+build	Run actions/checkout@v4	2026-01-02T03:46:36.6881302Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-02T03:46:36.6882159Z ##[group]Setting up auth
+build	Run actions/checkout@v4	2026-01-02T03:46:36.6888840Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+build	Run actions/checkout@v4	2026-01-02T03:46:36.6920333Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build	Run actions/checkout@v4	2026-01-02T03:46:36.7321324Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build	Run actions/checkout@v4	2026-01-02T03:46:36.7355061Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build	Run actions/checkout@v4	2026-01-02T03:46:36.7588634Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+build	Run actions/checkout@v4	2026-01-02T03:46:36.7621706Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+build	Run actions/checkout@v4	2026-01-02T03:46:36.7871587Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+build	Run actions/checkout@v4	2026-01-02T03:46:36.7912970Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-02T03:46:36.7914275Z ##[group]Fetching the repository
+build	Run actions/checkout@v4	2026-01-02T03:46:36.7921921Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +0156685a309e54ee85bd6608a5ac61f429aa7881:refs/remotes/origin/main
+build	Run actions/checkout@v4	2026-01-02T03:46:37.1189507Z From https://github.com/ImL1s/kotlin-miniscript
+build	Run actions/checkout@v4	2026-01-02T03:46:37.1190600Z  * [new ref]         0156685a309e54ee85bd6608a5ac61f429aa7881 -> origin/main
+build	Run actions/checkout@v4	2026-01-02T03:46:37.1231298Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-02T03:46:37.1232206Z ##[group]Determining the checkout info
+build	Run actions/checkout@v4	2026-01-02T03:46:37.1234525Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-02T03:46:37.1240104Z [command]/usr/bin/git sparse-checkout disable
+build	Run actions/checkout@v4	2026-01-02T03:46:37.1297269Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+build	Run actions/checkout@v4	2026-01-02T03:46:37.1336395Z ##[group]Checking out the ref
+build	Run actions/checkout@v4	2026-01-02T03:46:37.1341405Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+build	Run actions/checkout@v4	2026-01-02T03:46:37.1677828Z Switched to a new branch 'main'
+build	Run actions/checkout@v4	2026-01-02T03:46:37.1678956Z branch 'main' set up to track 'origin/main'.
+build	Run actions/checkout@v4	2026-01-02T03:46:37.1688199Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-02T03:46:37.1728583Z [command]/usr/bin/git log -1 --format=%H
+build	Run actions/checkout@v4	2026-01-02T03:46:37.1754324Z 0156685a309e54ee85bd6608a5ac61f429aa7881
+build	Run actions/checkout@v4	﻿2026-01-02T03:46:37.1984356Z ##[group]Run actions/checkout@v4
+build	Run actions/checkout@v4	2026-01-02T03:46:37.1984719Z with:
+build	Run actions/checkout@v4	2026-01-02T03:46:37.1984954Z   repository: ImL1s/kotlin-crypto-pure
+build	Run actions/checkout@v4	2026-01-02T03:46:37.1985265Z   path: kotlin-crypto-pure
+build	Run actions/checkout@v4	2026-01-02T03:46:37.2055803Z   token: ***
+build	Run actions/checkout@v4	2026-01-02T03:46:37.2056125Z   ssh-strict: true
+build	Run actions/checkout@v4	2026-01-02T03:46:37.2056411Z   ssh-user: git
+build	Run actions/checkout@v4	2026-01-02T03:46:37.2056657Z   persist-credentials: true
+build	Run actions/checkout@v4	2026-01-02T03:46:37.2056932Z   clean: true
+build	Run actions/checkout@v4	2026-01-02T03:46:37.2057208Z   sparse-checkout-cone-mode: true
+build	Run actions/checkout@v4	2026-01-02T03:46:37.2057534Z   fetch-depth: 1
+build	Run actions/checkout@v4	2026-01-02T03:46:37.2057801Z   fetch-tags: false
+build	Run actions/checkout@v4	2026-01-02T03:46:37.2058050Z   show-progress: true
+build	Run actions/checkout@v4	2026-01-02T03:46:37.2058287Z   lfs: false
+build	Run actions/checkout@v4	2026-01-02T03:46:37.2058509Z   submodules: false
+build	Run actions/checkout@v4	2026-01-02T03:46:37.2058760Z   set-safe-directory: true
+build	Run actions/checkout@v4	2026-01-02T03:46:37.2059014Z env:
+build	Run actions/checkout@v4	2026-01-02T03:46:37.2059342Z   GITHUB_TOKEN: ***
+build	Run actions/checkout@v4	2026-01-02T03:46:37.2059566Z   GITHUB_ACTOR: ImL1s
+build	Run actions/checkout@v4	2026-01-02T03:46:37.2059792Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-02T03:46:37.3058016Z Syncing repository: ImL1s/kotlin-crypto-pure
+build	Run actions/checkout@v4	2026-01-02T03:46:37.3065614Z ##[group]Getting Git version info
+build	Run actions/checkout@v4	2026-01-02T03:46:37.3066546Z Working directory is '/home/runner/work/kotlin-miniscript/kotlin-miniscript/kotlin-crypto-pure'
+build	Run actions/checkout@v4	2026-01-02T03:46:37.3109975Z [command]/usr/bin/git version
+build	Run actions/checkout@v4	2026-01-02T03:46:37.3149463Z git version 2.52.0
+build	Run actions/checkout@v4	2026-01-02T03:46:37.3177020Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-02T03:46:37.3192067Z Temporarily overriding HOME='/home/runner/work/_temp/dbda705d-60ec-4233-b572-beae25f246c7' before making global git config changes
+build	Run actions/checkout@v4	2026-01-02T03:46:37.3193514Z Adding repository directory to the temporary git global config as a safe directory
+build	Run actions/checkout@v4	2026-01-02T03:46:37.3207291Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/kotlin-miniscript/kotlin-miniscript/kotlin-crypto-pure
+build	Run actions/checkout@v4	2026-01-02T03:46:37.3247491Z ##[group]Initializing the repository
+build	Run actions/checkout@v4	2026-01-02T03:46:37.3252750Z [command]/usr/bin/git init /home/runner/work/kotlin-miniscript/kotlin-miniscript/kotlin-crypto-pure
+build	Run actions/checkout@v4	2026-01-02T03:46:37.3291838Z hint: Using 'master' as the name for the initial branch. This default branch name
+build	Run actions/checkout@v4	2026-01-02T03:46:37.3292873Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+build	Run actions/checkout@v4	2026-01-02T03:46:37.3294005Z hint: to use in all of your new repositories, which will suppress this warning,
+build	Run actions/checkout@v4	2026-01-02T03:46:37.3294685Z hint: call:
+build	Run actions/checkout@v4	2026-01-02T03:46:37.3294929Z hint:
+build	Run actions/checkout@v4	2026-01-02T03:46:37.3295234Z hint: 	git config --global init.defaultBranch <name>
+build	Run actions/checkout@v4	2026-01-02T03:46:37.3295578Z hint:
+build	Run actions/checkout@v4	2026-01-02T03:46:37.3295900Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+build	Run actions/checkout@v4	2026-01-02T03:46:37.3296424Z hint: 'development'. The just-created branch can be renamed via this command:
+build	Run actions/checkout@v4	2026-01-02T03:46:37.3296828Z hint:
+build	Run actions/checkout@v4	2026-01-02T03:46:37.3297053Z hint: 	git branch -m <name>
+build	Run actions/checkout@v4	2026-01-02T03:46:37.3297301Z hint:
+build	Run actions/checkout@v4	2026-01-02T03:46:37.3297652Z hint: Disable this message with "git config set advice.defaultBranchName false"
+build	Run actions/checkout@v4	2026-01-02T03:46:37.3298376Z Initialized empty Git repository in /home/runner/work/kotlin-miniscript/kotlin-miniscript/kotlin-crypto-pure/.git/
+build	Run actions/checkout@v4	2026-01-02T03:46:37.3305247Z [command]/usr/bin/git remote add origin https://github.com/ImL1s/kotlin-crypto-pure
+build	Run actions/checkout@v4	2026-01-02T03:46:37.3336963Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-02T03:46:37.3337454Z ##[group]Disabling automatic garbage collection
+build	Run actions/checkout@v4	2026-01-02T03:46:37.3341803Z [command]/usr/bin/git config --local gc.auto 0
+build	Run actions/checkout@v4	2026-01-02T03:46:37.3371261Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-02T03:46:37.3371794Z ##[group]Setting up auth
+build	Run actions/checkout@v4	2026-01-02T03:46:37.3378357Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+build	Run actions/checkout@v4	2026-01-02T03:46:37.3408945Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build	Run actions/checkout@v4	2026-01-02T03:46:37.3642507Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build	Run actions/checkout@v4	2026-01-02T03:46:37.3673970Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build	Run actions/checkout@v4	2026-01-02T03:46:37.3906777Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+build	Run actions/checkout@v4	2026-01-02T03:46:37.3939653Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+build	Run actions/checkout@v4	2026-01-02T03:46:37.4185138Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+build	Run actions/checkout@v4	2026-01-02T03:46:37.4224012Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-02T03:46:37.4224712Z ##[group]Determining the default branch
+build	Run actions/checkout@v4	2026-01-02T03:46:37.4227122Z Retrieving the default branch name
+build	Run actions/checkout@v4	2026-01-02T03:46:37.6979362Z Default branch 'main'
+build	Run actions/checkout@v4	2026-01-02T03:46:37.6981084Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-02T03:46:37.6981827Z ##[group]Fetching the repository
+build	Run actions/checkout@v4	2026-01-02T03:46:37.6987578Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +refs/heads/main:refs/remotes/origin/main
+build	Run actions/checkout@v4	2026-01-02T03:46:38.0582535Z From https://github.com/ImL1s/kotlin-crypto-pure
+build	Run actions/checkout@v4	2026-01-02T03:46:38.0584045Z  * [new branch]      main       -> origin/main
+build	Run actions/checkout@v4	2026-01-02T03:46:38.0617793Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-02T03:46:38.0618799Z ##[group]Determining the checkout info
+build	Run actions/checkout@v4	2026-01-02T03:46:38.0620088Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-02T03:46:38.0627489Z [command]/usr/bin/git sparse-checkout disable
+build	Run actions/checkout@v4	2026-01-02T03:46:38.0671040Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+build	Run actions/checkout@v4	2026-01-02T03:46:38.0705490Z ##[group]Checking out the ref
+build	Run actions/checkout@v4	2026-01-02T03:46:38.0710132Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+build	Run actions/checkout@v4	2026-01-02T03:46:38.0858527Z Switched to a new branch 'main'
+build	Run actions/checkout@v4	2026-01-02T03:46:38.0860514Z branch 'main' set up to track 'origin/main'.
+build	Run actions/checkout@v4	2026-01-02T03:46:38.0869811Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-02T03:46:38.0913606Z [command]/usr/bin/git log -1 --format=%H
+build	Run actions/checkout@v4	2026-01-02T03:46:38.0940387Z 89e61c54a6704a8e26d77d6cbbc25447013a962f
+build	Run actions/checkout@v4	﻿2026-01-02T03:46:38.1130352Z ##[group]Run actions/checkout@v4
+build	Run actions/checkout@v4	2026-01-02T03:46:38.1130695Z with:
+build	Run actions/checkout@v4	2026-01-02T03:46:38.1130885Z   repository: ImL1s/kotlin-address
+build	Run actions/checkout@v4	2026-01-02T03:46:38.1131121Z   path: kotlin-address
+build	Run actions/checkout@v4	2026-01-02T03:46:38.1131496Z   token: ***
+build	Run actions/checkout@v4	2026-01-02T03:46:38.1131689Z   ssh-strict: true
+build	Run actions/checkout@v4	2026-01-02T03:46:38.1131874Z   ssh-user: git
+build	Run actions/checkout@v4	2026-01-02T03:46:38.1132063Z   persist-credentials: true
+build	Run actions/checkout@v4	2026-01-02T03:46:38.1132267Z   clean: true
+build	Run actions/checkout@v4	2026-01-02T03:46:38.1132461Z   sparse-checkout-cone-mode: true
+build	Run actions/checkout@v4	2026-01-02T03:46:38.1132688Z   fetch-depth: 1
+build	Run actions/checkout@v4	2026-01-02T03:46:38.1132876Z   fetch-tags: false
+build	Run actions/checkout@v4	2026-01-02T03:46:38.1133055Z   show-progress: true
+build	Run actions/checkout@v4	2026-01-02T03:46:38.1133447Z   lfs: false
+build	Run actions/checkout@v4	2026-01-02T03:46:38.1133622Z   submodules: false
+build	Run actions/checkout@v4	2026-01-02T03:46:38.1133842Z   set-safe-directory: true
+build	Run actions/checkout@v4	2026-01-02T03:46:38.1134083Z env:
+build	Run actions/checkout@v4	2026-01-02T03:46:38.1134349Z   GITHUB_TOKEN: ***
+build	Run actions/checkout@v4	2026-01-02T03:46:38.1134533Z   GITHUB_ACTOR: ImL1s
+build	Run actions/checkout@v4	2026-01-02T03:46:38.1134721Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-02T03:46:38.2082709Z Syncing repository: ImL1s/kotlin-address
+build	Run actions/checkout@v4	2026-01-02T03:46:38.2090444Z ##[group]Getting Git version info
+build	Run actions/checkout@v4	2026-01-02T03:46:38.2091602Z Working directory is '/home/runner/work/kotlin-miniscript/kotlin-miniscript/kotlin-address'
+build	Run actions/checkout@v4	2026-01-02T03:46:38.2133980Z [command]/usr/bin/git version
+build	Run actions/checkout@v4	2026-01-02T03:46:38.2172075Z git version 2.52.0
+build	Run actions/checkout@v4	2026-01-02T03:46:38.2199325Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-02T03:46:38.2221051Z Temporarily overriding HOME='/home/runner/work/_temp/35736822-5e01-4b5e-aa28-4bdd874026e4' before making global git config changes
+build	Run actions/checkout@v4	2026-01-02T03:46:38.2222423Z Adding repository directory to the temporary git global config as a safe directory
+build	Run actions/checkout@v4	2026-01-02T03:46:38.2227654Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/kotlin-miniscript/kotlin-miniscript/kotlin-address
+build	Run actions/checkout@v4	2026-01-02T03:46:38.2259424Z ##[group]Initializing the repository
+build	Run actions/checkout@v4	2026-01-02T03:46:38.2265073Z [command]/usr/bin/git init /home/runner/work/kotlin-miniscript/kotlin-miniscript/kotlin-address
+build	Run actions/checkout@v4	2026-01-02T03:46:38.2302037Z hint: Using 'master' as the name for the initial branch. This default branch name
+build	Run actions/checkout@v4	2026-01-02T03:46:38.2302947Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+build	Run actions/checkout@v4	2026-01-02T03:46:38.2303968Z hint: to use in all of your new repositories, which will suppress this warning,
+build	Run actions/checkout@v4	2026-01-02T03:46:38.2304833Z hint: call:
+build	Run actions/checkout@v4	2026-01-02T03:46:38.2305134Z hint:
+build	Run actions/checkout@v4	2026-01-02T03:46:38.2305386Z hint: 	git config --global init.defaultBranch <name>
+build	Run actions/checkout@v4	2026-01-02T03:46:38.2305684Z hint:
+build	Run actions/checkout@v4	2026-01-02T03:46:38.2306000Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+build	Run actions/checkout@v4	2026-01-02T03:46:38.2306476Z hint: 'development'. The just-created branch can be renamed via this command:
+build	Run actions/checkout@v4	2026-01-02T03:46:38.2306815Z hint:
+build	Run actions/checkout@v4	2026-01-02T03:46:38.2306997Z hint: 	git branch -m <name>
+build	Run actions/checkout@v4	2026-01-02T03:46:38.2307227Z hint:
+build	Run actions/checkout@v4	2026-01-02T03:46:38.2307519Z hint: Disable this message with "git config set advice.defaultBranchName false"
+build	Run actions/checkout@v4	2026-01-02T03:46:38.2308151Z Initialized empty Git repository in /home/runner/work/kotlin-miniscript/kotlin-miniscript/kotlin-address/.git/
+build	Run actions/checkout@v4	2026-01-02T03:46:38.2313983Z [command]/usr/bin/git remote add origin https://github.com/ImL1s/kotlin-address
+build	Run actions/checkout@v4	2026-01-02T03:46:38.2344708Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-02T03:46:38.2345125Z ##[group]Disabling automatic garbage collection
+build	Run actions/checkout@v4	2026-01-02T03:46:38.2349194Z [command]/usr/bin/git config --local gc.auto 0
+build	Run actions/checkout@v4	2026-01-02T03:46:38.2378019Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-02T03:46:38.2378455Z ##[group]Setting up auth
+build	Run actions/checkout@v4	2026-01-02T03:46:38.2384688Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+build	Run actions/checkout@v4	2026-01-02T03:46:38.2414937Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build	Run actions/checkout@v4	2026-01-02T03:46:38.2646638Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build	Run actions/checkout@v4	2026-01-02T03:46:38.2677507Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build	Run actions/checkout@v4	2026-01-02T03:46:38.2903139Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+build	Run actions/checkout@v4	2026-01-02T03:46:38.2935425Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+build	Run actions/checkout@v4	2026-01-02T03:46:38.3167421Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+build	Run actions/checkout@v4	2026-01-02T03:46:38.3202691Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-02T03:46:38.3204042Z ##[group]Determining the default branch
+build	Run actions/checkout@v4	2026-01-02T03:46:38.3207196Z Retrieving the default branch name
+build	Run actions/checkout@v4	2026-01-02T03:46:38.6282382Z Default branch 'master'
+build	Run actions/checkout@v4	2026-01-02T03:46:38.6284269Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-02T03:46:38.6286927Z ##[group]Fetching the repository
+build	Run actions/checkout@v4	2026-01-02T03:46:38.6291263Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +refs/heads/master:refs/remotes/origin/master
+build	Run actions/checkout@v4	2026-01-02T03:46:38.9666854Z From https://github.com/ImL1s/kotlin-address
+build	Run actions/checkout@v4	2026-01-02T03:46:38.9667803Z  * [new branch]      master     -> origin/master
+build	Run actions/checkout@v4	2026-01-02T03:46:38.9699008Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-02T03:46:38.9699613Z ##[group]Determining the checkout info
+build	Run actions/checkout@v4	2026-01-02T03:46:38.9700948Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-02T03:46:38.9706954Z [command]/usr/bin/git sparse-checkout disable
+build	Run actions/checkout@v4	2026-01-02T03:46:38.9752587Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+build	Run actions/checkout@v4	2026-01-02T03:46:38.9785456Z ##[group]Checking out the ref
+build	Run actions/checkout@v4	2026-01-02T03:46:38.9790008Z [command]/usr/bin/git checkout --progress --force -B master refs/remotes/origin/master
+build	Run actions/checkout@v4	2026-01-02T03:46:38.9895823Z Reset branch 'master'
+build	Run actions/checkout@v4	2026-01-02T03:46:38.9897717Z branch 'master' set up to track 'origin/master'.
+build	Run actions/checkout@v4	2026-01-02T03:46:38.9905698Z ##[endgroup]
+build	Run actions/checkout@v4	2026-01-02T03:46:38.9949552Z [command]/usr/bin/git log -1 --format=%H
+build	Run actions/checkout@v4	2026-01-02T03:46:38.9976585Z d5b4c600f70d6333652c1bbb94b83bd6a438e0cd
+build	Set up JDK 17	﻿2026-01-02T03:46:39.0158778Z ##[group]Run actions/setup-java@v4
+build	Set up JDK 17	2026-01-02T03:46:39.0159059Z with:
+build	Set up JDK 17	2026-01-02T03:46:39.0159235Z   java-version: 17
+build	Set up JDK 17	2026-01-02T03:46:39.0159426Z   distribution: temurin
+build	Set up JDK 17	2026-01-02T03:46:39.0159638Z   java-package: jdk
+build	Set up JDK 17	2026-01-02T03:46:39.0159826Z   check-latest: false
+build	Set up JDK 17	2026-01-02T03:46:39.0160230Z   server-id: github
+build	Set up JDK 17	2026-01-02T03:46:39.0160450Z   server-username: GITHUB_ACTOR
+build	Set up JDK 17	2026-01-02T03:46:39.0160690Z   server-password: GITHUB_TOKEN
+build	Set up JDK 17	2026-01-02T03:46:39.0160912Z   overwrite-settings: true
+build	Set up JDK 17	2026-01-02T03:46:39.0161124Z   job-status: success
+build	Set up JDK 17	2026-01-02T03:46:39.0161485Z   token: ***
+build	Set up JDK 17	2026-01-02T03:46:39.0161661Z env:
+build	Set up JDK 17	2026-01-02T03:46:39.0161918Z   GITHUB_TOKEN: ***
+build	Set up JDK 17	2026-01-02T03:46:39.0162102Z   GITHUB_ACTOR: ImL1s
+build	Set up JDK 17	2026-01-02T03:46:39.0162291Z ##[endgroup]
+build	Set up JDK 17	2026-01-02T03:46:39.2175460Z ##[group]Installed distributions
+build	Set up JDK 17	2026-01-02T03:46:39.2398543Z Resolved Java 17.0.17+10 from tool-cache
+build	Set up JDK 17	2026-01-02T03:46:39.2399570Z Setting Java 17.0.17+10 as the default
+build	Set up JDK 17	2026-01-02T03:46:39.2412907Z Creating toolchains.xml for JDK version 17 from temurin
+build	Set up JDK 17	2026-01-02T03:46:39.2490914Z Writing to /home/runner/.m2/toolchains.xml
+build	Set up JDK 17	2026-01-02T03:46:39.2491376Z 
+build	Set up JDK 17	2026-01-02T03:46:39.2491515Z Java configuration:
+build	Set up JDK 17	2026-01-02T03:46:39.2493343Z   Distribution: temurin
+build	Set up JDK 17	2026-01-02T03:46:39.2493701Z   Version: 17.0.17+10
+build	Set up JDK 17	2026-01-02T03:46:39.2494422Z   Path: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.17-10/x64
+build	Set up JDK 17	2026-01-02T03:46:39.2494865Z 
+build	Set up JDK 17	2026-01-02T03:46:39.2495264Z ##[endgroup]
+build	Set up JDK 17	2026-01-02T03:46:39.2510028Z Creating settings.xml with server-id: github
+build	Set up JDK 17	2026-01-02T03:46:39.2516386Z Writing to /home/runner/.m2/settings.xml
+build	Setup Gradle	﻿2026-01-02T03:46:39.2654341Z ##[group]Run gradle/gradle-build-action@v2
+build	Setup Gradle	2026-01-02T03:46:39.2654638Z with:
+build	Setup Gradle	2026-01-02T03:46:39.2654818Z   cache-disabled: false
+build	Setup Gradle	2026-01-02T03:46:39.2655019Z   cache-read-only: false
+build	Setup Gradle	2026-01-02T03:46:39.2655228Z   cache-write-only: false
+build	Setup Gradle	2026-01-02T03:46:39.2655442Z   cache-overwrite-existing: false
+build	Setup Gradle	2026-01-02T03:46:39.2655721Z   gradle-home-cache-includes: caches
+build	Setup Gradle	notifications
+build	Setup Gradle	
+build	Setup Gradle	2026-01-02T03:46:39.2656019Z   gradle-home-cache-cleanup: false
+build	Setup Gradle	2026-01-02T03:46:39.2656262Z   generate-job-summary: true
+build	Setup Gradle	2026-01-02T03:46:39.2656479Z   dependency-graph: disabled
+build	Setup Gradle	2026-01-02T03:46:39.2656712Z   gradle-home-cache-strict-match: false
+build	Setup Gradle	2026-01-02T03:46:39.2656978Z   workflow-job-context: null
+build	Setup Gradle	2026-01-02T03:46:39.2657356Z   github-token: ***
+build	Setup Gradle	2026-01-02T03:46:39.2657531Z env:
+build	Setup Gradle	2026-01-02T03:46:39.2657758Z   GITHUB_TOKEN: ***
+build	Setup Gradle	2026-01-02T03:46:39.2657935Z   GITHUB_ACTOR: ImL1s
+build	Setup Gradle	2026-01-02T03:46:39.2658232Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.17-10/x64
+build	Setup Gradle	2026-01-02T03:46:39.2658676Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.17-10/x64
+build	Setup Gradle	2026-01-02T03:46:39.2659048Z ##[endgroup]
+build	Setup Gradle	2026-01-02T03:46:39.5640533Z ##[group]Restore Gradle state from cache
+build	Setup Gradle	2026-01-02T03:46:39.6460251Z ##[warning]Failed to restore v8-gradle|Linux|ci-build[37a6259cc0c1dae299a7866489dff0bd]-0156685a309e54ee85bd6608a5ac61f429aa7881: Error: Cache service responded with 400
+build	Setup Gradle	2026-01-02T03:46:39.6486986Z Gradle User Home cache not found. Will initialize empty.
+build	Setup Gradle	2026-01-02T03:46:39.6487991Z ##[endgroup]
+build	Build with Gradle	﻿2026-01-02T03:46:39.6625695Z ##[group]Run cd kotlin-miniscript
+build	Build with Gradle	2026-01-02T03:46:39.6626044Z [36;1mcd kotlin-miniscript[0m
+build	Build with Gradle	2026-01-02T03:46:39.6626295Z [36;1mchmod +x gradlew[0m
+build	Build with Gradle	2026-01-02T03:46:39.6626494Z [36;1m./gradlew build[0m
+build	Build with Gradle	2026-01-02T03:46:39.6660782Z shell: /usr/bin/bash -e {0}
+build	Build with Gradle	2026-01-02T03:46:39.6661035Z env:
+build	Build with Gradle	2026-01-02T03:46:39.6661400Z   GITHUB_TOKEN: ***
+build	Build with Gradle	2026-01-02T03:46:39.6661587Z   GITHUB_ACTOR: ImL1s
+build	Build with Gradle	2026-01-02T03:46:39.6661892Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.17-10/x64
+build	Build with Gradle	2026-01-02T03:46:39.6662345Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.17-10/x64
+build	Build with Gradle	2026-01-02T03:46:39.6662712Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true
+build	Build with Gradle	2026-01-02T03:46:39.6662971Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true
+build	Build with Gradle	2026-01-02T03:46:39.6663478Z ##[endgroup]
+build	Build with Gradle	2026-01-02T03:46:39.7873469Z Downloading https://services.gradle.org/distributions/gradle-8.13-all.zip
+build	Build with Gradle	2026-01-02T03:46:42.1324029Z ......................10%......................20%......................30%......................40%......................50%......................60%......................70%.......................80%......................90%......................100%
+build	Build with Gradle	2026-01-02T03:46:45.3532095Z 
+build	Build with Gradle	2026-01-02T03:46:45.3549763Z Welcome to Gradle 8.13!
+build	Build with Gradle	2026-01-02T03:46:45.3550438Z 
+build	Build with Gradle	2026-01-02T03:46:45.3550918Z Here are the highlights of this release:
+build	Build with Gradle	2026-01-02T03:46:45.3551655Z  - Daemon JVM auto-provisioning
+build	Build with Gradle	2026-01-02T03:46:45.3552416Z  - Enhancements for Scala plugin and JUnit testing
+build	Build with Gradle	2026-01-02T03:46:45.3553075Z  - Improvements for build authors and plugin developers
+build	Build with Gradle	2026-01-02T03:46:45.3553728Z 
+build	Build with Gradle	2026-01-02T03:46:45.3554063Z For more details see https://docs.gradle.org/8.13/release-notes.html
+build	Build with Gradle	2026-01-02T03:46:45.3554560Z 
+build	Build with Gradle	2026-01-02T03:46:45.4516020Z Starting a Gradle Daemon (subsequent builds will be faster)
+build	Build with Gradle	2026-01-02T03:47:11.9542212Z 
+build	Build with Gradle	2026-01-02T03:47:11.9551913Z > Configure project :kotlin-crypto-pure
+build	Build with Gradle	2026-01-02T03:47:11.9598095Z e: file:///home/runner/work/kotlin-miniscript/kotlin-miniscript/kotlin-crypto-pure/build.gradle.kts:2:11: Unresolved reference: libs
+build	Build with Gradle	2026-01-02T03:47:11.9599852Z e: file:///home/runner/work/kotlin-miniscript/kotlin-miniscript/kotlin-crypto-pure/build.gradle.kts:3:11: Unresolved reference: libs
+build	Build with Gradle	2026-01-02T03:47:11.9600980Z 
+build	Build with Gradle	2026-01-02T03:47:11.9601244Z FAILURE: Build failed with an exception.
+build	Build with Gradle	2026-01-02T03:47:11.9601622Z 
+build	Build with Gradle	2026-01-02T03:47:11.9601810Z * Where:
+build	Build with Gradle	2026-01-02T03:47:11.9602578Z Build file '/home/runner/work/kotlin-miniscript/kotlin-miniscript/kotlin-crypto-pure/build.gradle.kts' line: 2
+build	Build with Gradle	2026-01-02T03:47:11.9603638Z 
+build	Build with Gradle	2026-01-02T03:47:11.9603849Z * What went wrong:
+build	Build with Gradle	2026-01-02T03:47:11.9604244Z Script compilation errors:
+build	Build with Gradle	2026-01-02T03:47:11.9610620Z 
+build	Build with Gradle	2026-01-02T03:47:11.9610891Z   Line 2:     alias(libs.plugins.kotlin.multiplatform)
+build	Build with Gradle	2026-01-02T03:47:11.9611405Z                     ^ Unresolved reference: libs
+build	Build with Gradle	2026-01-02T03:47:11.9611693Z 
+build	Build with Gradle	2026-01-02T03:47:11.9611862Z   Line 3:     alias(libs.plugins.android.library)
+build	Build with Gradle	2026-01-02T03:47:11.9612307Z                     ^ Unresolved reference: libs
+build	Build with Gradle	2026-01-02T03:47:11.9612591Z 
+build	Build with Gradle	2026-01-02T03:47:11.9612691Z 2 errors
+build	Build with Gradle	2026-01-02T03:47:11.9612841Z 
+build	Build with Gradle	2026-01-02T03:47:11.9612947Z * Try:
+build	Build with Gradle	2026-01-02T03:47:11.9613481Z > Run with --stacktrace option to get the stack trace.
+build	Build with Gradle	2026-01-02T03:47:11.9614039Z > Run with --info or --debug option to get more log output.
+build	Build with Gradle	2026-01-02T03:47:11.9614529Z > Run with --scan to get full insights.
+build	Build with Gradle	2026-01-02T03:47:11.9614956Z > Get more help at https://help.gradle.org.
+build	Build with Gradle	2026-01-02T03:47:11.9615263Z 
+build	Build with Gradle	2026-01-02T03:47:11.9615378Z BUILD FAILED in 32s
+build	Build with Gradle	2026-01-02T03:47:12.3919270Z ##[error]Process completed with exit code 1.
+build	Post Setup Gradle	﻿2026-01-02T03:47:12.4013512Z Post job cleanup.
+build	Post Setup Gradle	2026-01-02T03:47:12.5835855Z In final post-action step, saving state and writing summary
+build	Post Setup Gradle	2026-01-02T03:47:12.5842461Z Stopping all Gradle daemons before saving Gradle User Home state
+build	Post Setup Gradle	2026-01-02T03:47:12.5847422Z ##[group]Caching Gradle state
+build	Post Setup Gradle	2026-01-02T03:47:12.6379727Z Caching generated-gradle-jars with path '/home/runner/.gradle/caches/8.13/generated-gradle-jars/gradle-api-8.13.jar' and cache key: generated-gradle-jars-697f81ec8d80712ce7da03f513960371
+build	Post Setup Gradle	2026-01-02T03:47:12.6426631Z Caching wrapper-zips with path '/home/runner/.gradle/wrapper/dists/gradle-8.13-all/54h0s9kvb6g2sinako7ub77ku' and cache key: wrapper-zips-27b0df0fa405636de00fcbfa0ab79410
+build	Post Setup Gradle	2026-01-02T03:47:12.6665389Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/kotlin-miniscript/kotlin-miniscript --files-from manifest.txt --use-compress-program zstdmt
+build	Post Setup Gradle	2026-01-02T03:47:12.6699817Z Caching instrumented-jars with path '/home/runner/.gradle/caches/jars-*/*' and cache key: instrumented-jars-95b7e2b5493ea7df9cecfe22df7a3bdc
+build	Post Setup Gradle	2026-01-02T03:47:12.6716515Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/kotlin-miniscript/kotlin-miniscript --files-from manifest.txt --use-compress-program zstdmt
+build	Post Setup Gradle	2026-01-02T03:47:12.6898917Z Caching kotlin-dsl with path '/home/runner/.gradle/caches/*/kotlin-dsl/*/*' and cache key: kotlin-dsl-2519696f2dea0487607dd3c9c3617270
+build	Post Setup Gradle	2026-01-02T03:47:12.6975778Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/kotlin-miniscript/kotlin-miniscript --files-from manifest.txt --use-compress-program zstdmt
+build	Post Setup Gradle	2026-01-02T03:47:12.8366586Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/kotlin-miniscript/kotlin-miniscript --files-from manifest.txt --use-compress-program zstdmt
+build	Post Setup Gradle	2026-01-02T03:47:12.8979825Z ##[warning]Failed to save cache entry with path '/home/runner/.gradle/caches/jars-*/*,zstd-without-long,1.0' and key: instrumented-jars-95b7e2b5493ea7df9cecfe22df7a3bdc: Error: <h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0wD9XaQAAAAADMeo7vkQsQJwA6tRKPa3IQ0hJMzBFREdFMDMwNwBFZGdl
+build	Post Setup Gradle	2026-01-02T03:47:12.9318070Z ##[warning]Failed to save cache entry with path '/home/runner/.gradle/caches/*/kotlin-dsl/*/*,zstd-without-long,1.0' and key: kotlin-dsl-2519696f2dea0487607dd3c9c3617270: Error: <h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0wD9XaQAAAABlbIx2jmq8Toz4jwWWeHWqQ0hHRURHRTE3MTcARWRnZQ==
+build	Post Setup Gradle	2026-01-02T03:47:13.4651175Z ##[warning]Failed to save cache entry with path '/home/runner/.gradle/caches/8.13/generated-gradle-jars/gradle-api-8.13.jar,zstd-without-long,1.0' and key: generated-gradle-jars-697f81ec8d80712ce7da03f513960371: Error: <h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0wT9XaQAAAAB9sjLeEt+SRYG3y/WhQC+gQ0hHRURHRTE3MTcARWRnZQ==
+build	Post Setup Gradle	2026-01-02T03:47:15.0741617Z ##[warning]Failed to save cache entry with path '/home/runner/.gradle/wrapper/dists/gradle-8.13-all/54h0s9kvb6g2sinako7ub77ku,zstd-without-long,1.0' and key: wrapper-zips-27b0df0fa405636de00fcbfa0ab79410: Error: <h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0wz9XaQAAAABPF6rJu7mEQbjICWFeDR4UQ0hHRURHRTE3MTcARWRnZQ==
+build	Post Setup Gradle	2026-01-02T03:47:16.1270630Z Caching Gradle User Home with cache key: v8-gradle|Linux|ci-build[37a6259cc0c1dae299a7866489dff0bd]-0156685a309e54ee85bd6608a5ac61f429aa7881
+build	Post Setup Gradle	2026-01-02T03:47:16.1461328Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/kotlin-miniscript/kotlin-miniscript --files-from manifest.txt --use-compress-program zstdmt
+build	Post Setup Gradle	2026-01-02T03:47:16.1653946Z ##[warning]Failed to save cache entry with path '/home/runner/.gradle/caches,/home/runner/.gradle/notifications,/home/runner/.gradle/.gradle-build-action,zstd-without-long,1.0' and key: v8-gradle|Linux|ci-build[37a6259cc0c1dae299a7866489dff0bd]-0156685a309e54ee85bd6608a5ac61f429aa7881: Error: <h2>Our services aren't available right now</h2><p>We're working to restore all services as soon as possible. Please check back soon.</p>0xD9XaQAAAABMRTE8+ypgS4RFXutsgfV8Q0hHRURHRTE3MTcARWRnZQ==
+build	Post Setup Gradle	2026-01-02T03:47:16.1659298Z ##[endgroup]
+build	Post Setup Gradle	2026-01-02T03:47:16.1659653Z Writing job summary
+build	Post Set up JDK 17	﻿2026-01-02T03:47:16.1835599Z Post job cleanup.
+build	Post Run actions/checkout@v4	﻿2026-01-02T03:47:16.3620900Z Post job cleanup.
+build	Post Run actions/checkout@v4	2026-01-02T03:47:16.4600332Z [command]/usr/bin/git version
+build	Post Run actions/checkout@v4	2026-01-02T03:47:16.4641401Z git version 2.52.0
+build	Post Run actions/checkout@v4	2026-01-02T03:47:16.4687800Z Temporarily overriding HOME='/home/runner/work/_temp/0a06f84e-5eaa-4d05-8d20-f9a4689cfd2e' before making global git config changes
+build	Post Run actions/checkout@v4	2026-01-02T03:47:16.4689109Z Adding repository directory to the temporary git global config as a safe directory
+build	Post Run actions/checkout@v4	2026-01-02T03:47:16.4704921Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/kotlin-miniscript/kotlin-miniscript/kotlin-address
+build	Post Run actions/checkout@v4	2026-01-02T03:47:16.4742913Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+build	Post Run actions/checkout@v4	2026-01-02T03:47:16.4777729Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build	Post Run actions/checkout@v4	2026-01-02T03:47:16.5009729Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build	Post Run actions/checkout@v4	2026-01-02T03:47:16.5032730Z http.https://github.com/.extraheader
+build	Post Run actions/checkout@v4	2026-01-02T03:47:16.5045197Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+build	Post Run actions/checkout@v4	2026-01-02T03:47:16.5075674Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build	Post Run actions/checkout@v4	2026-01-02T03:47:16.5298687Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+build	Post Run actions/checkout@v4	2026-01-02T03:47:16.5330482Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+build	Post Run actions/checkout@v4	﻿2026-01-02T03:47:16.5678877Z Post job cleanup.
+build	Post Run actions/checkout@v4	2026-01-02T03:47:16.6660733Z [command]/usr/bin/git version
+build	Post Run actions/checkout@v4	2026-01-02T03:47:16.6705556Z git version 2.52.0
+build	Post Run actions/checkout@v4	2026-01-02T03:47:16.6755604Z Temporarily overriding HOME='/home/runner/work/_temp/390cf4a5-bfb9-4b73-bc3f-0c41b9f0c75e' before making global git config changes
+build	Post Run actions/checkout@v4	2026-01-02T03:47:16.6757000Z Adding repository directory to the temporary git global config as a safe directory
+build	Post Run actions/checkout@v4	2026-01-02T03:47:16.6763691Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/kotlin-miniscript/kotlin-miniscript/kotlin-crypto-pure
+build	Post Run actions/checkout@v4	2026-01-02T03:47:16.6817832Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+build	Post Run actions/checkout@v4	2026-01-02T03:47:16.6855687Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build	Post Run actions/checkout@v4	2026-01-02T03:47:16.7099524Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build	Post Run actions/checkout@v4	2026-01-02T03:47:16.7123435Z http.https://github.com/.extraheader
+build	Post Run actions/checkout@v4	2026-01-02T03:47:16.7136826Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+build	Post Run actions/checkout@v4	2026-01-02T03:47:16.7174206Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build	Post Run actions/checkout@v4	2026-01-02T03:47:16.7406235Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+build	Post Run actions/checkout@v4	2026-01-02T03:47:16.7439809Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+build	Post Run actions/checkout@v4	﻿2026-01-02T03:47:16.7843079Z Post job cleanup.
+build	Post Run actions/checkout@v4	2026-01-02T03:47:16.8840529Z [command]/usr/bin/git version
+build	Post Run actions/checkout@v4	2026-01-02T03:47:16.8878506Z git version 2.52.0
+build	Post Run actions/checkout@v4	2026-01-02T03:47:16.8923932Z Temporarily overriding HOME='/home/runner/work/_temp/a283da98-84eb-4b35-9b5c-cdd47dc866d4' before making global git config changes
+build	Post Run actions/checkout@v4	2026-01-02T03:47:16.8925273Z Adding repository directory to the temporary git global config as a safe directory
+build	Post Run actions/checkout@v4	2026-01-02T03:47:16.8931287Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/kotlin-miniscript/kotlin-miniscript/kotlin-miniscript
+build	Post Run actions/checkout@v4	2026-01-02T03:47:16.8974917Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+build	Post Run actions/checkout@v4	2026-01-02T03:47:16.9008504Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build	Post Run actions/checkout@v4	2026-01-02T03:47:16.9254229Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build	Post Run actions/checkout@v4	2026-01-02T03:47:16.9279297Z http.https://github.com/.extraheader
+build	Post Run actions/checkout@v4	2026-01-02T03:47:16.9292698Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+build	Post Run actions/checkout@v4	2026-01-02T03:47:16.9325033Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build	Post Run actions/checkout@v4	2026-01-02T03:47:16.9556863Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+build	Post Run actions/checkout@v4	2026-01-02T03:47:16.9589819Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+build	Complete job	﻿2026-01-02T03:47:16.9940081Z Cleaning up orphan processes
+build	Complete job	2026-01-02T03:47:17.0221600Z Terminate orphan process: pid (2435) (java)

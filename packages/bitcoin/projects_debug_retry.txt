@@ -1,0 +1,84 @@
+ANTIGRAVITY: Including secp from D:\OtherProject\mine\crypto\secp256k1-kmp
+ANTIGRAVITY: Including crypto-pure from D:\OtherProject\mine\crypto\kotlin-crypto-pure
+skipping android buildANTIGRAVITY: Including build from D:\OtherProject\mine\crypto\kotlin-blockchain-client
+ANTIGRAVITY: Including build from D:\OtherProject\mine\crypto\kotlin-tx-builder
+ANTIGRAVITY: Including build from D:\OtherProject\mine\crypto\kotlin-utxo
+ANTIGRAVITY: Including build from D:\OtherProject\mine\crypto\kotlin-address
+ANTIGRAVITY: Including build from D:\OtherProject\mine\crypto\kotlin-solana
+ANTIGRAVITY: Including build from ../kotlin-crypto-pure
+ANTIGRAVITY: Including build from ../kotlin-address
+
+> Configure project :kotlin-utxo
+w: The Default Kotlin Hierarchy Template was not applied to 'project ':kotlin-utxo'':
+Explicit .dependsOn() edges were configured for the following source sets:
+[androidMain, iosArm64Main, iosMain, iosSimulatorArm64Main, iosX64Main, jvmMain, watchosArm64Main, watchosMain, watchosSimulatorArm64Main]
+
+Consider removing dependsOn-calls or disabling the default template by adding
+    'kotlin.mpp.applyDefaultHierarchyTemplate=false'
+to your gradle.properties
+
+Learn more about hierarchy templates: https://kotl.in/hierarchy-template
+
+
+> Configure project :kotlin-blockchain-client
+w: The Default Kotlin Hierarchy Template was not applied to 'project ':kotlin-blockchain-client'':
+Explicit .dependsOn() edges were configured for the following source sets:
+[iosArm64Main, iosMain, iosSimulatorArm64Main, iosX64Main, watchosArm64Main, watchosMain, watchosSimulatorArm64Main, watchosX64Main]
+
+Consider removing dependsOn-calls or disabling the default template by adding
+    'kotlin.mpp.applyDefaultHierarchyTemplate=false'
+to your gradle.properties
+
+Learn more about hierarchy templates: https://kotl.in/hierarchy-template
+
+
+> Configure project :
+w: The following Kotlin/Native targets cannot be built on this machine and are disabled:
+iosArm64, iosSimulatorArm64, iosX64, macosArm64, macosX64, watchosArm64, watchosSimulatorArm64, watchosX64
+To hide this message, add 'kotlin.native.ignoreDisabledTargets=true' to the Gradle properties.
+
+w: The Default Kotlin Hierarchy Template was not applied to 'root project 'bitcoin-kmp'':
+Explicit .dependsOn() edges were configured for the following source sets:
+[iosArm64Main, iosArm64Test, iosMain, iosSimulatorArm64Main, iosSimulatorArm64Test, iosTest, iosX64Main, iosX64Test, linuxArm64Main, linuxArm64Test, linuxMain, linuxTest, linuxX64Main, linuxX64Test, macosArm64Main, macosArm64Test, macosMain, macosTest, macosX64Main, macosX64Test, nativeMain, nativeTest, watchosArm64Main, watchosArm64Test, watchosMain, watchosSimulatorArm64Main, watchosSimulatorArm64Test, watchosTest, watchosX64Main, watchosX64Test]
+
+Consider removing dependsOn-calls or disabling the default template by adding
+    'kotlin.mpp.applyDefaultHierarchyTemplate=false'
+to your gradle.properties
+
+Learn more about hierarchy templates: https://kotl.in/hierarchy-template
+
+
+> Task :projects
+
+Projects:
+
+------------------------------------------------------------
+Root project 'bitcoin-kmp'
+------------------------------------------------------------
+
+Root project 'bitcoin-kmp'
+No sub-projects
+
+Included builds:
+
++--- Included build ':secp256k1-kmp'
++--- Included build ':kotlin-crypto-pure'
++--- Included build ':kotlin-blockchain-client'
++--- Included build ':kotlin-tx-builder'
++--- Included build ':kotlin-address'
++--- Included build ':kotlin-utxo'
+\--- Included build ':kotlin-solana'
+
+To see a list of the tasks of a project, run gradlew <project-path>:tasks
+For example, try running gradlew :tasks
+
+[Incubating] Problems report is available at: file:///D:/OtherProject/mine/crypto/bitcoin-kmp/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 11s
+1 actionable task: 1 executed

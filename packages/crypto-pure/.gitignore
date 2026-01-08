@@ -1,0 +1,23 @@
+# Standard Kotlin/Gradle Ignores
+.gradle
+build/
+.idea/
+.DS_Store
+local.properties
+*.iml
+.cxx
+/captures
+.externalNativeBuild
+
+# Test logs and debug outputs
+*.log
+*_log.txt
+*_fail*.txt
+*_test*.log
+*_debug*.log
+run_log*.txt
+pure_*.txt
+client_*.txt
+
+# Kotlin build outputs
+*.hprof

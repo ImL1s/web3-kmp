@@ -1,0 +1,13 @@
+build/
+.gradle/
+.idea/
+local.properties
+*.iml
+.DS_Store
+
+# Test logs and debug outputs
+*.log
+*_log*.txt
+*_fail*.txt
+run_log*.txt
+client_*.txt

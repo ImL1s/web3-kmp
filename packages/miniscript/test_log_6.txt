@@ -1,0 +1,409 @@
+Initialized native services in: C:\Users\aa223\.gradle\native
+Initialized jansi services in: C:\Users\aa223\.gradle\native
+The client will now receive all logging from the daemon (pid: 97840). The daemon log file: C:\Users\aa223\.gradle\daemon\8.13\daemon-97840.out.log
+Starting 25th build in daemon [uptime: 1 hrs 3 mins 30.073 secs, performance: 99%, GC rate: 0.27/s, heap usage: 9% of 512 MiB, non-heap usage: 29% of 384 MiB]
+Using 32 worker leases.
+Now considering [D:\OtherProject\mine\crypto\kotlin-miniscript] as hierarchies to watch
+Watching the file system is configured to be enabled if available
+File system watching is active
+Starting Build
+Settings evaluated using settings file 'D:\OtherProject\mine\crypto\kotlin-miniscript\settings.gradle.kts'.
+Projects loaded. Root project using build file 'D:\OtherProject\mine\crypto\kotlin-miniscript\build.gradle.kts'.
+Included projects: [root project 'kotlin-miniscript', project ':kotlin-crypto-pure']
+
+> Configure project :
+Evaluating root project 'kotlin-miniscript' using build file 'D:\OtherProject\mine\crypto\kotlin-miniscript\build.gradle.kts'.
+Resolved plugin [id: 'org.jetbrains.kotlin.multiplatform', version: '2.1.0']
+Resolved plugin [id: 'com.android.library', version: '8.5.2']
+Using Kotlin Gradle Plugin gradle85 variant
+Using default execution profile
+kotlin scripting plugin: created the scripting discovery configuration: kotlinScriptDef
+kotlin scripting plugin: created the scripting discovery configuration: testKotlinScriptDef
+w: The following Kotlin/Native targets cannot be built on this machine and are disabled:
+iosArm64, iosSimulatorArm64, iosX64, macosArm64, macosX64, watchosArm64, watchosSimulatorArm64, watchosX64
+To hide this message, add 'kotlin.native.ignoreDisabledTargets=true' to the Gradle properties.
+
+
+> Configure project :kotlin-crypto-pure
+Evaluating project ':kotlin-crypto-pure' using build file 'D:\OtherProject\mine\crypto\kotlin-crypto-pure\build.gradle.kts'.
+Resolved plugin [id: 'org.jetbrains.kotlin.multiplatform', version: '2.1.0']
+Resolved plugin [id: 'com.android.library', version: '8.5.2']
+Resolved plugin [id: 'org.gradle.maven-publish']
+Using Kotlin Gradle Plugin gradle85 variant
+Using default execution profile
+kotlin scripting plugin: created the scripting discovery configuration: kotlinScriptDef
+kotlin scripting plugin: created the scripting discovery configuration: testKotlinScriptDef
+w: The following Kotlin/Native targets cannot be built on this machine and are disabled:
+iosArm64, iosSimulatorArm64, iosX64, watchosArm64, watchosSimulatorArm64, watchosX64
+To hide this message, add 'kotlin.native.ignoreDisabledTargets=true' to the Gradle properties.
+
+w: The Default Kotlin Hierarchy Template was not applied to 'project ':kotlin-crypto-pure'':
+Explicit .dependsOn() edges were configured for the following source sets:
+[iosArm64Main, iosMain, iosSimulatorArm64Main, iosX64Main, watchosArm64Main, watchosMain, watchosSimulatorArm64Main, watchosX64Main]
+
+Consider removing dependsOn-calls or disabling the default template by adding
+    'kotlin.mpp.applyDefaultHierarchyTemplate=false'
+to your gradle.properties
+
+Learn more about hierarchy templates: https://kotl.in/hierarchy-template
+
+All projects evaluated.
+Task name matched 'clean'
+Task name matched 'jvmTest'
+Selected primary task 'clean' from project :
+Selected primary task 'jvmTest' from project :
+Tasks to be executed: [task ':cleanIosSimulatorArm64Test', task ':cleanIosX64Test', task ':cleanJvmTest', task ':cleanMacosArm64Test', task ':cleanMacosX64Test', task ':cleanWatchosSimulatorArm64Test', task ':cleanWatchosX64Test', task ':cleanAllTests', task ':clean', task ':kotlin-crypto-pure:cleanIosSimulatorArm64Test', task ':kotlin-crypto-pure:cleanIosX64Test', task ':kotlin-crypto-pure:cleanJvmTest', task ':kotlin-crypto-pure:cleanWatchosSimulatorArm64Test', task ':kotlin-crypto-pure:cleanWatchosX64Test', task ':kotlin-crypto-pure:cleanAllTests', task ':kotlin-crypto-pure:clean', task ':checkKotlinGradlePluginConfigurationErrors', task ':kotlin-crypto-pure:checkKotlinGradlePluginConfigurationErrors', task ':kotlin-crypto-pure:compileKotlinJvm', task ':kotlin-crypto-pure:jvmProcessResources', task ':kotlin-crypto-pure:jvmMainClasses', task ':kotlin-crypto-pure:jvmJar', task ':compileKotlinJvm', task ':jvmProcessResources', task ':jvmMainClasses', task ':jvmJar', task ':compileTestKotlinJvm', task ':jvmTestProcessResources', task ':jvmTestClasses', task ':jvmTest', task ':kotlin-crypto-pure:compileTestKotlinJvm', task ':kotlin-crypto-pure:jvmTestProcessResources', task ':kotlin-crypto-pure:jvmTestClasses', task ':kotlin-crypto-pure:jvmTest']
+Tasks that were excluded: []
+Resolve mutations for :cleanIosSimulatorArm64Test (Thread[#3734,Execution worker,5,main]) started.
+:cleanIosSimulatorArm64Test (Thread[#3734,Execution worker,5,main]) started.
+
+> Task :cleanIosSimulatorArm64Test UP-TO-DATE
+Caching disabled for task ':cleanIosSimulatorArm64Test' because:
+  Build cache is disabled
+Task ':cleanIosSimulatorArm64Test' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Resolve mutations for :cleanIosX64Test (Thread[#3734,Execution worker,5,main]) started.
+:cleanIosX64Test (Thread[#3734,Execution worker,5,main]) started.
+
+> Task :cleanIosX64Test UP-TO-DATE
+Caching disabled for task ':cleanIosX64Test' because:
+  Build cache is disabled
+Task ':cleanIosX64Test' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Resolve mutations for :cleanJvmTest (Thread[#3734,Execution worker,5,main]) started.
+:cleanJvmTest (Thread[#3763,Execution worker Thread 29,5,main]) started.
+
+> Task :cleanJvmTest
+Caching disabled for task ':cleanJvmTest' because:
+  Build cache is disabled
+Task ':cleanJvmTest' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Resolve mutations for :cleanMacosArm64Test (Thread[#3763,Execution worker Thread 29,5,main]) started.
+:cleanMacosArm64Test (Thread[#3763,Execution worker Thread 29,5,main]) started.
+
+> Task :cleanMacosArm64Test UP-TO-DATE
+Caching disabled for task ':cleanMacosArm64Test' because:
+  Build cache is disabled
+Task ':cleanMacosArm64Test' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Resolve mutations for :cleanMacosX64Test (Thread[#3763,Execution worker Thread 29,5,main]) started.
+:cleanMacosX64Test (Thread[#3763,Execution worker Thread 29,5,main]) started.
+
+> Task :cleanMacosX64Test UP-TO-DATE
+Caching disabled for task ':cleanMacosX64Test' because:
+  Build cache is disabled
+Task ':cleanMacosX64Test' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Resolve mutations for :cleanWatchosSimulatorArm64Test (Thread[#3763,Execution worker Thread 29,5,main]) started.
+:cleanWatchosSimulatorArm64Test (Thread[#3763,Execution worker Thread 29,5,main]) started.
+
+> Task :cleanWatchosSimulatorArm64Test UP-TO-DATE
+Caching disabled for task ':cleanWatchosSimulatorArm64Test' because:
+  Build cache is disabled
+Task ':cleanWatchosSimulatorArm64Test' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Resolve mutations for :cleanWatchosX64Test (Thread[#3763,Execution worker Thread 29,5,main]) started.
+:cleanWatchosX64Test (Thread[#3763,Execution worker Thread 29,5,main]) started.
+
+> Task :cleanWatchosX64Test UP-TO-DATE
+Caching disabled for task ':cleanWatchosX64Test' because:
+  Build cache is disabled
+Task ':cleanWatchosX64Test' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Resolve mutations for :cleanAllTests (Thread[#3763,Execution worker Thread 29,5,main]) started.
+:cleanAllTests (Thread[#3763,Execution worker Thread 29,5,main]) started.
+
+> Task :cleanAllTests
+Skipping task ':cleanAllTests' as it has no actions.
+Resolve mutations for :clean (Thread[#3763,Execution worker Thread 29,5,main]) started.
+:clean (Thread[#3763,Execution worker Thread 29,5,main]) started.
+
+> Task :clean
+Caching disabled for task ':clean' because:
+  Build cache is disabled
+Task ':clean' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Resolve mutations for :kotlin-crypto-pure:cleanIosSimulatorArm64Test (Thread[#3763,Execution worker Thread 29,5,main]) started.
+:kotlin-crypto-pure:cleanIosSimulatorArm64Test (Thread[#3763,Execution worker Thread 29,5,main]) started.
+
+> Task :kotlin-crypto-pure:cleanIosSimulatorArm64Test UP-TO-DATE
+Caching disabled for task ':kotlin-crypto-pure:cleanIosSimulatorArm64Test' because:
+  Build cache is disabled
+Task ':kotlin-crypto-pure:cleanIosSimulatorArm64Test' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Resolve mutations for :kotlin-crypto-pure:cleanIosX64Test (Thread[#3763,Execution worker Thread 29,5,main]) started.
+:kotlin-crypto-pure:cleanIosX64Test (Thread[#3763,Execution worker Thread 29,5,main]) started.
+
+> Task :kotlin-crypto-pure:cleanIosX64Test UP-TO-DATE
+Caching disabled for task ':kotlin-crypto-pure:cleanIosX64Test' because:
+  Build cache is disabled
+Task ':kotlin-crypto-pure:cleanIosX64Test' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Resolve mutations for :kotlin-crypto-pure:cleanJvmTest (Thread[#3763,Execution worker Thread 29,5,main]) started.
+:kotlin-crypto-pure:cleanJvmTest (Thread[#3763,Execution worker Thread 29,5,main]) started.
+
+> Task :kotlin-crypto-pure:cleanJvmTest
+Caching disabled for task ':kotlin-crypto-pure:cleanJvmTest' because:
+  Build cache is disabled
+Task ':kotlin-crypto-pure:cleanJvmTest' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Resolve mutations for :kotlin-crypto-pure:cleanWatchosSimulatorArm64Test (Thread[#3763,Execution worker Thread 29,5,main]) started.
+:kotlin-crypto-pure:cleanWatchosSimulatorArm64Test (Thread[#3763,Execution worker Thread 29,5,main]) started.
+
+> Task :kotlin-crypto-pure:cleanWatchosSimulatorArm64Test UP-TO-DATE
+Caching disabled for task ':kotlin-crypto-pure:cleanWatchosSimulatorArm64Test' because:
+  Build cache is disabled
+Task ':kotlin-crypto-pure:cleanWatchosSimulatorArm64Test' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Resolve mutations for :kotlin-crypto-pure:cleanWatchosX64Test (Thread[#3763,Execution worker Thread 29,5,main]) started.
+:kotlin-crypto-pure:cleanWatchosX64Test (Thread[#3763,Execution worker Thread 29,5,main]) started.
+
+> Task :kotlin-crypto-pure:cleanWatchosX64Test UP-TO-DATE
+Caching disabled for task ':kotlin-crypto-pure:cleanWatchosX64Test' because:
+  Build cache is disabled
+Task ':kotlin-crypto-pure:cleanWatchosX64Test' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Resolve mutations for :kotlin-crypto-pure:cleanAllTests (Thread[#3763,Execution worker Thread 29,5,main]) started.
+:kotlin-crypto-pure:cleanAllTests (Thread[#3763,Execution worker Thread 29,5,main]) started.
+
+> Task :kotlin-crypto-pure:cleanAllTests
+Skipping task ':kotlin-crypto-pure:cleanAllTests' as it has no actions.
+Resolve mutations for :kotlin-crypto-pure:clean (Thread[#3763,Execution worker Thread 29,5,main]) started.
+:kotlin-crypto-pure:clean (Thread[#3763,Execution worker Thread 29,5,main]) started.
+destroyer locations for task group 0 (Thread[#3753,Execution worker Thread 19,5,main]) started.
+
+> Task :kotlin-crypto-pure:clean
+Caching disabled for task ':kotlin-crypto-pure:clean' because:
+  Build cache is disabled
+Task ':kotlin-crypto-pure:clean' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Resolve mutations for :checkKotlinGradlePluginConfigurationErrors (Thread[#3763,Execution worker Thread 29,5,main]) started.
+:checkKotlinGradlePluginConfigurationErrors (Thread[#3763,Execution worker Thread 29,5,main]) started.
+
+> Task :checkKotlinGradlePluginConfigurationErrors SKIPPED
+Skipping task ':checkKotlinGradlePluginConfigurationErrors' as task onlyIf 'errorDiagnostics are present' is false.
+Resolve mutations for :kotlin-crypto-pure:checkKotlinGradlePluginConfigurationErrors (Thread[#3763,Execution worker Thread 29,5,main]) started.
+:kotlin-crypto-pure:checkKotlinGradlePluginConfigurationErrors (Thread[#3763,Execution worker Thread 29,5,main]) started.
+
+> Task :kotlin-crypto-pure:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Skipping task ':kotlin-crypto-pure:checkKotlinGradlePluginConfigurationErrors' as task onlyIf 'errorDiagnostics are present' is false.
+Resolve mutations for :kotlin-crypto-pure:compileKotlinJvm (Thread[#3763,Execution worker Thread 29,5,main]) started.
+:kotlin-crypto-pure:compileKotlinJvm (Thread[#3763,Execution worker Thread 29,5,main]) started.
+Resolve mutations for :kotlin-crypto-pure:jvmProcessResources (Thread[#3741,Execution worker Thread 8,5,main]) started.
+:kotlin-crypto-pure:jvmProcessResources (Thread[#3741,Execution worker Thread 8,5,main]) started.
+
+> Task :kotlin-crypto-pure:jvmProcessResources NO-SOURCE
+Skipping task ':kotlin-crypto-pure:jvmProcessResources' as it has no source files and no previous output files.
+Resolve mutations for :jvmProcessResources (Thread[#3741,Execution worker Thread 8,5,main]) started.
+:jvmProcessResources (Thread[#3741,Execution worker Thread 8,5,main]) started.
+
+> Task :jvmProcessResources NO-SOURCE
+Skipping task ':jvmProcessResources' as it has no source files and no previous output files.
+Resolve mutations for :jvmTestProcessResources (Thread[#3741,Execution worker Thread 8,5,main]) started.
+:jvmTestProcessResources (Thread[#3741,Execution worker Thread 8,5,main]) started.
+
+> Task :jvmTestProcessResources NO-SOURCE
+Skipping task ':jvmTestProcessResources' as it has no source files and no previous output files.
+Resolve mutations for :kotlin-crypto-pure:jvmTestProcessResources (Thread[#3741,Execution worker Thread 8,5,main]) started.
+:kotlin-crypto-pure:jvmTestProcessResources (Thread[#3741,Execution worker Thread 8,5,main]) started.
+
+> Task :kotlin-crypto-pure:jvmTestProcessResources NO-SOURCE
+Skipping task ':kotlin-crypto-pure:jvmTestProcessResources' as it has no source files and no previous output files.
+
+> Task :kotlin-crypto-pure:compileKotlinJvm
+Caching disabled for task ':kotlin-crypto-pure:compileKotlinJvm' because:
+  Build cache is disabled
+Task ':kotlin-crypto-pure:compileKotlinJvm' is not up-to-date because:
+  Output property 'classpathSnapshotProperties.classpathSnapshotDir' file D:\OtherProject\mine\crypto\kotlin-crypto-pure\build\kotlin\compileKotlinJvm\classpath-snapshot has been removed.
+  Output property 'classpathSnapshotProperties.classpathSnapshotDir' file D:\OtherProject\mine\crypto\kotlin-crypto-pure\build\kotlin\compileKotlinJvm\classpath-snapshot\shrunk-classpath-snapshot.bin has been removed.
+  Output property 'destinationDirectory' file D:\OtherProject\mine\crypto\kotlin-crypto-pure\build\classes\kotlin\jvm\main has been removed.
+  and more...
+The input changes require a full rebuild for incremental task ':kotlin-crypto-pure:compileKotlinJvm'.
+Kotlin source files: D:\OtherProject\mine\crypto\kotlin-crypto-pure\src\jvmMain\kotlin\io\github\iml1s\crypto\JvmActuals.kt, D:\OtherProject\mine\crypto\kotlin-crypto-pure\src\commonMain\kotlin\io\github\iml1s\crypto\AesGcm.kt, D:\OtherProject\mine\crypto\kotlin-crypto-pure\src\commonMain\kotlin\io\github\iml1s\crypto\Base58.kt, D:\OtherProject\mine\crypto\kotlin-crypto-pure\src\commonMain\kotlin\io\github\iml1s\crypto\Bip32.kt, D:\OtherProject\mine\crypto\kotlin-crypto-pure\src\commonMain\kotlin\io\github\iml1s\crypto\Bip39.kt, D:\OtherProject\mine\crypto\kotlin-crypto-pure\src\commonMain\kotlin\io\github\iml1s\crypto\BIP39WordList.kt, D:\OtherProject\mine\crypto\kotlin-crypto-pure\src\commonMain\kotlin\io\github\iml1s\crypto\CryptoProvider.kt, D:\OtherProject\mine\crypto\kotlin-crypto-pure\src\commonMain\kotlin\io\github\iml1s\crypto\Digest.kt, D:\OtherProject\mine\crypto\kotlin-crypto-pure\src\commonMain\kotlin\io\github\iml1s\crypto\HDWallet.kt, D:\OtherProject\mine\crypto\kotlin-crypto-pure\src\commonMain\kotlin\io\github\iml1s\crypto\Hex.kt, D:\OtherProject\mine\crypto\kotlin-crypto-pure\src\commonMain\kotlin\io\github\iml1s\crypto\HmacSha256.kt, D:\OtherProject\mine\crypto\kotlin-crypto-pure\src\commonMain\kotlin\io\github\iml1s\crypto\HmacSha512.kt, D:\OtherProject\mine\crypto\kotlin-crypto-pure\src\commonMain\kotlin\io\github\iml1s\crypto\Keccak256.kt, D:\OtherProject\mine\crypto\kotlin-crypto-pure\src\commonMain\kotlin\io\github\iml1s\crypto\Pbkdf2.kt, D:\OtherProject\mine\crypto\kotlin-crypto-pure\src\commonMain\kotlin\io\github\iml1s\crypto\PureEthereumCrypto.kt, D:\OtherProject\mine\crypto\kotlin-crypto-pure\src\commonMain\kotlin\io\github\iml1s\crypto\Ripemd160.kt, D:\OtherProject\mine\crypto\kotlin-crypto-pure\src\commonMain\kotlin\io\github\iml1s\crypto\RLP.kt, D:\OtherProject\mine\crypto\kotlin-crypto-pure\src\commonMain\kotlin\io\github\iml1s\crypto\Secp256k1Provider.kt, D:\OtherProject\mine\crypto\kotlin-crypto-pure\src\commonMain\kotlin\io\github\iml1s\crypto\Secp256k1Pure.kt, D:\OtherProject\mine\crypto\kotlin-crypto-pure\src\commonMain\kotlin\io\github\iml1s\crypto\SecureByteArray.kt
+Java source files: 
+Script source files: 
+Script file extensions: 
+Using Kotlin/JVM incremental compilation
+[KOTLIN] Kotlin compilation 'jdkHome' argument: C:\Program Files\Eclipse Adoptium\jdk-21.0.9.10-hotspot
+Options for KOTLIN DAEMON: IncrementalCompilationOptions(super=CompilationOptions(compilerMode=INCREMENTAL_COMPILER, targetPlatform=JVM, reportCategories=[0, 3], reportSeverity=2, requestedCompilationResults=[0], kotlinScriptExtensions=[]), areFileChangesKnown=false, modifiedFiles=null, deletedFiles=null, classpathChanges=NotAvailableForNonIncrementalRun, workingDir=D:\OtherProject\mine\crypto\kotlin-crypto-pure\build\kotlin\compileKotlinJvm\cacheable, multiModuleICSettings=MultiModuleICSettings(buildHistoryFile=D:\OtherProject\mine\crypto\kotlin-crypto-pure\build\kotlin\compileKotlinJvm\local-state\build-history.bin, useModuleDetection=false), usePreciseJavaTracking=true, icFeatures=IncrementalCompilationFeatures(withAbiSnapshot=false, preciseCompilationResultsBackup=true, keepIncrementalCompilationCachesInMemory=true, enableUnsafeIncrementalCompilationForMultiplatform=false), outputFiles=[D:\OtherProject\mine\crypto\kotlin-crypto-pure\build\classes\kotlin\jvm\main, D:\OtherProject\mine\crypto\kotlin-crypto-pure\build\kotlin\compileKotlinJvm\cacheable, D:\OtherProject\mine\crypto\kotlin-crypto-pure\build\kotlin\compileKotlinJvm\local-state])
+w: file:///D:/OtherProject/mine/crypto/kotlin-crypto-pure/src/commonMain/kotlin/io/github/iml1s/crypto/AesGcm.kt:78:1 'expect'/'actual' classes (including interfaces, objects, annotations, enums, and 'actual' typealiases) are in Beta. You can use -Xexpect-actual-classes flag to suppress this warning. Also see: https://youtrack.jetbrains.com/issue/KT-61573
+w: file:///D:/OtherProject/mine/crypto/kotlin-crypto-pure/src/commonMain/kotlin/io/github/iml1s/crypto/Digest.kt:61:13 Check for instance is always 'true'.
+w: file:///D:/OtherProject/mine/crypto/kotlin-crypto-pure/src/commonMain/kotlin/io/github/iml1s/crypto/Digest.kt:80:13 Check for instance is always 'true'.
+w: file:///D:/OtherProject/mine/crypto/kotlin-crypto-pure/src/commonMain/kotlin/io/github/iml1s/crypto/Secp256k1Provider.kt:12:1 'expect'/'actual' classes (including interfaces, objects, annotations, enums, and 'actual' typealiases) are in Beta. You can use -Xexpect-actual-classes flag to suppress this warning. Also see: https://youtrack.jetbrains.com/issue/KT-61573
+w: file:///D:/OtherProject/mine/crypto/kotlin-crypto-pure/src/jvmMain/kotlin/io/github/iml1s/crypto/JvmActuals.kt:36:1 'expect'/'actual' classes (including interfaces, objects, annotations, enums, and 'actual' typealiases) are in Beta. You can use -Xexpect-actual-classes flag to suppress this warning. Also see: https://youtrack.jetbrains.com/issue/KT-61573
+w: file:///D:/OtherProject/mine/crypto/kotlin-crypto-pure/src/jvmMain/kotlin/io/github/iml1s/crypto/JvmActuals.kt:60:1 'expect'/'actual' classes (including interfaces, objects, annotations, enums, and 'actual' typealiases) are in Beta. You can use -Xexpect-actual-classes flag to suppress this warning. Also see: https://youtrack.jetbrains.com/issue/KT-61573
+Finished executing kotlin compiler using DAEMON strategy
+Resolve mutations for :kotlin-crypto-pure:jvmMainClasses (Thread[#3763,Execution worker Thread 29,5,main]) started.
+:kotlin-crypto-pure:jvmMainClasses (Thread[#3763,Execution worker Thread 29,5,main]) started.
+
+> Task :kotlin-crypto-pure:jvmMainClasses
+Skipping task ':kotlin-crypto-pure:jvmMainClasses' as it has no actions.
+Resolve mutations for :kotlin-crypto-pure:jvmJar (Thread[#3763,Execution worker Thread 29,5,main]) started.
+:kotlin-crypto-pure:jvmJar (Thread[#3763,Execution worker Thread 29,5,main]) started.
+
+> Task :kotlin-crypto-pure:jvmJar
+Caching disabled for task ':kotlin-crypto-pure:jvmJar' because:
+  Build cache is disabled
+  Not worth caching
+Task ':kotlin-crypto-pure:jvmJar' is not up-to-date because:
+  Output property 'archiveFile' file D:\OtherProject\mine\crypto\kotlin-crypto-pure\build\libs\kotlin-crypto-pure-jvm-1.0.0.jar has been removed.
+file or directory 'D:\OtherProject\mine\crypto\kotlin-crypto-pure\build\processedResources\jvm\main', not found
+work action resolve kotlin-crypto-pure-jvm-1.0.0.jar (project :kotlin-crypto-pure) (Thread[#3763,Execution worker Thread 29,5,main]) started.
+Resolve mutations for :compileKotlinJvm (Thread[#3763,Execution worker Thread 29,5,main]) started.
+:compileKotlinJvm (Thread[#3763,Execution worker Thread 29,5,main]) started.
+Resolve mutations for :kotlin-crypto-pure:compileTestKotlinJvm (Thread[#3751,Execution worker Thread 17,5,main]) started.
+:kotlin-crypto-pure:compileTestKotlinJvm (Thread[#3751,Execution worker Thread 17,5,main]) started.
+
+> Task :kotlin-crypto-pure:compileTestKotlinJvm
+Caching disabled for task ':kotlin-crypto-pure:compileTestKotlinJvm' because:
+  Build cache is disabled
+Task ':kotlin-crypto-pure:compileTestKotlinJvm' is not up-to-date because:
+  Output property 'classpathSnapshotProperties.classpathSnapshotDir' file D:\OtherProject\mine\crypto\kotlin-crypto-pure\build\kotlin\compileTestKotlinJvm\classpath-snapshot has been removed.
+  Output property 'classpathSnapshotProperties.classpathSnapshotDir' file D:\OtherProject\mine\crypto\kotlin-crypto-pure\build\kotlin\compileTestKotlinJvm\classpath-snapshot\shrunk-classpath-snapshot.bin has been removed.
+  Output property 'destinationDirectory' file D:\OtherProject\mine\crypto\kotlin-crypto-pure\build\classes\kotlin\jvm\test has been removed.
+  and more...
+The input changes require a full rebuild for incremental task ':kotlin-crypto-pure:compileTestKotlinJvm'.
+Kotlin source files: D:\OtherProject\mine\crypto\kotlin-crypto-pure\src\jvmTest\kotlin\io\github\iml1s\crypto\Bip39Actuals.kt, D:\OtherProject\mine\crypto\kotlin-crypto-pure\src\jvmTest\kotlin\io\github\iml1s\crypto\PlatformSetup.kt, D:\OtherProject\mine\crypto\kotlin-crypto-pure\src\commonTest\kotlin\io\github\iml1s\crypto\AesGcmTest.kt, D:\OtherProject\mine\crypto\kotlin-crypto-pure\src\commonTest\kotlin\io\github\iml1s\crypto\Bip39Test.kt, D:\OtherProject\mine\crypto\kotlin-crypto-pure\src\commonTest\kotlin\io\github\iml1s\crypto\Bip39VectorTest.kt, D:\OtherProject\mine\crypto\kotlin-crypto-pure\src\commonTest\kotlin\io\github\iml1s\crypto\CryptoProviderConsistencyTest.kt, D:\OtherProject\mine\crypto\kotlin-crypto-pure\src\commonTest\kotlin\io\github\iml1s\crypto\CryptoProviderTest.kt, D:\OtherProject\mine\crypto\kotlin-crypto-pure\src\commonTest\kotlin\io\github\iml1s\crypto\Pbkdf2Test.kt, D:\OtherProject\mine\crypto\kotlin-crypto-pure\src\commonTest\kotlin\io\github\iml1s\crypto\PlatformSetup.kt, D:\OtherProject\mine\crypto\kotlin-crypto-pure\src\commonTest\kotlin\io\github\iml1s\crypto\PureEthereumCryptoTest.kt, D:\OtherProject\mine\crypto\kotlin-crypto-pure\src\commonTest\kotlin\io\github\iml1s\crypto\SchnorrTest.kt, D:\OtherProject\mine\crypto\kotlin-crypto-pure\src\commonTest\kotlin\io\github\iml1s\crypto\Secp256k1PureTest.kt, D:\OtherProject\mine\crypto\kotlin-crypto-pure\src\commonTest\kotlin\io\github\iml1s\crypto\Secp256k1RFC6979Test.kt, D:\OtherProject\mine\crypto\kotlin-crypto-pure\src\commonTest\kotlin\io\github\iml1s\crypto\TaprootBip341OfficialTest.kt, D:\OtherProject\mine\crypto\kotlin-crypto-pure\src\commonTest\kotlin\io\github\iml1s\crypto\TaprootBip341Test.kt, D:\OtherProject\mine\crypto\kotlin-crypto-pure\src\commonTest\kotlin\io\github\iml1s\crypto\TaprootKeyPathSpendingTest.kt, D:\OtherProject\mine\crypto\kotlin-crypto-pure\src\commonTest\kotlin\io\github\iml1s\crypto\TaprootTest.kt
+Java source files: 
+Script source files: 
+Script file extensions: 
+Using Kotlin/JVM incremental compilation
+[KOTLIN] Kotlin compilation 'jdkHome' argument: C:\Program Files\Eclipse Adoptium\jdk-21.0.9.10-hotspot
+Options for KOTLIN DAEMON: IncrementalCompilationOptions(super=CompilationOptions(compilerMode=INCREMENTAL_COMPILER, targetPlatform=JVM, reportCategories=[0, 3], reportSeverity=2, requestedCompilationResults=[0], kotlinScriptExtensions=[]), areFileChangesKnown=false, modifiedFiles=null, deletedFiles=null, classpathChanges=NotAvailableForNonIncrementalRun, workingDir=D:\OtherProject\mine\crypto\kotlin-crypto-pure\build\kotlin\compileTestKotlinJvm\cacheable, multiModuleICSettings=MultiModuleICSettings(buildHistoryFile=D:\OtherProject\mine\crypto\kotlin-crypto-pure\build\kotlin\compileTestKotlinJvm\local-state\build-history.bin, useModuleDetection=false), usePreciseJavaTracking=true, icFeatures=IncrementalCompilationFeatures(withAbiSnapshot=false, preciseCompilationResultsBackup=true, keepIncrementalCompilationCachesInMemory=true, enableUnsafeIncrementalCompilationForMultiplatform=false), outputFiles=[D:\OtherProject\mine\crypto\kotlin-crypto-pure\build\classes\kotlin\jvm\test, D:\OtherProject\mine\crypto\kotlin-crypto-pure\build\kotlin\compileTestKotlinJvm\cacheable, D:\OtherProject\mine\crypto\kotlin-crypto-pure\build\kotlin\compileTestKotlinJvm\local-state])
+Finished executing kotlin compiler using DAEMON strategy
+Resolve mutations for :kotlin-crypto-pure:jvmTestClasses (Thread[#3751,Execution worker Thread 17,5,main]) started.
+:kotlin-crypto-pure:jvmTestClasses (Thread[#3751,Execution worker Thread 17,5,main]) started.
+
+> Task :kotlin-crypto-pure:jvmTestClasses
+Skipping task ':kotlin-crypto-pure:jvmTestClasses' as it has no actions.
+Resolve mutations for :kotlin-crypto-pure:jvmTest (Thread[#3751,Execution worker Thread 17,5,main]) started.
+:kotlin-crypto-pure:jvmTest (Thread[#3751,Execution worker Thread 17,5,main]) started.
+
+> Task :compileKotlinJvm
+Caching disabled for task ':compileKotlinJvm' because:
+  Build cache is disabled
+Task ':compileKotlinJvm' is not up-to-date because:
+  Output property 'classpathSnapshotProperties.classpathSnapshotDir' file D:\OtherProject\mine\crypto\kotlin-miniscript\build\kotlin\compileKotlinJvm\classpath-snapshot has been removed.
+  Output property 'classpathSnapshotProperties.classpathSnapshotDir' file D:\OtherProject\mine\crypto\kotlin-miniscript\build\kotlin\compileKotlinJvm\classpath-snapshot\shrunk-classpath-snapshot.bin has been removed.
+  Output property 'destinationDirectory' file D:\OtherProject\mine\crypto\kotlin-miniscript\build\classes\kotlin\jvm\main has been removed.
+  and more...
+The input changes require a full rebuild for incremental task ':compileKotlinJvm'.
+file or directory 'D:\OtherProject\mine\crypto\kotlin-miniscript\src\jvmMain\kotlin', not found
+file or directory 'D:\OtherProject\mine\crypto\kotlin-miniscript\src\jvmMain\kotlin', not found
+file or directory 'D:\OtherProject\mine\crypto\kotlin-miniscript\src\jvmMain\kotlin', not found
+file or directory 'D:\OtherProject\mine\crypto\kotlin-miniscript\src\jvmMain\kotlin', not found
+file or directory 'D:\OtherProject\mine\crypto\kotlin-miniscript\src\jvmMain\kotlin', not found
+file or directory 'D:\OtherProject\mine\crypto\kotlin-miniscript\src\jvmMain\kotlin', not found
+Kotlin source files: D:\OtherProject\mine\crypto\kotlin-miniscript\src\commonMain\kotlin\io\github\iml1s\miniscript\context\ScriptContext.kt, D:\OtherProject\mine\crypto\kotlin-miniscript\src\commonMain\kotlin\io\github\iml1s\miniscript\LockTime.kt, D:\OtherProject\mine\crypto\kotlin-miniscript\src\commonMain\kotlin\io\github\iml1s\miniscript\Miniscript.kt, D:\OtherProject\mine\crypto\kotlin-miniscript\src\commonMain\kotlin\io\github\iml1s\miniscript\MiniscriptError.kt, D:\OtherProject\mine\crypto\kotlin-miniscript\src\commonMain\kotlin\io\github\iml1s\miniscript\MiniscriptKey.kt, D:\OtherProject\mine\crypto\kotlin-miniscript\src\commonMain\kotlin\io\github\iml1s\miniscript\node\ScriptElt.kt, D:\OtherProject\mine\crypto\kotlin-miniscript\src\commonMain\kotlin\io\github\iml1s\miniscript\node\Terminal.kt, D:\OtherProject\mine\crypto\kotlin-miniscript\src\commonMain\kotlin\io\github\iml1s\miniscript\parser\MiniscriptParser.kt, D:\OtherProject\mine\crypto\kotlin-miniscript\src\commonMain\kotlin\io\github\iml1s\miniscript\policy\Concrete.kt, D:\OtherProject\mine\crypto\kotlin-miniscript\src\commonMain\kotlin\io\github\iml1s\miniscript\policy\Semantic.kt, D:\OtherProject\mine\crypto\kotlin-miniscript\src\commonMain\kotlin\io\github\iml1s\miniscript\Threshold.kt, D:\OtherProject\mine\crypto\kotlin-miniscript\src\commonMain\kotlin\io\github\iml1s\miniscript\types\Correctness.kt, D:\OtherProject\mine\crypto\kotlin-miniscript\src\commonMain\kotlin\io\github\iml1s\miniscript\types\ExtData.kt, D:\OtherProject\mine\crypto\kotlin-miniscript\src\commonMain\kotlin\io\github\iml1s\miniscript\types\Malleability.kt, D:\OtherProject\mine\crypto\kotlin-miniscript\src\commonMain\kotlin\io\github\iml1s\miniscript\types\Type.kt
+Java source files: 
+Script source files: 
+Script file extensions: 
+Using Kotlin/JVM incremental compilation
+[KOTLIN] Kotlin compilation 'jdkHome' argument: C:\Program Files\Eclipse Adoptium\jdk-21.0.9.10-hotspot
+Options for KOTLIN DAEMON: IncrementalCompilationOptions(super=CompilationOptions(compilerMode=INCREMENTAL_COMPILER, targetPlatform=JVM, reportCategories=[0, 3], reportSeverity=2, requestedCompilationResults=[0], kotlinScriptExtensions=[]), areFileChangesKnown=false, modifiedFiles=null, deletedFiles=null, classpathChanges=NotAvailableForNonIncrementalRun, workingDir=D:\OtherProject\mine\crypto\kotlin-miniscript\build\kotlin\compileKotlinJvm\cacheable, multiModuleICSettings=MultiModuleICSettings(buildHistoryFile=D:\OtherProject\mine\crypto\kotlin-miniscript\build\kotlin\compileKotlinJvm\local-state\build-history.bin, useModuleDetection=false), usePreciseJavaTracking=true, icFeatures=IncrementalCompilationFeatures(withAbiSnapshot=false, preciseCompilationResultsBackup=true, keepIncrementalCompilationCachesInMemory=true, enableUnsafeIncrementalCompilationForMultiplatform=false), outputFiles=[D:\OtherProject\mine\crypto\kotlin-miniscript\build\classes\kotlin\jvm\main, D:\OtherProject\mine\crypto\kotlin-miniscript\build\kotlin\compileKotlinJvm\cacheable, D:\OtherProject\mine\crypto\kotlin-miniscript\build\kotlin\compileKotlinJvm\local-state])
+Finished executing kotlin compiler using DAEMON strategy
+Gradle Test Executor 9 started executing tests.
+
+> Task :kotlin-crypto-pure:jvmTest
+Caching disabled for task ':kotlin-crypto-pure:jvmTest' because:
+  Build cache is disabled
+Task ':kotlin-crypto-pure:jvmTest' is not up-to-date because:
+  Output property 'binaryResultsDirectory' file D:\OtherProject\mine\crypto\kotlin-crypto-pure\build\test-results\jvmTest\binary has been removed.
+  Output property 'binaryResultsDirectory' file D:\OtherProject\mine\crypto\kotlin-crypto-pure\build\test-results\jvmTest\binary\output.bin has been removed.
+  Output property 'binaryResultsDirectory' file D:\OtherProject\mine\crypto\kotlin-crypto-pure\build\test-results\jvmTest\binary\output.bin.idx has been removed.
+  and more...
+Starting process 'Gradle Test Executor 9'. Working directory: D:\OtherProject\mine\crypto\kotlin-crypto-pure Command: C:\Program Files\Eclipse Adoptium\jdk-21.0.9.10-hotspot\bin\java.exe -Dorg.gradle.internal.worker.tmpdir=D:\OtherProject\mine\crypto\kotlin-crypto-pure\build\tmp\jvmTest\work @C:\Users\aa223\.gradle\.tmp\gradle-worker-classpath12210312031498975492txt -Xmx512m -Dfile.encoding=UTF-8 -Duser.country=TW -Duser.language=zh -Duser.variant -ea worker.org.gradle.process.internal.worker.GradleWorkerMain 'Gradle Test Executor 9'
+Successfully started process 'Gradle Test Executor 9'
+
+Bip39Test[jvm] > testVectors[jvm] STANDARD_OUT
+    Testing Vector 1...
+    Vector 1 Passed.
+    Testing Vector 2...
+    Vector 2 Passed.
+    Testing Vector 3...
+    Vector 3 Passed.
+
+SchnorrTest[jvm] > testBip340Vectors[jvm] STANDARD_OUT
+    Testing Schnorr Vector 0 ()...
+      Vector 0 passed!
+    Testing Schnorr Vector 3 (test fails if msg is reduced modulo p or n)...
+      Vector 3 passed!
+    Testing Schnorr Vector 5 (public key not on the curve)...
+      Vector 5 passed!
+    Testing Schnorr Vector 8 (negated s value)...
+      Vector 8 passed!
+
+Gradle Test Executor 9 finished executing tests.
+
+> Task :kotlin-crypto-pure:jvmTest
+Finished generating test XML results (0.005 secs) into: D:\OtherProject\mine\crypto\kotlin-crypto-pure\build\test-results\jvmTest
+Generating HTML test report...
+Finished generating test html results (0.021 secs) into: D:\OtherProject\mine\crypto\kotlin-crypto-pure\build\reports\tests\jvmTest
+Resolve mutations for :jvmMainClasses (Thread[#3751,Execution worker Thread 17,5,main]) started.
+:jvmMainClasses (Thread[#3751,Execution worker Thread 17,5,main]) started.
+
+> Task :jvmMainClasses
+Skipping task ':jvmMainClasses' as it has no actions.
+Resolve mutations for :jvmJar (Thread[#3751,Execution worker Thread 17,5,main]) started.
+:jvmJar (Thread[#3751,Execution worker Thread 17,5,main]) started.
+
+> Task :jvmJar
+Caching disabled for task ':jvmJar' because:
+  Build cache is disabled
+  Not worth caching
+Task ':jvmJar' is not up-to-date because:
+  Output property 'archiveFile' file D:\OtherProject\mine\crypto\kotlin-miniscript\build\libs\kotlin-miniscript-jvm-1.0.0.jar has been removed.
+file or directory 'D:\OtherProject\mine\crypto\kotlin-miniscript\build\processedResources\jvm\main', not found
+Resolve mutations for :compileTestKotlinJvm (Thread[#3751,Execution worker Thread 17,5,main]) started.
+:compileTestKotlinJvm (Thread[#3751,Execution worker Thread 17,5,main]) started.
+
+> Task :compileTestKotlinJvm
+Caching disabled for task ':compileTestKotlinJvm' because:
+  Build cache is disabled
+Task ':compileTestKotlinJvm' is not up-to-date because:
+  Output property 'classpathSnapshotProperties.classpathSnapshotDir' file D:\OtherProject\mine\crypto\kotlin-miniscript\build\kotlin\compileTestKotlinJvm\classpath-snapshot has been removed.
+  Output property 'classpathSnapshotProperties.classpathSnapshotDir' file D:\OtherProject\mine\crypto\kotlin-miniscript\build\kotlin\compileTestKotlinJvm\classpath-snapshot\shrunk-classpath-snapshot.bin has been removed.
+  Output property 'destinationDirectory' file D:\OtherProject\mine\crypto\kotlin-miniscript\build\classes\kotlin\jvm\test has been removed.
+  and more...
+The input changes require a full rebuild for incremental task ':compileTestKotlinJvm'.
+file or directory 'D:\OtherProject\mine\crypto\kotlin-miniscript\src\jvmTest\kotlin', not found
+file or directory 'D:\OtherProject\mine\crypto\kotlin-miniscript\src\jvmTest\kotlin', not found
+file or directory 'D:\OtherProject\mine\crypto\kotlin-miniscript\src\jvmTest\kotlin', not found
+file or directory 'D:\OtherProject\mine\crypto\kotlin-miniscript\src\jvmTest\kotlin', not found
+file or directory 'D:\OtherProject\mine\crypto\kotlin-miniscript\src\jvmTest\kotlin', not found
+file or directory 'D:\OtherProject\mine\crypto\kotlin-miniscript\src\jvmTest\kotlin', not found
+Kotlin source files: D:\OtherProject\mine\crypto\kotlin-miniscript\src\commonTest\kotlin\io\github\iml1s\miniscript\MiniscriptTest.kt, D:\OtherProject\mine\crypto\kotlin-miniscript\src\commonTest\kotlin\io\github\iml1s\miniscript\policy\PolicyTest.kt
+Java source files: 
+Script source files: 
+Script file extensions: 
+Using Kotlin/JVM incremental compilation
+[KOTLIN] Kotlin compilation 'jdkHome' argument: C:\Program Files\Eclipse Adoptium\jdk-21.0.9.10-hotspot
+Options for KOTLIN DAEMON: IncrementalCompilationOptions(super=CompilationOptions(compilerMode=INCREMENTAL_COMPILER, targetPlatform=JVM, reportCategories=[0, 3], reportSeverity=2, requestedCompilationResults=[0], kotlinScriptExtensions=[]), areFileChangesKnown=false, modifiedFiles=null, deletedFiles=null, classpathChanges=NotAvailableForNonIncrementalRun, workingDir=D:\OtherProject\mine\crypto\kotlin-miniscript\build\kotlin\compileTestKotlinJvm\cacheable, multiModuleICSettings=MultiModuleICSettings(buildHistoryFile=D:\OtherProject\mine\crypto\kotlin-miniscript\build\kotlin\compileTestKotlinJvm\local-state\build-history.bin, useModuleDetection=false), usePreciseJavaTracking=true, icFeatures=IncrementalCompilationFeatures(withAbiSnapshot=false, preciseCompilationResultsBackup=true, keepIncrementalCompilationCachesInMemory=true, enableUnsafeIncrementalCompilationForMultiplatform=false), outputFiles=[D:\OtherProject\mine\crypto\kotlin-miniscript\build\classes\kotlin\jvm\test, D:\OtherProject\mine\crypto\kotlin-miniscript\build\kotlin\compileTestKotlinJvm\cacheable, D:\OtherProject\mine\crypto\kotlin-miniscript\build\kotlin\compileTestKotlinJvm\local-state])
+Finished executing kotlin compiler using DAEMON strategy
+Resolve mutations for :jvmTestClasses (Thread[#3751,Execution worker Thread 17,5,main]) started.
+:jvmTestClasses (Thread[#3751,Execution worker Thread 17,5,main]) started.
+
+> Task :jvmTestClasses
+Skipping task ':jvmTestClasses' as it has no actions.
+Resolve mutations for :jvmTest (Thread[#3751,Execution worker Thread 17,5,main]) started.
+:jvmTest (Thread[#3751,Execution worker Thread 17,5,main]) started.
+Gradle Test Executor 10 started executing tests.
+Gradle Test Executor 10 finished executing tests.
+
+> Task :jvmTest
+Caching disabled for task ':jvmTest' because:
+  Build cache is disabled
+Task ':jvmTest' is not up-to-date because:
+  Output property 'binaryResultsDirectory' file D:\OtherProject\mine\crypto\kotlin-miniscript\build\test-results\jvmTest\binary has been removed.
+  Output property 'binaryResultsDirectory' file D:\OtherProject\mine\crypto\kotlin-miniscript\build\test-results\jvmTest\binary\output.bin has been removed.
+  Output property 'binaryResultsDirectory' file D:\OtherProject\mine\crypto\kotlin-miniscript\build\test-results\jvmTest\binary\output.bin.idx has been removed.
+  and more...
+Starting process 'Gradle Test Executor 10'. Working directory: D:\OtherProject\mine\crypto\kotlin-miniscript Command: C:\Program Files\Eclipse Adoptium\jdk-21.0.9.10-hotspot\bin\java.exe -Dorg.gradle.internal.worker.tmpdir=D:\OtherProject\mine\crypto\kotlin-miniscript\build\tmp\jvmTest\work @C:\Users\aa223\.gradle\.tmp\gradle-worker-classpath5755503372595158008txt -Xmx512m -Dfile.encoding=UTF-8 -Duser.country=TW -Duser.language=zh -Duser.variant -ea worker.org.gradle.process.internal.worker.GradleWorkerMain 'Gradle Test Executor 10'
+Successfully started process 'Gradle Test Executor 10'
+Finished generating test XML results (0.001 secs) into: D:\OtherProject\mine\crypto\kotlin-miniscript\build\test-results\jvmTest
+Generating HTML test report...
+Finished generating test html results (0.011 secs) into: D:\OtherProject\mine\crypto\kotlin-miniscript\build\reports\tests\jvmTest
+
+BUILD SUCCESSFUL in 1m 30s
+22 actionable tasks: 12 executed, 10 up-to-date
+Watched directory hierarchies: [D:\OtherProject\mine\crypto\kotlin-miniscript]
