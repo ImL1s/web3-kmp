@@ -1,0 +1,7 @@
+.gradle
+build
+.idea
+docs/api/
+site/
+.kotlin/
+.DS_Store
