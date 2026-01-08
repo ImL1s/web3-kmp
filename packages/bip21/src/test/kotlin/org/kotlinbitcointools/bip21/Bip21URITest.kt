@@ -127,7 +127,9 @@ class Bip21URITest {
                     ),
             )
         assertEquals(
-            expected = "bitcoin:1andreas3batLhQa2FawWjeyjCqyBzypd?amount=50&label=Kotlin%20Bitcoin%20Tools&message=Building%20tools%20for%20bitcoin%20in%20Kotlin&otherparameter1=abc%20abc&otherparameter2=def%20def",
+            expected = "bitcoin:1andreas3batLhQa2FawWjeyjCqyBzypd?amount=50&label=Kotlin%20Bitcoin%20Tools" +
+                "&message=Building%20tools%20for%20bitcoin%20in%20Kotlin&otherparameter1=abc%20abc" +
+                "&otherparameter2=def%20def",
             actual = uri.toURI(),
         )
     }
@@ -144,7 +146,8 @@ class Bip21URITest {
                     ),
             )
         assertEquals(
-            expected = "bitcoin:1andreas3batLhQa2FawWjeyjCqyBzypd?other%20parameter%201=abc%20abc&other%20parameter%202=def%20def",
+            expected = "bitcoin:1andreas3batLhQa2FawWjeyjCqyBzypd?other%20parameter%201=abc%20abc" +
+                "&other%20parameter%202=def%20def",
             actual = uri.toURI(),
         )
     }
@@ -152,13 +155,24 @@ class Bip21URITest {
     // Unified QRs are defined here: https://bitcoinqr.dev/
     @Test
     fun `Can parse unified QRs`() {
-        val unifiedQr = "bitcoin:BC1QYLH3U67J673H6Y6ALV70M0PL2YZ53TZHVXGG7U?amount=0.00001&label=sbddesign%3A%20For%20lunch%20Tuesday&message=For%20lunch%20Tuesday&lightning=LNBC10U1P3PJ257PP5YZTKWJCZ5FTL5LAXKAV23ZMZEKAW37ZK6KMV80PK4XAEV5QHTZ7QDPDWD3XGER9WD5KWM36YPRX7U3QD36KUCMGYP282ETNV3SHJCQZPGXQYZ5VQSP5USYC4LK9CHSFP53KVCNVQ456GANH60D89REYKDNGSMTJ6YW3NHVQ9QYYSSQJCEWM5CJWZ4A6RFJX77C490YCED6PEMK0UPKXHY89CMM7SCT66K8GNEANWYKZGDRWRFJE69H9U5U0W57RRCSYSAS7GADWMZXC8C6T0SPJAZUP6"
+        val unifiedQr = "bitcoin:BC1QYLH3U67J673H6Y6ALV70M0PL2YZ53TZHVXGG7U?amount=0.00001&label=" +
+            "sbddesign%3A%20For%20lunch%20Tuesday&message=For%20lunch%20Tuesday&lightning=" +
+            "LNBC10U1P3PJ257PP5YZTKWJCZ5FTL5LAXKAV23ZMZEKAW37ZK6KMV80PK4XAEV5QHTZ7QDPDWD3XGER9WD5" +
+            "KWM36YPRX7U3QD36KUCMGYP282ETNV3SHJCQZPGXQYZ5VQSP5USYC4LK9CHSFP53KVCNVQ456GANH60D89RE" +
+            "YKDNGSMTJ6YW3NHVQ9QYYSSQJCEWM5CJWZ4A6RFJX77C490YCED6PEMK0UPKXHY89CMM7SCT66K8GNEANWYK" +
+            "ZGDRWRFJE69H9U5U0W57RRCSYSAS7GADWMZXC8C6T0SPJAZUP6"
         val uri = Bip21URI.fromUri(unifiedQr)
 
         assertEquals(
             expected =
                 Lightning(
-                    "LNBC10U1P3PJ257PP5YZTKWJCZ5FTL5LAXKAV23ZMZEKAW37ZK6KMV80PK4XAEV5QHTZ7QDPDWD3XGER9WD5KWM36YPRX7U3QD36KUCMGYP282ETNV3SHJCQZPGXQYZ5VQSP5USYC4LK9CHSFP53KVCNVQ456GANH60D89REYKDNGSMTJ6YW3NHVQ9QYYSSQJCEWM5CJWZ4A6RFJX77C490YCED6PEMK0UPKXHY89CMM7SCT66K8GNEANWYKZGDRWRFJE69H9U5U0W57RRCSYSAS7GADWMZXC8C6T0SPJAZUP6",
+                    "LNBC10U1P3PJ257PP5YZTKWJCZ5FTL5LAXKAV23" +
+                        "ZMZEKAW37ZK6KMV80PK4XAEV5QHTZ7QDPDWD3XGER9" +
+                        "WD5KWM36YPRX7U3QD36KUCMGYP282ETNV3SHJCQ" +
+                        "ZPGXQYZ5VQSP5USYC4LK9CHSFP53KVCNVQ456GANH60D89" +
+                        "REYKDNGSMTJ6YW3NHVQ9QYYSSQJCEWM5CJWZ4A6" +
+                        "RFJX77C490YCED6PEMK0UPKXHY89CMM7SCT66K8GNEANWYKZGDRWRFJE" +
+                        "69H9U5U0W57RRCSYSAS7GADWMZXC8C6T0SPJAZUP6",
                 ),
             actual = uri.lightning,
         )
@@ -180,7 +194,9 @@ class Bip21URITest {
 
         assertEquals(
             actual = uri.toURI(),
-            expected = "bitcoin:BC1QYLH3U67J673H6Y6ALV70M0PL2YZ53TZHVXGG7U?amount=0.00001&label=sbddesign%3A%20For%20lunch%20Tuesday&message=For%20lunch%20Tuesday&lightning=LNO1PG257ENXV4EZQCNEYPE82UM50YNHXGRWDAJX283QFWDPL28QQMC78YMLVHMXCSYWDK5WRJNJ36JRYG488QWLRNZYJCZS",
+            expected = "bitcoin:BC1QYLH3U67J673H6Y6ALV70M0PL2YZ53TZHVXGG7U?amount=0.00001&label=" +
+                "sbddesign%3A%20For%20lunch%20Tuesday&message=For%20lunch%20Tuesday&lightning=" +
+                "LNO1PG257ENXV4EZQCNEYPE82UM50YNHXGRWDAJX283QFWDPL28QQMC78YMLVHMXCSYWDK5WRJNJ36JRYG488QWLRNZYJCZS",
         )
     }
 
