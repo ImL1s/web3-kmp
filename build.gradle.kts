@@ -3,8 +3,6 @@ plugins {
 }
 
 allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
+    // Repositories are defined in settings.gradle.kts
 }
+
