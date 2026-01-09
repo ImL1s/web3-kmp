@@ -41,15 +41,18 @@ public object Secp256k1Pure : Secp256k1 {
         require(message.size == 32)
         require(privkey.size == 32)
         val d = privkey.toBigInteger()
+        if (d == BigInteger.ZERO || d >= N) throw IllegalArgumentException("Invalid private key")
         val z = message.toBigInteger()
         val k = generateKDeterministic(privkey, message)
         val (kGx, _) = scalarMultiply(k, G_X, G_Y)
         val r = kGx % N
-        require(r >= BigInteger.ONE && r < N)
+        if (r == BigInteger.ZERO) throw RuntimeException("r is zero")
         val kInv = k.modInverse(N)
         val s = (kInv * (z + r * d)) % N
-        require(s >= BigInteger.ONE && s < N)
-        return encodeCompact(r, s)
+        if (s == BigInteger.ZERO) throw RuntimeException("s is zero")
+        val nHalf = N / BigInteger(KmpBigInteger.fromInt(2))
+        val normalizedS = if (s > nHalf) N - s else s
+        return encodeCompact(r, normalizedS)
     }
 
     override fun verifySchnorr(signature: ByteArray, data: ByteArray, pub: ByteArray): Boolean {
@@ -125,13 +128,15 @@ public object Secp256k1Pure : Secp256k1 {
 
     override fun pubkeyCreate(privkey: ByteArray): ByteArray {
         val d = privkey.toBigInteger()
+        if (d == BigInteger.ZERO || d >= N) throw IllegalArgumentException("Invalid private key")
         val (x, y) = scalarMultiply(d, G_X, G_Y)
-        return byteArrayOf(0x04) + x.toByteArray32() + y.toByteArray32()
+        return encodePublicKey(Pair(x, y), false)
     }
 
     override fun pubkeyParse(pubkey: ByteArray): ByteArray {
         val (x, y) = decodePublicKey(pubkey)
-        return byteArrayOf(0x04) + x.toByteArray32() + y.toByteArray32()
+        if (!validatePointOnCurve(x, y)) throw IllegalArgumentException("Invalid public key")
+        return encodePublicKey(Pair(x, y), false)
     }
 
     override fun privKeyNegate(privkey: ByteArray): ByteArray {
@@ -183,8 +188,9 @@ public object Secp256k1Pure : Secp256k1 {
     override fun ecdh(privkey: ByteArray, pubkey: ByteArray): ByteArray {
         val (pubX, pubY) = decodePublicKey(pubkey)
         val d = privkey.toBigInteger()
-        val (sharedX, _) = scalarMultiply(d, pubX, pubY)
-        return sharedX.toByteArray32()
+        val (sharedX, sharedY) = scalarMultiply(d, pubX, pubY)
+        val compressed = encodePublicKey(Pair(sharedX, sharedY), true)
+        return SHA256().digest(compressed)
     }
 
     override fun ecdsaRecover(sig: ByteArray, message: ByteArray, recid: Int): ByteArray {
@@ -309,8 +315,8 @@ public object Secp256k1Pure : Secp256k1 {
     }
 
     private fun encodeDER(r: BigInteger, s: BigInteger): ByteArray {
-        val rb = r.toByteArrayTrimmed()
-        val sb = s.toByteArrayTrimmed()
+        val rb = r.toByteArrayDER()
+        val sb = s.toByteArrayDER()
         return byteArrayOf(0x30, (rb.size + sb.size + 4).toByte(), 0x02, rb.size.toByte()) + rb + byteArrayOf(0x02, sb.size.toByte()) + sb
     }
 
@@ -331,6 +337,7 @@ public object Secp256k1Pure : Secp256k1 {
     }
 
     private fun encodePublicKey(p: Pair<BigInteger, BigInteger>, compressed: Boolean): ByteArray {
+        if (isPointAtInfinity(p.first, p.second)) throw IllegalArgumentException("Point at infinity")
         return if (compressed) {
             val prefix = if (p.second % BigInteger(KmpBigInteger.fromInt(2)) == BigInteger.ZERO) 0x02 else 0x03
             byteArrayOf(prefix.toByte()) + p.first.toByteArray32()
@@ -419,9 +426,19 @@ public object Secp256k1Pure : Secp256k1 {
             return res
         }
 
-        fun toByteArrayTrimmed(): ByteArray {
+        fun toByteArrayDER(): ByteArray {
             val b = magnitude.toByteArray()
-            return if (b.size > 1 && b[0] == 0.toByte()) b.sliceArray(1 until b.size) else b
+            if (b.isEmpty()) return byteArrayOf(0)
+            // If MSB is set, we must prepend a zero byte to keep it positive in DER
+            if ((b[0].toInt() and 0x80) != 0) {
+                return byteArrayOf(0) + b
+            }
+            // If we have a leading zero and the NEXT byte's MSB is NOT set, we should trim the zero (minimal encoding)
+            var start = 0
+            while (start < b.size - 1 && b[start] == 0.toByte() && (b[start + 1].toInt() and 0x80) == 0) {
+                start++
+            }
+            return b.sliceArray(start until b.size)
         }
     }
 
