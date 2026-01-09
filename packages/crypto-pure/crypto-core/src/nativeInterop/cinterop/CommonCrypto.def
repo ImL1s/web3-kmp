@@ -1,6 +1,5 @@
 package = commonCrypto
 headerFilter = CommonCrypto/*
-linkerOpts = -framework CommonCrypto
 ---
 #include <CommonCrypto/CommonCrypto.h>
 #include <CommonCrypto/CommonDigest.h>
