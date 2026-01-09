@@ -95,11 +95,23 @@ public object Secp256k1Pure : Secp256k1 {
     }
 
     override fun signatureNormalize(sig: ByteArray): Pair<ByteArray, Boolean> {
-        val (r, s) = decodeCompact(sig)
+        val (r, s, isCompact) = try {
+            if (sig.size == 64) {
+                val (r, s) = decodeCompact(sig)
+                Triple(r, s, true)
+            } else {
+                val (r, s) = decodeDER(sig)
+                Triple(r, s, false)
+            }
+        } catch (e: Exception) {
+            throw e
+        }
+
         val nHalf = N / BigInteger(KmpBigInteger.fromInt(2))
         return if (s > nHalf) {
             val normalizedS = N - s
-            Pair(encodeCompact(r, normalizedS), true)
+            val normalizedSig = if (isCompact) encodeCompact(r, normalizedS) else encodeDER(r, normalizedS)
+            Pair(normalizedSig, true)
         } else {
             Pair(sig, false)
         }
