@@ -128,8 +128,8 @@ class Bip21URITest {
             )
         assertEquals(
             expected = "bitcoin:1andreas3batLhQa2FawWjeyjCqyBzypd?amount=50&label=Kotlin%20Bitcoin%20Tools" +
-                "&message=Building%20tools%20for%20bitcoin%20in%20Kotlin&otherparameter1=abc%20abc" +
-                "&otherparameter2=def%20def",
+                "&message=Building%20tools%20for%20bitcoin%20in%20Kotlin" +
+                "&otherparameter1=abc%20abc&otherparameter2=def%20def",
             actual = uri.toURI(),
         )
     }

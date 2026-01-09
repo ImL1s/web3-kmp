@@ -68,8 +68,8 @@ public data class Bip21URI(
     }
 
     override fun toString(): String {
-        return "Bip21URI(address=$address, amount=$amount, label=$label, message=$message, lightning=$lightning, " +
-            "pj=$pj, pjos=$pjos, otherParameters=$otherParameters)"
+        return "Bip21URI(address=$address, amount=$amount, label=$label, message=$message, " +
+            "lightning=$lightning, pj=$pj, pjos=$pjos, otherParameters=$otherParameters)"
     }
 
     public companion object {
