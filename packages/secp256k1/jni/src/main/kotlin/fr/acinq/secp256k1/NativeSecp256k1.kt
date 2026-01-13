@@ -129,7 +129,7 @@ public object NativeSecp256k1 : Secp256k1 {
         return Secp256k1CFunctions.secp256k1_musig_partial_sig_verify(Secp256k1Context.getContext(), psig, pubnonce, pubkey, keyaggCache, session)
     }
 
-    override fun musigPartialSigAgg(session: ByteArray, psigs: Array<ByteArray>): ByteArray {
+    override fun musigPartialSigAgg(session: ByteArray, psigs: Array<ByteArray>, keyaggCache: ByteArray?): ByteArray {
         return Secp256k1CFunctions.secp256k1_musig_partial_sig_agg(Secp256k1Context.getContext(), session, psigs)
     }
 
