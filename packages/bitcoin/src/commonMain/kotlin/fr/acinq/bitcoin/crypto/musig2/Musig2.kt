@@ -71,17 +71,24 @@ public data class Session(private val data: ByteVector, private val keyAggCache:
      * @return a musig2 partial signature.
      */
     public fun sign(secretNonce: SecretNonce, privateKey: PrivateKey): ByteVector32 {
-        return Secp256k1.musigPartialSign(secretNonce.data.toByteArray(), privateKey.value.toByteArray(), keyAggCache.toByteArray(), this.toByteArray()).byteVector32()
+        val res = Secp256k1.musigPartialSign(secretNonce.data.toByteArray(), privateKey.value.toByteArray(), keyAggCache.toByteArray(), this.toByteArray()).byteVector32()
+        return res
     }
 
     /**
      * @param partialSig musig2 partial signature.
-     * @param publicNonce individual public nonce of the signing participant.
-     * @param publicKey individual public key of the signing participant.
+     * @param individualNonce individual public nonce of the signing participant.
+     * @param pubkey individual public key of the signing participant.
      * @return true if the partial signature is valid.
      */
-    public fun verify(partialSig: ByteVector32, publicNonce: IndividualNonce, publicKey: PublicKey): Boolean = try {
-        Secp256k1.musigPartialSigVerify(partialSig.toByteArray(), publicNonce.toByteArray(), publicKey.value.toByteArray(), keyAggCache.toByteArray(), this.toByteArray()) == 1
+    public fun verify(partialSig: ByteVector32, individualNonce: IndividualNonce, pubkey: PublicKey): Boolean = try {
+        Secp256k1.musigPartialSigVerify(
+            partialSig.toByteArray(),
+            individualNonce.toByteArray(),
+            pubkey.value.toByteArray(),
+            this.keyAggCache.toByteArray(),
+            this.toByteArray()
+        ) == 1
     } catch (t: Throwable) {
         false
     }
@@ -95,7 +102,7 @@ public data class Session(private val data: ByteVector, private val keyAggCache:
      * @return the aggregate signature of all input partial signatures or null if a partial signature is invalid.
      */
     public fun aggregateSigs(partialSigs: List<ByteVector32>): Either<Throwable, ByteVector64> = try {
-        Either.Right(Secp256k1.musigPartialSigAgg(this.toByteArray(), partialSigs.map { it.toByteArray() }.toTypedArray()).byteVector64())
+        Either.Right(Secp256k1.musigPartialSigAgg(this.toByteArray(), partialSigs.map { it.toByteArray() }.toTypedArray(), this.keyAggCache.toByteArray()).byteVector64())
     } catch (t: Throwable) {
         Either.Left(t)
     }
@@ -206,7 +213,7 @@ public data class IndividualNonce(val data: ByteVector) {
     public constructor(hex: String) : this(Hex.decode(hex))
 
     init {
-        require(data.size() == Secp256k1.MUSIG2_PUBLIC_NONCE_SIZE) { "individual musig2 public nonce must be ${Secp256k1.MUSIG2_PUBLIC_NONCE_SIZE} bytes" }
+        require(data.size() == 33 || data.size() == 66) { "individual musig2 public nonce must be 33 or 66 bytes" }
     }
 
     public fun toByteArray(): ByteArray = data.toByteArray()

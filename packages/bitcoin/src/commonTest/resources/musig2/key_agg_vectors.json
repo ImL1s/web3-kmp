@@ -14,25 +14,45 @@
     ],
     "valid_test_cases": [
         {
-            "key_indices": [0, 1, 2],
+            "key_indices": [
+                0,
+                1,
+                2
+            ],
             "expected": "90539EEDE565F5D054F32CC0C220126889ED1E5D193BAF15AEF344FE59D4610C"
         },
         {
-            "key_indices": [2, 1, 0],
+            "key_indices": [
+                2,
+                1,
+                0
+            ],
             "expected": "6204DE8B083426DC6EAF9502D27024D53FC826BF7D2012148A0575435DF54B2B"
         },
         {
-            "key_indices": [0, 0, 0],
+            "key_indices": [
+                0,
+                0,
+                0
+            ],
             "expected": "B436E3BAD62B8CD409969A224731C193D051162D8C5AE8B109306127DA3AA935"
         },
         {
-            "key_indices": [0, 0, 1, 1],
+            "key_indices": [
+                0,
+                0,
+                1,
+                1
+            ],
             "expected": "69BC22BFA5D106306E48A20679DE1D7389386124D07571D0D872686028C26A3E"
         }
     ],
     "error_test_cases": [
         {
-            "key_indices": [0, 3],
+            "key_indices": [
+                0,
+                3
+            ],
             "tweak_indices": [],
             "is_xonly": [],
             "error": {
@@ -43,7 +63,10 @@
             "comment": "Invalid public key"
         },
         {
-            "key_indices": [0, 4],
+            "key_indices": [
+                0,
+                4
+            ],
             "tweak_indices": [],
             "is_xonly": [],
             "error": {
@@ -54,7 +77,10 @@
             "comment": "Public key exceeds field size"
         },
         {
-            "key_indices": [5, 0],
+            "key_indices": [
+                5,
+                0
+            ],
             "tweak_indices": [],
             "is_xonly": [],
             "error": {
@@ -65,9 +91,16 @@
             "comment": "First byte of public key is not 2 or 3"
         },
         {
-            "key_indices": [0, 1],
-            "tweak_indices": [0],
-            "is_xonly": [true],
+            "key_indices": [
+                0,
+                1
+            ],
+            "tweak_indices": [
+                0
+            ],
+            "is_xonly": [
+                true
+            ],
             "error": {
                 "type": "value",
                 "message": "The tweak must be less than n."
@@ -75,9 +108,15 @@
             "comment": "Tweak is out of range"
         },
         {
-            "key_indices": [6],
-            "tweak_indices": [1],
-            "is_xonly": [false],
+            "key_indices": [
+                6
+            ],
+            "tweak_indices": [
+                1
+            ],
+            "is_xonly": [
+                false
+            ],
             "error": {
                 "type": "value",
                 "message": "The result of tweaking cannot be infinity."

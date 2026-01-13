@@ -22,46 +22,120 @@
     "msg": "F95466D086770E689964664219266FE5ED215C92AE20BAB5C9D79ADDDDF3C0CF",
     "valid_test_cases": [
         {
-            "key_indices": [1, 2, 0],
-            "nonce_indices": [1, 2, 0],
-            "tweak_indices": [0],
-            "is_xonly": [true],
+            "key_indices": [
+                1,
+                2,
+                0
+            ],
+            "nonce_indices": [
+                1,
+                2,
+                0
+            ],
+            "tweak_indices": [
+                0
+            ],
+            "is_xonly": [
+                true
+            ],
             "signer_index": 2,
             "expected": "E28A5C66E61E178C2BA19DB77B6CF9F7E2F0F56C17918CD13135E60CC848FE91",
             "comment": "A single x-only tweak"
         },
         {
-            "key_indices": [1, 2, 0],
-            "nonce_indices": [1, 2, 0],
-            "tweak_indices": [0],
-            "is_xonly": [false],
+            "key_indices": [
+                1,
+                2,
+                0
+            ],
+            "nonce_indices": [
+                1,
+                2,
+                0
+            ],
+            "tweak_indices": [
+                0
+            ],
+            "is_xonly": [
+                false
+            ],
             "signer_index": 2,
             "expected": "38B0767798252F21BF5702C48028B095428320F73A4B14DB1E25DE58543D2D2D",
             "comment": "A single plain tweak"
         },
         {
-            "key_indices": [1, 2, 0],
-            "nonce_indices": [1, 2, 0],
-            "tweak_indices": [0, 1],
-            "is_xonly": [false, true],
+            "key_indices": [
+                1,
+                2,
+                0
+            ],
+            "nonce_indices": [
+                1,
+                2,
+                0
+            ],
+            "tweak_indices": [
+                0,
+                1
+            ],
+            "is_xonly": [
+                false,
+                true
+            ],
             "signer_index": 2,
             "expected": "408A0A21C4A0F5DACAF9646AD6EB6FECD7F7A11F03ED1F48DFFF2185BC2C2408",
             "comment": "A plain tweak followed by an x-only tweak"
         },
         {
-            "key_indices": [1, 2, 0],
-            "nonce_indices": [1, 2, 0],
-            "tweak_indices": [0, 1, 2, 3],
-            "is_xonly": [false, false, true, true],
+            "key_indices": [
+                1,
+                2,
+                0
+            ],
+            "nonce_indices": [
+                1,
+                2,
+                0
+            ],
+            "tweak_indices": [
+                0,
+                1,
+                2,
+                3
+            ],
+            "is_xonly": [
+                false,
+                false,
+                true,
+                true
+            ],
             "signer_index": 2,
             "expected": "45ABD206E61E3DF2EC9E264A6FEC8292141A633C28586388235541F9ADE75435",
             "comment": "Four tweaks: plain, plain, x-only, x-only."
         },
         {
-            "key_indices": [1, 2, 0],
-            "nonce_indices": [1, 2, 0],
-            "tweak_indices": [0, 1, 2, 3],
-            "is_xonly": [true, false, true, false],
+            "key_indices": [
+                1,
+                2,
+                0
+            ],
+            "nonce_indices": [
+                1,
+                2,
+                0
+            ],
+            "tweak_indices": [
+                0,
+                1,
+                2,
+                3
+            ],
+            "is_xonly": [
+                true,
+                false,
+                true,
+                false
+            ],
             "signer_index": 2,
             "expected": "B255FDCAC27B40C7CE7848E2D3B7BF5EA0ED756DA81565AC804CCCA3E1D5D239",
             "comment": "Four tweaks: x-only, plain, x-only, plain. If an implementation prohibits applying plain tweaks after x-only tweaks, it can skip this test vector or return an error."
@@ -69,10 +143,22 @@
     ],
     "error_test_cases": [
         {
-            "key_indices": [1, 2, 0],
-            "nonce_indices": [1, 2, 0],
-            "tweak_indices": [4],
-            "is_xonly": [false],
+            "key_indices": [
+                1,
+                2,
+                0
+            ],
+            "nonce_indices": [
+                1,
+                2,
+                0
+            ],
+            "tweak_indices": [
+                4
+            ],
+            "is_xonly": [
+                false
+            ],
             "signer_index": 2,
             "error": {
                 "type": "value",
