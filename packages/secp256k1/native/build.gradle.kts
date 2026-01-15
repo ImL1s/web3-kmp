@@ -23,6 +23,7 @@ val buildSecp256k1 = tasks.register("buildSecp256k1") {
 tasks.register<Exec>("buildSecp256k1Host") {
     group = "build"
 
+
     val target = when {
         currentOs.isLinux -> "linux"
         currentOs.isMacOsX -> "darwin"
@@ -30,12 +31,16 @@ tasks.register<Exec>("buildSecp256k1Host") {
         else -> error("Unsupported OS $currentOs")
     }
 
+    // Skip execution on Windows if bash is not available or if we want to avoid native build issues
+    // Skip execution on Windows if bash is not available or if we want to avoid native build issues
+    // onlyIf { !currentOs.isWindows }
+
     inputs.files(projectDir.resolve("build.sh"))
     outputs.dir(projectDir.resolve("build/$target"))
 
     workingDir = projectDir
     environment("TARGET", target)
-    commandLine(bash, "-l", "build.sh")
+    commandLine(bash, "-c", "TARGET=$target ./build.sh")
 }
 
 
