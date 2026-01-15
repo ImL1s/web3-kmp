@@ -17,7 +17,7 @@ public object Secp256k1Pure : Secp256k1 {
     private val G_Y: PureBI = PureBI.fromHex("483ADA7726A3C4655DA4FBFC0E1108A8FD17B448A68554199C47D08FFB10D4B8")
 
     override fun verify(signature: ByteArray, data: ByteArray, pubkey: ByteArray): Boolean {
-        if (signature.size != 64 && (signature.size < 70 || signature.size > 73)) throw IllegalArgumentException("Invalid signature size")
+        if (signature.size != 64 && (signature.size < 8 || signature.size > 73)) throw IllegalArgumentException("Invalid signature size")
         if (pubkey.size != 33 && pubkey.size != 65) throw IllegalArgumentException("Invalid public key")
         return try {
             val (r, s) = if (signature.size == 64) {
