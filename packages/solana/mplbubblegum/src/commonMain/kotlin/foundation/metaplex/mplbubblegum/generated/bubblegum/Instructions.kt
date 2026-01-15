@@ -1,10 +1,10 @@
 package foundation.metaplex.mplbubblegum.generated.bubblegum
 
 import com.funkatronics.kborsh.Borsh
-import com.solana.publickey.PublicKey
 import com.solana.publickey.SolanaPublicKey
 import foundation.metaplex.rpc.serializers.AnchorInstructionSerializer
 import foundation.metaplex.rpc.serializers.PublicKeyAs32ByteSerializer
+import foundation.metaplex.solanapublickeys.PublicKey
 import foundation.metaplex.solana.transactions.AccountMeta
 import foundation.metaplex.solana.transactions.TransactionInstruction
 import kotlin.Boolean
@@ -13,8 +13,6 @@ import kotlin.UInt
 import kotlin.ULong
 import kotlin.collections.List
 import kotlinx.serialization.Serializable
-
-fun PublicKey(base58: String) = SolanaPublicKey.from(base58)
 
 object BubblegumInstructions {
     fun createTree(
