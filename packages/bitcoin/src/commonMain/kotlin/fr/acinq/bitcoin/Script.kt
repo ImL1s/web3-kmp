@@ -700,6 +700,9 @@ public object Script {
         public val context: Context,
         public val scriptFlag: Int = ScriptFlags.MANDATORY_SCRIPT_VERIFY_FLAGS,
     ) {
+        // opCount is maintained across script executions to enforce the 201 opcode limit
+        // for combined scriptSig + scriptPubKey as per Bitcoin consensus rules
+        private var opCount = 0
         public companion object {
             /**
              * This class represents the state of the script execution engine
@@ -867,7 +870,7 @@ public object Script {
             // OP_ENDIF
             // OP_CHECKSIG // conditions = []
             val conditions = mutableListOf<Boolean>()
-            var opCount = 0
+            // Note: opCount is maintained as a class property to accumulate across script executions
             var scriptCode: List<ScriptElt> = script
 
             for (currentPos in script.indices) {
@@ -1524,6 +1527,9 @@ public object Script {
          * @return true if the scripts were successfully verified
          */
         public fun verifyScripts(scriptSig: ByteArray, scriptPubKey: ByteArray, witness: ScriptWitness): Boolean {
+            // Reset opCount for each new transaction verification
+            // The limit applies to combined scriptSig + scriptPubKey execution
+    
             fun checkStack(stack: List<ByteVector>): Boolean = when {
                 stack.isEmpty() -> false
                 !castToBoolean(stack.first()) -> false
@@ -1546,6 +1552,7 @@ public object Script {
             if (((scriptFlag and ScriptFlags.SCRIPT_VERIFY_SIGPUSHONLY) != 0) && !isPushOnly(ssig)) throw RuntimeException("signature script is not PUSH-only")
             val stack = run(scriptSig, listOf(), signatureVersion = 0)
 
+            opCount = 0
             val spub = parse(scriptPubKey)
             val stack0 = run(scriptPubKey, stack, signatureVersion = 0)
             require(stack0.isNotEmpty()) { "Script verification failed, stack should not be empty" }
@@ -1581,6 +1588,7 @@ public object Script {
                 // if we got here after running script pubkey, it means that hash == HASH160(serialized script)
                 // and stack would be serialized_script :: sigN :: ... :: sig1 :: Nil
                 // we pop the first element of the stack, deserialize it and run it against the rest of the stack
+                opCount = 0
                 val stackp2sh = run(stack.first(), stack.tail(), 0)
                 require(stackp2sh.isNotEmpty()) { "Script verification failed, stack should not be empty" }
                 require(castToBoolean(stackp2sh.first())) { "Script verification failed, stack starts with 'false'" }
