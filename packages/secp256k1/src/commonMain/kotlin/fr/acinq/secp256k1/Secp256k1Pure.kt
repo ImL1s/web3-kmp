@@ -16,14 +16,16 @@ public object Secp256k1Pure : Secp256k1 {
     private val G_X: PureBI = PureBI.fromHex("79BE667EF9DCBBAC55A06295CE870B07029BFCDB2DCE28D959F2815B16F81798")
     private val G_Y: PureBI = PureBI.fromHex("483ADA7726A3C4655DA4FBFC0E1108A8FD17B448A68554199C47D08FFB10D4B8")
 
-    override fun verify(signature: ByteArray, message: ByteArray, pubkey: ByteArray): Boolean {
+    override fun verify(signature: ByteArray, data: ByteArray, pubkey: ByteArray): Boolean {
+        if (signature.size != 64 && (signature.size < 70 || signature.size > 73)) throw IllegalArgumentException("Invalid signature size")
+        if (pubkey.size != 33 && pubkey.size != 65) throw IllegalArgumentException("Invalid public key")
         return try {
             val (r, s) = if (signature.size == 64) {
                 decodeCompact(signature)
             } else {
                 decodeDER(signature)
             }
-            val z = message.toBigInteger()
+            val z = data.toBigInteger()
             val (pubX, pubY) = decodePublicKey(pubkey)
             val sInv = s.modInverse(N)
             val u1 = (z * sInv) % N
@@ -41,22 +43,23 @@ public object Secp256k1Pure : Secp256k1 {
         require(message.size == 32)
         require(privkey.size == 32)
         val d = privkey.toBigInteger()
-        if (d == PureBI.ZERO || d >= N) throw IllegalArgumentException("Invalid private key")
+        if (d == PureBI.ZERO || d >= N) throw Secp256k1Exception("Invalid private key")
         val z = message.toBigInteger()
         val k = generateKDeterministic(privkey, message)
         val (kGx, _) = scalarMultiply(k, G_X, G_Y)
         val r = kGx % N
-        if (r == PureBI.ZERO) throw RuntimeException("r is zero")
+        if (r == PureBI.ZERO) throw Secp256k1Exception("r is zero")
         val kInv = k.modInverse(N)
         val s = (kInv * (z + r * d)) % N
-        if (s == PureBI.ZERO) throw RuntimeException("s is zero")
+        if (s == PureBI.ZERO) throw Secp256k1Exception("s is zero")
         val nHalf = N / PureBI(KmpBI.fromInt(2))
         val normalizedS = if (s > nHalf) N - s else s
         return encodeCompact(r, normalizedS)
     }
 
     override fun verifySchnorr(signature: ByteArray, data: ByteArray, pub: ByteArray): Boolean {
-        if (data.size != 32 || pub.size != 32 || signature.size != 64) return false
+        if (signature.size != 64) return false
+        if (pub.size != 32) return false
         try {
             val px = pub.toBigInteger()
             if (px >= P) return false
@@ -81,9 +84,11 @@ public object Secp256k1Pure : Secp256k1 {
     }
 
     override fun signSchnorr(data: ByteArray, sec: ByteArray, auxrand32: ByteArray?): ByteArray {
+        if (data.size != 32) throw IllegalArgumentException("Validation failed: message must be 32 bytes")
+        if (sec.size != 32) throw IllegalArgumentException("Validation failed: private key must be 32 bytes")
         val auxRand = auxrand32 ?: ByteArray(32)
         val dBig = sec.toBigInteger()
-        if (dBig == PureBI.ZERO || dBig >= N) throw IllegalArgumentException("Invalid private key")
+        if (dBig == PureBI.ZERO || dBig >= N) throw Secp256k1Exception("Invalid private key")
         val P_point = scalarMultiply(dBig, G_X, G_Y)
         val d = if (hasEvenY(P_point)) dBig else N - dBig
         val t = xor(d.toByteArray32(), taggedHash("BIP0340/aux", auxRand))
@@ -115,10 +120,11 @@ public object Secp256k1Pure : Secp256k1 {
         val nHalf = N / PureBI(KmpBI.fromInt(2))
         return if (s > nHalf) {
             val normalizedS = N - s
-            val normalizedSig = if (isCompact) encodeCompact(r, normalizedS) else encodeDER(r, normalizedS)
+            val normalizedSig = encodeCompact(r, normalizedS)
             Pair(normalizedSig, true)
         } else {
-            Pair(sig, false)
+            val normalizedSig = encodeCompact(r, s)
+            Pair(normalizedSig, false)
         }
     }
 
@@ -130,14 +136,14 @@ public object Secp256k1Pure : Secp256k1 {
 
     override fun pubkeyCreate(privkey: ByteArray): ByteArray {
         val d = privkey.toBigInteger()
-        if (d == PureBI.ZERO || d >= N) throw IllegalArgumentException("Invalid private key")
+        if (d == PureBI.ZERO || d >= N) throw Secp256k1Exception("Invalid private key")
         val (x, y) = scalarMultiply(d, G_X, G_Y)
         return encodePublicKey(Pair(x, y), false)
     }
 
     override fun pubkeyParse(pubkey: ByteArray): ByteArray {
         val (x, y) = decodePublicKey(pubkey)
-        if (!validatePointOnCurve(x, y)) throw IllegalArgumentException("Invalid public key")
+        if (!validatePointOnCurve(x, y)) throw Secp256k1Exception("Invalid public key")
         return encodePublicKey(Pair(x, y), false)
     }
 
@@ -179,12 +185,21 @@ public object Secp256k1Pure : Secp256k1 {
     }
 
     override fun pubKeyCombine(pubkeys: Array<ByteArray>): ByteArray {
+        if (pubkeys.isEmpty()) throw IllegalArgumentException("Validation failed: pubkeys must not be empty")
         var res: Pair<PureBI, PureBI>? = null
         for (pk in pubkeys) {
-            val p = decodePublicKey(pk)
+            val p = try {
+                 decodePublicKey(pk)
+            } catch (e: Exception) {
+                 throw Secp256k1Exception("Invalid public key")
+            }
             res = if (res == null) p else pointAdd(res.first, res.second, p.first, p.second)
         }
-        return encodePublicKey(res!!, false)
+        // Check if result is point at infinity (invalid for public key)
+        if (isPointAtInfinity(res!!.first, res.second)) {
+            throw Secp256k1Exception("Result is point at infinity")
+        }
+        return encodePublicKey(res, false)
     }
 
     override fun ecdh(privkey: ByteArray, pubkey: ByteArray): ByteArray {
@@ -215,6 +230,8 @@ public object Secp256k1Pure : Secp256k1 {
         val (r, s) = decodeCompact(sig)
         return encodeDER(r, s)
     }
+
+
 
     override fun cleanup(): Unit {}
 
@@ -308,7 +325,8 @@ public object Secp256k1Pure : Secp256k1 {
         val u = pubkeys.size
         // BIP-327: Public keys are sorted lexicographically by the caller for MuSig2.
         // The KeyAgg algorithm itself is order-dependent.
-        val pks = pubkeys.map { if (it.size == 32) byteArrayOf(2) + it else it }
+        // BIP-327: Normalize all public keys to compressed format (33 bytes) for consistent hashing
+        val pks = pubkeys.map { encodePublicKey(decodePublicKey(it), true) }
         val L = taggedHash("KeyAgg list", pks.reduce { acc, bytes -> acc + bytes })
         
         val pk1 = pks[0]
@@ -451,7 +469,20 @@ public object Secp256k1Pure : Secp256k1 {
         require(secnonce.size == 132)
         require(privkey.size == 32)
         require(session.size == 133)
+
+        // Validate that secnonce belongs to this private key
+        val pkPair = decodePublicKey(pubkeyCreate(privkey))
+        val pkX_le = secnonce.sliceArray(68 until 100)
+        val pkY_le = secnonce.sliceArray(100 until 132)
         
+        // pkX and pkY in secnonce are little-endian
+        val derivedPkX_le = pkPair.first.toByteArray32().reversedArray()
+        val derivedPkY_le = pkPair.second.toByteArray32().reversedArray()
+        
+        if (!pkX_le.contentEquals(derivedPkX_le) || !pkY_le.contentEquals(derivedPkY_le)) {
+            throw Secp256k1Exception("Invalid secnonce for this private key")
+        }
+
         val k1 = PureBI.fromByteArray(secnonce.sliceArray(4 until 36))
         val k2 = PureBI.fromByteArray(secnonce.sliceArray(36 until 68))
         val sk = PureBI.fromByteArray(privkey)
@@ -559,6 +590,7 @@ public object Secp256k1Pure : Secp256k1 {
 
         s_agg = (s_agg + e * g_Q * t_acc) % N
         
+        // Final signature = Rx || (s_agg + e * g_Q * t_acc) mod N
         val Rx = session.sliceArray(98 until 130)
         return Rx + s_agg.toByteArray32()
     }
@@ -622,6 +654,13 @@ public object Secp256k1Pure : Secp256k1 {
         return SHA256().digest(oKeyPad + SHA256().digest(iKeyPad + data))
     }
 
+    private fun isDer(sig: ByteArray): Boolean {
+        // Minimum DER signature length is usually: 0x30 + len + 0x02 + rLen + r + 0x02 + sLen + s
+        // Minimal r, s is 1 byte -> 1+1+1+1+1+1+1+1 = 8 bytes?
+        // Just checking 0x30 is a good heuristic for now combined with try-catch later.
+        return sig.size > 8 && sig[0] == 0x30.toByte()
+    }
+
     private fun encodeCompact(r: PureBI, s: PureBI): ByteArray = r.toByteArray32() + s.toByteArray32()
 
     private fun decodeCompact(signature: ByteArray): Pair<PureBI, PureBI> {
@@ -654,26 +693,27 @@ public object Secp256k1Pure : Secp256k1 {
     }
 
     private fun decodePublicKey(pk: ByteArray): Pair<PureBI, PureBI> {
+        if (pk.isEmpty()) throw Secp256k1Exception("Invalid public key")
         // MuSig2 uses 33 zero bytes to represent the point at infinity
         if (pk.size == 33 && pk.all { it == 0.toByte() }) return Pair(PureBI.ZERO, PureBI.ZERO)
         
         return when (pk[0]) {
-            0x04.toByte() -> {
-                require(pk.size == 65)
+            0x04.toByte(), 0x06.toByte(), 0x07.toByte() -> {
+                if (pk.size != 65) throw Secp256k1Exception("Invalid public key")
                 val x = PureBI.fromByteArray(pk.sliceArray(1 until 33))
                 val y = PureBI.fromByteArray(pk.sliceArray(33 until 65))
-                if (x >= P || x < PureBI.ZERO || y >= P || y < PureBI.ZERO) throw IllegalArgumentException("Invalid public key")
-                if (!validatePointOnCurve(x, y)) throw IllegalArgumentException("Point not on curve")
+                if (x >= P || x < PureBI.ZERO || y >= P || y < PureBI.ZERO) throw Secp256k1Exception("Invalid public key")
+                if (!validatePointOnCurve(x, y)) throw Secp256k1Exception("Point not on curve")
                 Pair(x, y)
             }
             0x02.toByte(), 0x03.toByte() -> {
-                require(pk.size == 33)
+                if (pk.size != 33) throw Secp256k1Exception("Invalid public key")
                 val x = PureBI.fromByteArray(pk.sliceArray(1 until 33))
-                if (x >= P || x < PureBI.ZERO) throw IllegalArgumentException("Invalid public key")
+                if (x >= P || x < PureBI.ZERO) throw Secp256k1Exception("Invalid public key")
                 val y = decompressY(x, pk[0] == 0x03.toByte())
                 Pair(x, y)
             }
-            else -> throw IllegalArgumentException("Invalid format: ${pk[0].toInt()}")
+            else -> throw Secp256k1Exception("Invalid format: ${pk[0].toInt()}")
         }
     }
 
@@ -701,7 +741,6 @@ public object Secp256k1Pure : Secp256k1 {
 
     private fun isOdd(bi: PureBI): Boolean {
         val bytes = bi.magnitude.toByteArray()
-
         return bytes.isNotEmpty() && (bytes.last().toInt() and 1 != 0)
     }
 
@@ -738,6 +777,7 @@ public object Secp256k1Pure : Secp256k1 {
         operator fun compareTo(o: PureBI): Int = magnitude.compareTo(o.magnitude)
         override fun equals(o: Any?): Boolean = o is PureBI && magnitude == o.magnitude
         override fun hashCode(): Int = magnitude.hashCode()
+        override fun toString(): String = magnitude.toString(16)
 
         fun modInverse(m: PureBI): PureBI {
             var a = magnitude % m.magnitude

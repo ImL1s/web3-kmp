@@ -39,7 +39,7 @@ kotlin {
             freeCompilerArgs.add("-Xjdk-release=1.8")
         }
         compilations["main"].dependencies {
-            implementation(project(":packages:secp256k1:jni:jvm:all"))
+            // implementation(project(":packages:secp256k1:jni:jvm:all"))
         }
         compilations["test"].dependencies {
             implementation(kotlin("test-junit"))

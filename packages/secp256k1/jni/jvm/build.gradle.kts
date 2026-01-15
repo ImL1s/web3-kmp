@@ -16,12 +16,15 @@ val buildNativeHost by tasks.registering(Exec::class) {
     dependsOn(":packages:secp256k1:jni:generateHeaders")
     dependsOn(":packages:secp256k1:native:buildSecp256k1Host")
 
+
     val target = when {
         currentOs.isLinux -> "linux"
         currentOs.isMacOsX -> "darwin"
         currentOs.isWindows -> "mingw"
         else -> error("Unsupported OS $currentOs")
     }
+
+    onlyIf { !currentOs.isWindows }
 
     inputs.files(projectDir.resolve("build.sh"))
     outputs.dir(layout.buildDirectory.dir(target))

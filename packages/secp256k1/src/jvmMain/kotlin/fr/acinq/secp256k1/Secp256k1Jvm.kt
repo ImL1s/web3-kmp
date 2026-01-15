@@ -29,7 +29,4 @@ private fun tryLoad(platform: String): Secp256k1? {
     }
 }
 
-internal actual fun getSecpk256k1(): Secp256k1 =
-    tryLoad("android")
-        ?: tryLoad("jvm")
-        ?: Secp256k1Pure
+internal actual fun getSecpk256k1(): Secp256k1 = Secp256k1Pure

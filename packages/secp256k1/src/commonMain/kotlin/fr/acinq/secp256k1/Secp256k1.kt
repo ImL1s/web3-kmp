@@ -281,9 +281,10 @@ public interface Secp256k1 {
      *
      * @param session signing session context (see [musigNonceProcess]).
      * @param psigs list of 32-byte partial signatures.
+     * @param keyaggCache (optional) key aggregation cache data from the signing session.
      * @return 64-byte aggregated schnorr signature.
      */
-    public fun musigPartialSigAgg(session: ByteArray, psigs: Array<ByteArray>): ByteArray
+    public fun musigPartialSigAgg(session: ByteArray, psigs: Array<ByteArray>, keyaggCache: ByteArray? = null): ByteArray
 
     /**
      * Delete the secp256k1 context from dynamic memory.
