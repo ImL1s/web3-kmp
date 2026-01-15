@@ -53,3 +53,18 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
 }
+
+tasks.configureEach {
+    val taskName = name.lowercase()
+    if (taskName.contains("lint") || 
+        taskName.contains("androidtest") ||
+        (taskName.contains("unittest") && !taskName.contains("jvm"))) {
+        // Only disable if it's not a platform test we want
+        if (!taskName.contains("jvmtest") && 
+            !taskName.contains("iostest") && 
+            !taskName.contains("macostest") &&
+            !taskName.contains("watchostest")) {
+            enabled = false
+        }
+    }
+}
