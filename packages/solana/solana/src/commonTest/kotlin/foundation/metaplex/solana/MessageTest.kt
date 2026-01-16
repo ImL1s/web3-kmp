@@ -65,6 +65,10 @@ class MessageTest {
 
     @Test
     fun testTransactionSend() = runTest {
+        if (System.getenv("SOLANA_RPC_ENABLED") != "true") {
+            println("Skipping: Set SOLANA_RPC_ENABLED=true to run")
+            return@runTest
+        }
         val rpcUrl = "https://api.devnet.solana.com/"
         val rpc = RPC(rpcUrl)
         val blockhash = rpc.getLatestBlockhash(null)
