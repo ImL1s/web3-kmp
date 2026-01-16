@@ -12,7 +12,7 @@ object TestHelpers {
     val resourcesPath = Path(readEnvironmentVariable("TEST_RESOURCES_PATH")?: "src/commonTest/resources")
 
     fun readResourceAsJson(filename: String): JsonElement {
-        val raw = SystemFileSystem.source(Path(resourcesPath, filename)).buffered().readString()
+        val raw = SystemFileSystem.source(Path(resourcesPath, filename)).buffered().readString().filterNot { it == '\n' || it == '\r' }
         val format = Json { ignoreUnknownKeys = true }
         return format.parseToJsonElement(raw)
     }

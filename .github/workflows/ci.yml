@@ -26,5 +26,7 @@ jobs:
       run: chmod +x gradlew
 
     - name: Build and Check
+      env:
+        SOLANA_RPC_ENABLED: "false"
       run: ./gradlew check
 

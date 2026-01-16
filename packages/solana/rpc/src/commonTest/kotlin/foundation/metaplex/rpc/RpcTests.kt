@@ -12,10 +12,20 @@ import kotlin.test.assertNotNull
 import kotlin.test.assertTrue
 
 class RpcIntegTests {
+    companion object {
+        private fun shouldRunIntegrationTests(): Boolean {
+            return System.getenv("SOLANA_RPC_ENABLED") == "true"
+        }
+    }
+
     private var rpcUrl: String = "https://api.mainnet-beta.solana.com"
 
     @Test
     fun testActualGetAccountInfo() = runTest {
+        if (!shouldRunIntegrationTests()) {
+            println("Skipping: Set SOLANA_RPC_ENABLED=true to run")
+            return@runTest
+        }
         val randomPublicKey = PublicKey("9VHphpWFmUxVHxzWyeYJYYbQADWZ7X6PLzyWER8Lc3k2")
         val rpc = RPC(rpcUrl)
         val metadata = rpc.getAccountInfo(
@@ -30,6 +40,10 @@ class RpcIntegTests {
 
     @Test
     fun testActualGetMultipleAccounts() = runTest {
+        if (!shouldRunIntegrationTests()) {
+            println("Skipping: Set SOLANA_RPC_ENABLED=true to run")
+            return@runTest
+        }
         val randomPublicKeys = listOf(
             PublicKey("9VHphpWFmUxVHxzWyeYJYYbQADWZ7X6PLzyWER8Lc3k2"),
             PublicKey("9VHphpWFmUxVHxzWyeYJYYbQADWZ7X6PLzyWER8Lc3k2")
@@ -54,6 +68,10 @@ class RpcIntegTests {
 
     @Test
     fun testActualGetLatestBlockhash() = runTest {
+        if (!shouldRunIntegrationTests()) {
+            println("Skipping: Set SOLANA_RPC_ENABLED=true to run")
+            return@runTest
+        }
         val rpc = RPC(rpcUrl)
         val blockhash = rpc.getLatestBlockhash(null)
         assertNotNull(blockhash)
@@ -63,6 +81,10 @@ class RpcIntegTests {
 
     @Test
     fun testActualGetSlot() = runTest {
+        if (!shouldRunIntegrationTests()) {
+            println("Skipping: Set SOLANA_RPC_ENABLED=true to run")
+            return@runTest
+        }
         val rpc = RPC(rpcUrl)
         val slot = rpc.getSlot(null)
         assertNotNull(slot)
@@ -71,6 +93,10 @@ class RpcIntegTests {
 
     @Test
     fun testActualGetMinimumBalanceForRentExemption() = runTest {
+        if (!shouldRunIntegrationTests()) {
+            println("Skipping: Set SOLANA_RPC_ENABLED=true to run")
+            return@runTest
+        }
         val rpc = RPC(rpcUrl)
         val minimumBalanceForRentExemption = rpc.getMinimumBalanceForRentExemption(50u)
         assertNotNull(minimumBalanceForRentExemption)
@@ -79,6 +105,10 @@ class RpcIntegTests {
 
     @Test
     fun testActualGetBalance() = runTest {
+        if (!shouldRunIntegrationTests()) {
+            println("Skipping: Set SOLANA_RPC_ENABLED=true to run")
+            return@runTest
+        }
         val rpc = RPC(rpcUrl)
         val publicKey = PublicKey("83astBRguLMdt2h5U1Tpdq5tjFoJ6noeGwaY3mDLVcri")
         val balance = rpc.getBalance(publicKey, null)

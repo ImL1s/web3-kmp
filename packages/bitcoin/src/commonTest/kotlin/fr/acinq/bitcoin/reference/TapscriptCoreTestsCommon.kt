@@ -35,7 +35,7 @@ class TapscriptCoreTestsCommon {
 
     private fun readJson(path: Path): JsonObject {
         val format = Json { ignoreUnknownKeys = true }
-        var raw = SystemFileSystem.source(path).buffered().readString().filterNot { c -> c == '\n' }
+        var raw = SystemFileSystem.source(path).buffered().readString().filterNot { c -> c == '\n' || c == '\r' }
         if (raw.last() == ',') {
             raw = raw.dropLast(1)
         }
