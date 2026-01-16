@@ -33,7 +33,7 @@ sealed class AccountHeader {
     /**
      * The epoch at which rent for the account was calculated, or null if not applicable.
      */
-    abstract val rentEpoch: Long?
+    abstract val rentEpoch: ULong?
 }
 
 /**
@@ -50,7 +50,7 @@ data class Account<T>(
     override val executable: Boolean,
     @Serializable(with = PublicKeyAsStringSerializer::class) override val owner: PublicKey,
     @Serializable(with = SolAmountSerializer::class) override val lamports: SolAmount,
-    override val rentEpoch: Long,
+    override val rentEpoch: ULong,
     val data: T
 ) : AccountHeader()
 
