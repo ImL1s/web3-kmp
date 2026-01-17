@@ -4,7 +4,7 @@ import fr.acinq.bitcoin.*
 import fr.acinq.bitcoin.crypto.musig2.*
 import fr.acinq.secp256k1.Hex
 import fr.acinq.secp256k1.Secp256k1
-import org.junit.Test
+import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
