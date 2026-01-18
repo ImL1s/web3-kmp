@@ -1553,6 +1553,7 @@ public object Script {
             val stack = run(scriptSig, listOf(), signatureVersion = 0)
 
 
+            opCount = 0
             val spub = parse(scriptPubKey)
             val stack0 = run(scriptPubKey, stack, signatureVersion = 0)
             require(stack0.isNotEmpty()) { "Script verification failed, stack should not be empty" }
@@ -1589,6 +1590,7 @@ public object Script {
                 // and stack would be serialized_script :: sigN :: ... :: sig1 :: Nil
                 // we pop the first element of the stack, deserialize it and run it against the rest of the stack
 
+                opCount = 0
                 val stackp2sh = run(stack.first(), stack.tail(), 0)
                 require(stackp2sh.isNotEmpty()) { "Script verification failed, stack should not be empty" }
                 require(castToBoolean(stackp2sh.first())) { "Script verification failed, stack starts with 'false'" }
