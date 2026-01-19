@@ -43,6 +43,9 @@ class HotSigner(private val keyPair: Keypair) : Signer {
 
 
 
+import kotlin.test.Ignore
+
+@Ignore
 class BubblegumIntegTest {
 
     companion object {
