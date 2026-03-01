@@ -25,8 +25,8 @@ sealed class TapTree {
             val scriptSize = encodeVarInt(scriptBytes.size.toLong())
             val data = ByteArray(1 + scriptSize.size + scriptBytes.size)
             data[0] = leafVersion
-            System.arraycopy(scriptSize, 0, data, 1, scriptSize.size)
-            System.arraycopy(scriptBytes, 0, data, 1 + scriptSize.size, scriptBytes.size)
+            scriptSize.copyInto(data, 1)
+            scriptBytes.copyInto(data, 1 + scriptSize.size)
             
             return taggedHash("TapLeaf", data)
         }
