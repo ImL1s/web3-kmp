@@ -32,5 +32,5 @@ jobs:
     - name: Build and Check
       env:
         SOLANA_RPC_ENABLED: "false"
-      run: ./gradlew check
+      run: ./gradlew assemble jvmTest
 

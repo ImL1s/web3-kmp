@@ -23,7 +23,6 @@ import kotlin.test.Ignore
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 
-@Ignore
 class BIP341TestsCommon {
     @Test
     fun `BIP341 reference tests -- key path spending`() {

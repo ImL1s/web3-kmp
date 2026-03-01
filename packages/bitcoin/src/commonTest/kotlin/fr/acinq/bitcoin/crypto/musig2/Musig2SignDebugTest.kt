@@ -8,7 +8,6 @@ import kotlinx.serialization.json.*
 import kotlin.test.Ignore
 import kotlin.test.*
 
-@Ignore
 class Musig2SignDebugTest {
     @Test
     fun debugSign() {

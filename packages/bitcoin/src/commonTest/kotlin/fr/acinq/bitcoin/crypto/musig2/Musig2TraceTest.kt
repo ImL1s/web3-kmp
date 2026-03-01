@@ -9,7 +9,6 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
-@Ignore
 class Musig2TraceTest {
     fun String.decodeHex() = Hex.decode(this)
 

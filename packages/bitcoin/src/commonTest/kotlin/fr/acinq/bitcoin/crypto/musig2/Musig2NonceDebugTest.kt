@@ -7,7 +7,6 @@ import fr.acinq.secp256k1.Secp256k1
 import kotlin.test.Ignore
 import kotlin.test.Test
 
-@Ignore
 class Musig2NonceDebugTest {
     @Test
     fun `debug nonce generation test case 1`() {
