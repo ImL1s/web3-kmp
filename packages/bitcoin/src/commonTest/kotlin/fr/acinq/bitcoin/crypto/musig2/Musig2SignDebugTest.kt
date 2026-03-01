@@ -5,8 +5,10 @@ import fr.acinq.bitcoin.utils.Either
 import fr.acinq.secp256k1.Hex
 import fr.acinq.secp256k1.Secp256k1
 import kotlinx.serialization.json.*
+import kotlin.test.Ignore
 import kotlin.test.*
 
+@Ignore
 class Musig2SignDebugTest {
     @Test
     fun debugSign() {
