@@ -327,4 +327,9 @@ afterEvaluate {
     tasks.withType<KotlinNativeSimulatorTest> {
         environment("SIMCTL_CHILD_TEST_RESOURCES_PATH", projectDir.resolve("src/commonTest/resources"))
     }
+
+    // Workaround for KMP implicit dependency bug when running generic assemble
+    tasks.matching { it.name.endsWith("MetadataElements") }.configureEach {
+        dependsOn("commonizeCInterop")
+    }
 }
