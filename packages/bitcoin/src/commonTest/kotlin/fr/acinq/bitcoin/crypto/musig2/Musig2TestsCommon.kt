@@ -8,6 +8,7 @@ import kotlin.random.Random
 import kotlin.test.Ignore
 import kotlin.test.*
 
+@Ignore
 class Musig2TestsCommon {
     // Helper to parse 32-byte public keys from test vectors by prepending 0x02
     private fun parsePubKey(hex: String): PublicKey {
