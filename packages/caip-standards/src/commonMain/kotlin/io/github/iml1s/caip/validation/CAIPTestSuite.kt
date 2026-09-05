@@ -710,6 +710,10 @@ class CAIPTestSuite {
                     details.add("[FAIL] Valid address validation failed: ${validResult.exception.message}")
                     allPassed = false
                 }
+                is CAIPResult.Unverified -> {
+                    details.add("[UNVERIFIED] Valid address")
+                    allPassed = false
+                }
                 is CAIPResult.Loading -> {
                     details.add("[WAIT] Valid address validation still loading")
                     allPassed = false
@@ -730,6 +734,10 @@ class CAIPTestSuite {
                 is CAIPResult.Failure -> {
                     // Exception also means address was rejected
                     details.add("[PASS] Invalid address correctly failed validation")
+                }
+                is CAIPResult.Unverified -> {
+                    details.add("[UNVERIFIED] Invalid address")
+                    allPassed = false
                 }
                 is CAIPResult.Loading -> {
                     details.add("[WAIT] Invalid address validation still loading")
