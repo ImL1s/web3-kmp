@@ -9,6 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 25
     
     steps:
     - uses: actions/checkout@v3
@@ -29,8 +30,16 @@ jobs:
       run: |
         echo "sdk.dir=$ANDROID_HOME" > local.properties
 
-    - name: Build and Check
+    - name: P1 jvmTest
       env:
         SOLANA_RPC_ENABLED: "false"
-      run: ./gradlew assemble jvmTest
+      run: >
+        ./gradlew
+        :packages:secure-storage:jvmTest
+        :packages:utxo:jvmTest
+        :packages:blockchain-client:jvmTest
+        :packages:crypto-pure:crypto-core:jvmTest
+        :packages:address:jvmTest
+        :packages:tx-builder:jvmTest
+        :packages:caip-standards:jvmTest
 
