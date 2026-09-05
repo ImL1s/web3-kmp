@@ -18,12 +18,17 @@ actual class PlatformContext
  */
 class IosSecureStorage(platformContext: PlatformContext) : SecureStorage {
 
+    companion object {
+        const val SERVICE = "io.github.iml1s.kotlin-secure-storage"
+    }
+
     override suspend fun put(key: String, value: String) {
         memScoped {
             val data = NSString.create(string = value).dataUsingEncoding(NSUTF8StringEncoding)!!
             
-            val query = CFDictionaryCreateMutable(null, 4, null, null)
+            val query = CFDictionaryCreateMutable(null, 5, null, null)
             CFDictionaryAddValue(query, kSecClass, kSecClassGenericPassword)
+            CFDictionaryAddValue(query, kSecAttrService, CFBridgingRetain(NSString.create(string = SERVICE)))
             CFDictionaryAddValue(query, kSecAttrAccount, CFBridgingRetain(NSString.create(string = key)))
             CFDictionaryAddValue(query, kSecAttrAccessible, kSecAttrAccessibleAfterFirstUnlock)
             CFDictionaryAddValue(query, kSecValueData, CFBridgingRetain(data))
@@ -32,8 +37,9 @@ class IosSecureStorage(platformContext: PlatformContext) : SecureStorage {
             // println("DEBUG: SecItemAdd status=$status")
             
             if (status == errSecDuplicateItem) {
-                val updateQuery = CFDictionaryCreateMutable(null, 2, null, null)
+                val updateQuery = CFDictionaryCreateMutable(null, 3, null, null)
                 CFDictionaryAddValue(updateQuery, kSecClass, kSecClassGenericPassword)
+                CFDictionaryAddValue(updateQuery, kSecAttrService, CFBridgingRetain(NSString.create(string = SERVICE)))
                 CFDictionaryAddValue(updateQuery, kSecAttrAccount, CFBridgingRetain(NSString.create(string = key)))
 
                 val attributesToUpdate = CFDictionaryCreateMutable(null, 1, null, null)
@@ -45,8 +51,9 @@ class IosSecureStorage(platformContext: PlatformContext) : SecureStorage {
     }
 
     override suspend fun get(key: String): String? = memScoped {
-        val query = CFDictionaryCreateMutable(null, 4, null, null)
+        val query = CFDictionaryCreateMutable(null, 5, null, null)
         CFDictionaryAddValue(query, kSecClass, kSecClassGenericPassword)
+        CFDictionaryAddValue(query, kSecAttrService, CFBridgingRetain(NSString.create(string = SERVICE)))
         CFDictionaryAddValue(query, kSecAttrAccount, CFBridgingRetain(NSString.create(string = key)))
         CFDictionaryAddValue(query, kSecReturnData, kCFBooleanTrue)
         CFDictionaryAddValue(query, kSecMatchLimit, kSecMatchLimitOne)
@@ -66,8 +73,9 @@ class IosSecureStorage(platformContext: PlatformContext) : SecureStorage {
 
     override suspend fun delete(key: String) {
         memScoped {
-            val query = CFDictionaryCreateMutable(null, 2, null, null)
+            val query = CFDictionaryCreateMutable(null, 3, null, null)
             CFDictionaryAddValue(query, kSecClass, kSecClassGenericPassword)
+            CFDictionaryAddValue(query, kSecAttrService, CFBridgingRetain(NSString.create(string = SERVICE)))
             CFDictionaryAddValue(query, kSecAttrAccount, CFBridgingRetain(NSString.create(string = key)))
             SecItemDelete(query?.reinterpret())
         }
@@ -75,8 +83,9 @@ class IosSecureStorage(platformContext: PlatformContext) : SecureStorage {
 
     override suspend fun clear() {
         memScoped {
-            val query = CFDictionaryCreateMutable(null, 1, null, null)
+            val query = CFDictionaryCreateMutable(null, 2, null, null)
             CFDictionaryAddValue(query, kSecClass, kSecClassGenericPassword)
+            CFDictionaryAddValue(query, kSecAttrService, CFBridgingRetain(NSString.create(string = SERVICE)))
             SecItemDelete(query?.reinterpret())
         }
     }

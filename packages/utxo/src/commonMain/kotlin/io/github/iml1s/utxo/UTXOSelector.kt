@@ -259,6 +259,8 @@ class UTXOSelector(
             val targetWithFee = targetAmount + currentFee
             val targetRangeMax = targetWithFee + costOfChange
 
+            if (selected.size > config.maxInputs) return
+
             // If we are over the range, backtrack
             if (currentValue > targetRangeMax) return
 
@@ -275,10 +277,11 @@ class UTXOSelector(
             // End of UTXO list
             if (index >= sortedUtxos.size) return
 
-            // Recursive branch: Inclusion
-            selected.add(sortedUtxos[index])
-            search(index + 1, currentValue + sortedUtxos[index].value, selected)
-            selected.removeAt(selected.size - 1)
+            if (selected.size < config.maxInputs) {
+                selected.add(sortedUtxos[index])
+                search(index + 1, currentValue + sortedUtxos[index].value, selected)
+                selected.removeAt(selected.size - 1)
+            }
 
             // Recursive branch: Exclusion
             search(index + 1, currentValue, selected)
@@ -341,10 +344,15 @@ class UTXOSelector(
         targetAmount: Long,
         feeRate: Long
     ): Boolean {
+        if (selection.selectedUTXOs.size > config.maxInputs) return false
+        val outpoints = selection.selectedUTXOs.map { it.outpoint }
+        if (outpoints.size != outpoints.toSet().size) return false
         val totalInput = selection.selectedUTXOs.sumOf { it.value }
+        if (totalInput < 0) return false
         val outputCount = if (selection.change > 0) 2 else 1
         val estimatedFee = estimateFee(selection.selectedUTXOs.size, outputCount, feeRate)
-
+        if (selection.estimatedFee < 0 || selection.change < 0) return false
+        if (totalInput != targetAmount + selection.change + selection.estimatedFee) return false
         return totalInput >= targetAmount + estimatedFee
     }
 

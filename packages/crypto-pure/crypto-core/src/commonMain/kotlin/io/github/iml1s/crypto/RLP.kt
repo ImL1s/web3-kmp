@@ -54,6 +54,9 @@ object RLP {
     }
 
     private fun toMinByteArray(value: Long): ByteArray {
+        require(value >= 0L) {
+            "RLP integer encoding is unsigned; negative values are not valid RLP integers"
+        }
         if (value == 0L) return ByteArray(0)
         
         var temp = value

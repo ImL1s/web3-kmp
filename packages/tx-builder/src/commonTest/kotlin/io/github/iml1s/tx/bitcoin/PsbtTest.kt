@@ -22,7 +22,7 @@ class PsbtTest {
             )
         )
         // Add unsigned tx to global map (simulated as pair for now since raw deserialization not fully hooked up in PsbtGlobal.fromMap)
-        global.addUnknownKey(byteArrayOf(PsbtGlobal.PSBT_GLOBAL_UNSIGNED_TX), tx.serialize())
+        global.unsignedTx = tx
 
         val psbt = Psbt(
             global = global,
@@ -41,14 +41,9 @@ class PsbtTest {
         // Round-trip deserialization
         val deserialized = Psbt.deserialize(serialized)
         assertNotNull(deserialized)
-        // Check input/output count based on the assumption that deserialize logic uses the global tx
-        // NOTE: Our current deserialize implementation parses inputs/outputs based on global.unsignedTx
-        // Since we populated global map manually but didn't hook up parse in fromMap in this simplified version,
-        // it might show 0 inputs if we strictly follow Psbt.kt TODOs. 
-        // Let's verifying at least global map parsing works.
-        assertTrue(deserialized.global.unknownKeys.isNotEmpty())
-        val txBytes = deserialized.global.unknownKeys.find { it.key.contentEquals(byteArrayOf(PsbtGlobal.PSBT_GLOBAL_UNSIGNED_TX)) }?.value
-        assertNotNull(txBytes)
+        assertNotNull(deserialized.global.unsignedTx)
+        assertEquals(1, deserialized.inputs.size)
+        assertEquals(1, deserialized.outputs.size)
         
         val deserializedTx = Transaction(inputs=listOf(TxInput(ByteArray(32), 0)), outputs=listOf(TxOutput(1000, ByteArray(25)))) // Mock, assuming bytes are correct
         // In real test, we would deserialize txBytes to Transaction

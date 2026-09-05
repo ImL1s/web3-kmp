@@ -142,12 +142,22 @@ data class TxOutput(
         return result
     }
 
+    fun serialize(): ByteArray {
+        val buffer = ByteArrayBuilder()
+        buffer.writeInt64LE(value)
+        buffer.writeVarInt(scriptPubKey.size.toLong())
+        buffer.writeBytes(scriptPubKey)
+        return buffer.toByteArray()
+    }
+
     companion object {
         fun read(reader: ByteArrayReader): TxOutput {
             val value = reader.readInt64LE()
             val scriptPubKey = reader.readScript()
             return TxOutput(value, scriptPubKey)
         }
+
+        fun read(data: ByteArray): TxOutput = read(ByteArrayReader(data))
     }
 }
 
@@ -268,9 +278,9 @@ data class Transaction(
     }
 
     /**
-     * 序列化（不含 witness，用於計算 txid）
+     * 序列化（不含 witness，用於計算 txid / PSBT unsigned tx）
      */
-    private fun serializeWithoutWitness(): ByteArray {
+    internal fun serializeWithoutWitness(): ByteArray {
         val buffer = ByteArrayBuilder()
 
         // Version (4 bytes, little-endian)
@@ -390,48 +400,75 @@ data class Transaction(
     }
 
     /**
-     * Legacy Sighash algorithm
+     * BIP143 preimage (scriptCode is the raw script, CompactSize applied once here).
+     */
+    fun bip143SignaturePreimage(
+        inputIndex: Int,
+        scriptCode: ByteArray,
+        hashType: Int,
+        amount: Long
+    ): ByteArray {
+        require(inputIndex in inputs.indices) { "Invalid input index" }
+        return bip143Preimage(inputIndex, scriptCode, hashType, amount)
+    }
+
+    /**
+     * Legacy SignatureHash (Bitcoin Core semantics for ALL/NONE/SINGLE ± ANYONECANPAY).
      */
     private fun hashForSignatureLegacy(inputIndex: Int, scriptCode: ByteArray, hashType: Int): ByteArray {
-        val buffer = ByteArrayBuilder()
-        buffer.writeInt32LE(version)
-        buffer.writeVarInt(inputs.size.toLong())
+        val anyone = (hashType and SIGHASH_ANYONECANPAY) != 0
+        val baseType = hashType and 0x1f
 
-        inputs.forEachIndexed { i, input ->
-            buffer.writeBytes(input.previousTxHash)
-            buffer.writeInt32LE(input.previousOutputIndex.toInt())
-            
-            if (i == inputIndex) {
-                // For the signing input, use the scriptCode (subScript)
-                buffer.writeVarInt(scriptCode.size.toLong())
-                buffer.writeBytes(scriptCode)
-            } else {
-                // For other inputs, empty script
-                buffer.writeVarInt(0)
-            }
-            buffer.writeInt32LE(input.sequence.toInt())
-        }
-
-        buffer.writeVarInt(outputs.size.toLong())
-        outputs.forEach { output ->
-            buffer.writeInt64LE(output.value)
-            buffer.writeVarInt(output.scriptPubKey.size.toLong())
-            buffer.writeBytes(output.scriptPubKey)
-        }
-
-        buffer.writeInt32LE(lockTime.toInt())
-        buffer.writeInt32LE(hashType) // Append HashType (4 bytes)
-
-        // SIGHASH_SINGLE bug compatibility
-        if ((hashType and 0x1f) == SIGHASH_SINGLE && inputIndex >= outputs.size) {
-            // Return 0x010000...00 (Little Endian "1") -> SHA256 returns this directly as the *signature hash*?
-            // "The SignatureHash function returns the 256-bit integer 1 on error".
-            // So we return 1 represented as 32 bytes.
+        if (baseType == SIGHASH_SINGLE && inputIndex >= outputs.size) {
             val one = ByteArray(32)
             one[0] = 1
             return one
         }
 
+        val vin: List<TxInput> = if (anyone) {
+            listOf(inputs[inputIndex].copy(scriptSig = scriptCode))
+        } else {
+            inputs.mapIndexed { i, inp ->
+                val seq = if (i != inputIndex && (baseType == SIGHASH_NONE || baseType == SIGHASH_SINGLE)) {
+                    0L
+                } else {
+                    inp.sequence
+                }
+                inp.copy(
+                    scriptSig = if (i == inputIndex) scriptCode else ByteArray(0),
+                    sequence = seq
+                )
+            }
+        }
+
+        data class Out(val value: Long, val script: ByteArray)
+        val vout: List<Out> = when (baseType) {
+            SIGHASH_NONE -> emptyList()
+            SIGHASH_SINGLE -> {
+                (0 until inputIndex).map { Out(-1L, ByteArray(0)) } +
+                    Out(outputs[inputIndex].value, outputs[inputIndex].scriptPubKey)
+            }
+            else -> outputs.map { Out(it.value, it.scriptPubKey) }
+        }
+
+        val buffer = ByteArrayBuilder()
+        buffer.writeInt32LE(version)
+        buffer.writeVarInt(vin.size.toLong())
+        vin.forEach { input ->
+            buffer.writeBytes(input.previousTxHash)
+            buffer.writeInt32LE(input.previousOutputIndex.toInt())
+            buffer.writeVarInt(input.scriptSig.size.toLong())
+            buffer.writeBytes(input.scriptSig)
+            buffer.writeInt32LE(input.sequence.toInt())
+        }
+        buffer.writeVarInt(vout.size.toLong())
+        vout.forEach { out ->
+            buffer.writeInt64LE(out.value)
+            buffer.writeVarInt(out.script.size.toLong())
+            buffer.writeBytes(out.script)
+        }
+        buffer.writeInt32LE(lockTime.toInt())
+        buffer.writeInt32LE(hashType)
         return doubleSha256(buffer.toByteArray())
     }
 
@@ -439,6 +476,10 @@ data class Transaction(
      * BIP143 SegWit Sighash algorithm
      */
     private fun hashForSignatureWitness(inputIndex: Int, scriptCode: ByteArray, hashType: Int, amount: Long): ByteArray {
+        return doubleSha256(bip143Preimage(inputIndex, scriptCode, hashType, amount))
+    }
+
+    private fun bip143Preimage(inputIndex: Int, scriptCode: ByteArray, hashType: Int, amount: Long): ByteArray {
         val buffer = ByteArrayBuilder()
 
         // 1. Version
@@ -524,7 +565,7 @@ data class Transaction(
         // 10. HashType
         buffer.writeInt32LE(hashType)
 
-        return doubleSha256(buffer.toByteArray())
+        return buffer.toByteArray()
     }
 
     private fun doubleSha256(data: ByteArray): ByteArray {
@@ -554,7 +595,13 @@ data class Transaction(
     ): ByteArray {
         require(inputIndex in inputs.indices) { "Invalid input index" }
         require(prevOutputs.size == inputs.size) { "prevOutputs size must match inputs size" }
-        
+        val allowed = setOf(0x00, 0x01, 0x02, 0x03, 0x81, 0x82, 0x83)
+        require(sighashType in allowed) { "Invalid taproot sighash type: $sighashType" }
+        val outputTypeEarly = if (sighashType == SIGHASH_DEFAULT) SIGHASH_ALL else sighashType and SIGHASH_OUTPUT_MASK
+        if (outputTypeEarly == SIGHASH_SINGLE && inputIndex >= outputs.size) {
+            throw IllegalArgumentException("SIGHASH_SINGLE without matching output")
+        }
+
         val buffer = ByteArrayBuilder()
         
         // Epoch 0 (BIP-341)

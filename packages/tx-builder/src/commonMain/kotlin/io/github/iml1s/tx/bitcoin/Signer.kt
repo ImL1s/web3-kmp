@@ -23,19 +23,17 @@ object Signer {
         publicKey: ByteArray,
         amount: Long
     ): TxWitness {
-        // P2WPKH scriptCode is: 0x19 0x76 0xa9 0x14 {20-byte-pubkey-hash} 0x88 0xac
-        // 0x19 = 25 (length)
+        // P2WPKH scriptCode is the 25-byte P2PKH script *without* CompactSize:
         // OP_DUP OP_HASH160 20-bytes OP_EQUALVERIFY OP_CHECKSIG
-        
+        // hashForSignatureWitness prepends a single CompactSize (0x19).
         val pubKeyHash = Crypto.hash160(publicKey)
-        val scriptCode = ByteArray(26)
-        scriptCode[0] = 0x19.toByte() // Size 25
-        scriptCode[1] = 0x76.toByte() // OP_DUP
-        scriptCode[2] = 0xA9.toByte() // OP_HASH160
-        scriptCode[3] = 0x14.toByte() // Push 20 bytes
-        pubKeyHash.copyInto(scriptCode, destinationOffset = 4)
-        scriptCode[24] = 0x88.toByte() // OP_EQUALVERIFY
-        scriptCode[25] = 0xAC.toByte() // OP_CHECKSIG
+        val scriptCode = ByteArray(25)
+        scriptCode[0] = 0x76.toByte() // OP_DUP
+        scriptCode[1] = 0xA9.toByte() // OP_HASH160
+        scriptCode[2] = 0x14.toByte() // Push 20 bytes
+        pubKeyHash.copyInto(scriptCode, destinationOffset = 3)
+        scriptCode[23] = 0x88.toByte() // OP_EQUALVERIFY
+        scriptCode[24] = 0xAC.toByte() // OP_CHECKSIG
 
         val hashType = Transaction.SIGHASH_ALL
         

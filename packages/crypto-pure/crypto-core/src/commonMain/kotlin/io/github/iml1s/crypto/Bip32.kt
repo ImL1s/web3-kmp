@@ -136,28 +136,7 @@ object Bip32 {
 
         val il = hmac.sliceArray(0 until 32)
         val childChainCode = hmac.sliceArray(32 until 64)
-
-        // 計算子私鑰 = (IL + parent_private_key) mod n
-        val ilBigInt = BigInteger.fromByteArray(il, Sign.POSITIVE)
-        val parentKeyBigInt = BigInteger.fromByteArray(parent.privateKey, Sign.POSITIVE)
-        val childKeyBigInt = (ilBigInt + parentKeyBigInt) % SECP256K1_N
-
-        // 檢查子私鑰有效性
-        require(childKeyBigInt > BigInteger.ZERO) {
-            "Invalid child key: derived key is zero"
-        }
-        require(childKeyBigInt < SECP256K1_N) {
-            "Invalid child key: derived key >= curve order"
-        }
-
-        val childPrivateKey = childKeyBigInt.toByteArray().let { bytes ->
-            // 確保是 32 字節（可能需要補零或去除符號位）
-            when {
-                bytes.size > 32 -> bytes.takeLast(32).toByteArray()
-                bytes.size < 32 -> ByteArray(32 - bytes.size) + bytes
-                else -> bytes
-            }
-        }
+        val childPrivateKey = childPrivateKeyFromIl(il, parent.privateKey)
 
         return ExtendedKey(
             privateKey = childPrivateKey,
@@ -166,6 +145,32 @@ object Bip32 {
             parentFingerprint = parent.getFingerprint(),
             childNumber = actualIndex.toInt()
         )
+    }
+
+    /**
+     * BIP32 CKDpriv IL combination. Rejects parse256(IL) >= n *before* adding the parent key.
+     */
+    internal fun childPrivateKeyFromIl(il: ByteArray, parentPrivateKey: ByteArray): ByteArray {
+        require(il.size == 32) { "IL must be 32 bytes" }
+        require(parentPrivateKey.size == 32) { "Parent private key must be 32 bytes" }
+        val ilBigInt = BigInteger.fromByteArray(il, Sign.POSITIVE)
+        require(ilBigInt < SECP256K1_N) {
+            "Invalid child key: IL >= curve order"
+        }
+        val parentKeyBigInt = BigInteger.fromByteArray(parentPrivateKey, Sign.POSITIVE)
+        val childKeyBigInt = (ilBigInt + parentKeyBigInt) % SECP256K1_N
+        require(childKeyBigInt > BigInteger.ZERO) {
+            "Invalid child key: derived key is zero"
+        }
+        require(childKeyBigInt < SECP256K1_N) {
+            "Invalid child key: derived key >= curve order"
+        }
+        val bytes = childKeyBigInt.toByteArray()
+        return when {
+            bytes.size > 32 -> bytes.takeLast(32).toByteArray()
+            bytes.size < 32 -> ByteArray(32 - bytes.size) + bytes
+            else -> bytes
+        }
     }
 
     /**

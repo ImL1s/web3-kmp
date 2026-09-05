@@ -68,19 +68,26 @@ object Secp256k1Pure {
             val k = generateKDeterministic(privateKey, message)
             kBytes = k.toByteArray() // 保存以便清理
 
+            require(d >= BigInteger.ONE && d < N) { "Invalid private key" }
+
             // 計算 r = (k * G).x mod n
-            val (kGx, _) = scalarMultiply(k, G_X, G_Y)
-            val r = kGx % N
+            val kG = scalarMultiply(k, G_X, G_Y) ?: throw IllegalStateException("k*G is infinity")
+            val r = kG.first % N
 
             // ✅ P0-CRITICAL: 驗證 r 在有效範圍內 [1, n-1]
             require(r >= BigInteger.ONE && r < N) { "Invalid signature: r is zero or out of range" }
 
             // 計算 s = k^-1 * (z + r * d) mod n
             val kInv = k.modInverse(N)
-            val s = (kInv * (z + r * d)) % N
+            var s = (kInv * (z + r * d)) % N
 
             // ✅ P0-CRITICAL: 驗證 s 在有效範圍內 [1, n-1]
             require(s >= BigInteger.ONE && s < N) { "Invalid signature: s is zero or out of range" }
+
+            val halfN = N shr 1
+            if (s > halfN) {
+                s = N - s
+            }
 
             // ✅ 返回 compact 格式 (64 bytes: 32-byte r || 32-byte s)
             encodeCompact(r, s)
@@ -94,6 +101,87 @@ object Secp256k1Pure {
                 bytes.fill(0)
             }
         }
+    }
+
+    data class Secp256k1Signature(
+        val r: ByteArray,
+        val s: ByteArray,
+        val yParity: Int
+    )
+
+    fun signWithRecovery(message: ByteArray, privateKey: ByteArray): Secp256k1Signature {
+        require(message.size == 32) { "Message must be 32 bytes" }
+        require(privateKey.size == 32) { "Private key must be 32 bytes" }
+
+        var kBytes: ByteArray? = null
+        return try {
+            val d = privateKey.toBigInteger()
+            require(d >= BigInteger.ONE && d < N) { "Invalid private key" }
+            val z = message.toBigInteger()
+            val k = generateKDeterministic(privateKey, message)
+            kBytes = k.toByteArray()
+
+            val kG = scalarMultiply(k, G_X, G_Y) ?: throw IllegalStateException("k*G is infinity")
+            val kGx = kG.first
+            val kGy = kG.second
+            val r = kGx % N
+            require(r >= BigInteger.ONE && r < N) { "Invalid signature: r is zero or out of range" }
+
+            val kInv = k.modInverse(N)
+            var s = (kInv * (z + r * d)) % N
+            require(s >= BigInteger.ONE && s < N) { "Invalid signature: s is zero or out of range" }
+
+            val halfN = N shr 1
+            var yParity = if (kGy.isEven()) 0 else 1
+            if (s > halfN) {
+                s = N - s
+                yParity = yParity xor 1
+            }
+
+            Secp256k1Signature(
+                r = r.toByteArrayPadded(32),
+                s = s.toByteArrayPadded(32),
+                yParity = yParity
+            )
+        } finally {
+            kBytes?.let { bytes ->
+                bytes.fill(0)
+                kotlin.random.Random.nextBytes(bytes)
+                bytes.fill(0)
+            }
+        }
+    }
+
+    fun recoverPublicKeyPoint(z: BigInteger, r: BigInteger, s: BigInteger, yParity: Int): Pair<BigInteger, BigInteger>? {
+        if (r < BigInteger.ONE || r >= N || s < BigInteger.ONE || s >= N) return null
+        val x = r
+        // y^2 = x^3 + 7 mod P
+        val y2 = ((x * x % P) * x + 7.toBigInteger()) % P
+        // Modular square root for P = 3 mod 4: y = y2^((P+1)/4) mod P
+        val exp = (P + BigInteger.ONE) shr 2
+        var y = y2.modPow(exp, P)
+        if ((y * y % P) != y2) return null // Not a valid point
+
+        val isYEven = y.isEven()
+        val expectedEven = (yParity and 1) == 0
+        if (isYEven != expectedEven) {
+            y = P - y
+        }
+
+        // Q = r^-1 * (s * R - z * G)
+        val rInv = r.modInverse(N)
+        val sR = scalarMultiply(s, x, y) ?: return null
+        val zG = scalarMultiply(z, G_X, G_Y)
+        val negZG = if (zG == null) null else Pair(zG.first, (P - zG.second).mod(P))
+        val diff = pointAdd(sR, negZG) ?: return null
+        return scalarMultiply(rInv, diff.first, diff.second)
+    }
+
+    fun recoverPublicKeyPoint(hash32: ByteArray, rBytes: ByteArray, sBytes: ByteArray, yParity: Int): Pair<BigInteger, BigInteger>? {
+        val z = BigInteger.fromByteArray(hash32)
+        val r = BigInteger.fromByteArray(rBytes)
+        val s = BigInteger.fromByteArray(sBytes)
+        return recoverPublicKeyPoint(z, r, s, yParity)
     }
     
     /**
@@ -110,30 +198,13 @@ object Secp256k1Pure {
     fun pubKeyOf(privateKey: ByteArray, compressed: Boolean = true): ByteArray {
         require(privateKey.size == 32) { "Private key must be 32 bytes" }
 
-        val d = try {
-            privateKey.toBigInteger()
-        } catch (e: Exception) {
-            throw Exception("Failed to convert private key to BigInteger: ${e.message}", e)
-        }
+        val d = privateKey.toBigInteger()
+        require(d >= BigInteger.ONE && d < N) { "Private key is out of range for secp256k1" }
 
-        val (pubX, pubY) = try {
-            scalarMultiply(d, G_X, G_Y)
-        } catch (e: Exception) {
-            throw Exception("Failed in scalarMultiply: ${e.message}, d=${d.toByteArray().toHexString()}", e)
-        }
+        val point = scalarMultiply(d, G_X, G_Y)
+            ?: throw IllegalArgumentException("Private key is out of range for secp256k1")
 
-        return if (compressed) {
-            // 壓縮格式：前綴 + x 坐標
-            val prefix = try {
-                if (pubY % BigInteger(KmpBigInteger.fromInt(2)) == BigInteger.ZERO) 0x02 else 0x03
-            } catch (e: Exception) {
-                throw Exception("Failed to calculate prefix: ${e.message}", e)
-            }
-            byteArrayOf(prefix.toByte()) + pubX.toByteArray32()
-        } else {
-            // 未壓縮格式：0x04 + x + y
-            byteArrayOf(0x04) + pubX.toByteArray32() + pubY.toByteArray32()
-        }
+        return encodePublicKey(point, compressed)
     }
     
     /**
@@ -167,113 +238,121 @@ object Secp256k1Pure {
             val u2 = (r * sInv) % N
 
             // 計算 (x, y) = u1 * G + u2 * pubKey
-            val (p1x, p1y) = scalarMultiply(u1, G_X, G_Y)
-            val (p2x, p2y) = scalarMultiply(u2, pubX, pubY)
-            val (x, _) = pointAdd(p1x, p1y, p2x, p2y)
+            // Identity is the point at infinity, not affine (0,0).
+            val p1 = scalarMultiply(u1, G_X, G_Y)
+            val p2 = scalarMultiply(u2, pubX, pubY)
+            val sum = pointAdd(p1, p2) ?: return false
 
             // 驗證 r == x mod n
-            r == x % N
+            r == sum.first % N
         } catch (e: Exception) {
             false
         }
     }
     
-    private fun pointAdd(x1: BigInteger, y1: BigInteger, x2: BigInteger, y2: BigInteger): Pair<BigInteger, BigInteger> {
+    /**
+     * Affine point addition. `null` is the point at infinity (group identity).
+     * Affine (0,0) is *not* identity and is not on secp256k1.
+     */
+    private fun pointAdd(
+        p1: Pair<BigInteger, BigInteger>?,
+        p2: Pair<BigInteger, BigInteger>?
+    ): Pair<BigInteger, BigInteger>? {
+        if (p1 == null) return p2
+        if (p2 == null) return p1
+
+        val (x1, y1) = p1
+        val (x2, y2) = p2
         val three = BigInteger(KmpBigInteger.fromInt(3))
         val two = BigInteger(KmpBigInteger.fromInt(2))
         val pMinusTwo = P - two
 
-        if (x1 == x2 && y1 == y2) {
-            // 點倍增
-            // s = (3*x1^2) / (2*y1) mod P
+        if (x1 == x2) {
+            if ((y1 + y2).mod(P) == BigInteger.ZERO) {
+                return null
+            }
+            if (y1 == BigInteger.ZERO) {
+                return null
+            }
             val num = (three * x1 * x1).mod(P)
             val den = (two * y1).mod(P)
             val s = (num * den.modPow(pMinusTwo, P)).mod(P)
-            
             val x3 = (s * s - two * x1).mod(P)
             val y3 = (s * (x1 - x3) - y1).mod(P)
             return Pair(x3, y3)
-        } else {
-            // 一般點加法
-            // s = (y2-y1) / (x2-x1) mod P
-            val num = (y2 - y1).mod(P)
-            val den = (x2 - x1).mod(P)
-            
-            val s = (num * den.modPow(pMinusTwo, P)).mod(P)
-            val x3 = (s * s - x1 - x2).mod(P)
-            val y3 = (s * (x1 - x3) - y1).mod(P)
-            return Pair(x3, y3)
         }
+
+        val num = (y2 - y1).mod(P)
+        val den = (x2 - x1).mod(P)
+        val s = (num * den.modPow(pMinusTwo, P)).mod(P)
+        val x3 = (s * s - x1 - x2).mod(P)
+        val y3 = (s * (x1 - x3) - y1).mod(P)
+        return Pair(x3, y3)
     }
-    
+
     /**
-     * 標量乘法（使用倍增和加法）
+     * 標量乘法（使用倍增和加法）。回傳 null 表示無窮遠點。
      */
-    private fun scalarMultiply(k: BigInteger, x: BigInteger, y: BigInteger): Pair<BigInteger, BigInteger> {
+    private fun scalarMultiply(k: BigInteger, x: BigInteger, y: BigInteger): Pair<BigInteger, BigInteger>? {
+        var scalar = k.mod(N)
+        if (scalar == BigInteger.ZERO) return null
+
         var result: Pair<BigInteger, BigInteger>? = null
-        var addend = Pair(x, y)
-        var scalar = k
+        var addend: Pair<BigInteger, BigInteger>? = Pair(x, y)
+        val two = BigInteger(KmpBigInteger.fromInt(2))
 
-        try {
-            while (scalar.magnitude > KmpBigInteger.ZERO) {
-                val two = BigInteger(KmpBigInteger.fromInt(2))
-
-                val modResult = scalar.mod(two)
-
-                if (modResult.equals(BigInteger.ONE)) {
-                    result = if (result == null) {
-                        addend
-                    } else {
-                        try {
-                            pointAdd(result.first, result.second, addend.first, addend.second)
-                        } catch (e: Exception) {
-                            throw Exception("Failed in pointAdd for result: ${e.message}", e)
-                        }
-                    }
-                }
-
-                addend = try {
-                    pointAdd(addend.first, addend.second, addend.first, addend.second)
-                } catch (e: Exception) {
-                    throw Exception("Failed in pointAdd for doubling: ${e.message}", e)
-                }
-
-                scalar = try {
-                    scalar / two
-                } catch (e: Exception) {
-                    throw Exception("Failed to divide scalar by 2: ${e.message}", e)
-                }
+        while (scalar.magnitude > KmpBigInteger.ZERO) {
+            if (scalar.mod(two) == BigInteger.ONE) {
+                result = pointAdd(result, addend)
             }
-        } catch (e: Exception) {
-            throw Exception("Error in scalarMultiply loop: ${e.message}", e)
+            addend = pointAdd(addend, addend)
+            scalar = scalar / two
         }
-
-        return result ?: Pair(BigInteger.ZERO, BigInteger.ZERO)
+        return result
     }
 
     private fun generateKDeterministic(
         privateKey: ByteArray,
         messageHash: ByteArray
     ): BigInteger {
-        // RFC 6979 確定性 k 生成
+        // RFC 6979 §3.2 with q = secp256k1 n, qlen = rlen = 256.
+        // HMAC init uses int2octets(x) and bits2octets(h1), not the raw digest.
+        val xOctets = privateKey
+        val h1Octets = bits2octets(messageHash)
+
         var v = ByteArray(32) { 0x01 }
         var k = ByteArray(32) { 0x00 }
-        
-        k = hmacSha256Blocking(k, v + byteArrayOf(0x00) + privateKey + messageHash)
+
+        k = hmacSha256Blocking(k, v + byteArrayOf(0x00) + xOctets + h1Octets)
         v = hmacSha256Blocking(k, v)
-        
-        k = hmacSha256Blocking(k, v + byteArrayOf(0x01) + privateKey + messageHash)
+
+        k = hmacSha256Blocking(k, v + byteArrayOf(0x01) + xOctets + h1Octets)
         v = hmacSha256Blocking(k, v)
-        
+
         while (true) {
             v = hmacSha256Blocking(k, v)
-            val kCandidate = BigInteger.fromByteArray(v)
+            val kCandidate = bits2int(v)
             if (kCandidate >= BigInteger.ONE && kCandidate < N) {
                 return kCandidate
             }
             k = hmacSha256Blocking(k, v + byteArrayOf(0x00))
             v = hmacSha256Blocking(k, v)
         }
+    }
+
+    /** RFC 6979 bits2int: leftmost qlen bits of the octet string as an integer. */
+    private fun bits2int(octets: ByteArray): BigInteger {
+        return BigInteger.fromByteArray(octets)
+    }
+
+    /** RFC 6979 int2octets: rlen/8-byte big-endian encoding. */
+    private fun int2octets(value: BigInteger): ByteArray {
+        return value.toByteArray32()
+    }
+
+    /** RFC 6979 bits2octets(x) = int2octets(bits2int(x) mod q). */
+    private fun bits2octets(hash: ByteArray): ByteArray {
+        return int2octets(bits2int(hash) % N)
     }
     
     /**
@@ -353,32 +432,65 @@ object Secp256k1Pure {
      * ✅ P0-CRITICAL: 包含 r, s 範圍檢查
      */
     private fun decodeDER(signature: ByteArray): Pair<BigInteger, BigInteger> {
+        require(signature.isNotEmpty()) { "Invalid DER signature" }
         var index = 0
-
-        // Skip SEQUENCE tag
         require(signature[index++] == 0x30.toByte()) { "Invalid DER signature" }
 
-        // Skip length
-        index++
+        val seqLen = readDerLength(signature, index)
+        index = seqLen.second
+        val seqEnd = index + seqLen.first
+        require(seqEnd == signature.size) { "Invalid DER signature: trailing bytes" }
 
-        // Read r
-        require(signature[index++] == 0x02.toByte()) { "Invalid DER signature (r)" }
-        val rLength = signature[index++].toInt() and 0xFF
-        val r = signature.sliceArray(index until index + rLength).toBigInteger()
-        index += rLength
-
-        // ✅ P0-CRITICAL: 驗證 r 在有效範圍內 [1, n-1]
+        require(index < seqEnd && signature[index++] == 0x02.toByte()) { "Invalid DER signature (r)" }
+        val rLen = readDerLength(signature, index)
+        index = rLen.second
+        require(index + rLen.first <= seqEnd) { "Invalid DER signature (r overflow)" }
+        val rBytes = signature.sliceArray(index until index + rLen.first)
+        index += rLen.first
+        val r = parseDerInteger(rBytes)
         require(r >= BigInteger.ONE && r < N) { "Invalid signature: r is zero or out of range" }
 
-        // Read s
-        require(signature[index++] == 0x02.toByte()) { "Invalid DER signature (s)" }
-        val sLength = signature[index++].toInt() and 0xFF
-        val s = signature.sliceArray(index until index + sLength).toBigInteger()
-
-        // ✅ P0-CRITICAL: 驗證 s 在有效範圍內 [1, n-1]
+        require(index < seqEnd && signature[index++] == 0x02.toByte()) { "Invalid DER signature (s)" }
+        val sLen = readDerLength(signature, index)
+        index = sLen.second
+        require(index + sLen.first <= seqEnd) { "Invalid DER signature (s overflow)" }
+        val sBytes = signature.sliceArray(index until index + sLen.first)
+        index += sLen.first
+        val s = parseDerInteger(sBytes)
         require(s >= BigInteger.ONE && s < N) { "Invalid signature: s is zero or out of range" }
 
+        require(index == seqEnd) { "Invalid DER signature: unconsumed INTEGER payload" }
         return Pair(r, s)
+    }
+
+    private fun readDerLength(data: ByteArray, offset: Int): Pair<Int, Int> {
+        require(offset < data.size) { "Invalid DER length" }
+        val first = data[offset].toInt() and 0xFF
+        if (first < 0x80) {
+            return Pair(first, offset + 1)
+        }
+        val nbytes = first - 0x80
+        require(nbytes in 1..2) { "Invalid DER length" }
+        require(offset + 1 + nbytes <= data.size) { "Invalid DER length" }
+        var len = 0
+        for (i in 0 until nbytes) {
+            len = (len shl 8) or (data[offset + 1 + i].toInt() and 0xFF)
+        }
+        require(len >= 0x80 || nbytes > 1) { "Non-minimal DER length" }
+        require(nbytes != 1 || len >= 0x80) { "Non-minimal DER length" }
+        if (nbytes == 1 && len < 0x80) {
+            throw IllegalArgumentException("Non-minimal DER length")
+        }
+        return Pair(len, offset + 1 + nbytes)
+    }
+
+    private fun parseDerInteger(bytes: ByteArray): BigInteger {
+        require(bytes.isNotEmpty()) { "Empty DER integer" }
+        require(bytes[0] != 0x00.toByte() || bytes.size == 1 || (bytes[1].toInt() and 0x80) != 0) {
+            "Non-minimal DER integer"
+        }
+        require((bytes[0].toInt() and 0x80) == 0) { "Negative DER integer" }
+        return BigInteger.fromByteArray(bytes)
     }
     
     /**
@@ -393,14 +505,17 @@ object Secp256k1Pure {
      */
     fun generatePublicKeyPoint(privateKey: ByteArray): Pair<BigInteger, BigInteger> {
         val d = privateKey.toBigInteger()
+        require(d >= BigInteger.ONE && d < N) { "Invalid private key" }
         return scalarMultiply(d, G_X, G_Y)
+            ?: throw IllegalArgumentException("Invalid private key")
     }
     
     /**
      * 點加法（公開方法）
      */
     fun addPoints(p1: Pair<BigInteger, BigInteger>, p2: Pair<BigInteger, BigInteger>): Pair<BigInteger, BigInteger> {
-        return pointAdd(p1.first, p1.second, p2.first, p2.second)
+        return pointAdd(p1, p2)
+            ?: throw IllegalArgumentException("Result is point at infinity")
     }
     
     /**
@@ -440,10 +555,39 @@ object Secp256k1Pure {
         
         // 2. 計算共享密鑰點：sharedPoint = privateKey * publicKey
         val d = privateKey.toBigInteger()
-        val (sharedX, _) = scalarMultiply(d, pubX, pubY)
+        require(d >= BigInteger.ONE && d < N) { "Invalid private key" }
+        val shared = scalarMultiply(d, pubX, pubY)
+            ?: throw IllegalArgumentException("ECDH result is point at infinity")
+        val sharedX = shared.first
         
         // 3. 使用 x 坐標作為共享密鑰（ECDH 標準做法）
         return sharedX.toByteArray32()
+    }
+
+    fun secKeyVerify(privateKey: ByteArray): Boolean {
+        if (privateKey.size != 32) return false
+        val d = privateKey.toBigInteger()
+        return d > BigInteger.ZERO && d < N
+    }
+
+    fun pubkeyCreate(privateKey: ByteArray): ByteArray {
+        return generatePublicKey(privateKey, compressed = true)
+    }
+
+    fun privKeyTweakAdd(privateKey: ByteArray, tweak: ByteArray): ByteArray {
+        val d = privateKey.toBigInteger()
+        val t = tweak.toBigInteger()
+        val res = (d + t) % N
+        require(res >= BigInteger.ONE && res < N) { "Invalid tweaked private key" }
+        return res.toByteArray32()
+    }
+
+    fun pubKeyTweakAdd(publicKey: ByteArray, tweak: ByteArray): ByteArray {
+        val p1 = decodePublicKey(publicKey)
+        val t = tweak.toBigInteger()
+        val p2 = scalarMultiply(t, G_X, G_Y)
+        val res = pointAdd(p1, p2) ?: throw IllegalArgumentException("Tweaked public key is infinity")
+        return encodePublicKey(res, compressed = true)
     }
 
     /**
@@ -454,7 +598,7 @@ object Secp256k1Pure {
      * @param y 點的 y 坐標
      * @return 點是否在曲線上
      */
-    fun validatePointOnCurve(x: BigInteger, y: BigInteger): Boolean {
+    internal fun validatePointOnCurve(x: BigInteger, y: BigInteger): Boolean {
         // 左邊: y² mod p
         val left = (y * y) % P
         
@@ -544,6 +688,9 @@ object Secp256k1Pure {
             val ZERO = BigInteger(KmpBigInteger.ZERO)
             val ONE = BigInteger(KmpBigInteger.ONE)
             
+            fun fromInt(v: Int): BigInteger = BigInteger(KmpBigInteger.fromInt(v))
+            fun fromLong(v: Long): BigInteger = BigInteger(KmpBigInteger.fromLong(v))
+
             fun fromByteArray(bytes: ByteArray): BigInteger {
                 if (bytes.isEmpty()) return ZERO
                 // bignum 的 fromByteArray 默認處理帶符號字節
@@ -557,6 +704,10 @@ object Secp256k1Pure {
         }
         
         constructor(bytes: ByteArray) : this(KmpBigInteger.fromByteArray(bytes, Sign.POSITIVE))
+
+        fun isEven(): Boolean = (magnitude % KmpBigInteger.fromInt(2)) == KmpBigInteger.ZERO
+        infix fun shr(n: Int): BigInteger = BigInteger(magnitude shr n)
+        fun toByteArrayPadded(length: Int): ByteArray = toByteArray32()
         
         fun toByteArray32(): ByteArray {
             val bytes = magnitude.toByteArray()
@@ -588,9 +739,7 @@ object Secp256k1Pure {
             return cleanHex.hexToByteArray()
         }
         
-        fun toByteArray(): ByteArray = magnitude.toByteArray().let { if (it.isEmpty()) byteArrayOf(0) else it }
-
-
+        fun toByteArray(): ByteArray = magnitude.toByteArray()
         
         fun toInt(): Int = magnitude.intValue()
         
@@ -695,7 +844,10 @@ object Secp256k1Pure {
      * @param auxRand 32-byte 輔助隨機數據 (a) - 用於防止側信道攻擊，可選（默認為 0）
      * @return 64-byte 簽名 (R || s)
      */
-    fun schnorrSign(message: ByteArray, privateKey: ByteArray, auxRand: ByteArray = ByteArray(32)): ByteArray {
+    fun schnorrSign(message: ByteArray, privateKey: ByteArray, auxRand: ByteArray = ByteArray(32)): ByteArray =
+        signSchnorr(message, privateKey, auxRand)
+
+    fun signSchnorr(message: ByteArray, privateKey: ByteArray, auxRand: ByteArray = ByteArray(32)): ByteArray {
         require(message.size == 32) { "Message must be 32 bytes" }
         require(privateKey.size == 32) { "Private key must be 32 bytes" }
 
@@ -708,6 +860,7 @@ object Secp256k1Pure {
 
         // 2. P = d'⋅G
         val P = scalarMultiply(dBig, G_X, G_Y)
+            ?: throw IllegalArgumentException("Invalid private key")
 
         // 3. d = d' if has_even_y(P), else n - d'
         val d = if (hasEvenY(P)) dBig else N - dBig
@@ -730,6 +883,7 @@ object Secp256k1Pure {
 
         // 8. R = k'⋅G
         val R = scalarMultiply(kPrime, G_X, G_Y)
+            ?: throw IllegalStateException("R is infinity")
 
         // 9. k = k' if has_even_y(R), else n - k'
         val k = if (hasEvenY(R)) kPrime else N - kPrime
@@ -753,8 +907,12 @@ object Secp256k1Pure {
      * @param signature 64-byte 簽名 (R || s)
      * @return 是否有效
      */
-    fun schnorrVerify(message: ByteArray, publicKey: ByteArray, signature: ByteArray): Boolean {
-        if (message.size != 32 || publicKey.size != 32 || signature.size != 64) return false
+    fun schnorrVerify(message: ByteArray, publicKey: ByteArray, signature: ByteArray): Boolean =
+        verifySchnorr(message, publicKey, signature)
+
+    fun verifySchnorr(message: ByteArray, publicKey: ByteArray, signature: ByteArray): Boolean {
+        if (message.size != 32) return false
+        if (publicKey.size != 32) return false
         if (signature.size != 64) return false
 
         try {
@@ -785,10 +943,10 @@ object Secp256k1Pure {
             val negE = N - e
             val negEP = scalarMultiply(negE, P_point.first, P_point.second)
 
-            val R_calc = pointAdd(sG.first, sG.second, negEP.first, negEP.second)
+            val R_calc = pointAdd(sG, negEP)
 
             // 6. fail if is_infinite(R)
-            if (isPointAtInfinity(R_calc.first, R_calc.second)) return false
+            if (R_calc == null || isPointAtInfinity(R_calc.first, R_calc.second)) return false
 
             // 7. fail if not has_even_y(R)
             if (!hasEvenY(R_calc)) return false
@@ -868,55 +1026,7 @@ object Secp256k1Pure {
      */
     fun scalarMultiplyG(scalar: BigInteger): Pair<BigInteger, BigInteger> {
         return scalarMultiply(scalar, G_X, G_Y)
-    }
-
-    /**
-     * 驗證私鑰是否有效 (0 < privateKey < n)
-     */
-    fun secKeyVerify(privateKey: ByteArray): Boolean {
-        if (privateKey.size != 32) return false
-        val d = privateKey.toBigInteger()
-        return d > BigInteger.ZERO && d < N
-    }
-
-    /**
-     * 從私鑰創建公鑰 (33-byte compressed)
-     */
-    fun pubkeyCreate(privateKey: ByteArray): ByteArray {
-        return pubKeyOf(privateKey, true)
-    }
-
-    /**
-     * 私鑰調整 (childPrivateKey = (parentPrivateKey + tweak) mod n)
-     */
-    fun privKeyTweakAdd(privateKey: ByteArray, tweak: ByteArray): ByteArray {
-        require(privateKey.size == 32)
-        require(tweak.size == 32)
-        val d = privateKey.toBigInteger()
-        val t = tweak.toBigInteger()
-        val result = (d + t) % N
-        return result.toByteArray32()
-    }
-
-    /**
-     * 公鑰調整 (childPublicKey = parentPublicKey + tweak * G)
-     */
-    fun pubKeyTweakAdd(publicKey: ByteArray, tweak: ByteArray): ByteArray {
-        require(publicKey.size == 33 || publicKey.size == 65)
-        require(tweak.size == 32)
-        
-        // 1. 解碼公鑰點 P
-        val (px, py) = decodePublicKey(publicKey)
-        
-        // 2. 計算 tweak * G
-        val t = tweak.toBigInteger()
-        val (tx, ty) = scalarMultiply(t, G_X, G_Y)
-        
-        // 3. 計算 P + tweak * G
-        val (rx, ry) = pointAdd(px, py, tx, ty)
-        
-        // 4. 返回壓縮格式
-        return encodePublicKey(Pair(rx, ry), true)
+            ?: throw IllegalArgumentException("scalar*G is point at infinity")
     }
 
     private fun xor(a: ByteArray, b: ByteArray): ByteArray {
@@ -934,13 +1044,14 @@ private fun ByteArray.toBigInteger(): Secp256k1Pure.BigInteger {
 }
 
 private fun String.hexToBigInteger(): Secp256k1Pure.BigInteger {
-    return Hex.decode(this).toBigInteger()
+    return this.hexToByteArray().toBigInteger()
 }
 
+
 private fun Int.toBigInteger(): Secp256k1Pure.BigInteger {
-    return when (this) {
-        0 -> Secp256k1Pure.BigInteger.ZERO
-        1 -> Secp256k1Pure.BigInteger.ONE
+    return when {
+        this == 0 -> Secp256k1Pure.BigInteger.ZERO
+        this == 1 -> Secp256k1Pure.BigInteger.ONE
         else -> {
             val bytes = mutableListOf<Byte>()
             var value = this

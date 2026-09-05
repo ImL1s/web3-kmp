@@ -30,6 +30,10 @@ This monorepo contains the following packages:
 - **bitkey** - Hardware wallet integration (Bitkey)
 - **hardware-wallet** - Generic hardware wallet support
 
+## Correctness (v1.3.1)
+
+P1 fixes in `secure-storage`, `crypto-pure`/`crypto-core`, `address`, `tx-builder`, `caip-standards`, `utxo`, and `blockchain-client` (fail-closed vault, BIP143/PSBT/chainId bytes, CAIP/UTXO/wei validity). See [CHANGELOG](CHANGELOG.md). This is not a full seven-library API security certification; remaining public APIs are NOT_RUN.
+
 ## 🏗️ Building
 
 ```bash

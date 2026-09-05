@@ -90,6 +90,10 @@ class CAIPTestSuite {
                         details.add("[FAIL] $input failed to parse: ${result.exception.message}")
                         allPassed = false
                     }
+                    is CAIPResult.Unverified -> {
+                        details.add("[UNVERIFIED]")
+                        allPassed = false
+                    }
                     is CAIPResult.Loading -> {
                         details.add("[WAIT] $input still loading")
                         allPassed = false
@@ -176,6 +180,10 @@ class CAIPTestSuite {
                     is CAIPResult.Failure -> {
                         details.add("[PASS] '$invalidFormat' correctly rejected")
                     }
+                    is CAIPResult.Unverified -> {
+                        details.add("[UNVERIFIED]")
+                        allPassed = false
+                    }
                     is CAIPResult.Loading -> {
                         details.add("[WAIT] '$invalidFormat' still loading")
                         allPassed = false
@@ -240,6 +248,10 @@ class CAIPTestSuite {
                         details.add("[FAIL] $testCase failed to parse: ${result.exception.message}")
                         allPassed = false
                     }
+                    is CAIPResult.Unverified -> {
+                        details.add("[UNVERIFIED]")
+                        allPassed = false
+                    }
                     is CAIPResult.Loading -> {
                         details.add("[WAIT] $testCase still loading")
                         allPassed = false
@@ -286,6 +298,10 @@ class CAIPTestSuite {
                     }
                     is CAIPResult.Failure -> {
                         details.add("[FAIL] ${address.toCAIPString()} validation threw exception: ${validation.exception.message}")
+                        allPassed = false
+                    }
+                    is CAIPResult.Unverified -> {
+                        details.add("[UNVERIFIED]")
                         allPassed = false
                     }
                     is CAIPResult.Loading -> {
@@ -388,6 +404,10 @@ class CAIPTestSuite {
                     }
                     is CAIPResult.Failure -> {
                         details.add("[FAIL] $testCase failed to parse: ${result.exception.message}")
+                        allPassed = false
+                    }
+                    is CAIPResult.Unverified -> {
+                        details.add("[UNVERIFIED]")
                         allPassed = false
                     }
                     is CAIPResult.Loading -> {
