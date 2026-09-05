@@ -37,15 +37,26 @@ data class CAIPTransactionRequest(
      */
     fun validate(): CAIPResult<Boolean> {
         return try {
-            // Validate addresses
             val fromValidation = fromAddress.validate()
             if (fromValidation.isFailure()) {
                 return fromValidation
+            }
+            if (fromValidation is CAIPResult.Unverified) {
+                return fromValidation
+            }
+            if (fromValidation !is CAIPResult.Success || !fromValidation.data) {
+                return CAIPResult.Success(false)
             }
 
             val toValidation = toAddress.validate()
             if (toValidation.isFailure()) {
                 return toValidation
+            }
+            if (toValidation is CAIPResult.Unverified) {
+                return toValidation
+            }
+            if (toValidation !is CAIPResult.Success || !toValidation.data) {
+                return CAIPResult.Success(false)
             }
 
             // Validate same-chain transaction
@@ -62,9 +73,7 @@ data class CAIPTransactionRequest(
                 )
             }
 
-            // Validate amount format
-            val amountValue = amount.toDoubleOrNull()
-            if (amountValue == null || amountValue <= 0) {
+            if (!isPositiveDecimalAmount(amount)) {
                 return CAIPResult.Failure(
                     IllegalArgumentException("Invalid amount: $amount")
                 )
@@ -73,6 +82,21 @@ data class CAIPTransactionRequest(
             CAIPResult.Success(true)
         } catch (e: Exception) {
             CAIPResult.Failure(e)
+        }
+    }
+
+    companion object {
+        internal fun isPositiveDecimalAmount(raw: String): Boolean {
+            val amount = raw.trim()
+            if (amount.isEmpty()) return false
+            val lower = amount.lowercase()
+            if (lower == "nan" || lower == "infinity" || lower == "+infinity" || lower == "-infinity") {
+                return false
+            }
+            if (amount.contains('e', ignoreCase = true)) return false
+            if (!amount.matches(Regex("""^[0-9]+(\.[0-9]+)?$"""))) return false
+            val digits = amount.replace(".", "").trimStart('0')
+            return digits.isNotEmpty()
         }
     }
 
@@ -150,6 +174,7 @@ class CAIPService {
         return when (val result = parseCAIPString(caipString)) {
             is CAIPResult.Success -> CAIPResult.Success(true)
             is CAIPResult.Failure -> CAIPResult.Success(false)
+            is CAIPResult.Unverified -> CAIPResult.Unverified(true, result.reason)
             is CAIPResult.Loading -> CAIPResult.Success(false)
         }
     }

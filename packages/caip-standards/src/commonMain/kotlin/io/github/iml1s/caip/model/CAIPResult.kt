@@ -25,6 +25,11 @@ sealed class CAIPResult<out T> {
     data class Failure(val exception: Exception) : CAIPResult<Nothing>()
 
     /**
+     * Parsed / usable data that has not been chain-validated.
+     */
+    data class Unverified<T>(val data: T, val reason: String) : CAIPResult<T>()
+
+    /**
      * Represents a loading state for asynchronous operations.
      */
     class Loading<T> : CAIPResult<T>()
@@ -38,6 +43,7 @@ sealed class CAIPResult<out T> {
     inline fun <R> map(transform: (T) -> R): CAIPResult<R> = when (this) {
         is Success -> Success(transform(data))
         is Failure -> this
+        is Unverified -> Unverified(transform(data), reason)
         is Loading -> Loading()
     }
 
@@ -50,6 +56,10 @@ sealed class CAIPResult<out T> {
     inline fun <R> flatMap(transform: (T) -> CAIPResult<R>): CAIPResult<R> = when (this) {
         is Success -> transform(data)
         is Failure -> this
+        is Unverified -> when (val next = transform(data)) {
+            is Success -> Unverified(next.data, reason)
+            else -> next
+        }
         is Loading -> Loading()
     }
 
@@ -61,6 +71,7 @@ sealed class CAIPResult<out T> {
     fun getOrNull(): T? = when (this) {
         is Success -> data
         is Failure -> null
+        is Unverified -> data
         is Loading -> null
     }
 
@@ -74,6 +85,7 @@ sealed class CAIPResult<out T> {
     fun getOrThrow(): T = when (this) {
         is Success -> data
         is Failure -> throw exception
+        is Unverified -> data
         is Loading -> throw IllegalStateException("Result is still loading")
     }
 
@@ -83,6 +95,8 @@ sealed class CAIPResult<out T> {
      * @return true if successful, false otherwise
      */
     fun isSuccess(): Boolean = this is Success
+
+    fun isUnverified(): Boolean = this is Unverified
 
     /**
      * Check if the result is a failure.
@@ -169,6 +183,7 @@ sealed class CAIPResult<out T> {
 inline fun <T> CAIPResult<T>.getOrElse(onFailure: (Exception) -> T): T = when (this) {
     is CAIPResult.Success -> data
     is CAIPResult.Failure -> onFailure(exception)
+    is CAIPResult.Unverified -> data
     is CAIPResult.Loading -> throw IllegalStateException("Cannot get value from Loading state")
 }
 
@@ -181,6 +196,7 @@ inline fun <T> CAIPResult<T>.getOrElse(onFailure: (Exception) -> T): T = when (t
 fun <T> CAIPResult<T>.getOrDefault(defaultValue: T): T = when (this) {
     is CAIPResult.Success -> data
     is CAIPResult.Failure -> defaultValue
+    is CAIPResult.Unverified -> data
     is CAIPResult.Loading -> defaultValue
 }
 
@@ -193,6 +209,7 @@ fun <T> CAIPResult<T>.getOrDefault(defaultValue: T): T = when (this) {
 inline fun <T> CAIPResult<T>.recover(transform: (Exception) -> T): CAIPResult<T> = when (this) {
     is CAIPResult.Success -> this
     is CAIPResult.Failure -> CAIPResult.Success(transform(exception))
+    is CAIPResult.Unverified -> this
     is CAIPResult.Loading -> this
 }
 
@@ -205,5 +222,6 @@ inline fun <T> CAIPResult<T>.recover(transform: (Exception) -> T): CAIPResult<T>
 inline fun <T> CAIPResult<T>.recoverCatching(transform: (Exception) -> CAIPResult<T>): CAIPResult<T> = when (this) {
     is CAIPResult.Success -> this
     is CAIPResult.Failure -> transform(exception)
+    is CAIPResult.Unverified -> this
     is CAIPResult.Loading -> this
 }

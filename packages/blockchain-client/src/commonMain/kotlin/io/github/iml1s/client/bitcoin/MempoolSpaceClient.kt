@@ -51,9 +51,9 @@ class MempoolSpaceClient(
         val minimumFee: Long
     )
 
-    override suspend fun getBalance(address: String): Long {
+    override suspend fun getBalance(address: String): String {
         val utxos = getUTXOs(address)
-        return utxos.sumOf { it.value }
+        return utxos.sumOf { it.value }.toString()
     }
 
     override suspend fun getUTXOs(address: String): List<ChainUTXO> {

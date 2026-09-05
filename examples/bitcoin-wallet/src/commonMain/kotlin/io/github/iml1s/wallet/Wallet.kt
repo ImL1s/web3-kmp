@@ -29,7 +29,7 @@ class Wallet(
     /**
      * Get balance for a specific address.
      */
-    suspend fun getBalance(address: String): Long {
+    suspend fun getBalance(address: String): String {
         return client.getBalance(address)
     }
 

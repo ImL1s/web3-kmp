@@ -105,7 +105,9 @@ data class Eip1559Transaction(
 
     override fun encode(forSigning: Boolean): ByteArray {
         val list = mutableListOf<Any>()
-        list.add(chainId ?: 1L)
+        val resolvedChainId = chainId
+            ?: throw IllegalArgumentException("EIP-1559 transaction requires chainId")
+        list.add(resolvedChainId)
         list.add(nonce)
         list.add(maxPriorityFeePerGas)
         list.add(maxFeePerGas)

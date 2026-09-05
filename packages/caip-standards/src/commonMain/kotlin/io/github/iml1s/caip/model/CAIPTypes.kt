@@ -63,45 +63,58 @@ data class CAIPChainID(
         /**
          * Parse from CAIP-2 string format
          */
+        private val NAMESPACE = Regex("^[-a-z0-9]{3,8}$")
+        private val REFERENCE = Regex("^[-_a-zA-Z0-9]{1,32}$")
+
         fun parse(caipString: String): CAIPResult<CAIPChainID> {
             val parts = caipString.split(":")
-            return if (parts.size == 2 && parts[0].isNotEmpty() && parts[1].isNotEmpty()) {
-                CAIPResult.Success(CAIPChainID(parts[0], parts[1]))
-            } else {
-                CAIPResult.Failure(IllegalArgumentException("Invalid CAIP-2 format: $caipString"))
+            if (parts.size != 2 || parts[0].isEmpty() || parts[1].isEmpty()) {
+                return CAIPResult.Failure(IllegalArgumentException("Invalid CAIP-2 format: $caipString"))
             }
+            if (!NAMESPACE.matches(parts[0]) || !REFERENCE.matches(parts[1])) {
+                return CAIPResult.Failure(IllegalArgumentException("Invalid CAIP-2 grammar: $caipString"))
+            }
+            return CAIPResult.Success(CAIPChainID(parts[0], parts[1]))
         }
 
         /**
          * Create from CAIPChainType
          */
         fun fromChainType(chainType: CAIPChainType, network: String = "mainnet"): CAIPChainID {
+            fun requireNetwork(vararg allowed: String) {
+                if (network !in allowed) {
+                    throw IllegalArgumentException("Unsupported ${chainType.name} network: $network")
+                }
+            }
             return when (chainType) {
-                CAIPChainType.ETHEREUM -> CAIPChainID("eip155", "1")
-                CAIPChainType.BSC -> CAIPChainID("eip155", "56")
-                CAIPChainType.POLYGON -> CAIPChainID("eip155", "137")
-                CAIPChainType.AVALANCHE -> CAIPChainID("eip155", "43114")
-                CAIPChainType.ARBITRUM -> CAIPChainID("eip155", "42161")
-                CAIPChainType.OPTIMISM -> CAIPChainID("eip155", "10")
-                CAIPChainType.CRONOS -> CAIPChainID("eip155", "25")
-                CAIPChainType.BASE -> CAIPChainID("eip155", "8453")
-                CAIPChainType.FANTOM -> CAIPChainID("eip155", "250")
-                CAIPChainType.CELO -> CAIPChainID("eip155", "42220")
-                CAIPChainType.MOONBEAM -> CAIPChainID("eip155", "1284")
+                CAIPChainType.ETHEREUM -> {
+                    requireNetwork("mainnet", "sepolia")
+                    CAIPChainID("eip155", if (network == "sepolia") "11155111" else "1")
+                }
+                CAIPChainType.BSC -> { requireNetwork("mainnet"); CAIPChainID("eip155", "56") }
+                CAIPChainType.POLYGON -> { requireNetwork("mainnet"); CAIPChainID("eip155", "137") }
+                CAIPChainType.AVALANCHE -> { requireNetwork("mainnet"); CAIPChainID("eip155", "43114") }
+                CAIPChainType.ARBITRUM -> { requireNetwork("mainnet"); CAIPChainID("eip155", "42161") }
+                CAIPChainType.OPTIMISM -> { requireNetwork("mainnet"); CAIPChainID("eip155", "10") }
+                CAIPChainType.CRONOS -> { requireNetwork("mainnet"); CAIPChainID("eip155", "25") }
+                CAIPChainType.BASE -> { requireNetwork("mainnet"); CAIPChainID("eip155", "8453") }
+                CAIPChainType.FANTOM -> { requireNetwork("mainnet"); CAIPChainID("eip155", "250") }
+                CAIPChainType.CELO -> { requireNetwork("mainnet"); CAIPChainID("eip155", "42220") }
+                CAIPChainType.MOONBEAM -> { requireNetwork("mainnet"); CAIPChainID("eip155", "1284") }
                 CAIPChainType.SOLANA -> CAIPChainID("solana", when (network) {
                     "mainnet" -> "5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
                     "testnet" -> "4uhcVJyU9pJkvQyS88uRDiswHXSCkY3z"
                     "devnet" -> "EtWTRABZaYq6iMfeYKouRu166VU2xqa1"
-                    else -> "5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+                    else -> throw IllegalArgumentException("Unsupported Solana network: $network")
                 })
-                CAIPChainType.BITCOIN -> CAIPChainID("bip122", "000000000019d6689c085ae165831e93")
-                CAIPChainType.BITCOIN_CASH -> CAIPChainID("bip122", "000000000019d6689c085ae165831e93")
-                CAIPChainType.LITECOIN -> CAIPChainID("bip122", "12a765e31ffd4059bada1e25190f6e98")
-                CAIPChainType.DOGECOIN -> CAIPChainID("bip122", "1a91e3dace36e2be3bf030a65679fe821aa1d6ef92e7c9902eb318182c355691")
-                CAIPChainType.POLKADOT -> CAIPChainID("polkadot", "91b171bb158e2d3848fa23a9f1c25182")
-                CAIPChainType.CARDANO -> CAIPChainID("cardano", "764824073")
-                CAIPChainType.TRON -> CAIPChainID("tron", "0x2b6653dc")
-                CAIPChainType.MONERO -> CAIPChainID("monero", "mainnet")
+                CAIPChainType.BITCOIN -> { requireNetwork("mainnet"); CAIPChainID("bip122", "000000000019d6689c085ae165831e93") }
+                CAIPChainType.BITCOIN_CASH -> { requireNetwork("mainnet"); CAIPChainID("bip122", "000000000019d6689c085ae165831e93") }
+                CAIPChainType.LITECOIN -> { requireNetwork("mainnet"); CAIPChainID("bip122", "12a765e31ffd4059bada1e25190f6e98") }
+                CAIPChainType.DOGECOIN -> { requireNetwork("mainnet"); CAIPChainID("bip122", "1a91e3dace36e2be3bf030a65679fe82") }
+                CAIPChainType.POLKADOT -> { requireNetwork("mainnet"); CAIPChainID("polkadot", "91b171bb158e2d3848fa23a9f1c25182") }
+                CAIPChainType.CARDANO -> { requireNetwork("mainnet"); CAIPChainID("cardano", "764824073") }
+                CAIPChainType.TRON -> { requireNetwork("mainnet"); CAIPChainID("tron", "0x2b6653dc") }
+                CAIPChainType.MONERO -> { requireNetwork("mainnet"); CAIPChainID("monero", "mainnet") }
             }
         }
 
@@ -158,7 +171,7 @@ data class CAIPAddress(
                 "solana" -> validateSolanaAddress(address)
                 "bip122" -> validateBitcoinAddress(address)
                 "polkadot" -> validatePolkadotAddress(address)
-                else -> CAIPResult.Success(true) // Unknown chains pass by default
+                else -> CAIPResult.Unverified(true, "Unknown namespace ${chainId.namespace}")
             }
         } catch (e: Exception) {
             CAIPResult.Failure(e)
@@ -171,12 +184,16 @@ data class CAIPAddress(
          */
         fun parse(caipString: String): CAIPResult<CAIPAddress> {
             val parts = caipString.split(":")
-            return if (parts.size == 3) {
-                val chainId = CAIPChainID(parts[0], parts[1])
-                CAIPResult.Success(CAIPAddress(chainId, parts[2]))
-            } else {
-                CAIPResult.Failure(IllegalArgumentException("Invalid CAIP-10 format: $caipString"))
+            if (parts.size != 3 || parts.any { it.isEmpty() }) {
+                return CAIPResult.Failure(IllegalArgumentException("Invalid CAIP-10 format: $caipString"))
             }
+            val chain = CAIPChainID.parse("${parts[0]}:${parts[1]}")
+            if (chain is CAIPResult.Failure) return chain
+            val address = parts[2]
+            if (address.length !in 1..128) {
+                return CAIPResult.Failure(IllegalArgumentException("Invalid CAIP-10 account: $caipString"))
+            }
+            return CAIPResult.Success(CAIPAddress(chain.getOrThrow(), address))
         }
 
         /**
@@ -238,12 +255,16 @@ data class CAIPAddress(
 data class CAIPAsset(
     val chainId: CAIPChainID,
     val assetNamespace: String,
-    val assetReference: String
+    val assetReference: String,
+    val tokenId: String? = null
 ) {
     /**
      * Convert to CAIP-19 string format
      */
-    fun toCAIPString(): String = "${chainId.toCAIPString()}/$assetNamespace:$assetReference"
+    fun toCAIPString(): String {
+        val type = "${chainId.toCAIPString()}/$assetNamespace:$assetReference"
+        return if (tokenId != null) "$type/$tokenId" else type
+    }
 
     /**
      * Check if this is a native token (identified by slip44)
@@ -314,7 +335,7 @@ data class CAIPAsset(
          */
         fun parse(caipString: String): CAIPResult<CAIPAsset> {
             val mainParts = caipString.split("/")
-            if (mainParts.size != 2) {
+            if (mainParts.size !in 2..3) {
                 return CAIPResult.Failure(IllegalArgumentException("Invalid CAIP-19 format: $caipString"))
             }
 
@@ -324,15 +345,21 @@ data class CAIPAsset(
             }
 
             val assetParts = mainParts[1].split(":", limit = 2)
-            if (assetParts.size != 2) {
+            if (assetParts.size != 2 || assetParts[0].isEmpty() || assetParts[1].isEmpty()) {
                 return CAIPResult.Failure(IllegalArgumentException("Invalid asset format in CAIP-19: $caipString"))
+            }
+
+            val tokenId = if (mainParts.size == 3) mainParts[2] else null
+            if (tokenId != null && tokenId.isEmpty()) {
+                return CAIPResult.Failure(IllegalArgumentException("Invalid CAIP-19 token id: $caipString"))
             }
 
             return CAIPResult.Success(
                 CAIPAsset(
                     chainId = chainIdResult.getOrThrow(),
                     assetNamespace = assetParts[0],
-                    assetReference = assetParts[1]
+                    assetReference = assetParts[1],
+                    tokenId = tokenId
                 )
             )
         }
@@ -379,7 +406,8 @@ data class CAIPAsset(
             return CAIPAsset(
                 chainId = chainId,
                 assetNamespace = standard,
-                assetReference = "${contractAddress.lowercase()}/$tokenId"
+                assetReference = contractAddress.lowercase(),
+                tokenId = tokenId
             )
         }
 

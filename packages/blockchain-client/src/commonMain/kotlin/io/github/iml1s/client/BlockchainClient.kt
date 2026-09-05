@@ -36,7 +36,11 @@ data class FeeRates(
 )
 
 interface BlockchainClient {
-    suspend fun getBalance(address: String): Long
+    /**
+     * Balance in atomic units as a decimal string (satoshis or wei).
+     * Wei values such as 10 ETH (`10^19`) do not fit in [Long].
+     */
+    suspend fun getBalance(address: String): String
     suspend fun getUTXOs(address: String): List<ChainUTXO>
     suspend fun getTransactions(address: String): List<ChainTransaction>
     suspend fun broadcastTransaction(rawTxHex: String): String

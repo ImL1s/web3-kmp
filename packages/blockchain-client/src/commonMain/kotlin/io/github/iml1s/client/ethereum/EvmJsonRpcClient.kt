@@ -58,13 +58,12 @@ class EvmJsonRpcClient(
         return response.result ?: throw Exception("Empty result")
     }
 
-    override suspend fun getBalance(address: String): Long {
+    override suspend fun getBalance(address: String): String {
         val hexBalance = rpcCall<String>(
-            "eth_getBalance", 
+            "eth_getBalance",
             listOf(JsonPrimitive(address), JsonPrimitive("latest"))
         )
-        // Remove 0x and parse hex
-        return hexBalance.removePrefix("0x").toLong(16)
+        return EvmQuantity.hexToDecimal(hexBalance)
     }
 
     override suspend fun getUTXOs(address: String): List<ChainUTXO> {

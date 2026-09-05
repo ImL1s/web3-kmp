@@ -71,6 +71,10 @@ object Bech32 {
      * @return 解碼結果或 null（如果無效）
      */
     fun decode(bech32: String): Bech32Data? {
+        // BIP-173: mixed case is invalid. Lowercase or uppercase only.
+        if (bech32 != bech32.lowercase() && bech32 != bech32.uppercase()) {
+            return null
+        }
         val lower = bech32.lowercase()
         val pos = lower.lastIndexOf('1')
 
@@ -79,6 +83,9 @@ object Bech32 {
         }
 
         val hrp = lower.substring(0, pos)
+        if (hrp.any { it.code < 33 || it.code > 126 }) {
+            return null
+        }
         val dataPartStr = lower.substring(pos + 1)
 
         val data = ByteArray(dataPartStr.length)
@@ -162,6 +169,7 @@ object Bech32 {
      */
     fun decodeSegwitAddress(address: String): Pair<Int, ByteArray>? {
         val decoded = decode(address) ?: return null
+        if (decoded.hrp !in setOf("bc", "tb", "bcrt")) return null
         if (decoded.data.isEmpty()) return null
 
         val witnessVersion = decoded.data[0].toInt()

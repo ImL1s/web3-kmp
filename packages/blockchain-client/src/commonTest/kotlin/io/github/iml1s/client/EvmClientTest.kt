@@ -42,7 +42,27 @@ class EvmClientTest {
 
         val evmClient = EvmJsonRpcClient(client, "http://localhost:8545")
         val balance = evmClient.getBalance("0x123")
-        
-        assertEquals(5000000000000000000L, balance)
+
+        assertEquals("5000000000000000000", balance)
+    }
+
+    @Test
+    fun testTenEthWeiDoesNotFitInLong() = runTest {
+        val mockEngine = MockEngine { request ->
+            respond(
+                content = ByteReadChannel("""{"jsonrpc":"2.0","id":1,"result":"0x8ac7230489e80000"}"""),
+                status = HttpStatusCode.OK,
+                headers = headersOf(HttpHeaders.ContentType, "application/json")
+            )
+        }
+        val client = HttpClient(mockEngine) {
+            install(ContentNegotiation) {
+                json(Json { ignoreUnknownKeys = true })
+            }
+        }
+        val evmClient = EvmJsonRpcClient(client, "http://localhost:8545")
+        assertEquals("10000000000000000000", evmClient.getBalance("0x123"))
+        assertEquals("10000000000000000000", io.github.iml1s.client.ethereum.EvmQuantity.hexToDecimal("0x8ac7230489e80000"))
     }
 }
+
